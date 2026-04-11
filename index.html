@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jan Świdziński — Contextual Art: Game & Archive</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  --bg: #f5f2ed; --surface: #ffffff; --surface2: #ece8e1; --border: #d4cfc7;
+  --text: #1a1a1f; --text-dim: #6b6878; --text-light: #9994a5;
+  --ctx-hue: 220; --ctx-sat: 50%;
+  --accent: hsl(var(--ctx-hue), var(--ctx-sat), 42%);
+  --accent-light: hsl(var(--ctx-hue), var(--ctx-sat), 92%);
+  --accent2: hsl(calc(var(--ctx-hue) + 140), 45%, 40%);
+  --accent3: hsl(calc(var(--ctx-hue) + 30), 55%, 48%);
+  --accent4: hsl(calc(var(--ctx-hue) + 260), 40%, 50%);
+  --gold: #c4960a;
+  --radius: 12px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.1);
+  --particle-color: 30, 28, 40;
+  --canvas-bg: 245, 242, 237;
+}
+
+[data-theme="dark"] {
+  --bg: #0e0e14; --surface: #17171f; --surface2: #1e1e28; --border: #2e2e3c;
+  --text: #e4e4ec; --text-dim: #8888a0; --text-light: #5a5a70;
+  --accent-light: hsl(var(--ctx-hue), var(--ctx-sat), 14%);
+  --shadow: 0 2px 12px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
+  --particle-color: 200, 200, 220;
+  --canvas-bg: 14, 14, 20;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; transition: background .5s, color .5s; }
+
+/* ═══ CANVAS ═══ */
+#bgCanvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity:0.35; }
+[data-theme="dark"] #bgCanvas { opacity:0.25; }
+#landingCanvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:1; }
+
+/* ═══ NAV ═══ */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(245,242,237,0.88); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); display:flex; align-items:center; gap:2px; padding:0 12px; height:52px; overflow-x:auto; transition: background .5s, border .5s; }
+[data-theme="dark"] nav { background:rgba(14,14,20,0.88); }
+nav::-webkit-scrollbar { display:none; }
+.nav-logo { font-family:'Playfair Display',serif; font-size:14px; font-weight:700; color:var(--accent); margin-right:8px; white-space:nowrap; cursor:pointer; letter-spacing:.5px; }
+nav button { background:none; border:1px solid transparent; color:var(--text-dim); padding:6px 10px; border-radius:8px; cursor:pointer; font-size:11px; font-weight:500; transition:all .2s; white-space:nowrap; font-family:'Inter',sans-serif; }
+nav button:hover { color:var(--text); background:var(--surface2); }
+nav button.active { color:var(--accent); border-color:var(--accent); background:var(--accent-light); }
+.nav-right { margin-left:auto; display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.score-display { display:flex; align-items:center; gap:4px; font-weight:600; font-size:13px; color:var(--gold); }
+.score-display svg { width:16px; height:16px; fill:var(--gold); }
+#themeToggle { background:none; border:1px solid var(--border); width:32px; height:32px; border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--text-dim); transition:all .2s; padding:0; }
+#themeToggle:hover { border-color:var(--accent); color:var(--accent); }
+nav.hidden { transform:translateY(-100%); }
+
+/* ═══ VIEWS ═══ */
+main { position:relative; z-index:2; padding-top:64px; min-height:100vh; }
+.view { display:none; padding:24px; max-width:1200px; margin:0 auto; animation:viewIn .4s ease; }
+.view.active { display:block; }
+@keyframes viewIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+/* ═══ LANDING ═══ */
+#landingView.active { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:calc(100vh - 64px); text-align:center; padding:40px 24px; position:relative; z-index:5; }
+.landing-title { font-family:'Playfair Display',serif; font-size:clamp(28px,5vw,52px); font-weight:700; color:var(--text); line-height:1.15; margin-bottom:8px; }
+.landing-subtitle { font-family:'JetBrains Mono',monospace; font-size:clamp(11px,1.4vw,14px); letter-spacing:3px; text-transform:uppercase; color:var(--text-dim); margin-bottom:32px; }
+.landing-desc { max-width:600px; font-size:15px; line-height:1.7; color:var(--text-dim); margin-bottom:40px; }
+.landing-cta { display:inline-flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+.btn-primary { font-family:'Inter',sans-serif; font-size:13px; font-weight:600; padding:12px 28px; border-radius:10px; border:none; cursor:pointer; transition:all .25s; background:var(--accent); color:#fff; }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:var(--shadow-lg); filter:brightness(1.1); }
+.btn-secondary { font-family:'Inter',sans-serif; font-size:13px; font-weight:500; padding:12px 28px; border-radius:10px; border:1px solid var(--border); cursor:pointer; transition:all .25s; background:var(--surface); color:var(--text); }
+.btn-secondary:hover { border-color:var(--accent); color:var(--accent); }
+
+/* ═══ HUB CARDS ═══ */
+h2 { font-family:'Playfair Display',serif; font-size:28px; margin-bottom:8px; color:var(--text); }
+h2 + .section-desc { color:var(--text-dim); font-size:14px; margin-bottom:28px; line-height:1.6; }
+.card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
+.card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px; cursor:pointer; transition:all .3s; }
+.card:hover { border-color:var(--accent); transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+.card .card-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:6px; }
+.card h3 { font-family:'Playfair Display',serif; font-size:17px; margin-bottom:8px; color:var(--text); }
+.card p { font-size:13px; color:var(--text-dim); line-height:1.6; }
+.card .tags { margin-top:10px; display:flex; flex-wrap:wrap; gap:4px; }
+.tag { font-size:10px; padding:3px 10px; border-radius:20px; background:var(--accent-light); color:var(--accent); cursor:pointer; transition:all .2s; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
+.tag:hover { filter:brightness(0.95); }
+
+/* ═══ TIMELINE ═══ */
+.tl-filters { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:24px; }
+.tl-filters button { font-family:'Inter',sans-serif; font-size:11px; padding:5px 14px; border-radius:20px; border:1px solid var(--border); background:var(--surface); color:var(--text-dim); cursor:pointer; transition:all .2s; }
+.tl-filters button.active { background:var(--accent-light); color:var(--accent); border-color:var(--accent); }
+.timeline-container { position:relative; padding:20px 0 20px 48px; }
+.timeline-line { position:absolute; left:22px; top:0; bottom:0; width:3px; background:linear-gradient(var(--accent),var(--accent4),var(--accent2)); border-radius:2px; }
+.tl-item { position:relative; margin-bottom:8px; padding:18px 22px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); cursor:pointer; transition:all .3s; }
+.tl-item:hover { border-color:var(--accent); transform:translateY(-1px); box-shadow:var(--shadow); }
+.tl-item.expanded { border-color:var(--accent); background:var(--surface); }
+.tl-dot { position:absolute; left:-38px; top:22px; width:16px; height:16px; border-radius:50%; border:3px solid var(--accent); background:var(--bg); transition:all .3s; z-index:1; }
+.tl-item:hover .tl-dot,.tl-item.expanded .tl-dot { background:var(--accent); }
+.tl-item .year { font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; color:var(--accent); }
+.tl-item .category { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--text-light); margin-left:8px; }
+.tl-item h3 { font-family:'Playfair Display',serif; font-size:16px; margin:4px 0 6px; color:var(--text); }
+.tl-item .tl-summary { font-size:13px; color:var(--text-dim); line-height:1.6; }
+.tl-expanded { display:none; margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-size:13px; color:var(--text-dim); line-height:1.7; }
+.tl-item.expanded .tl-expanded { display:block; }
+.tl-arrow { float:right; font-size:16px; color:var(--text-light); transition:transform .3s; }
+.tl-item.expanded .tl-arrow { transform:rotate(180deg); color:var(--accent); }
+
+/* ═══ GRAPH ═══ */
+#graphView { padding:0; position:relative; }
+#graphCanvas { display:block; width:100%; height:calc(100vh - 64px); cursor:grab; background:var(--surface); }
+#graphCanvas:active { cursor:grabbing; }
+.graph-legend { position:fixed; bottom:16px; left:16px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px; font-size:11px; display:flex; flex-direction:column; gap:5px; z-index:10; box-shadow:var(--shadow); }
+.graph-legend span { display:flex; align-items:center; gap:8px; color:var(--text-dim); }
+.graph-legend .dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.graph-panel { position:fixed; top:64px; right:0; width:380px; max-height:calc(100vh - 64px); overflow-y:auto; background:var(--surface); border-left:1px solid var(--border); padding:28px; display:none; z-index:10; box-shadow:var(--shadow-lg); }
+.graph-panel.show { display:block; }
+.graph-panel .close-btn { position:absolute; top:12px; right:16px; background:none; border:none; color:var(--text-dim); font-size:20px; cursor:pointer; }
+.graph-panel h3 { font-family:'Playfair Display',serif; font-size:20px; margin-bottom:4px; }
+.graph-panel .gp-dates { font-size:12px; color:var(--text-dim); margin-bottom:10px; }
+.graph-panel .gp-desc { font-size:13px; color:var(--text-dim); line-height:1.7; margin-bottom:12px; }
+.graph-panel .gp-quote { padding:12px 16px; border-left:3px solid var(--accent4); font-style:italic; font-size:13px; color:var(--accent4); line-height:1.6; background:var(--accent-light); border-radius:0 8px 8px 0; margin-bottom:12px; }
+
+/* ═══ TEXTS ═══ */
+.text-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:12px; overflow:hidden; transition:all .3s; }
+.text-card:hover { border-color:var(--accent); }
+.text-card-header { padding:18px 22px; cursor:pointer; display:flex; justify-content:space-between; align-items:flex-start; }
+.text-card-header h3 { font-family:'Playfair Display',serif; font-size:17px; color:var(--text); }
+.text-card-header .meta { font-size:12px; color:var(--text-dim); margin-top:2px; }
+.text-card-body { display:none; padding:0 22px 22px; font-size:14px; line-height:1.8; color:var(--text-dim); }
+.text-card.open .text-card-body { display:block; }
+.text-card.open { border-color:var(--accent); }
+.text-section { margin-bottom:20px; }
+.text-section h4 { font-family:'Playfair Display',serif; font-size:15px; color:var(--text); margin-bottom:8px; }
+.text-section p { margin-bottom:10px; }
+.text-section .citation { font-size:12px; color:var(--text-light); margin-top:8px; }
+blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accent4); font-style:italic; color:var(--accent4); line-height:1.7; background:var(--accent-light); border-radius:0 8px 8px 0; font-size:13px; }
+
+/* ═══ CONCEPTS ═══ */
+.search-bar { width:100%; max-width:460px; padding:10px 16px; background:var(--surface); border:1px solid var(--border); border-radius:10px; color:var(--text); font-size:14px; outline:none; font-family:'Inter',sans-serif; transition: border .2s; margin-bottom:20px; }
+.search-bar:focus { border-color:var(--accent); }
+.concept-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; transition:all .3s; overflow:hidden; }
+.concept-card:hover { border-color:var(--accent); transform:translateY(-2px); box-shadow:var(--shadow); }
+.concept-card .thinker { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:4px; }
+.concept-card h3 { font-family:'Playfair Display',serif; font-size:16px; margin-bottom:6px; }
+.concept-card p { font-size:13px; color:var(--text-dim); line-height:1.6; }
+.concept-card .formula { font-family:'JetBrains Mono',monospace; font-size:13px; padding:10px 14px; background:var(--surface2); border-radius:8px; margin:10px 0; color:var(--accent); text-align:center; }
+
+/* ═══ GAME HUB ═══ */
+.game-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px; cursor:pointer; transition:all .3s; text-align:center; }
+.game-card:hover { border-color:var(--accent); transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+.game-card .game-icon { font-size:36px; margin-bottom:12px; }
+.game-card h3 { font-family:'Playfair Display',serif; font-size:18px; margin-bottom:6px; }
+.game-card p { font-size:13px; color:var(--text-dim); line-height:1.5; }
+
+/* ═══ QUIZ ═══ */
+.quiz-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px; }
+.quiz-cats { display:flex; flex-wrap:wrap; gap:6px; }
+.quiz-cats button { font-family:'Inter',sans-serif; background:var(--surface); border:1px solid var(--border); color:var(--text-dim); padding:5px 14px; border-radius:20px; font-size:11px; cursor:pointer; transition:all .2s; }
+.quiz-cats button:hover,.quiz-cats button.active { background:var(--accent-light); color:var(--accent); border-color:var(--accent); }
+.quiz-progress { height:4px; background:var(--surface2); border-radius:2px; margin-bottom:28px; overflow:hidden; }
+.quiz-progress-bar { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:2px; transition:width .4s ease; }
+.quiz-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:32px; max-width:760px; margin:0 auto; }
+.quiz-card .q-cat { font-size:11px; color:var(--accent); font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+.quiz-card .q-num { font-size:12px; color:var(--text-dim); margin-bottom:14px; }
+.quiz-card h3 { font-family:'Playfair Display',serif; font-size:19px; line-height:1.5; margin-bottom:22px; }
+.quiz-options { display:flex; flex-direction:column; gap:10px; }
+.quiz-option { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:14px 18px; cursor:pointer; transition:all .2s; font-size:14px; line-height:1.6; color:var(--text); text-align:left; font-family:'Inter',sans-serif; }
+.quiz-option:hover { border-color:var(--accent); background:var(--accent-light); }
+.quiz-option.correct { border-color:var(--accent2); background:hsla(160,50%,50%,0.12); color:var(--accent2); font-weight:600; }
+.quiz-option.wrong { border-color:#c44; background:rgba(204,68,68,0.08); color:#c44; }
+.quiz-option:disabled { pointer-events:none; opacity:0.65; }
+.quiz-option.correct:disabled,.quiz-option.wrong:disabled { opacity:1; }
+.quiz-explanation { display:none; margin-top:18px; padding:16px; background:var(--accent-light); border-radius:10px; font-size:13px; line-height:1.7; color:var(--text-dim); border-left:3px solid var(--accent); }
+.quiz-explanation.show { display:block; }
+.quiz-next { display:none; margin-top:18px; text-align:center; }
+.quiz-next button { background:var(--accent); color:#fff; border:none; padding:10px 28px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; }
+.quiz-results { text-align:center; padding:48px 24px; }
+.quiz-results .big-score { font-size:64px; font-weight:700; font-family:'Playfair Display',serif; color:var(--accent); }
+.quiz-results p { color:var(--text-dim); margin:8px 0; font-size:14px; }
+
+/* ═══ CONTEXT FORMULA GAME ═══ */
+.formula-widget { max-width:800px; margin:0 auto; }
+.formula-display { text-align:center; padding:32px; background:var(--surface); border:1px solid var(--border); border-radius:16px; margin-bottom:24px; }
+.formula-display .object-name { font-family:'Playfair Display',serif; font-size:22px; margin-bottom:16px; color:var(--text); }
+.formula-display .meaning-box { padding:18px; background:var(--accent-light); border-radius:10px; font-size:15px; line-height:1.7; color:var(--text); min-height:60px; transition:all .5s; font-style:italic; }
+.param-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; margin-bottom:20px; }
+.param-slot { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px; }
+.param-slot label { display:block; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:var(--accent); margin-bottom:6px; font-family:'JetBrains Mono',monospace; }
+.param-slot select { width:100%; padding:8px 10px; background:var(--surface2); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:13px; font-family:'Inter',sans-serif; cursor:pointer; }
+.param-slot select:focus { border-color:var(--accent); outline:none; }
+.formula-notation { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:6px; padding:14px 16px; background:var(--surface2); border-radius:10px; margin-bottom:20px; }
+.formula-notation .fn-label { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-light); letter-spacing:1px; }
+.formula-notation .fn-pill { display:inline-flex; align-items:center; gap:4px; padding:5px 12px; border-radius:20px; font-size:12px; font-family:'Inter',sans-serif; font-weight:500; transition:all .3s; }
+.formula-notation .fn-pill .fn-key { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; opacity:0.7; }
+.formula-notation .fn-pill.fn-empty { background:var(--surface); border:1px dashed var(--border); color:var(--text-light); }
+.formula-notation .fn-pill.fn-filled { border:1px solid var(--accent); color:var(--accent); background:var(--accent-light); }
+.formula-notation .fn-pill.fn-time { --pill-hue:calc(var(--ctx-hue) + 0); border-color:hsl(var(--pill-hue),50%,45%); color:hsl(var(--pill-hue),50%,38%); background:hsl(var(--pill-hue),50%,94%); }
+.formula-notation .fn-pill.fn-place { --pill-hue:calc(var(--ctx-hue) + 90); border-color:hsl(var(--pill-hue),45%,42%); color:hsl(var(--pill-hue),45%,35%); background:hsl(var(--pill-hue),45%,92%); }
+.formula-notation .fn-pill.fn-situation { --pill-hue:calc(var(--ctx-hue) + 180); border-color:hsl(var(--pill-hue),40%,42%); color:hsl(var(--pill-hue),40%,35%); background:hsl(var(--pill-hue),40%,92%); }
+.formula-notation .fn-pill.fn-person { --pill-hue:calc(var(--ctx-hue) + 270); border-color:hsl(var(--pill-hue),45%,45%); color:hsl(var(--pill-hue),45%,38%); background:hsl(var(--pill-hue),45%,93%); }
+[data-theme="dark"] .formula-notation .fn-pill.fn-time { background:hsl(var(--pill-hue),40%,15%); color:hsl(var(--pill-hue),50%,70%); }
+[data-theme="dark"] .formula-notation .fn-pill.fn-place { background:hsl(var(--pill-hue),35%,15%); color:hsl(var(--pill-hue),45%,70%); }
+[data-theme="dark"] .formula-notation .fn-pill.fn-situation { background:hsl(var(--pill-hue),30%,15%); color:hsl(var(--pill-hue),40%,70%); }
+[data-theme="dark"] .formula-notation .fn-pill.fn-person { background:hsl(var(--pill-hue),35%,15%); color:hsl(var(--pill-hue),45%,70%); }
+.formula-notation .fn-arrow { color:var(--text-light); font-size:14px; }
+
+/* ═══ COMPARE GAME ═══ */
+.compare-columns { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+.compare-col { background:var(--surface); border:2px dashed var(--border); border-radius:var(--radius); padding:16px; min-height:200px; transition:border-color .2s; }
+.compare-col.drag-over { border-color:var(--accent); background:var(--accent-light); }
+.compare-col h3 { font-family:'Playfair Display',serif; font-size:16px; text-align:center; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+.compare-pool { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:20px; }
+.drag-card { padding:10px 16px; background:var(--surface); border:1px solid var(--border); border-radius:8px; cursor:grab; font-size:13px; color:var(--text); transition:all .2s; user-select:none; max-width:300px; line-height:1.5; }
+.drag-card:hover { border-color:var(--accent); transform:translateY(-1px); }
+.drag-card:active { cursor:grabbing; }
+.drag-card.placed { opacity:0.5; pointer-events:none; }
+.drag-card.correct-placed { border-color:var(--accent2); background:hsla(160,50%,50%,0.08); }
+.drag-card.wrong-placed { border-color:#c44; background:rgba(204,68,68,0.06); }
+.placed-card { padding:8px 12px; background:var(--surface2); border:1px solid var(--border); border-radius:8px; font-size:12px; color:var(--text-dim); margin-bottom:6px; line-height:1.5; transition:all .3s; }
+
+/* ═══ 12 POINTS CHALLENGE ═══ */
+.points-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; }
+.point-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; transition:all .4s; position:relative; overflow:hidden; }
+.point-card.locked { filter:blur(3px); opacity:0.5; pointer-events:none; }
+.point-card.locked::after { content:'🔒'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:28px; filter:blur(0); }
+.point-card.unlocked { border-color:var(--accent); animation:unlockPulse .6s ease; }
+@keyframes unlockPulse { 0%{box-shadow:0 0 0 0 hsla(var(--ctx-hue),50%,50%,0.4)} 70%{box-shadow:0 0 0 12px hsla(var(--ctx-hue),50%,50%,0)} 100%{box-shadow:0 0 0 0 hsla(var(--ctx-hue),50%,50%,0)} }
+.point-card .point-num { font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:var(--accent); margin-bottom:6px; }
+.point-card h4 { font-family:'Playfair Display',serif; font-size:15px; margin-bottom:8px; }
+.point-card p { font-size:13px; color:var(--text-dim); line-height:1.6; }
+
+/* ═══ CONTEXT FOOTER ═══ */
+#contextFooter { position:fixed; bottom:0; left:0; right:0; z-index:90; background:rgba(245,242,237,0.85); backdrop-filter:blur(10px); border-top:1px solid var(--border); padding:6px 16px; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-light); letter-spacing:.5px; text-align:center; transition:background .5s; }
+[data-theme="dark"] #contextFooter { background:rgba(14,14,20,0.85); }
+
+/* ═══ TOOLTIP ═══ */
+#tooltip { position:fixed; display:none; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px; max-width:340px; z-index:200; pointer-events:none; box-shadow:var(--shadow-lg); }
+#tooltip h3 { font-family:'Playfair Display',serif; font-size:15px; margin-bottom:2px; }
+#tooltip .dates { font-size:11px; color:var(--text-dim); margin-bottom:6px; }
+#tooltip p { font-size:12px; line-height:1.5; color:var(--text-dim); }
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:768px) {
+  nav { gap:1px; padding:0 6px; height:48px; }
+  nav button { font-size:10px; padding:4px 7px; }
+  .nav-logo { font-size:12px; }
+  .view { padding:14px; }
+  h2 { font-size:22px; }
+  .card-grid,.points-grid { grid-template-columns:1fr; }
+  .compare-columns { grid-template-columns:1fr; }
+  .param-grid { grid-template-columns:1fr; }
+  .graph-panel { width:100%; top:auto; bottom:0; max-height:50vh; border-left:none; border-top:1px solid var(--border); }
+  .graph-legend { bottom:auto; top:70px; left:8px; font-size:10px; padding:10px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+<canvas id="landingCanvas" style="display:none;"></canvas>
+
+<nav>
+  <div class="nav-logo" onclick="showView('landing')">Świdziński</div>
+  <button onclick="showView('landing')" data-view="landing">Home</button>
+  <button onclick="showView('archive')" data-view="archive">Archive</button>
+  <button onclick="showView('timeline')" data-view="timeline">Timeline</button>
+  <button onclick="showView('graph')" data-view="graph">Network</button>
+  <button onclick="showView('texts')" data-view="texts">Texts</button>
+  <button onclick="showView('concepts')" data-view="concepts">Concepts</button>
+  <button onclick="showView('biblio')" data-view="biblio">Bibliography</button>
+  <button onclick="showView('festivals')" data-view="festivals">Festivals</button>
+  <button onclick="showView('game')" data-view="game">Game</button>
+  <div class="nav-right">
+    <div class="score-display">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+      <span id="totalScore">0</span>
+    </div>
+    <button id="themeToggle" onclick="toggleTheme()" title="Toggle dark mode">☀</button>
+  </div>
+</nav>
+
+<div id="tooltip"><h3 id="ttName"></h3><div class="dates" id="ttDates"></div><p id="ttDesc"></p></div>
+
+<main>
+
+<!-- ═══ LANDING ═══ -->
+<div id="landingView" class="view active">
+  <div class="landing-title">Jan Świdziński</div>
+  <div class="landing-subtitle">Contextual Art · 1923–2014</div>
+  <div class="landing-desc">
+    An interdisciplinary artist, theorist, and philosopher who argued that meaning is never fixed — it emerges from context. Explore his archive, play through his ideas, and discover why art is always contextual.
+  </div>
+  <div class="landing-cta">
+    <button class="btn-primary" onclick="showView('archive')">Explore the Archive</button>
+    <button class="btn-secondary" onclick="showView('game')">Play the Game</button>
+  </div>
+</div>
+
+<!-- ═══ ARCHIVE HUB ═══ -->
+<div id="archiveView" class="view">
+  <h2>Archive</h2>
+  <p class="section-desc">Navigate the collected works, life events, intellectual network, and key ideas of Jan Świdziński's contextual art.</p>
+  <div class="card-grid" id="archiveGrid"></div>
+</div>
+
+<!-- ═══ TIMELINE ═══ -->
+<div id="timelineView" class="view">
+  <h2>Timeline</h2>
+  <p class="section-desc">From painting through conceptualism to contextual art — the path of a radical thinker.</p>
+  <div class="tl-filters" id="tlFilters"></div>
+  <div class="timeline-container"><div class="timeline-line"></div><div id="tlItems"></div></div>
+</div>
+
+<!-- ═══ GRAPH ═══ -->
+<div id="graphView" class="view">
+  <canvas id="graphCanvas"></canvas>
+  <div class="graph-legend" id="graphLegend"></div>
+  <div class="graph-panel" id="graphPanel"></div>
+</div>
+
+<!-- ═══ TEXTS ═══ -->
+<div id="textsView" class="view">
+  <h2>Texts & Writings</h2>
+  <p class="section-desc">Primary sources — manifestos, theoretical essays, critical reflections. Świdziński's own words.</p>
+  <div id="textsContainer"></div>
+</div>
+
+<!-- ═══ CONCEPTS ═══ -->
+<div id="conceptsView" class="view">
+  <h2>Concept Encyclopedia</h2>
+  <p class="section-desc">Key ideas, theories, and terms from contextual art and its intellectual context.</p>
+  <input class="search-bar" id="conceptSearch" placeholder="Search concepts..." oninput="filterConcepts()">
+  <div class="card-grid" id="conceptsGrid"></div>
+</div>
+
+<!-- ═══ BIBLIOGRAPHY ═══ -->
+<div id="biblioView" class="view">
+  <h2>Bibliography & Resources</h2>
+  <p class="section-desc">Publications, scholarly works, and essential references for researchers, art historians, and students of contextual art.</p>
+  <div id="biblioContainer"></div>
+</div>
+
+<!-- ═══ FESTIVALS ═══ -->
+<div id="festivalsView" class="view">
+  <h2>Festivals & Performances</h2>
+  <p class="section-desc">International festivals, performances, and exhibitions — including posthumous shows honoring Świdziński's legacy.</p>
+  <div id="festivalsContainer"></div>
+</div>
+
+<!-- ═══ GAME HUB ═══ -->
+<div id="gameView" class="view">
+  <h2>The Context Machine</h2>
+  <p class="section-desc">Learn contextual art through play. Four modes — from formula experiments to progressive challenges.</p>
+  <div class="card-grid" id="gameGrid"></div>
+</div>
+
+<!-- ═══ QUIZ ═══ -->
+<div id="quizView" class="view">
+  <h2>Contextual Quiz</h2>
+  <div class="quiz-header"><div class="quiz-cats" id="quizCats"></div></div>
+  <div class="quiz-progress"><div class="quiz-progress-bar" id="quizBar"></div></div>
+  <div id="quizArea"></div>
+</div>
+
+<!-- ═══ FORMULA GAME ═══ -->
+<div id="formulaView" class="view">
+  <h2>The Context Formula</h2>
+  <p class="section-desc">Change the parameters — watch the meaning transform. Świdziński's core insight, made interactive.</p>
+  <div class="formula-widget" id="formulaWidget"></div>
+</div>
+
+<!-- ═══ COMPARE GAME ═══ -->
+<div id="compareView" class="view">
+  <h2>Conceptual vs. Contextual</h2>
+  <p class="section-desc">Drag each idea to the correct column. Kosuth's conceptualism or Świdziński's contextualism?</p>
+  <div id="compareArea"></div>
+</div>
+
+<!-- ═══ 12 POINTS CHALLENGE ═══ -->
+<div id="pointsView" class="view">
+  <h2>12 Points Challenge</h2>
+  <p class="section-desc">Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.</p>
+  <div id="pointsProgress" style="font-size:13px;color:var(--text-dim);margin-bottom:16px;"></div>
+  <div class="points-grid" id="pointsGrid"></div>
+</div>
+
+</main>
+
+<div id="contextFooter"></div>
+
+<script>
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+const S = {
+  view: 'landing',
+  score: parseInt(localStorage.getItem('sw_score')||'0'),
+  interactions: 0,
+  hue: 220,
+  dark: localStorage.getItem('sw_theme')==='dark',
+  unlockedPoints: new Set(JSON.parse(localStorage.getItem('sw_points')||'[]')),
+  quizState: null,
+  formulaScenario: 0,
+  comparePlaced: {},
+  graphInit: false,
+  tlInit: false,
+};
+document.getElementById('totalScore').textContent = S.score;
+
+// ═══════════════════════════════════════════
+// THEME
+// ═══════════════════════════════════════════
+function applyTheme() {
+  document.documentElement.setAttribute('data-theme', S.dark?'dark':'light');
+  document.getElementById('themeToggle').textContent = S.dark?'☀':'☾';
+  localStorage.setItem('sw_theme', S.dark?'dark':'light');
+}
+function toggleTheme() { S.dark=!S.dark; applyTheme(); }
+if(S.dark) applyTheme();
+
+// ═══════════════════════════════════════════
+// CONTEXTUAL THEME ENGINE
+// ═══════════════════════════════════════════
+function updateContext() {
+  const h = new Date().getHours(), m = new Date().getMinutes();
+  const timeShift = (h*60+m)/(24*60)*80;
+  const scrollShift = (window.scrollY/(document.body.scrollHeight||1))*40;
+  const interShift = (S.interactions*5)%60;
+  S.hue = Math.round((200+timeShift+scrollShift+interShift)%360);
+  document.documentElement.style.setProperty('--ctx-hue', S.hue);
+  const pad=n=>String(n).padStart(2,'0');
+  document.getElementById('contextFooter').textContent =
+    `Context: t=${pad(h)}:${pad(m)} | p=${S.view} | interactions=${S.interactions} | hue=${S.hue}°`;
+}
+setInterval(updateContext, 2000);
+updateContext();
+window.addEventListener('scroll', updateContext);
+
+// ═══════════════════════════════════════════
+// SCORING
+// ═══════════════════════════════════════════
+function addScore(pts) {
+  S.score += pts;
+  document.getElementById('totalScore').textContent = S.score;
+  localStorage.setItem('sw_score', S.score);
+}
+
+// ═══════════════════════════════════════════
+// VIEW SYSTEM
+// ═══════════════════════════════════════════
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(id+'View').classList.add('active');
+  document.querySelectorAll('nav button[data-view]').forEach(b=>{
+    b.classList.toggle('active', b.dataset.view===id);
+  });
+  S.view = id; S.interactions++;
+  if(id==='timeline'&&!S.tlInit) buildTimeline();
+  if(id==='graph'&&!S.graphInit) initGraph();
+  if(id==='texts') buildTexts();
+  if(id==='concepts') buildConcepts();
+  if(id==='biblio') buildBiblio();
+  if(id==='festivals') buildFestivals();
+  if(id==='game') buildGameHub();
+  if(id==='quiz') initQuiz();
+  if(id==='formula') initFormula();
+  if(id==='compare') initCompare();
+  if(id==='points') buildPoints();
+  if(id==='archive') buildArchive();
+  window.scrollTo(0,0);
+  updateContext();
+}
+
+// ═══════════════════════════════════════════
+// DATA: TIMELINE
+// ═══════════════════════════════════════════
+const timeline = [
+  {year:1923,cat:'life',title:'Born in Bydgoszcz',text:'Jan Świdziński born on May 25 in Bydgoszcz, Poland.',exp:'Father was a Polish Army officer who participated in the Polish-Soviet War. Both parents came from noble families. Notable ancestor: Konstanty Świdziński — major patron of Polish culture whose library was destroyed during the Warsaw Uprising.'},
+  {year:1947,cat:'life',title:'Academy of Fine Arts, Warsaw',text:'Begins studying painting under Jan Cybis, graphics under Tadeusz Kulisiewicz.',exp:'He graduated with a degree in painting in 1952. Between 1952 and 1962 he created a series of paintings called "Semantic Signs" (Znaki semantyczne).'},
+  {year:1952,cat:'life',title:'Graduates from Academy of Fine Arts',text:'Receives painting degree. Begins "Semantic Signs" (Znaki semantyczne) painting series (1952-1962).',exp:'Studies under Jan Cybis (painting) and Tadeusz Kulisiewicz (graphics) at the Higher School of Arts and Design (today Academy of Fine Arts) in Warsaw.'},
+  {year:1965,cat:'art',title:'Ends Painting Career',text:'Solo painting exhibition marks the end of traditional art practice.',exp:'He discovered that painting and other traditional art forms were unable to confront the fundamental and existential dilemmas faced by contemporary humanity. This crisis redirected him toward science, semiotics, linguistics, neopositivism and formal logic.'},
+  {year:1968,cat:'life',title:'Studies in Semiotics and Cybernetics',text:'With Marek Konieczny, establishes the Art and Design Section at the Cybernetics Society.',exp:'Deep immersion in semiotics, linguistics, neopositivism, and formal logic. Also travels to Spain, Morocco (Islamic art, calligraphy) and China (calligraphy studies). These studies enabled a critical view of emerging Anglo-American conceptualism.'},
+  {year:1970,cat:'theory',title:'"Dispute over Art\'s Existence" Published',text:'First major theoretical text, published in "Życie i Myśl" nr 5/1970.',exp:'Considered the first attempt to give theoretical order to emerging aesthetic concepts. Written during a time of youth revolution, the article described how art and reality had changed so fundamentally that artists\' work no longer concerned creation of art objects but deliberation on art\'s essence.'},
+  {year:1972,cat:'art',title:'On "N.S." Permafo Gallery',text:'Writes critical essay about the new situation in art, connecting to Wrocław avant-garde.',exp:'Argues that new art "ceases to be observation from outside of previously existing situations, but is production of successive links of reality." Art becomes social action, not mirror reflection.'},
+  {year:1974,cat:'art',title:'First Performances',text:'Performance art begins at Teatr Dnia i Nocy, Poznań.',exp:'"My interest in performance art grew out of my contextual theory and my experiences with dance, body movement and gestures." For Świdziński, performance is the most accessible art form — direct contact with audience in shared context of time, place, and situation.'},
+  {year:1975,cat:'event',title:'F-Art Counterculture Festival, Gdańsk',text:'First public presentation of contextual art theses. Jean Sellem attends and later organizes the Lund exhibition.',exp:'Also presented at "Condition of Contemporary Art" symposium at Remont Gallery, Warsaw. These events laid the groundwork for the 1976 manifesto publication.'},
+  {year:1976,cat:'theory',title:'"Art as Contextual Art" — The Manifesto',text:'Publishes the 12 Points of Contextual Art in Lund, Sweden. Exhibits with Polish artists at St. Petri Gallery.',exp:'The foundational document of contextual art. Core formula: Object "O" assumes meaning "m" at time "t," in place "p," in situation "s," in relation to person/persons "o" — if and only then. Featured artists: Anna Kutera, Romuald Kutera, Lech Mrożek, Zbigniew Dłubak, Film Form Workshop.',highlight:true},
+  {year:1976,cat:'event',title:'Toronto Debate with Kosuth',text:'At CEAC conference "In the Context of the Art World," Świdziński publicly critiques Kosuth\'s tautological model.',exp:'Participants included Joseph Kosuth, Sarah Charlesworth, Hervé Fischer, Amerigo Marras, and artists from Canada and Latin America. Świdziński argued art is an "empty sign" gaining meaning only in social context, not through self-reference.'},
+  {year:1977,cat:'event',title:'Warsaw International Conference',text:'Hosts "Art Activity in the Context of Reality" at Remont Gallery — participants from 35 countries.',exp:'Signed agreements between Polish contextual art, French Art Sociologique, American Art and Language, and Latin American artists. Government authorities responded harshly, viewing the extensive foreign contact as threatening.'},
+  {year:1977,cat:'event',title:'"Third Front Against New York" — Paris',text:'Art Sociologique conference in Paris. Joint declaration against New York art world hegemony.',exp:'Organized by Collectif Art Sociologique. Participants included Świdziński, Emil Cieślar from Poland, Dyson and Woodrow from Canada, and British artists Lorraine Leeson and Peter Dunn.'},
+  {year:1979,cat:'art',title:'"We Always Talk About Man"',text:'Exhibition at Mała Galeria, Warsaw — single photograph with philosophical text.',exp:'Published "Art, Society and Self-consciousness" in Calgary, Canada. The work demonstrates how minimal material (one photograph) gains complex meaning through contextual framing.'},
+  {year:1987,cat:'theory',title:'"Freedom and Limitation"',text:'Published in Calgary. Documents Polish village life on the Soviet border.',exp:'Photographs as "symptoms of reality" — documenting despair and limitation in border villages, the artist presents not description but contextual evidence of human condition under political constraint.'},
+  {year:1990,cat:'event',title:'Interscop International Festival',text:'Major international performance festival in Łucznica, organized by Świdziński.',exp:'Also participated in Première Biennale d\'Art Actuel in Québec and Interaction International Performance Festival in France in the same year.'},
+  {year:1989,cat:'life',title:'President of Artists of the Other Arts',text:'Appointed President of the Artists of the Other Arts Association.',exp:'The fall of communism transforms the context of Polish art entirely. Galleries suppressed under martial law begin to reopen.'},
+  {year:1994,cat:'art',title:'"It\'s OK" — Gulf War Photography',text:'Exhibition using Gulf War press photography with artistic interventions.',exp:'Demonstrates how identical images carry radically different meanings depending on context: news desk, art gallery, personal memory. The "empty sign" principle in action.'},
+  {year:1996,cat:'event',title:'Interakcje Festival Begins',text:'Performance art festival in Piotrków Trybunalski — became a recurring annual event through 2004.',exp:'Also performed at 9 Dragons\' Heads Festival in South Korea and AnnART Festival in Romania.'},
+  {year:1997,cat:'theory',title:'"Art is a Fact"',text:'Poster manifesto for 20th anniversary of contextual art. Syntax Arts Society, Calgary.',exp:'"Art neither builds nor destroys; it is one of many productive activities participating in ongoing change. Those engaging with art today resemble tourists who stop briefly, meet others from different cultures, exchange remarks, then continue their journey."'},
+  {year:1998,cat:'art',title:'"Anomia"',text:'Work exploring Durkheim\'s concept of anomie — social disconnection and breakdown of norms.',exp:'Conversations in small venues documenting "state of social misunderstanding" — people talking without genuine understanding. Uses minimal gestures and sparse performance to expose communication breakdown.'},
+  {year:2003,cat:'art',title:'International Asian Performances',text:'Performs at Asiatopia Festival (Bangkok) and Lange Atem Festival (Essen, Münster).',exp:'One of his final major international performance tours. Also continued performing at Interakcje and Navinki (Minsk) festivals.'},
+  {year:2005,cat:'life',title:'Polonia Restituta Order',text:'Awarded for contribution to the development and promotion of Polish culture.',exp:'Recognition came after decades of international teaching (Paris, Montreal, New York, Calgary, Vancouver) and organizing major conferences and performance festivals.'},
+  {year:2006,cat:'event',title:'"In the Context of Art / Differences" Festival',text:'First festival explicitly dedicated to contextual art. Co-created with Jan Lubicz Przyłuski.',exp:'Connected to "The Differences" documentary film — Przyłuski\'s directorial debut, created in collaboration with Świdziński. Przyłuski also launched the Art of Action Archives (ASA) this year.'},
+  {year:2009,cat:'event',title:'Polish Publications & CSW Symposium',text:'Two books published in Polish: "Sztuka i jej kontekst" and "Sztuka, społeczeństwo, samoświadomość." Symposium at CSW Ujazdowski Castle.',exp:'Panelists: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz, Małgorzata Butterwick. "In Context Now" conference held in Radom. Also: Jan Lubicz Przyłuski creates filmed conversation "Jesteśmy zaplątani" (We Are Entangled) with Świdziński at the artist\'s Warsaw studio.'},
+  {year:2014,cat:'life',title:'Death in Warsaw',text:'Jan Świdziński dies on February 9, 2014 in Warsaw.',exp:'His legacy: a body of theory and practice arguing that art gains meaning only through pragmatic context — time, place, situation, and persons involved. The contextual art movement he founded continues to influence contemporary art discourse.'},
+  {year:2014,cat:'event',title:'CSW Ujazdowski Castle Retrospective',text:'Major posthumous exhibition at the Centre for Contemporary Art in Warsaw.',exp:'One of the most significant presentations of Świdziński\'s work. 24+ documented installation photographs. The exhibition consolidated his legacy as the leading figure of Polish post-conceptual art.'},
+];
+
+// ═══════════════════════════════════════════
+// DATA: PEOPLE / GRAPH
+// ═══════════════════════════════════════════
+const people = [
+  {id:'swidzinski',name:'Jan Świdziński',dates:'1923–2014',x:.5,y:.4,r:38,color:'#4a6cf7',group:'contextual',
+   bio:'Creator of contextual art theory. Argued that meaning emerges from pragmatic context, not universal rules.',
+   quote:'Art is not similar to life — it is part of it. It is neither natural nor artificial. It is what it happens to be.',
+   concepts:['Contextual Art','Empty Sign','12 Points','Pragmatic Context']},
+  {id:'kosuth',name:'Joseph Kosuth',dates:'1945–',x:.18,y:.28,r:26,color:'#e05555',group:'conceptual',
+   bio:'American conceptual artist. "Art as Idea as Idea." Art as analytical proposition, tautological self-reference.',
+   quote:'The artist, like the analyst, is not directly concerned with the physical properties of things.',
+   concepts:['Art after Philosophy','Tautology','Analytical Proposition']},
+  {id:'wittgenstein',name:'Ludwig Wittgenstein',dates:'1889–1951',x:.35,y:.12,r:22,color:'#55a580',group:'philosophy',
+   bio:'Late-period philosophy of language games and forms of life. Key influence on both conceptualism and contextualism.',
+   quote:'The meaning of a word is its use in the language.',
+   concepts:['Language Games','Forms of Life','Family Resemblance']},
+  {id:'feyerabend',name:'Paul Feyerabend',dates:'1924–1994',x:.65,y:.12,r:20,color:'#55a580',group:'philosophy',
+   bio:'Epistemological anarchist. Argued against universal scientific method — knowledge is always contextual.',
+   quote:'The only principle that does not inhibit progress is: anything goes.',
+   concepts:['Against Method','Incommensurability','Epistemological Anarchism']},
+  {id:'fischer',name:'Hervé Fischer',dates:'1941–',x:.82,y:.35,r:20,color:'#c490e0',group:'parallel',
+   bio:'French artist, founder of Art Sociologique. Parallel movement to contextual art, allied at 1977 Warsaw conference.',
+   quote:'Art must question social reality rather than decorate it.',
+   concepts:['Art Sociologique','Social Practice']},
+  {id:'dlubak',name:'Zbigniew Dłubak',dates:'1921–2005',x:.28,y:.55,r:18,color:'#e0a040',group:'polish',
+   bio:'Polish photographer and conceptual artist. Key collaborator in Warsaw Seminary with Świdziński.',
+   concepts:['Photography as Art','Warsaw Seminary','Conceptual Photography']},
+  {id:'kutera',name:'Anna & Romuald Kutera',dates:'active 1970s–',x:.42,y:.65,r:16,color:'#e0a040',group:'polish',
+   bio:'Polish artists from Sztuka Najnowsza Gallery, Wrocław. Exhibited with Świdziński in Lund 1976.',
+   concepts:['Performance','Sztuka Najnowsza','Polish Avant-garde']},
+  {id:'gajewski',name:'Henryk Gajewski',dates:'1948–',x:.6,y:.6,r:16,color:'#e0a040',group:'polish',
+   bio:'Polish artist from Remont Gallery, Warsaw. Participated in contextual art exhibitions and conferences.',
+   concepts:['Remont Gallery','Performance','Installation']},
+  {id:'guzek',name:'Łukasz Guzek',dates:'scholar',x:.72,y:.55,r:16,color:'#8090c0',group:'scholar',
+   bio:'Art historian analyzing contextual art in relation to Bourriaud\'s relational aesthetics and documentation theory.',
+   concepts:['Documentation','Relational Aesthetics','Art History']},
+  {id:'ronduda',name:'Łukasz Ronduda',dates:'scholar',x:.15,y:.68,r:16,color:'#8090c0',group:'scholar',
+   bio:'Author of comprehensive analysis of contextual art as response to globalization and post-modern practice.',
+   concepts:['Post-conceptualism','Globalization','Polish Art History']},
+  {id:'duchamp',name:'Marcel Duchamp',dates:'1887–1968',x:.5,y:.15,r:22,color:'#999',group:'precursor',
+   bio:'Created the foundational rupture: anything can be art. Świdziński\'s project begins from Duchamp\'s "trap."',
+   quote:'I have forced myself to contradict myself in order to avoid conforming to my own taste.',
+   concepts:['Readymade','Anti-art','Institutional Critique']},
+];
+
+const graphConnections = [
+  {from:'swidzinski',to:'kosuth',label:'Critic / debater (Toronto 1976)',s:3},
+  {from:'swidzinski',to:'wittgenstein',label:'Influence: late Wittgenstein (meaning as use)',s:2},
+  {from:'swidzinski',to:'feyerabend',label:'Epistemological influence',s:2},
+  {from:'swidzinski',to:'fischer',label:'Allied movement (Art Sociologique)',s:2},
+  {from:'swidzinski',to:'dlubak',label:'Warsaw Seminary collaborator',s:2},
+  {from:'swidzinski',to:'kutera',label:'Lund 1976 exhibition',s:1},
+  {from:'swidzinski',to:'gajewski',label:'Remont Gallery collaborator',s:1},
+  {from:'swidzinski',to:'guzek',label:'Scholarly analysis',s:1},
+  {from:'swidzinski',to:'ronduda',label:'Critical interpreter',s:1},
+  {from:'swidzinski',to:'duchamp',label:'Starts from Duchamp\'s rupture',s:2},
+  {from:'kosuth',to:'wittgenstein',label:'Early Wittgenstein influence',s:2},
+  {from:'kosuth',to:'duchamp',label:'Inherits readymade logic',s:2},
+  {from:'fischer',to:'kosuth',label:'Parallel critique from France',s:1},
+  {from:'dlubak',to:'kutera',label:'Polish conceptual circle',s:1},
+  {from:'dlubak',to:'gajewski',label:'Warsaw art community',s:1},
+];
+
+// ═══════════════════════════════════════════
+// DATA: TEXTS
+// ═══════════════════════════════════════════
+const textsData = [
+  {id:'12points',title:'12 Points of Contextual Art',year:1976,type:'Manifesto',
+   sections:[
+    {h:'Point 1',t:'Objects without meanings do not exist, nor meanings without objects. One object may carry different meanings across various codes; one meaning may be assigned to different objects. This creates two types of ambiguity: ambiguity of objects sharing the same meaning, and ambiguity of meanings sharing the same object. In specific contexts, only one meaning is accepted as true. The criterion for selection is the truth criterion.'},
+    {h:'Point 2',t:'When different social groups assign different meanings to the same object, and no group possesses sufficient authority to impose its perspective on others, finding an appropriate selection criterion becomes problematic. This leads to ambiguity in defining art (everything can signify art). If civilization changes as rapidly as today, leaving no time to establish new meanings for new objects, this results in ambiguity of art objects (everything can signify art).'},
+    {h:'Point 3',t:'In practical action, we create objects with given meanings (concepts). This is the method of conventional art. In cognitive action, we create meanings (concepts) with given objects. This is the method of conceptual art. Both operations are reversible: the reality we produce depends on our conception of reality; our conception depends on the reality we produce. The choice of criterion thus defines the reality we create.'},
+    {h:'Point 4',t:'Changes in reality render existing meanings outdated; social practice becomes the ultimate criterion. Devaluation of meanings disrupts established habits and causes loss of privileges gained by one group in favor of another. A constant tendency exists to preserve outdated meanings. Through the ambiguity inherent in sign systems, it is possible to construct apparent meanings of reality and consequently produce apparent reality.'},
+    {h:'Point 5',t:'Devaluation of meanings is a continuous process, occurring faster as civilization changes more rapidly. Contextual art proposes a sign whose truth criterion, established by pragmatic context, continuously changes. Object "O" assumes meaning "m" at time "t," in place "p," in situation "s," in relation to person/persons "o" if and only then. Changing any parameter devalidates previous meanings.'},
+    {h:'Point 6',t:'Contextual art action consists of continuously rejecting canons attempting to preserve continually devalued meanings.'},
+    {h:'Point 7',t:'Contextual art opposes stabilization of art objects, because object permanence produces permanence of meaning. Contextual art opposes stabilization of meanings, because meaning permanence produces outdated objects. It thus rejects established definitions of art.'},
+    {h:'Point 8',t:'In conventional art, both terms remain fixed in the relationship connecting meaning and corresponding object. Since Duchamp, one term became mobile (any object can signify art), yet the other remained stationary. In contextual art, both terms are mobile (any object can signify art and not-art). Art action\'s goal becomes relativizing the entire sphere of meanings and objects.'},
+    {h:'Point 9',t:'Contextual art is interested only in relation (as readiness to connect meaning with object in specific pragmatic context).'},
+    {h:'Point 10',t:'Contextual art expressions are not acceptable to groups, because reality constructed by the artist differs from reality perceived (constantly changing).'},
+    {h:'Point 11',t:'Contextual art has no connection to science. Science must establish (immobilize) objects by assigning meaning. Contextual art operates outside formal logic. Its world is not one of formalized axioms, but constantly devaluing rules attempting to stabilize changing reality.'},
+    {h:'Point 12',t:'Contextual art opposes ambiguity and opposes relativism. Only one expression is true in specific pragmatic context. Such expression carries assertion.'},
+   ]},
+  {id:'dispute',title:'Dispute over Art\'s Existence (Spór o istnienie sztuki)',year:1970,type:'Essay',
+   sections:[
+    {h:'The Crisis',t:'Pessimism characterizes Western critical response to recent art developments. Major publications declare art\'s decline. However, the fundamental shift stems from Paris losing its status as the art world\'s center. Contemporary artists feel isolated despite gaining patrons and public approval.'},
+    {h:'The Rupture',t:'When Duchamp presented a bottle-drying apparatus as art, artists separated themselves from their creations. Renaissance established the division between creator and object, introducing what can be termed a "gap in our epistemology." Contemporary artwork increasingly rejects materiality.'},
+    {h:'Four Tendencies',t:'Gaudibert identifies four contemporary tendencies: (1) Art serving political ideology; (2) Art-connaissance (knowledge-based art); (3) La contestation de l\'art (art\'s negation); (4) Conceptual art. These diverge fundamentally from traditional formal analysis models.'},
+    {h:'Language Crisis',t:'Language and meaning crisis pervades this transformation. Contemporary civilization struggles with severed connections between words and objects, signs and referents. This anxiety manifests across multiple disciplines — psychoanalysis, linguistics, semiotics all address this fundamental rupture.'},
+    {h:'Conclusion',t:'Rather than art\'s death, contemporary practice demonstrates continuous transformation alongside civilization itself. Documentation, conceptualization, and attitudinal positioning have supplanted traditional material focus, reflecting genuine responses to contemporary conditions rather than aesthetic degradation.'},
+   ]},
+  {id:'artisfact',title:'Art is a Fact (Sztuka jest faktem)',year:1997,type:'Manifesto',
+   sections:[
+    {h:'',t:'Concepts like "art," "artist," and "art world" function as convenient identifiers useful as long as we are able to use them in a given situation. When circumstances change, they may be discarded, possessing function but not independent value — only current usefulness.'},
+    {h:'',t:'Art neither builds nor destroys; it is one of many productive activities participating in ongoing change. Those engaging with art today resemble tourists traveling by car who stop for beer, stay in motels, and meet similar travelers from different cultures based on various myths. They share drinks, exchange remarks, then continue their journey without seeking to convince or debate others\' perspectives.'},
+    {h:'',t:'What those they meet communicate to them does not have the character of a statement. The only reality is the fact of meeting and action, with others becoming engaged through mutual influence and unexpected results.'},
+    {h:'',t:'Art is not similar to life — it is part of it. It is neither natural nor artificial. It is what it happens to be.'},
+   ]},
+  {id:'models',title:'Models of Art (Modele sztuki)',year:null,type:'Theory',
+   sections:[
+    {h:'Civilization and Art',t:'There exists a relationship between civilization and art. Art models can be constructed corresponding to different civilization phases. When civilization changes occur slowly enough, canons maintain validity for extended periods. When acceleration becomes extreme, reality changes outpace civilization\'s ability to generate new canons. Only open models are viable.'},
+    {h:'First Model: Universal (Renaissance)',t:'Art based on eternal, universally binding rules. Economically linked to commodity exchange. Corresponds to pre-industrial era when eternal canons seemed believable. Leonardo da Vinci: "First learn theory, then apply practice born from theory." Signs are transparent — art language expresses reality as truly existing.'},
+    {h:'Second Model: Relativistic (Modernist)',t:'Signs gradually lost transparency, becoming barriers separating expressed from real reality. Artists focused on signs themselves — their form rather than communicative function. Modernism replaced the universal model with relativistic alternatives. We operate with points of view that define examined fields.'},
+    {h:'Third Model: Contextual (Contemporary)',t:'Creating self-explaining systems is impossible (Gödel\'s theorem). Autonomous formalistic art systems cannot be built. Kosuth\'s initial "Art after Philosophy" program proposes something unexecutable. Art must acknowledge its reality dependence. Art must subjectivize and employ its social consciousness.'},
+   ]},
+  {id:'kontekst3',title:'Contextual Art (3) — Comprehensive Theory',year:null,type:'Theory',
+   sections:[
+    {h:'Civilization as Stochastic Process',t:'The fundamental problem of contemporary civilization is the violent nature of ongoing transformations. Pre-industrial civilization can be described using a clock model: cyclical changes. Industrial civilization through discrete transformations. No such possibility exists in the civilization we have entered. The speed of changes is too great to separate individual states. The only model is a stochastic process of continuous, increasingly rapid changes.'},
+    {h:'The Empty Sign',t:'In the contemporary situation, a sign is neither a window through which we view the world (it does not describe reality), nor is it a sign of itself containing its own idea; it is an empty sign, a place to be filled by reality. If changes are continuous — practice corrects errors but does not allow establishing constant rules. What is true in one context is not true in another. Only empirical context determines the truth of a sign.'},
+    {h:'Intensional vs. Extensional Expressions',t:'Extensional expressions derive their denotation from their component parts. Intensional expressions depend on facts beyond what the name contains. Contextual art rejects the condition of extensionality, placing it in opposition to formalized scientific languages, traditional art systems, and conceptualism\'s analytical sentences. Its language is constantly constructed and reconstructed.'},
+    {h:'Deontic Logic and Art',t:'Art does not speak truth; art convinces of truth. Rules governing it are rules of deontic logic: knowing, acknowledging, rejecting, believing, supposing. The inseparability of subjective orientation and objective results constitutes the deepest layer of any civilization\'s episteme.'},
+    {h:'Loss of Contact with Reality',t:'The fundamental problem is loss of human contact with reality. Reality changes much faster than signs through which civilization denotes it. We are entangled in canons that have lost the situations they governed, rules governing non-existent connections, words deprived of corresponding objects.'},
+    {h:'The Context Formula',t:'"X" has the property of being art at time "t", in place "m", in situation "z", in relation to person or persons "o" if and only if. Changing any of these elements means automatically changing the examined values. Dispute about bad and good art without providing pragmatic context is devoid of subject matter.'},
+    {h:'Art as Social Practice',t:'Art is neither a description nor a report of reality. It is action provoked by other actions and subsequently causing other actions. It is social practice. It is simultaneously submission to social practice and its shaping. There is no morphology of contextual art. The only acceptable morphology is occasional morphology relativized by the pragmatic condition.'},
+   ]},
+  {id:'o70',title:'About the 1970s (O latach 70-tych)',year:1996,type:'Essay',
+   sections:[
+    {h:'',t:'The 1970s art scene in Poland was a reaction to "total shame of reality" and "paranoia." The period witnessed unprecedented artistic activity: numerous groups, independent galleries like Galeria Sztuki Najnowsza in Wrocław, Labirynt in Lublin, operating without government cultural officials.'},
+    {h:'',t:'Artists united around rejecting intermediaries — "ambiguous signs, symbols, allegories, metaphors, ideologies, propaganda, fiction, utopias, visions" — seeking instead immediate reality presented as "real-time here and now."'},
+    {h:'',t:'The central problem: how to escape Duchamp\'s "Dadaist trap," where anything could theoretically be art, leaving no meaningful criteria. Rather than seeking art\'s essence internally, meaning must be found in external conditions — context.'},
+    {h:'',t:'For contemporary strategy, art becomes "performance" — not performance art, but "art\'s performance" — as one force among many within accelerating cultural change. Art no longer makes declarations; it simply acts as a component within broader processes.'},
+   ]},
+  {id:'permafo',title:'On "N.S." Permafo Gallery',year:1972,type:'Essay',
+   sections:[
+    {h:'',t:'"New situation in art": this phrase describes too much and too little. Too much, since only new situations constitute art situations. The rest belongs to history or archaeology. Too little, since we know so little about the novelty that art proposes.'},
+    {h:'',t:'In traditional art the work plays the role of a sign, indicating something that preceded its creation — a mirror reflection directing attention backward. In the newest art, the line does not curve to reach the starting point. There is no identification of the viewer\'s experience with the artist\'s experience.'},
+    {h:'',t:'Art ceases to be a phenomenon excluded from the reality process, a throw backward toward past reality. It becomes a process generating successive stages of reality. It is reality itself, an element co-creating the structure of the world in which we exist, an act of social action.'},
+   ]},
+  {id:'piotrowski',title:'Hommage à Jan Świdziński — Kazimierz Piotrowski',year:2005,type:'Critical Essay',
+   sections:[
+    {h:'The Post-conceptual Breakthrough',t:'Piotrowski positions Świdziński as one of the main representatives of the post-conceptual movement since the mid-1970s, whose goal was to break the hegemony of conceptualism. This can be observed in the critically, counter-culturally, socially or anthropologically oriented work of artists like the "second" Joseph Kosuth, Hervé Fischer, Fred Forest, Jean-Paul Thenot (Collectif Art Sociologique), Jorge Glusberg, and Amerigo Marras.'},
+    {h:'Why "Art as Contextual Art" Is Not Trivial',t:'Piotrowski argues that ignorant critics reduce Świdziński to merely "pointing at context" — a truism. The real innovation lies in the critical adaptation of conceptualism informed by the linguistic turn. The isolated expression "contextual art" has no destructive value. Only "art as contextual art" — examined in confrontation with Kosuth\'s tautological model — reveals Świdziński\'s contribution to overcoming conceptualism.'},
+    {h:'Crisis of Meaning in Art',t:'In the mid-1970s, Świdziński identified a deepening collapse of the representationist conception of language in a civilization of accelerating change. The creative power of our language is much weaker than the creativity of reality we try to describe, leading to desynchronization — when canons are applied to regulate relations that no longer exist in reality. Expressions lose their meanings and become tokens.'},
+    {h:'Three Models of Art (Piotrowski\'s Analysis)',t:'Piotrowski explicates Świdziński\'s three models: I. Universal (Renaissance) — transparent signs, stable canons. II. Relativistic (Modernist) — from Romanticism\'s "l\'art pour l\'art" through Ad Reinhardt\'s autotelism. III. The search for a third model — where Świdziński\'s critique of Kosuth\'s tautological art becomes essential.'},
+    {h:'Critique of Kosuth\'s Tautological Model',t:'Kosuth\'s "Art after Philosophy" proposed art as analytical proposition — the "idea as idea." Świdziński rightly observed that conceptualism replaced traditional formalism with the equally untenable formalism of neopositivist language philosophy. Hilbert\'s program for fully formalized systems proved unexecutable (Gödel), and acts of belief remain irreducible in logical inquiry. The tautological model could not answer: why do we use the expression "art" in this way and not another?'},
+    {h:'The Practice of a Contextual Artist',t:'Piotrowski\'s famous characterization: "The practice of a contextual artist reminds one of the work of an ethnologist-therapist who travels to different places and helps the locals — whether they be inhabitants of the Kurpie region or of New York — to understand their context through exposing her or his own, all while bearing in mind that we have the right to be different and we should respect these differences."'},
+   ]},
+  {id:'entangled',title:'Jesteśmy zaplątani (We Are Entangled) — Jan Lubicz Przyłuski',year:2010,type:'Conversation / Essay',
+   sections:[
+    {h:'',t:'Contextual art discovered by Jan Świdziński translates into reality. It denies the existence of one reality and propagates their multiplicity. Like Giordano Bruno, who was burned at the stake for claiming the plurality of worlds, Świdziński went deeply into linguistic and semiotic analyses to prove that pluralist logic is the logic of our times.'},
+    {h:'',t:'Thanks to Jan Świdziński\'s contextual art, the world of art became a plurality of worlds and a space of infinite creative possibilities. The 1976 "Manifest of Contextual Art" published in Lund, Sweden, found its practical equivalent in performance art and action art — forms of direct contact with audiences in shared contexts of time, place, and situation.'},
+    {h:'',t:'Filmed conversation with Świdziński at the artist\'s Warsaw studio, created for "Imieniny Jana" (Jan\'s Nameday) event at Galeria Nizio, Warsaw. Produced in collaboration with Kuba Szreder. Part of the Art of Action Archives (ASA) collection — preserving documentation of artists working in the contextual art tradition.'},
+   ]},
+];
+
+// ═══════════════════════════════════════════
+// DATA: CONCEPTS
+// ═══════════════════════════════════════════
+const concepts = [
+  {id:'empty-sign',name:'Empty Sign (Pusty Znak)',cat:'Core Theory',thinker:'Świdziński',
+   desc:'A sign that is neither a transparent window onto reality (first model) nor a self-referential sign of itself (second model), but an empty place to be filled by current reality. The empty sign gains meaning only through pragmatic context.',
+   formula:null, related:['context-formula','pragmatic-context','three-models']},
+  {id:'context-formula',name:'The Context Formula',cat:'Core Theory',thinker:'Świdziński',
+   desc:'Object "O" assumes meaning "m" at time "t," in place "p," in situation "s," in relation to person/persons "o" — if and only then. Changing any parameter devalidates previous meanings.',
+   formula:'O(m) at t, in p, in s, relative to o ⟺ true', related:['empty-sign','12-points','pragmatic-context']},
+  {id:'three-models',name:'Three Models of Art',cat:'Core Theory',thinker:'Świdziński',
+   desc:'Universal (Renaissance): eternal rules, transparent signs. Relativistic (Modernist): signs as barriers, self-reference. Contextual (Contemporary): empty signs filled by reality, open systems only.',
+   formula:null, related:['empty-sign','stochastic-process']},
+  {id:'pragmatic-context',name:'Pragmatic Context',cat:'Core Theory',thinker:'Świdziński',
+   desc:'The specific configuration of time, place, situation, and persons that determines meaning. Unlike formal logic, truth in contextual art is always relative to pragmatic circumstances — yet not relativistic, because only one expression is true in each specific context.',
+   formula:null, related:['context-formula','empty-sign','deontic-logic']},
+  {id:'12-points',name:'12 Points of Contextual Art',cat:'Manifesto',thinker:'Świdziński',
+   desc:'The foundational document published in 1976 establishing contextual art as a theoretical framework: meaning from context, rejection of canons, opposition to both object and meaning stabilization, art as relation rather than fixed components.',
+   formula:null, related:['context-formula','empty-sign','art-as-social-practice']},
+  {id:'stochastic-process',name:'Stochastic Process Model',cat:'Theory',thinker:'Świdziński',
+   desc:'Contemporary civilization described as a stochastic process of continuous rapid changes. Unlike cyclical (pre-industrial) or discrete (industrial) models, modern reality cannot be separated into individual states or phases.',
+   formula:null, related:['three-models','empty-sign']},
+  {id:'intensional',name:'Intensional vs. Extensional',cat:'Theory',thinker:'Świdziński',
+   desc:'Extensional expressions: meaning derived from component parts (used by science and conceptualism). Intensional expressions: meaning depends on external facts beyond the name\'s content. Contextual art operates with intensional expressions.',
+   formula:null, related:['deontic-logic','pragmatic-context']},
+  {id:'deontic-logic',name:'Deontic Logic in Art',cat:'Theory',thinker:'Świdziński',
+   desc:'Art does not speak truth; art convinces of truth. It operates through deontic logic — governing states of knowing, acknowledging, rejecting, believing, supposing — rather than formal logic of truth and falsity.',
+   formula:null, related:['intensional','pragmatic-context']},
+  {id:'anomia',name:'Anomia (Anomie)',cat:'Practice',thinker:'Świdziński / Durkheim',
+   desc:'Durkheim\'s sociological concept: state when commonly accepted norms cease functioning. Świdziński\'s 1998 work documents "state of social misunderstanding" — people talking without genuine understanding.',
+   formula:null, related:['art-as-social-practice','empty-sign']},
+  {id:'art-as-social-practice',name:'Art as Social Practice',cat:'Core Theory',thinker:'Świdziński',
+   desc:'Art is neither a description nor a report of reality. It is action provoked by other actions and subsequently causing other actions. It is social practice — simultaneously submission to social practice and its shaping.',
+   formula:null, related:['empty-sign','pragmatic-context','12-points']},
+  {id:'critique-kosuth',name:'Critique of Kosuth\'s Tautology',cat:'Critique',thinker:'Świdziński',
+   desc:'Kosuth\'s "art as idea as idea" is trapped in tautology — art defining art through self-reference. The empty sign approach proposes art filled by external reality, not circling back to itself. Both artists debated publicly in Toronto 1976.',
+   formula:null, related:['empty-sign','three-models','12-points']},
+  {id:'art-performance',name:'Art\'s Performance',cat:'Practice',thinker:'Świdziński',
+   desc:'Not "performance art" but "art\'s performance" — art operating as one force among many within accelerating cultural change. Art no longer makes declarations; it acts as a component within broader processes, like a tourist exchanging remarks without seeking to convince.',
+   formula:null, related:['art-as-social-practice','pragmatic-context']},
+];
+
+// ═══════════════════════════════════════════
+// DATA: BIBLIOGRAPHY
+// ═══════════════════════════════════════════
+const biblioData = {
+  books: [
+    {title:'Art as Contextual Art',year:1976,place:'Lund, Sweden',type:'Manifesto / Book',note:'First publication of the 12 Points. Published at St. Petri Gallery during exhibition of Polish artists.'},
+    {title:'Art, Society and Self-consciousness',year:1979,place:'Calgary, Canada',type:'Book',note:'Published by Alberta College of Art Gallery. Comprehensive theoretical framework.'},
+    {title:'Freedom and Limitation — The Anatomy of Post-modernism',year:1987,place:'Calgary, Canada',type:'Book',note:'Documents Polish village life on the Soviet border. Photography as "symptoms of reality."'},
+    {title:'Quotations on Contextual Art',year:1988,place:'Eindhoven, Netherlands',type:'Book',note:'Published by Het Apollohuis. Includes documentation of the 1976 Toronto debate with Kosuth.'},
+    {title:'L\'Art et son Contexte',year:2005,place:'Québec, Canada',type:'Book',note:'French-language edition of contextual art theory.'},
+    {title:'Sztuka i jej kontekst (Art and Its Context)',year:2009,place:'Poland',type:'Book (Polish)',note:'Polish compilation of theoretical writings. Presented at CSW Ujazdowski Castle symposium.'},
+    {title:'Sztuka, społeczeństwo, samoświadomość (Art, Society, Self-consciousness)',year:2009,place:'Poland',type:'Book (Polish)',note:'Polish translation of the 1979 Calgary publication.'},
+  ],
+  essays: [
+    {title:'Spór o istnienie sztuki (Dispute over Art\'s Existence)',year:1970,publication:'Życie i Myśl, nr 5/1970',note:'First major theoretical text. Considered the first attempt to theorize emerging post-conceptual aesthetics in Poland.'},
+    {title:'A propos N.S. galerii "Permafo"',year:1972,publication:'Fotografia, nr 5/1972',note:'Essay on the new situation in art, connecting to Wrocław avant-garde.'},
+    {title:'12 Points of Contextual Art',year:1976,publication:'St. Petri Gallery, Lund',note:'The foundational manifesto of contextual art theory.'},
+    {title:'Modele sztuki (Models of Art)',year:null,publication:'Theoretical text',note:'Analysis of three coexisting art models: universal, relativistic, contextual.'},
+    {title:'Sztuka kontekstualna (1-3)',year:null,publication:'Theoretical texts',note:'Three-part comprehensive theory of contextual art. Includes the context formula and analysis of deontic logic.'},
+    {title:'Sztuka jest faktem (Art is a Fact)',year:1997,publication:'Poster, Syntax Arts Society, Calgary',note:'20th anniversary of contextual art. Translated by B. Łukasiewicz.'},
+    {title:'O latach 70-tych (About the 1970s)',year:1996,publication:'Katalog, Stara Galeria, Lublin',note:'Retrospective on the 1970s Polish art scene and Duchamp\'s "Dadaist trap."'},
+    {title:'Poglądy — Konsekwencje (Views — Consequences)',year:1983,publication:'BWA Łomża catalog',note:'Personal views on art\'s function and the inseparability of artistic and personal identity.'},
+  ],
+  scholarly: [
+    {author:'Kazimierz Piotrowski',title:'Hommage à Jan Świdziński',year:2005,note:'Monumental essay (13,000+ words). Comprehensive defense of contextual art as post-conceptual doctrine. Analyzes the linguistic turn, intensionality, and Świdziński\'s critique of Kosuth\'s tautological model. Essential reading for understanding contextual art\'s philosophical foundations.'},
+    {author:'Łukasz Ronduda',title:'Flexibility Makes Our Existence Possible: On Contextual Art',year:2008,note:'Published in Art Margins. Comprehensive analysis positioning contextual art as response to globalization and post-modern practice addressing accelerated civilizational change.'},
+    {author:'Łukasz Guzek',title:'Co stanowi kontekst sztuki? (What Constitutes the Context of Art?)',year:null,note:'Published on Obieg.pl. Compares contextual art with Nicolas Bourriaud\'s relational aesthetics. Analyzes documentation as communication problem.'},
+    {author:'Bartosz Łukasiewicz',title:'Kilka dogmatów kontekstualizmu (Several Dogmas of Contextualism)',year:null,note:'Published on Obieg.pl. Critical examination questioning universal applicability of contextual art formula.'},
+    {author:'Kazimierz Piotrowski',title:'Debata w Toronto 1976 — nieistotność jako kategoria epistemologiczna',year:null,note:'Analysis of the Toronto debate, non-monotonic logic, and irrelevance as epistemological category.'},
+    {author:'Grzegorz Borkowski',title:'On Świdziński\'s Photographic Practices',year:null,note:'Analysis of photography\'s role in contextual art and performance.'},
+    {author:'Eulalia Domanowska',title:'Interview: Logical Models in Contextual Art',year:null,note:'Explores binary, three-value, and game logic in contextual art theory.'},
+    {author:'Jan Lubicz Przyłuski',title:'Jesteśmy zaplątani (We Are Entangled)',year:2010,note:'Filmed conversation with Jan Świdziński. Created for "Imieniny Jana" event at Galeria Nizio, Warsaw. Documents Świdziński\'s theoretical impact and personal artistic philosophy.'},
+    {author:'Jan Lubicz Przyłuski',title:'Sztuka Akcji: Dziesięć zdarzeń w Polsce (Art of Action: Ten Events in Poland)',year:2007,note:'Published by Bałtycka Galeria Sztuki Współczesnej, Słupsk. ISBN 978-83-922414-9-2. Awarded by Polish Ministry of Culture. Covers Polish performative art history 1950-1980.'},
+  ],
+  interviews: [
+    {interviewer:'Adam Mazur',title:'Interview with Jan Świdziński',year:2001,publication:'Fototapeta',note:'Extensive autobiographical conversation covering Warsaw artistic circles, Remont Gallery, Small Gallery founding, international conferences, martial law effects, and American residencies.'},
+    {interviewer:'Bartosz Łukasiewicz',title:'Interview on Contextual Art',year:null,publication:'swidzinski.art.pl',note:'Discussion of pragmatic vs. theoretical dimensions of contextualism.'},
+  ],
+  citedPhilosophy: [
+    'A. Church — Introduction to Mathematical Logic (1944)',
+    'J. Hintikka — Knowledge and Beliefs (1962)',
+    'W.v.O. Quine — "Reference and Modality" (1966)',
+    'L. Aqvist — A New Approach to the Logical Theory of Interrogatives (1965)',
+    'R. Barthes — Le Degré Zéro de l\'Écriture (1964)',
+    'M. Foucault — Les Mots et les Choses (1966)',
+    'N. Chomsky — Syntactic Structures (1957)',
+    'J. Kristeva — "Sémanalyse et production de sens" (1972)',
+    'A. Tarski — Logic, Semantics, Mathematics (1956)',
+    'P. Feyerabend — Against Method (1975)',
+    'K. Gödel — On Formally Undecidable Propositions (1931)',
+    'A. Malraux — Le Musée Imaginaire (1948)',
+  ],
+};
+
+// ═══════════════════════════════════════════
+// DATA: FESTIVALS & PERFORMANCES
+// ═══════════════════════════════════════════
+const festivalsData = {
+  organized: [
+    {name:'Art Activity in the Context of Reality',year:1977,place:'Remont Gallery, Warsaw',desc:'International conference of artists and theorists from 35 countries. Signed agreements between Polish contextual art, French Art Sociologique, Art and Language, and Latin American artists.'},
+    {name:'Interscop International Festival',year:1990,place:'Łucznica, Poland',desc:'International performance festival organized by Świdziński.'},
+    {name:'Real Time — Story Telling International Performance Art Festival',year:1993,place:'Sopot, Poland',desc:'International performance art festival. Later editions held at Grodzka Gallery, Lublin.'},
+    {name:'Interakcje International Art Festival',year:'1996–2004',place:'Piotrków Trybunalski, Poland',desc:'Recurring international performance art festival. Editions documented: 1996, 1999, 2000, 2001, 2002, 2003, 2004.'},
+    {name:'In the Context of Art / Differences',year:2006,place:'Poland',desc:'First festival explicitly dedicated to contextual art. Co-created with Jan Lubicz Przyłuski. Connected to "The Differences" documentary film.'},
+  ],
+  participated: [
+    {name:'F-Art Counterculture Festival',year:1975,place:'Gdańsk',desc:'First presentation of contextual art theses. Jean Sellem attended and later organized the Lund exhibition.'},
+    {name:'CEAC Conference: In the Context of the Art World',year:1976,place:'Toronto, Canada',desc:'Public debate with Joseph Kosuth, Sarah Charlesworth, Hervé Fischer, Amerigo Marras.'},
+    {name:'Art Sociologique Conference — "Third Front Against New York"',year:1977,place:'Paris, France',desc:'Joint declaration with Collectif Art Sociologique against New York art world hegemony.'},
+    {name:'Espaces Affranchis Festival',year:1989,place:'Danaé Foundation, Paris',desc:'International performance festival.'},
+    {name:'Interaction International Performance Festival',year:1990,place:'France',desc:'International performance festival.'},
+    {name:'Première Biennale d\'Art Actuel',year:1990,place:'Québec, Canada',desc:'First biennial of contemporary art in Quebec.'},
+    {name:'Festival Internacional de Performance',year:1991,place:'Valencia, Spain',desc:'International performance festival in Spain.'},
+    {name:'Rencontres Internationales de Poésie Contemporaine',year:1992,place:'Tarascon, France',desc:'International contemporary poetry encounters.'},
+    {name:'Nihon International Performance Art Festival',year:1993,place:'Nagano, Japan',desc:'Japanese international performance art festival.'},
+    {name:'9 Dragons\' Heads Festival',year:1996,place:'Cheongwon-gun, South Korea',desc:'International art festival in South Korea.'},
+    {name:'Dimension 0 International Festival',year:1997,place:'Vilnius, Lithuania',desc:'International performance art festival in Lithuania.'},
+    {name:'Ex Teresa International Festival of Performance',year:1998,place:'Mexico City, Mexico',desc:'Major Mexican performance art festival.'},
+    {name:'Asiatopia International Performance Art Festival',year:2003,place:'Bangkok, Thailand',desc:'International Asian performance art festival.'},
+    {name:'Lange Atem Festival',year:2003,place:'Essen & Münster, Germany',desc:'German performance art festival.'},
+    {name:'Navinki International Performance Art Festival',year:'2001–2004',place:'Minsk, Belarus',desc:'Recurring Belarusian performance art festival. Multiple editions.'},
+    {name:'Tupada International Action Art Event',year:2005,place:'Manila, Philippines',desc:'International action art event in the Philippines.'},
+    {name:'European Performance Art Festival',year:2006,place:'CSW Ujazdowski Castle, Warsaw',desc:'Major European festival at the Centre for Contemporary Art.'},
+  ],
+  posthumous: [
+    {name:'Jan Świdziński Exhibition',year:2014,place:'CSW Ujazdowski Castle, Warsaw',desc:'Major retrospective exhibition at the Centre for Contemporary Art. 24+ documented installation photographs. One of the most significant posthumous presentations of Świdziński\'s work.'},
+    {name:'Symposium: "In Context Now"',year:2009,place:'Radom, Poland',desc:'Conference on contextual art\'s contemporary relevance. Held alongside publication of Polish editions of Świdziński\'s books.'},
+    {name:'Academic Discussion at CSW',year:2009,place:'CSW Ujazdowski Castle, Warsaw',desc:'December 16, 2009. Panelists: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz, Małgorzata Butterwick. Discussion of Świdziński\'s books "Art, Society and Self-consciousness" and "Art and Its Context."'},
+  ],
+};
+
+// ═══════════════════════════════════════════
+// DATA: QUIZ
+// ═══════════════════════════════════════════
+const quizData = [
+  {cat:'Core Theory',q:'According to Świdziński, a sign in contemporary civilization is best described as:',
+   opts:['A transparent window through which we perceive objective reality directly','A self-referential symbol that contains its own complete meaning within itself','An empty place to be filled by the pragmatic context of the current moment','A mathematical construct whose truth value is determined by formal axioms'],
+   correct:2, exp:'Świdziński describes the sign as neither transparent (first model) nor self-referential (second model), but as an "empty sign, a place to be filled by reality." This is the foundation of contextual art.'},
+  {cat:'Core Theory',q:'What does Świdziński mean when he says contextual art "opposes relativism"?',
+   opts:['It advocates for a single universal aesthetic standard applicable across all contexts','It claims that while meaning is context-dependent, exactly one expression is true in each specific pragmatic context','It rejects the idea that different cultures can have different interpretations of art','It argues that all interpretations are equally invalid and art has no meaning at all'],
+   correct:1, exp:'Point 12 of the manifesto states: "Only one expression is true in specific pragmatic context." This distinguishes contextualism from pure relativism — meaning is contextual but not arbitrary.'},
+  {cat:'Manifesto',q:'The 12 Points of Contextual Art were first published in:',
+   opts:['1970, in the journal "Życie i Myśl" alongside "Dispute over Art\'s Existence"','1976, at St. Petri Gallery in Lund, Sweden, during an exhibition of Polish artists','1977, at the Remont Gallery in Warsaw, during the international conference on art activity','1979, in Calgary, Canada, as part of "Art, Society and Self-consciousness"'],
+   correct:1, exp:'The manifesto was published in 1976 during the Lund exhibition, the same year as the Toronto debate with Kosuth. This was the foundational public statement of contextual art theory.'},
+  {cat:'Three Models',q:'In Świdziński\'s "Three Models of Art," the relativistic/modernist model is characterized by:',
+   opts:['Signs that are transparent to reality and universal aesthetic criteria based on objective truth','Signs that have become barriers, leading artists to focus on form itself rather than communicative function','Empty signs filled by the pragmatic context of time, place, situation and persons involved','Signs governed by deontic logic where meaning is determined by ideological structures'],
+   correct:1, exp:'The second model emerges when signs lose their transparency (first model) and become self-referential barriers. Artists from Romanticism onward focused on signs themselves — form rather than content.'},
+  {cat:'Critique',q:'Świdziński\'s main objection to Kosuth\'s conceptualism was that:',
+   opts:['Kosuth relied too heavily on visual aesthetics and traditional gallery exhibition formats','Kosuth\'s program of art as analytical proposition amounts to tautology — art defining art through self-reference, unable to engage with social reality','Kosuth\'s work was too politically engaged and insufficiently concerned with formal beauty','Kosuth failed to use proper philosophical language and lacked rigorous logical foundations'],
+   correct:1, exp:'Świdziński argued that "art as idea as idea" is trapped in circular self-reference. The empty sign approach proposes art filled by external reality, not circling back to itself.'},
+  {cat:'Biography',q:'What event in 1965 transformed Świdziński\'s artistic direction?',
+   opts:['The opening of Galeria Sztuki Najnowsza in Wrocław inspired him to abandon traditional painting','His solo painting exhibition convinced him that traditional forms could not address contemporary existential dilemmas','A meeting with Joseph Kosuth in New York introduced him to analytical conceptualism','His appointment to the Academy of Fine Arts required him to formalize his theoretical approach'],
+   correct:1, exp:'The 1965 solo painting exhibition was a turning point — Świdziński discovered that painting and other traditional forms were unable to confront fundamental existential dilemmas. He then turned to science, semiotics, and formal logic.'},
+  {cat:'Philosophy',q:'The concept of "intensional expressions" in contextual art theory means:',
+   opts:['Expressions whose meaning is intense, emotional, and subjective rather than rational and analytical','Expressions whose meaning depends on facts beyond what the component parts of the expression contain','Expressions that intentionally mislead the viewer to provoke critical thought about art institutions','Expressions that intensify their meaning over time as more viewers encounter and interpret them'],
+   correct:1, exp:'Unlike extensional expressions (used by science and conceptualism), intensional expressions require external context to determine their meaning. This is why contextual art rejects the extensionality condition.'},
+  {cat:'Events',q:'At the 1977 Warsaw conference at Remont Gallery:',
+   opts:['Świdziński and Kosuth reached a formal agreement to merge conceptual and contextual art theories','Participants from 35 countries attended, and agreements were signed between Polish contextual art, French Art Sociologique, and other international movements','The Polish government officially recognized contextual art as a valid artistic movement and provided funding','The conference resulted in a unified manifesto that replaced the original 12 Points with a broader statement'],
+   correct:1, exp:'The 1977 "Art Activity in the Context of Reality" conference drew participants from 35 countries. Government authorities responded harshly, viewing the extensive foreign contact as threatening.'},
+  {cat:'Core Theory',q:'Świdziński describes contemporary civilization using the model of:',
+   opts:['A dialectical spiral where thesis and antithesis produce increasingly complex syntheses over time','A clock mechanism with cyclical repetitions that can be predicted and controlled through rational planning','A stochastic process of continuous rapid changes where individual phases cannot be separated from one another','A binary system where each cultural moment exists in opposition to its predecessor and successor'],
+   correct:2, exp:'He distinguishes three civilization models: clock (pre-industrial, cyclical), discrete transformations (industrial), and stochastic process (contemporary) — where change is too rapid to isolate individual states.'},
+  {cat:'Theory',q:'When Świdziński writes that art operates through "deontic logic," he means:',
+   opts:['Art follows the same formal truth-and-falsity rules as mathematics and analytical philosophy','Art operates in the logic of obligations, beliefs, and convictions — knowing, acknowledging, rejecting, believing, supposing','Art must follow the ethical imperatives of social justice and political liberation movements','Art obeys a hierarchical logic where established institutions determine what qualifies as artistic expression'],
+   correct:1, exp:'Deontic logic governs states like believing, supposing, and acknowledging. Art does not "speak truth" — it "convinces of truth," operating in ideological and existential registers rather than formal ones.'},
+  {cat:'Practice',q:'Świdziński describes his approach to photography as using photographs as:',
+   opts:['Pure aesthetic objects whose formal beauty transcends their documentary content','Technical documentation of performance events intended solely for archival preservation','Symptoms of reality, around which a performance is created in the form of text or speech','Political propaganda tools designed to expose the failures of the communist system'],
+   correct:2, exp:'Photography for Świdziński is "a symptom of reality" — not autonomous art, not mere documentation, but a contextual sign that gains meaning through the performance built around it.'},
+  {cat:'Manifesto',q:'Point 8 of the manifesto distinguishes contextual art from post-Duchamp art by arguing that:',
+   opts:['Duchamp liberated the object while keeping meaning fixed; contextual art makes both object and meaning mobile','Duchamp eliminated all meaning from art; contextual art restores fixed meaning through scientific analysis','Duchamp focused on gallery institutions; contextual art operates exclusively outside institutional spaces','Duchamp rejected aesthetics entirely; contextual art returns to beauty as a primary criterion of quality'],
+   correct:0, exp:'Since Duchamp, one term became mobile (any object can signify art) while meaning remained fixed. In contextual art, both are mobile — any object can signify art and not-art simultaneously.'},
+  {cat:'Three Models',q:'The first model of art (universal/Renaissance) assumes that signs are:',
+   opts:['Inherently ambiguous and require institutional validation to acquire fixed meaning','Transparent — art language can express reality as something truly existing in knowledge, not merely as a structure','Self-referential barriers that separate expressed reality from actual reality','Empty vessels that gain meaning only through the pragmatic context of their reception'],
+   correct:1, exp:'The universal model assumes signs are transparent, allowing direct access to reality. Leonardo da Vinci: "First learn theory, then apply practice born from theory." The artist\'s language is not self-referential.'},
+  {cat:'Events',q:'The Centre for Experimental Art and Communication (CEAC) in Toronto hosted:',
+   opts:['A retrospective exhibition of Świdziński\'s paintings from the Semantic Signs period (1952-1962)','A 1976 conference where Świdziński debated Kosuth and artists from multiple international movements participated','The first public reading of Świdziński\'s "Art is a Fact" poster manifesto in English translation','A collaborative workshop where Polish and Canadian artists created the first contextual art installation'],
+   correct:1, exp:'The CEAC organized the 1976 conference "In the Context of the Art World" with participation from Art Sociologique, Art and Language, Artist Meeting for Social Change, and the Fox group.'},
+  {cat:'Core Theory',q:'Świdziński\'s claim that "art is part of life" specifically means:',
+   opts:['Art should depict everyday scenes and ordinary people in realistic representational styles','Art functions as one of many productive activities participating in ongoing change, with no independent existence separate from lived reality','Art therapies and community workshops are the highest form of artistic achievement in the modern world','Artists must abandon studio practice and work exclusively in public spaces among ordinary citizens'],
+   correct:1, exp:'From "Art is a Fact" (1997): "Art is not similar to life — it is part of it. It is neither natural nor artificial. It is what it happens to be." Art as productive activity, not autonomous domain.'},
+  {cat:'Philosophy',q:'Świdziński invokes Gödel\'s incompleteness theorem to argue that:',
+   opts:['Art can be reduced to a complete set of mathematical axioms if we find the right formal system','Autonomous self-explaining art systems (like Kosuth\'s conceptualism) are inherently impossible to construct','All artistic statements are either true or false, and formal logic can determine which category applies','Mathematics and art are fundamentally identical disciplines with the same truth criteria'],
+   correct:1, exp:'Just as Gödel proved that self-consistent formal systems cannot be both complete and consistent, Świdziński argues that autonomous formalistic art systems cannot be built — art must acknowledge its dependence on external reality.'},
+  {cat:'Practice',q:'The concept of "anomia" in Świdziński\'s 1998 work refers to:',
+   opts:['A formal art technique involving the removal of names and titles from exhibited artworks','A state where commonly accepted social norms cease functioning, producing genuine misunderstanding between people','A logical paradox in which an artwork simultaneously affirms and denies its own status as art','A performance method using anonymity to eliminate the artist\'s identity from the creative process'],
+   correct:1, exp:'Drawing on Durkheim\'s sociological concept, anomia describes a state of social disconnection. Świdziński documented conversations where people talk without genuine understanding — a breakdown of shared meaning.'},
+  {cat:'Biography',q:'Between 1965 and 1970, after abandoning painting, Świdziński immersed himself in:',
+   opts:['Film theory and experimental cinema, collaborating with the Film Form Workshop in Łódź','Semiotics, linguistics, neopositivism, and formal logic, establishing the Art and Design Section at the Cybernetics Society','Political activism in the Solidarity trade union movement and underground publishing networks','Buddhist philosophy and Eastern meditation practices, seeking non-Western artistic paradigms'],
+   correct:1, exp:'Together with Marek Konieczny, he established the Art and Design Section at the Cybernetics Society. His studies in semiotics enabled a critical view of emerging Anglo-American conceptualism.'},
+];
+
+// ═══════════════════════════════════════════
+// DATA: FORMULA SCENARIOS
+// ═══════════════════════════════════════════
+const formulaScenarios = [
+  {object:'A blank white canvas hanging on a wall',
+   params:{
+    time:['1976','1520','2024','1917'],
+    place:['Lund Gallery, Sweden','Florence workshop','IKEA showroom','Zurich Cabaret Voltaire'],
+    situation:['Contextual Art Exhibition','Apprentice training','Furniture display','Dada performance evening'],
+    person:['Art critic','Renaissance master','Customer','Cabaret performer']
+   },
+   meanings:{
+    '1976|Lund Gallery, Sweden|Contextual Art Exhibition|Art critic':'A deliberate statement about the empty sign — art stripped to its contextual essence, awaiting meaning from the viewer\'s own context.',
+    '1520|Florence workshop|Apprentice training|Renaissance master':'Raw material awaiting a commission. Potential for beauty — Leonardo\'s "practice born from theory" waiting to begin.',
+    '2024|IKEA showroom|Furniture display|Customer':'A decoration placeholder, part of room staging. Not art at all — a prop for selling furniture.',
+    '1917|Zurich Cabaret Voltaire|Dada performance evening|Cabaret performer':'A provocation. The emptiness itself is the statement — mocking the entire tradition of painting.',
+   }},
+  {object:'A photograph of an elderly man sitting alone',
+   params:{
+    time:['1994','1840','2024','1979'],
+    place:['Warsaw art gallery','Daguerreotype studio','Instagram feed','Mała Galeria, Warsaw'],
+    situation:['Gulf War press exhibition','Portrait commission','Scrolling through stories','Contextual art exhibition'],
+    person:['Art historian','Victorian gentleman','Teenager','Świdziński himself']
+   },
+   meanings:{
+    '1994|Warsaw art gallery|Gulf War press exhibition|Art historian':'A "symptom of reality" — the photograph as evidence of human isolation amidst geopolitical violence. Context transforms news into art.',
+    '1840|Daguerreotype studio|Portrait commission|Victorian gentleman':'A miracle of technology. The image is valued for its fidelity — truth to nature, preserving identity for posterity.',
+    '2024|Instagram feed|Scrolling through stories|Teenager':'Content that appears and vanishes in seconds. The image has no fixed meaning — it\'s experienced as one fragment in an endless stream.',
+    '1979|Mała Galeria, Warsaw|Contextual art exhibition|Świdziński himself':'We always talk about the human being. A single photograph becomes philosophical statement through text and contextual framing.',
+   }},
+  {object:'Someone standing silently in a room for ten minutes',
+   params:{
+    time:['1974','2024','1960','1998'],
+    place:['Teatr Dnia i Nocy, Poznań','Corporate office lobby','Zen monastery','Small venue in Warsaw'],
+    situation:['Performance art meeting','Waiting for a meeting','Meditation practice','Anomia documentation'],
+    person:['Artist audience','Office worker','Zen practitioner','Sociologist']
+   },
+   meanings:{
+    '1974|Teatr Dnia i Nocy, Poznań|Performance art meeting|Artist audience':'Contextual art performance — the silence itself communicates. The body becomes an empty sign filled by the shared moment of encounter.',
+    '2024|Corporate office lobby|Waiting for a meeting|Office worker':'An unremarkable act of waiting. No artistic meaning — just someone killing time before a scheduled appointment.',
+    '1960|Zen monastery|Meditation practice|Zen practitioner':'A spiritual practice of deep significance. The stillness is not empty but full — cultivating awareness and non-attachment.',
+    '1998|Small venue in Warsaw|Anomia documentation|Sociologist':'Evidence of anomie — the breakdown of social communication. Silence as symptom of a civilization that has lost shared meaning.',
+   }},
+];
+
+// ═══════════════════════════════════════════
+// DATA: COMPARE
+// ═══════════════════════════════════════════
+const compareItems = [
+  {text:'Art as analytical proposition — meaning contained within the statement itself',correct:'conceptual'},
+  {text:'Meaning determined by pragmatic context of time, place, situation, and persons',correct:'contextual'},
+  {text:'Tautological self-reference: art defines art through its own definition',correct:'conceptual'},
+  {text:'Empty sign filled by reality — art gains meaning only in social context',correct:'contextual'},
+  {text:'Signs as self-referential barriers, requiring logical language analysis',correct:'conceptual'},
+  {text:'Signs as empty places, constantly constructed and reconstructed by practice',correct:'contextual'},
+  {text:'Art as autonomous discipline, independent of social or political reality',correct:'conceptual'},
+  {text:'Art as social practice — action provoked by other actions, causing further actions',correct:'contextual'},
+  {text:'Extensional expressions: meaning derived from component parts of the statement',correct:'conceptual'},
+  {text:'Intensional expressions: meaning depends on facts beyond the name\'s content',correct:'contextual'},
+  {text:'Truth determined through terminological convention and logical analysis',correct:'conceptual'},
+  {text:'Truth determined through practice — only empirical context validates a sign',correct:'contextual'},
+  {text:'Art-as-idea-as-idea: the concept is the artwork regardless of context',correct:'conceptual'},
+  {text:'Deontic logic: art convinces of truth through belief, acknowledgment, and rejection',correct:'contextual'},
+];
+
+// ═══════════════════════════════════════════
+// BUILD: ARCHIVE HUB
+// ═══════════════════════════════════════════
+function buildArchive() {
+  const items = [
+    {label:'Timeline',title:'Life & Events',desc:'25 key moments from 1925 to 2014 — painting, theory, performance, and legacy.',view:'timeline',tags:['biography','chronology']},
+    {label:'Network',title:'People & Connections',desc:'Interactive graph of artists, philosophers, scholars, and movements connected to Świdziński.',view:'graph',tags:['people','influence']},
+    {label:'Texts',title:'Writings & Manifestos',desc:'Primary sources — the 12 Points, theoretical essays, critical reflections in Świdziński\'s own words.',view:'texts',tags:['manifesto','theory','essay']},
+    {label:'Encyclopedia',title:'Key Concepts',desc:'Empty Sign, Three Models, Context Formula, Deontic Logic — the building blocks of contextual art.',view:'concepts',tags:['theory','definitions']},
+    {label:'Bibliography',title:'Publications & Research',desc:'Books, essays, scholarly analysis, interviews — essential references for researchers and art students.',view:'biblio',tags:['publications','research','scholarly']},
+    {label:'Festivals',title:'Festivals & Performances',desc:'International festivals, conferences, performances, and posthumous exhibitions.',view:'festivals',tags:['festivals','performance','events']},
+  ];
+  document.getElementById('archiveGrid').innerHTML = items.map(i=>`
+    <div class="card" onclick="showView('${i.view}')">
+      <div class="card-label">${i.label}</div>
+      <h3>${i.title}</h3>
+      <p>${i.desc}</p>
+      <div class="tags">${i.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════
+// BUILD: TIMELINE
+// ═══════════════════════════════════════════
+let tlFilter = 'all';
+function buildTimeline() {
+  S.tlInit = true;
+  const cats = ['all','life','art','theory','event'];
+  const colors = {life:'var(--accent)',art:'var(--accent2)',theory:'var(--accent4)',event:'var(--accent3)'};
+  document.getElementById('tlFilters').innerHTML = cats.map(c=>
+    `<button class="${c===tlFilter?'active':''}" onclick="tlFilter='${c}';buildTimeline()">${c==='all'?'All':c.charAt(0).toUpperCase()+c.slice(1)}</button>`
+  ).join('');
+  const filtered = tlFilter==='all'?timeline:timeline.filter(e=>e.cat===tlFilter);
+  document.getElementById('tlItems').innerHTML = filtered.map((e,i)=>`
+    <div class="tl-item" onclick="this.classList.toggle('expanded')" style="animation-delay:${i*60}ms">
+      <div class="tl-dot" style="border-color:${colors[e.cat]||'var(--accent)'}"></div>
+      <span class="tl-arrow">▼</span>
+      <span class="year">${e.year}</span><span class="category">${e.cat}</span>
+      <h3>${e.title}</h3>
+      <div class="tl-summary">${e.text}</div>
+      ${e.exp?`<div class="tl-expanded">${e.exp}</div>`:''}
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════
+// BUILD: GRAPH
+// ═══════════════════════════════════════════
+let graphPan={x:0,y:0}, graphZoom=1, graphDrag=null, graphHover=null, graphSelected=null;
+
+function initGraph() {
+  S.graphInit = true;
+  const canvas = document.getElementById('graphCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize() { W=canvas.parentElement.clientWidth; H=window.innerHeight-64; canvas.width=W*devicePixelRatio; canvas.height=H*devicePixelRatio; canvas.style.width=W+'px'; canvas.style.height=H+'px'; ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
+  resize(); window.addEventListener('resize',resize);
+
+  const groups = {contextual:{label:'Contextual Art',color:'#4a6cf7'},conceptual:{label:'Conceptual Art',color:'#e05555'},philosophy:{label:'Philosophy',color:'#55a580'},parallel:{label:'Parallel Movements',color:'#c490e0'},polish:{label:'Polish Avant-garde',color:'#e0a040'},scholar:{label:'Scholars',color:'#8090c0'},precursor:{label:'Precursors',color:'#999'}};
+  document.getElementById('graphLegend').innerHTML = Object.values(groups).map(g=>`<span><span class="dot" style="background:${g.color}"></span>${g.label}</span>`).join('');
+
+  function worldX(p) { return p.x*W*0.85+W*0.075; }
+  function worldY(p) { return p.y*H*0.85+H*0.075; }
+  function screenX(wx) { return (wx+graphPan.x)*graphZoom; }
+  function screenY(wy) { return (wy+graphPan.y)*graphZoom; }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.save();
+    // connections
+    graphConnections.forEach(c=>{
+      const a=people.find(p=>p.id===c.from), b=people.find(p=>p.id===c.to);
+      if(!a||!b) return;
+      const x1=screenX(worldX(a)),y1=screenY(worldY(a)),x2=screenX(worldX(b)),y2=screenY(worldY(b));
+      ctx.strokeStyle = S.dark?'rgba(255,255,255,0.08)':'rgba(0,0,0,0.08)';
+      ctx.lineWidth = c.s*0.7;
+      ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+    });
+    // nodes
+    people.forEach(p=>{
+      const x=screenX(worldX(p)),y=screenY(worldY(p)),r=p.r*graphZoom;
+      const isHover = graphHover===p.id;
+      const isSel = graphSelected===p.id;
+      ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
+      ctx.fillStyle = p.color + (isHover||isSel?'':'cc');
+      ctx.fill();
+      if(isSel) { ctx.strokeStyle=p.color; ctx.lineWidth=3; ctx.stroke(); }
+      ctx.fillStyle = '#fff';
+      ctx.font = `${Math.max(9,10*graphZoom)}px Inter`;
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      const name = p.name.split(' ').pop();
+      ctx.fillText(name,x,y);
+    });
+    ctx.restore();
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  function findNode(mx,my) {
+    for(let i=people.length-1;i>=0;i--) {
+      const p=people[i], x=screenX(worldX(p)),y=screenY(worldY(p)),r=p.r*graphZoom;
+      if(Math.hypot(mx-x,my-y)<r) return p;
+    }
+    return null;
+  }
+
+  canvas.addEventListener('mousemove',e=>{
+    const rect=canvas.getBoundingClientRect();
+    const mx=e.clientX-rect.left, my=e.clientY-rect.top;
+    if(graphDrag) { graphPan.x+=e.movementX/graphZoom; graphPan.y+=e.movementY/graphZoom; return; }
+    const node=findNode(mx,my);
+    graphHover=node?node.id:null;
+    canvas.style.cursor=node?'pointer':'grab';
+    const tt=document.getElementById('tooltip');
+    if(node) {
+      tt.style.display='block';
+      tt.style.left=Math.min(e.clientX+16,window.innerWidth-360)+'px';
+      tt.style.top=(e.clientY+16)+'px';
+      document.getElementById('ttName').textContent=node.name;
+      document.getElementById('ttDates').textContent=node.dates;
+      document.getElementById('ttDesc').textContent=node.bio;
+    } else { tt.style.display='none'; }
+  });
+  canvas.addEventListener('mousedown',e=>{ graphDrag=true; canvas.style.cursor='grabbing'; });
+  canvas.addEventListener('mouseup',e=>{
+    if(!graphDrag) return;
+    graphDrag=false; canvas.style.cursor='grab';
+    const rect=canvas.getBoundingClientRect();
+    const node=findNode(e.clientX-rect.left,e.clientY-rect.top);
+    if(node) selectGraphNode(node);
+  });
+  canvas.addEventListener('wheel',e=>{
+    e.preventDefault();
+    const factor=e.deltaY>0?0.9:1.1;
+    graphZoom=Math.max(0.3,Math.min(3,graphZoom*factor));
+  },{passive:false});
+}
+
+function selectGraphNode(p) {
+  graphSelected=p.id;
+  const panel=document.getElementById('graphPanel');
+  const conns=graphConnections.filter(c=>c.from===p.id||c.to===p.id);
+  panel.innerHTML=`
+    <button class="close-btn" onclick="document.getElementById('graphPanel').classList.remove('show');graphSelected=null;">✕</button>
+    <h3>${p.name}</h3>
+    <div class="gp-dates">${p.dates}</div>
+    <div class="gp-desc">${p.bio}</div>
+    ${p.quote?`<div class="gp-quote">"${p.quote}"</div>`:''}
+    <div style="font-size:12px;color:var(--text-dim);">
+      <strong style="color:var(--text)">Concepts:</strong> ${(p.concepts||[]).map(c=>`<span class="tag">${c}</span>`).join(' ')}
+    </div>
+    ${conns.length?`<div style="margin-top:12px;font-size:12px;color:var(--text-dim);line-height:2;">
+      <strong style="color:var(--text)">Connections:</strong><br>
+      ${conns.map(c=>{const other=c.from===p.id?c.to:c.from;const op=people.find(pp=>pp.id===other);return op?`→ <strong>${op.name}</strong>: ${c.label}`:'';}).join('<br>')}
+    </div>`:''}`;
+  panel.classList.add('show');
+}
+
+// ═══════════════════════════════════════════
+// BUILD: TEXTS
+// ═══════════════════════════════════════════
+let textsBuilt=false;
+function buildTexts() {
+  if(textsBuilt) return; textsBuilt=true;
+  document.getElementById('textsContainer').innerHTML = textsData.map(t=>`
+    <div class="text-card" id="text-${t.id}">
+      <div class="text-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div>
+          <h3>${t.title}</h3>
+          <div class="meta">${t.year||''} · ${t.type}</div>
+        </div>
+        <span class="tl-arrow">▼</span>
+      </div>
+      <div class="text-card-body">
+        ${t.sections.map(s=>`<div class="text-section">${s.h?`<h4>${s.h}</h4>`:''}
+          <p>${s.t}</p></div>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════
+// BUILD: CONCEPTS
+// ═══════════════════════════════════════════
+let conceptsBuilt=false;
+function buildConcepts() {
+  const q=(document.getElementById('conceptSearch')||{}).value||'';
+  const filtered=q?concepts.filter(c=>(c.name+c.desc+c.cat+c.thinker).toLowerCase().includes(q.toLowerCase())):concepts;
+  document.getElementById('conceptsGrid').innerHTML=filtered.map(c=>`
+    <div class="concept-card">
+      <div class="thinker">${c.thinker} · ${c.cat}</div>
+      <h3>${c.name}</h3>
+      <p>${c.desc}</p>
+      ${c.formula?`<div class="formula">${c.formula}</div>`:''}
+      <div class="tags" style="margin-top:10px">${c.related.map(r=>{const rc=concepts.find(cc=>cc.id===r);return rc?`<span class="tag" onclick="document.getElementById('conceptSearch').value='${rc.name}';filterConcepts()">${rc.name}</span>`:''}).join('')}</div>
+    </div>`).join('');
+}
+function filterConcepts() { buildConcepts(); }
+
+// ═══════════════════════════════════════════
+// BUILD: BIBLIOGRAPHY
+// ═══════════════════════════════════════════
+let biblioBuilt=false;
+function buildBiblio() {
+  if(biblioBuilt) return; biblioBuilt=true;
+  const d=biblioData;
+  let html='';
+  html+='<h3 style="font-family:Playfair Display,serif;font-size:20px;margin:24px 0 14px;color:var(--text)">Books by Świdziński</h3>';
+  html+=d.books.map(b=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${b.title}</h3><div class="meta">${b.year} · ${b.place} · ${b.type}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${b.note}</p></div></div>`).join('');
+
+  html+='<h3 style="font-family:Playfair Display,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Key Essays & Texts</h3>';
+  html+=d.essays.map(e=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${e.title}</h3><div class="meta">${e.year||''} · ${e.publication}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${e.note}</p></div></div>`).join('');
+
+  html+='<h3 style="font-family:Playfair Display,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Scholarly Works & Critical Analysis</h3>';
+  html+=d.scholarly.map(s=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${s.title}</h3><div class="meta">${s.author} · ${s.year||''}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${s.note}</p></div></div>`).join('');
+
+  html+='<h3 style="font-family:Playfair Display,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Interviews</h3>';
+  html+=d.interviews.map(i=>`<div class="text-card"><div class="text-card-header"><div><h3>${i.title}</h3><div class="meta">${i.interviewer} · ${i.year||''} · ${i.publication}</div></div></div></div>`).join('');
+
+  html+='<h3 style="font-family:Playfair Display,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Cited Philosophical Works</h3>';
+  html+='<div style="columns:2;column-gap:24px;font-size:13px;color:var(--text-dim);line-height:2;">'+d.citedPhilosophy.map(c=>`<div style="break-inside:avoid;">${c}</div>`).join('')+'</div>';
+
+  document.getElementById('biblioContainer').innerHTML=html;
+}
+
+// ═══════════════════════════════════════════
+// BUILD: FESTIVALS
+// ═══════════════════════════════════════════
+let festivalsBuilt=false;
+function buildFestivals() {
+  if(festivalsBuilt) return; festivalsBuilt=true;
+  const d=festivalsData;
+  let html='';
+
+  html+='<h3 style="font-family:Playfair Display,serif;font-size:20px;margin:24px 0 14px;color:var(--text)">Organized & Co-organized by Świdziński</h3>';
+  html+=d.organized.map(f=>`<div class="card" style="cursor:default;margin-bottom:10px;"><div class="card-label">${f.year}</div><h3>${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('');
+
+  html+='<h3 style="font-family:Playfair Display,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">International Festivals & Conferences</h3>';
+  html+='<div class="card-grid">'+d.participated.map(f=>`<div class="card" style="cursor:default;"><div class="card-label">${f.year}</div><h3 style="font-size:15px;">${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('')+'</div>';
+
+  html+='<h3 style="font-family:Playfair Display,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Posthumous Exhibitions & Events</h3>';
+  html+=d.posthumous.map(f=>`<div class="card" style="cursor:default;margin-bottom:10px;border-color:var(--accent);"><div class="card-label">${f.year}</div><h3>${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('');
+
+  document.getElementById('festivalsContainer').innerHTML=html;
+}
+
+// ═══════════════════════════════════════════
+// BUILD: GAME HUB
+// ═══════════════════════════════════════════
+function buildGameHub() {
+  const modes = [
+    {icon:'🧠',title:'Contextual Quiz',desc:'Test your knowledge across 8 categories — from core theory to philosophy and events.',view:'quiz'},
+    {icon:'⚗️',title:'The Context Formula',desc:'Change the parameters of time, place, situation, and person — watch meaning transform before your eyes.',view:'formula'},
+    {icon:'⚖️',title:'Conceptual vs. Contextual',desc:'Drag each idea to the correct column. Can you tell Kosuth\'s conceptualism from Świdziński\'s contextualism?',view:'compare'},
+    {icon:'🔓',title:'12 Points Challenge',desc:'Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.',view:'points'},
+  ];
+  document.getElementById('gameGrid').innerHTML=modes.map(m=>`
+    <div class="game-card" onclick="showView('${m.view}')">
+      <div class="game-icon">${m.icon}</div>
+      <h3>${m.title}</h3>
+      <p>${m.desc}</p>
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════
+// QUIZ ENGINE
+// ═══════════════════════════════════════════
+let quizCat='All', quizQ=[], quizIdx=0, quizCorrect=0;
+
+function initQuiz(cat) {
+  if(cat) quizCat=cat;
+  const cats=['All',...new Set(quizData.map(q=>q.cat))];
+  document.getElementById('quizCats').innerHTML=cats.map(c=>
+    `<button class="${c===quizCat?'active':''}" onclick="initQuiz('${c}')">${c}</button>`
+  ).join('');
+  quizQ = (quizCat==='All'?[...quizData]:quizData.filter(q=>q.cat===quizCat))
+    .sort(()=>Math.random()-0.5).slice(0,12);
+  quizIdx=0; quizCorrect=0;
+  renderQuizQ();
+}
+
+function renderQuizQ() {
+  if(quizIdx>=quizQ.length) { renderQuizResults(); return; }
+  const q=quizQ[quizIdx];
+  document.getElementById('quizBar').style.width=((quizIdx/quizQ.length)*100)+'%';
+  document.getElementById('quizArea').innerHTML=`
+    <div class="quiz-card">
+      <div class="q-cat">${q.cat}</div>
+      <div class="q-num">Question ${quizIdx+1} of ${quizQ.length}</div>
+      <h3>${q.q}</h3>
+      <div class="quiz-options">
+        ${q.opts.map((o,i)=>`<button class="quiz-option" onclick="answerQuiz(${i})">${o}</button>`).join('')}
+      </div>
+      <div class="quiz-explanation" id="quizExp">${q.exp}</div>
+      <div class="quiz-next" id="quizNext"><button onclick="quizIdx++;renderQuizQ()">Next Question →</button></div>
+    </div>`;
+}
+
+function answerQuiz(idx) {
+  const q=quizQ[quizIdx];
+  const btns=document.querySelectorAll('.quiz-option');
+  btns.forEach((b,i)=>{
+    b.disabled=true;
+    if(i===q.correct) b.classList.add('correct');
+    if(i===idx&&idx!==q.correct) b.classList.add('wrong');
+  });
+  if(idx===q.correct) { quizCorrect++; addScore(10); }
+  document.getElementById('quizExp').classList.add('show');
+  document.getElementById('quizNext').style.display='block';
+}
+
+function renderQuizResults() {
+  const pct=Math.round((quizCorrect/quizQ.length)*100);
+  document.getElementById('quizBar').style.width='100%';
+  document.getElementById('quizArea').innerHTML=`
+    <div class="quiz-results">
+      <div class="big-score">${pct}%</div>
+      <p>${quizCorrect} of ${quizQ.length} correct</p>
+      <p>${pct>=80?'Excellent contextual understanding!':pct>=50?'Good foundation — keep exploring the archive.':'The texts and concepts sections will deepen your understanding.'}</p>
+      <button class="btn-primary" onclick="initQuiz()" style="margin-top:20px">Play Again</button>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════
+// FORMULA GAME
+// ═══════════════════════════════════════════
+function initFormula() {
+  const sc=formulaScenarios[S.formulaScenario % formulaScenarios.length];
+  const keys=Object.keys(sc.params);
+  const w=document.getElementById('formulaWidget');
+  w.innerHTML=`
+    <div class="formula-display">
+      <div class="object-name">"${sc.object}"</div>
+      <div class="meaning-box" id="meaningBox">Select all parameters to discover the meaning in this context...</div>
+    </div>
+    <div class="formula-notation" id="formulaNotation"></div>
+    <div class="param-grid">
+      ${keys.map(k=>`<div class="param-slot">
+        <label>${k}</label>
+        <select onchange="updateFormulaMeaning()" data-param="${k}">
+          <option value="">— select —</option>
+          ${sc.params[k].map(v=>`<option value="${v}">${v}</option>`).join('')}
+        </select>
+      </div>`).join('')}
+    </div>
+    <div style="text-align:center;margin-top:16px;">
+      <button class="btn-secondary" onclick="S.formulaScenario++;initFormula()">Next Scenario →</button>
+      <span style="font-size:12px;color:var(--text-light);margin-left:12px;">Scenario ${(S.formulaScenario%formulaScenarios.length)+1}/${formulaScenarios.length}</span>
+    </div>`;
+  updateFormulaMeaning();
+}
+
+function updateFormulaMeaning() {
+  const sc=formulaScenarios[S.formulaScenario % formulaScenarios.length];
+  const selects=document.querySelectorAll('.param-slot select');
+  const vals={};
+  let allSelected=true;
+  selects.forEach(s=>{ vals[s.dataset.param]=s.value; if(!s.value) allSelected=false; });
+  const key=`${vals.time}|${vals.place}|${vals.situation}|${vals.person}`;
+  const box=document.getElementById('meaningBox');
+  const notation=document.getElementById('formulaNotation');
+  function renderPills(t,p,s,o) {
+    const pill = (key,label,val,cls) => val && val!=='?'
+      ? `<span class="fn-pill fn-filled ${cls}"><span class="fn-key">${key}</span>${val}</span>`
+      : `<span class="fn-pill fn-empty"><span class="fn-key">${key}</span>?</span>`;
+    notation.innerHTML = `
+      <span class="fn-label">O(m)</span>
+      <span class="fn-arrow">←</span>
+      ${pill('t','time',t,'fn-time')}
+      <span class="fn-arrow">+</span>
+      ${pill('p','place',p,'fn-place')}
+      <span class="fn-arrow">+</span>
+      ${pill('s','situation',s,'fn-situation')}
+      <span class="fn-arrow">+</span>
+      ${pill('o','person',o,'fn-person')}`;
+  }
+  if(allSelected && sc.meanings[key]) {
+    box.textContent=sc.meanings[key];
+    box.style.background='var(--accent-light)';
+    renderPills(vals.time,vals.place,vals.situation,vals.person);
+    addScore(5);
+  } else if(allSelected) {
+    box.textContent='This combination doesn\'t have a pre-defined meaning — but in contextual art theory, every unique combination of parameters creates a unique meaning. What do you think it would be?';
+    box.style.background='var(--surface2)';
+    renderPills(vals.time,vals.place,vals.situation,vals.person);
+  } else {
+    box.textContent='Select all parameters to discover the meaning in this context...';
+    box.style.background='var(--surface2)';
+    renderPills(vals.time||'?',vals.place||'?',vals.situation||'?',vals.person||'?');
+  }
+}
+
+// ═══════════════════════════════════════════
+// COMPARE GAME
+// ═══════════════════════════════════════════
+let compareScore=0, compareChecked=false;
+
+function initCompare() {
+  compareScore=0; compareChecked=false;
+  S.comparePlaced={conceptual:[],contextual:[]};
+  const shuffled=[...compareItems].sort(()=>Math.random()-0.5);
+  document.getElementById('compareArea').innerHTML=`
+    <div class="compare-columns">
+      <div class="compare-col" id="colConceptual" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="dropCompare(event,'conceptual')">
+        <h3>Conceptual Art (Kosuth)</h3>
+        <div id="placedConceptual"></div>
+      </div>
+      <div class="compare-col" id="colContextual" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="dropCompare(event,'contextual')">
+        <h3>Contextual Art (Świdziński)</h3>
+        <div id="placedContextual"></div>
+      </div>
+    </div>
+    <div class="compare-pool" id="comparePool">
+      ${shuffled.map((item,i)=>`<div class="drag-card" draggable="true" ondragstart="event.dataTransfer.setData('text/plain','${i}')" data-idx="${i}" id="drag-${i}">${item.text}</div>`).join('')}
+    </div>
+    <div style="text-align:center;margin-top:16px;">
+      <button class="btn-primary" id="checkCompareBtn" onclick="checkCompare()">Check Answers</button>
+      <button class="btn-secondary" onclick="initCompare()" style="margin-left:8px;">Reset</button>
+    </div>`;
+  // Touch support
+  document.querySelectorAll('.drag-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      if(compareChecked) return;
+      const idx=card.dataset.idx;
+      if(card.classList.contains('placed')) return;
+      // Cycle: pool -> conceptual -> contextual -> pool
+      const inC=S.comparePlaced.conceptual.includes(parseInt(idx));
+      const inX=S.comparePlaced.contextual.includes(parseInt(idx));
+      if(!inC&&!inX) { placeTo(parseInt(idx),'conceptual'); }
+      else if(inC) { removeFrom(parseInt(idx),'conceptual'); placeTo(parseInt(idx),'contextual'); }
+      else { removeFrom(parseInt(idx),'contextual'); }
+    });
+  });
+}
+
+function placeTo(idx,col) {
+  S.comparePlaced[col].push(idx);
+  const card=document.getElementById('drag-'+idx);
+  card.classList.add('placed');
+  document.getElementById('placed'+col.charAt(0).toUpperCase()+col.slice(1)).innerHTML+=
+    `<div class="placed-card" data-idx="${idx}" onclick="removeFrom(${idx},'${col}')">${compareItems[idx].text}</div>`;
+}
+
+function removeFrom(idx,col) {
+  S.comparePlaced[col]=S.comparePlaced[col].filter(i=>i!==idx);
+  document.getElementById('drag-'+idx).classList.remove('placed');
+  const placed=document.getElementById('placed'+col.charAt(0).toUpperCase()+col.slice(1));
+  const el=placed.querySelector(`[data-idx="${idx}"]`);
+  if(el) el.remove();
+}
+
+function dropCompare(e,col) {
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  if(compareChecked) return;
+  const idx=parseInt(e.dataTransfer.getData('text/plain'));
+  // Remove from other column if present
+  ['conceptual','contextual'].forEach(c=>{ if(S.comparePlaced[c].includes(idx)) removeFrom(idx,c); });
+  placeTo(idx,col);
+}
+
+function checkCompare() {
+  if(compareChecked) return;
+  compareChecked=true;
+  let correct=0;
+  ['conceptual','contextual'].forEach(col=>{
+    S.comparePlaced[col].forEach(idx=>{
+      const isCorrect=compareItems[idx].correct===col;
+      if(isCorrect) { correct++; addScore(5); }
+      const cards=document.getElementById('placed'+col.charAt(0).toUpperCase()+col.slice(1)).querySelectorAll('.placed-card');
+      cards.forEach(c=>{ if(parseInt(c.dataset.idx)===idx) c.classList.add(isCorrect?'correct-placed':'wrong-placed'); });
+    });
+  });
+  document.getElementById('checkCompareBtn').textContent=`${correct}/${compareItems.length} correct`;
+  document.getElementById('checkCompareBtn').disabled=true;
+}
+
+// ═══════════════════════════════════════════
+// 12 POINTS CHALLENGE
+// ═══════════════════════════════════════════
+const pointsTitles = [
+  'Objects & Meanings','Social Ambiguity','Conventional vs. Conceptual','Devaluation of Meanings',
+  'The Context Formula','Rejecting Canons','Against Stabilization','Both Terms Mobile',
+  'Relation as Readiness','Artist vs. Group','Beyond Formal Logic','Against Relativism'
+];
+
+function buildPoints() {
+  const pts=textsData.find(t=>t.id==='12points').sections;
+  document.getElementById('pointsProgress').textContent=
+    `${S.unlockedPoints.size}/12 points unlocked · ${S.unlockedPoints.size*20} bonus points earned`;
+  document.getElementById('pointsGrid').innerHTML=pts.map((p,i)=>{
+    const unlocked=S.unlockedPoints.has(i);
+    return `<div class="point-card ${unlocked?'unlocked':'locked'}">
+      <div class="point-num">Point ${i+1}</div>
+      <h4>${pointsTitles[i]}</h4>
+      <p>${p.t}</p>
+    </div>`;
+  }).join('') + `<div style="grid-column:1/-1;text-align:center;padding:20px;">
+    <button class="btn-primary" onclick="unlockPointQuiz()">Answer a Question to Unlock</button>
+  </div>`;
+}
+
+function unlockPointQuiz() {
+  // Find first locked point
+  const locked=[];
+  for(let i=0;i<12;i++) if(!S.unlockedPoints.has(i)) locked.push(i);
+  if(!locked.length) { alert('All 12 points unlocked! Congratulations!'); return; }
+  const target=locked[Math.floor(Math.random()*locked.length)];
+  const q=quizData[Math.floor(Math.random()*quizData.length)];
+  const area=document.getElementById('pointsGrid');
+  area.innerHTML=`
+    <div style="grid-column:1/-1;" class="quiz-card">
+      <div class="q-cat">Unlock Point ${target+1}: ${pointsTitles[target]}</div>
+      <h3>${q.q}</h3>
+      <div class="quiz-options">
+        ${q.opts.map((o,i)=>`<button class="quiz-option" onclick="answerPointQuiz(${i},${q.correct},${target})">${o}</button>`).join('')}
+      </div>
+      <div class="quiz-explanation" id="pointExp">${q.exp}</div>
+    </div>`;
+}
+
+function answerPointQuiz(idx,correct,target) {
+  const btns=document.querySelectorAll('.quiz-option');
+  btns.forEach((b,i)=>{ b.disabled=true; if(i===correct) b.classList.add('correct'); if(i===idx&&idx!==correct) b.classList.add('wrong'); });
+  document.getElementById('pointExp').classList.add('show');
+  if(idx===correct) {
+    S.unlockedPoints.add(target);
+    localStorage.setItem('sw_points', JSON.stringify([...S.unlockedPoints]));
+    addScore(20);
+  }
+  setTimeout(()=>buildPoints(), 2000);
+}
+
+// ═══════════════════════════════════════════
+// BACKGROUND PARTICLES
+// ═══════════════════════════════════════════
+(function initBgParticles() {
+  const c=document.getElementById('bgCanvas');
+  const ctx=c.getContext('2d');
+  let W,H;
+  function resize() { W=window.innerWidth; H=window.innerHeight; c.width=W; c.height=H; }
+  resize(); window.addEventListener('resize',resize);
+  const N=800;
+  const px=new Float32Array(N), py=new Float32Array(N), pvx=new Float32Array(N), pvy=new Float32Array(N);
+  for(let i=0;i<N;i++) { px[i]=Math.random()*W; py[i]=Math.random()*H; pvx[i]=(Math.random()-.5)*.3; pvy[i]=(Math.random()-.5)*.3; }
+  let t=0;
+  function draw() {
+    t+=0.002;
+    ctx.fillStyle=S.dark?'rgba(14,14,20,0.08)':'rgba(245,242,237,0.08)';
+    ctx.fillRect(0,0,W,H);
+    const rgb=S.dark?'180,180,210':'60,50,80';
+    for(let i=0;i<N;i++) {
+      const angle=Math.sin(px[i]*0.003+t)*Math.cos(py[i]*0.003+t*0.7)*Math.PI*2;
+      pvx[i]+=Math.cos(angle)*0.02; pvy[i]+=Math.sin(angle)*0.02;
+      pvx[i]*=0.98; pvy[i]*=0.98;
+      px[i]+=pvx[i]; py[i]+=pvy[i];
+      if(px[i]<0)px[i]=W; if(px[i]>W)px[i]=0; if(py[i]<0)py[i]=H; if(py[i]>H)py[i]=0;
+      ctx.fillStyle=`rgba(${rgb},0.15)`;
+      ctx.fillRect(px[i],py[i],1.5,1.5);
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// init
+showView('landing');
+</script>
+</body>
+</html>
