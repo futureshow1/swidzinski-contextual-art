@@ -273,6 +273,7 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
   <button onclick="showView('biblio')" data-view="biblio">Bibliography</button>
   <button onclick="showView('festivals')" data-view="festivals">Festivals</button>
   <button onclick="showView('game')" data-view="game">Game</button>
+  <button onclick="window.open('study.html','_blank')" style="color:var(--gold)">Study ↗</button>
   <div class="nav-right">
     <div class="score-display">
       <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
@@ -920,9 +921,10 @@ function buildArchive() {
     {label:'Encyclopedia',title:'Key Concepts',desc:'Empty Sign, Three Models, Context Formula, Deontic Logic — the building blocks of contextual art.',view:'concepts',tags:['theory','definitions']},
     {label:'Bibliography',title:'Publications & Research',desc:'Books, essays, scholarly analysis, interviews — essential references for researchers and art students.',view:'biblio',tags:['publications','research','scholarly']},
     {label:'Festivals',title:'Festivals & Performances',desc:'International festivals, conferences, performances, and posthumous exhibitions.',view:'festivals',tags:['festivals','performance','events']},
+    {label:'Study',title:'Comprehensive Study',desc:'From Semantic Signs to the Neo-Pragmatic Tourist — a full academic study based on primary sources. 5 parts, 36 chapters.',view:'_study',tags:['academic','research','primary sources']},
   ];
   document.getElementById('archiveGrid').innerHTML = items.map(i=>`
-    <div class="card" onclick="showView('${i.view}')">
+    <div class="card" onclick="${i.view==='_study'?'window.open(\'study.html\',\'_blank\')':`showView('${i.view}')`}">
       <div class="card-label">${i.label}</div>
       <h3>${i.title}</h3>
       <p>${i.desc}</p>
