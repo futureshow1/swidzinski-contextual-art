@@ -11,9 +11,19 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Georgia', 'Times New Roman', serif; background: #fff; color: #1a1a1a; line-height: 1.8; max-width: 800px; margin: 0 auto; padding: 2rem; font-size: 12pt; }
   a { color: var(--accent); }
-  .title-page { text-align: center; padding: 6rem 2rem 4rem; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; }
-  .title-page h1 { font-size: 2rem; font-weight: 400; line-height: 1.3; margin-bottom: 1rem; }
-  .title-page .sub { font-size: 1.1rem; color: #666; margin: .5rem 0; }
+  .title-page { text-align: center; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 2rem; background: #0e0e14; color: #e8e8f0; position: relative; overflow: hidden; margin: -2rem -2rem 2rem; width: calc(100% + 4rem); max-width: none; }
+  .title-page::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 40%, rgba(139,0,0,0.12) 0%, transparent 60%), radial-gradient(ellipse at 70% 60%, rgba(44,62,80,0.15) 0%, transparent 55%); }
+  .title-page::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.008) 3px, rgba(255,255,255,0.008) 4px); pointer-events: none; }
+  .title-page * { position: relative; z-index: 1; }
+  .title-page .cover-line { width: 60px; height: 2px; background: var(--accent); margin: 0 auto 2.5rem; opacity: 0.7; }
+  .title-page h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 400; line-height: 1.25; margin-bottom: .6rem; letter-spacing: .5px; color: #fff; }
+  .title-page .sub { font-size: clamp(.95rem, 1.8vw, 1.15rem); color: #a09898; margin: .4rem 0; font-style: italic; }
+  .title-page .sub-type { font-size: .8rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(139,0,0,0.8); margin-top: 2rem; font-style: normal; font-family: sans-serif; }
+  .title-page .cover-divider { width: 200px; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,185,154,0.4), transparent); margin: 2.5rem auto; }
+  .title-page .cover-epigraph { max-width: 500px; font-size: .85rem; line-height: 1.7; color: #777; font-style: italic; margin: 0 auto; }
+  .title-page .cover-epigraph cite { display: block; font-style: normal; color: #555; font-size: .75rem; margin-top: .6rem; letter-spacing: 1px; }
+  .title-page .cover-bottom { position: absolute; bottom: 2.5rem; left: 0; right: 0; text-align: center; }
+  .title-page .cover-bottom .year { font-family: sans-serif; font-size: .7rem; letter-spacing: 3px; color: #444; text-transform: uppercase; }
   .title-page .meta { font-size: .9rem; color: #888; margin-top: 2rem; }
   nav.no-print { position: fixed; top: 0; left: 0; right: 0; background: #222; padding: .4rem; text-align: center; z-index: 100; overflow-x: auto; white-space: nowrap; }
   nav a { color: #aaa; font-size: .7rem; margin: 0 .2rem; font-family: sans-serif; text-decoration: none; }
@@ -56,23 +66,23 @@
 
 <!-- TITLE PAGE -->
 <div class="title-page">
-<h1>Jan Świdziński and the Theory of Contextual Art</h1>
+<div class="cover-line"></div>
+<h1>Jan Świdziński<br>and the Theory of<br>Contextual Art</h1>
 <p class="sub">From Semantic Signs to the Neo-Pragmatic Tourist</p>
-<p class="sub" style="font-size:.95rem; margin-top:1.5rem;">A Comprehensive Study Based on Primary Sources</p>
-<p class="meta">&nbsp;</p>
-</div>
-
-<div class="epigraph">
+<p class="sub-type">A Comprehensive Study Based on Primary Sources</p>
+<div class="cover-divider"></div>
+<div class="cover-epigraph">
 "Nawet czynność tak prosta jak wypicie szklanki wody może zostać uznana za dzieło sztuki w zależności od tego, kiedy, gdzie i w jakim towarzystwie zostanie dokonana."
-<br><br>
-<span style="font-size:.9em;">[Even an act as simple as drinking a glass of water can be considered a work of art depending on when, where, and in whose company it is performed.]</span>
 <cite>Jan Świdziński</cite>
 </div>
-
-<div class="epigraph">
-"Jest jak jest. W porządku."<br>
-[It is what it is. It's okay.]
-<cite>Jan Świdziński, "Anomia," 1998</cite>
+<div class="cover-divider" style="margin-top:1.5rem;margin-bottom:1.5rem;width:120px;"></div>
+<div class="cover-epigraph" style="font-size:.8rem;">
+"Jest jak jest. W porządku."
+<cite>Jan Świdziński, Anomia, 1998</cite>
+</div>
+<div class="cover-bottom">
+<div class="year">Five Parts · Thirty-Six Chapters · Primary Sources</div>
+</div>
 </div>
 
 <!-- INTRODUCTION -->
