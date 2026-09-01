@@ -348,7 +348,7 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
 <!-- ═══ FESTIVALS ═══ -->
 <div id="festivalsView" class="view">
   <h2>Festivals & Performances</h2>
-  <p class="section-desc">International festivals, performances, and exhibitions — including posthumous shows honoring Świdziński's legacy.</p>
+  <p class="section-desc">International festivals, performances, and exhibitions — and the late exhibitions, symposia, and archives that secure Świdziński's legacy.</p>
   <div id="festivalsContainer"></div>
 </div>
 
@@ -480,33 +480,34 @@ function showView(id) {
 // DATA: TIMELINE
 // ═══════════════════════════════════════════
 const timeline = [
-  {year:1923,cat:'life',title:'Born in Bydgoszcz',text:'Jan Świdziński born on May 25 in Bydgoszcz, Poland.',exp:'Father was a Polish Army officer who participated in the Polish-Soviet War. Both parents came from noble families. Notable ancestor: Konstanty Świdziński — major patron of Polish culture whose library was destroyed during the Warsaw Uprising.'},
+  {year:1923,cat:'life',title:'Born in Bydgoszcz',text:'Jan Świdziński born on May 25 in Bydgoszcz, Poland.',exp:'His father, also named Jan, was a Polish Army officer and former soldier of Piłsudski\'s Legions; the Świdzińskis descended from old szlachta bearing the Półkozic coat of arms. A notable ancestor, Konstanty Świdziński, was a major collector and patron of Polish culture whose library was destroyed in 1944, in the wake of the Warsaw Uprising.'},
   {year:1947,cat:'life',title:'Academy of Fine Arts, Warsaw',text:'Begins studying painting under Jan Cybis, graphics under Tadeusz Kulisiewicz.',exp:'He graduated with a degree in painting in 1952. Between 1952 and 1962 he created a series of paintings called "Semantic Signs" (Znaki semantyczne).'},
-  {year:1952,cat:'life',title:'Graduates from Academy of Fine Arts',text:'Receives painting degree. Begins "Semantic Signs" (Znaki semantyczne) painting series (1952-1962).',exp:'Studies under Jan Cybis (painting) and Tadeusz Kulisiewicz (graphics) at the Higher School of Arts and Design (today Academy of Fine Arts) in Warsaw.'},
+  {year:1952,cat:'life',title:'Graduates from Academy of Fine Arts',text:'Receives painting degree. Begins "Semantic Signs" (Znaki semantyczne) painting series (1952-1962).',exp:'Studies under Jan Cybis (painting) and Tadeusz Kulisiewicz (graphics) at the Higher School of Arts and Design (today Academy of Fine Arts) in Warsaw. During the Semantic Signs years he also studied Islamic art in Spain and Morocco, as well as Chinese calligraphy.'},
   {year:1965,cat:'art',title:'Ends Painting Career',text:'Solo painting exhibition marks the end of traditional art practice.',exp:'He discovered that painting and other traditional art forms were unable to confront the fundamental and existential dilemmas faced by contemporary humanity. This crisis redirected him toward science, semiotics, linguistics, neopositivism and formal logic.'},
-  {year:1968,cat:'life',title:'Studies in Semiotics and Cybernetics',text:'With Marek Konieczny, establishes the Art and Design Section at the Cybernetics Society.',exp:'Deep immersion in semiotics, linguistics, neopositivism, and formal logic. Also travels to Spain, Morocco (Islamic art, calligraphy) and China (calligraphy studies). These studies enabled a critical view of emerging Anglo-American conceptualism.'},
+  {year:'1965–70',cat:'life',title:'Studies in Semiotics and Cybernetics',text:'With Marek Konieczny, establishes the Art and Design Section at the Cybernetics Society.',exp:'Deep immersion in semiotics, linguistics, neopositivism, and formal logic. These studies enabled a critical view of the Anglo-American conceptualism emerging at the end of the 1960s. In the early 1970s this work fed a series of works and actions entitled "Z logiki niekompletnych rzeczywistości" (Out of the Logic of Incomplete Realities).'},
   {year:1970,cat:'theory',title:'"Dispute over Art\'s Existence" Published',text:'First major theoretical text, published in "Życie i Myśl" nr 5/1970.',exp:'Considered the first attempt to give theoretical order to emerging aesthetic concepts. Written during a time of youth revolution, the article described how art and reality had changed so fundamentally that artists\' work no longer concerned creation of art objects but deliberation on art\'s essence.'},
-  {year:1972,cat:'art',title:'On "N.S." Permafo Gallery',text:'Writes critical essay about the new situation in art, connecting to Wrocław avant-garde.',exp:'Argues that new art "ceases to be observation from outside of previously existing situations, but is production of successive links of reality." Art becomes social action, not mirror reflection.'},
-  {year:1974,cat:'art',title:'First Performances',text:'Performance art begins at Teatr Dnia i Nocy, Poznań.',exp:'"My interest in performance art grew out of my contextual theory and my experiences with dance, body movement and gestures." For Świdziński, performance is the most accessible art form — direct contact with audience in shared context of time, place, and situation.'},
+  {year:1972,cat:'art',title:'On "N.S." Permafo Gallery',text:'Writes critical essay about the new situation in art, connecting to Wrocław avant-garde.',exp:'Argues that new art "ceases to be observation, investigation from outside of previously existing situations, but is production of successive links of reality." Art becomes an act of social action, not mirror reflection.'},
+  {year:1974,cat:'art',title:'First Performances',text:'Performance art begins at Teatr Dnia i Nocy, Poznań.',exp:'"My interest in performance art grew on the one hand out of my contextual theory, and on the other hand out of my experiences with dance, body movement and the gestures I used to give performances." For Świdziński, performance is the most accessible art form — direct contact with audience in shared context of time, place, and situation.'},
   {year:1975,cat:'event',title:'F-Art Counterculture Festival, Gdańsk',text:'First public presentation of contextual art theses. Jean Sellem attends and later organizes the Lund exhibition.',exp:'Also presented at "Condition of Contemporary Art" symposium at Remont Gallery, Warsaw. These events laid the groundwork for the 1976 manifesto publication.'},
-  {year:1976,cat:'theory',title:'"Art as Contextual Art" — The Manifesto',text:'Publishes the 12 Points of Contextual Art in Lund, Sweden. Exhibits with Polish artists at St. Petri Gallery.',exp:'The foundational document of contextual art. Core formula: Object "O" assumes meaning "m" at time "t," in place "p," in situation "s," in relation to person/persons "o" — if and only then. Featured artists: Anna Kutera, Romuald Kutera, Lech Mrożek, Zbigniew Dłubak, Film Form Workshop.',highlight:true},
-  {year:1976,cat:'event',title:'Toronto Debate with Kosuth',text:'At CEAC conference "In the Context of the Art World," Świdziński publicly critiques Kosuth\'s tautological model.',exp:'Participants included Joseph Kosuth, Sarah Charlesworth, Hervé Fischer, Amerigo Marras, and artists from Canada and Latin America. Świdziński argued art is an "empty sign" gaining meaning only in social context, not through self-reference.'},
+  {year:1976,cat:'theory',title:'"Art as Contextual Art" — The Manifesto',text:'Publishes the 12 Points of Contextual Art in Lund, Sweden. Exhibits with Polish artists at St. Petri Gallery.',exp:'The foundational document of contextual art. Core formula: Object "O" assumes meaning "m" at time "t," in place "p," in situation "s," in relation to person/persons "o" — if and only then. The accompanying exhibition featured artists of Galeria Sztuki Najnowszej, Wrocław (Anna Kutera, Romuald Kutera, Lech Mrożek), the Warsaw Seminar circle (with Zbigniew Dłubak), the Film Form Workshop from Łódź (Józef Robakowski, Wojciech Bruszewski, Ryszard Waśko), and Henryk Gajewski of Remont Gallery.',highlight:true},
+  {year:1976,cat:'event',title:'Toronto Debate with Kosuth',text:'At CEAC conference "In the Context of the Art World," Świdziński publicly critiques Kosuth\'s tautological model.',exp:'Organized by Amerigo Marras of the Centre for Experimental Art and Communication; participants included Joseph Kosuth, Sarah Charlesworth, Carole Condé, Anthony McCall, Hervé Fischer, and Canadian artists and theorists. Świdziński argued art is an "empty sign" gaining meaning only in social context, not through self-reference.'},
   {year:1977,cat:'event',title:'Warsaw International Conference',text:'Hosts "Art Activity in the Context of Reality" at Remont Gallery — participants from 35 countries.',exp:'Signed agreements between Polish contextual art, French Art Sociologique, American Art and Language, and Latin American artists. Government authorities responded harshly, viewing the extensive foreign contact as threatening.'},
-  {year:1977,cat:'event',title:'"Third Front Against New York" — Paris',text:'Art Sociologique conference in Paris. Joint declaration against New York art world hegemony.',exp:'Organized by Collectif Art Sociologique. Participants included Świdziński, Emil Cieślar from Poland, Dyson and Woodrow from Canada, and British artists Lorraine Leeson and Peter Dunn.'},
-  {year:1979,cat:'art',title:'"We Always Talk About Man"',text:'Exhibition at Mała Galeria, Warsaw — single photograph with philosophical text.',exp:'Published "Art, Society and Self-consciousness" in Calgary, Canada. The work demonstrates how minimal material (one photograph) gains complex meaning through contextual framing.'},
-  {year:1987,cat:'theory',title:'"Freedom and Limitation"',text:'Published in Calgary. Documents Polish village life on the Soviet border.',exp:'Photographs as "symptoms of reality" — documenting despair and limitation in border villages, the artist presents not description but contextual evidence of human condition under political constraint.'},
+  {year:1977,cat:'event',title:'"Third Front Against New York" — Paris',text:'Conference "Art et Transformation Sociale" in Paris (10–13 May). Joint declaration against New York art world hegemony.',exp:'Organized by the Collectif Art Sociologique. Participants included Świdziński and Emil Cieślar from Poland, Brian Dyson and Paul Woodrow from Canada, and the British artists Loraine Leeson and Peter Dunn. The joint declaration announced a "third front in art against New York."'},
+  {year:1979,cat:'art',title:'"We Always Talk About Man"',text:'Exhibition "Stale mówimy o człowieku" opens at Mała Galeria, Warsaw (26 June) — a photograph of a crowd joined with philosophical text.',exp:'Its text began: "Always we talk about man, but don\'t talk about man, just talk to man." The same year "Art, Society and Self-consciousness" was published by the Alberta College of Art Gallery in Calgary, Canada. The work demonstrates how minimal material gains complex meaning through contextual framing.'},
+  {year:1987,cat:'theory',title:'"Freedom and Limitation"',text:'Publishes "Freedom and Limitation — The Anatomy of Post-modernism" in Calgary (Syntax, edited by Brian Dyson).',exp:'Three years earlier, the related photographic cycle "Wolność i ograniczenie" (Freedom and Limitation, Mała Galeria, 1984) had documented a Polish village on the Soviet border. Photographs as "symptoms of reality" — the artist presents not description but contextual evidence of the human condition under political constraint.'},
+  {year:1989,cat:'life',title:'President of Artists of the Other Arts',text:'Appointed President of the Artists of the Other Arts Association.',exp:'That April, the exhibition "Jestem z powrotem" (I\'m Back) at Mała Galeria marked his return from the United States. The fall of communism transforms the context of Polish art entirely.'},
   {year:1990,cat:'event',title:'Interscop International Festival',text:'Major international performance festival in Łucznica, organized by Świdziński.',exp:'Also participated in Première Biennale d\'Art Actuel in Québec and Interaction International Performance Festival in France in the same year.'},
-  {year:1989,cat:'life',title:'President of Artists of the Other Arts',text:'Appointed President of the Artists of the Other Arts Association.',exp:'The fall of communism transforms the context of Polish art entirely. Galleries suppressed under martial law begin to reopen.'},
-  {year:1994,cat:'art',title:'"It\'s OK" — Gulf War Photography',text:'Exhibition using Gulf War press photography with artistic interventions.',exp:'Demonstrates how identical images carry radically different meanings depending on context: news desk, art gallery, personal memory. The "empty sign" principle in action.'},
-  {year:1996,cat:'event',title:'Interakcje Festival Begins',text:'Performance art festival in Piotrków Trybunalski — became a recurring annual event through 2004.',exp:'Also performed at 9 Dragons\' Heads Festival in South Korea and AnnART Festival in Romania.'},
-  {year:1997,cat:'theory',title:'"Art is a Fact"',text:'Poster manifesto for 20th anniversary of contextual art. Syntax Arts Society, Calgary.',exp:'"Art neither builds nor destroys; it is one of many productive activities participating in ongoing change. Those engaging with art today resemble tourists who stop briefly, meet others from different cultures, exchange remarks, then continue their journey."'},
-  {year:1998,cat:'art',title:'"Anomia"',text:'Work exploring Durkheim\'s concept of anomie — social disconnection and breakdown of norms.',exp:'Conversations in small venues documenting "state of social misunderstanding" — people talking without genuine understanding. Uses minimal gestures and sparse performance to expose communication breakdown.'},
+  {year:1994,cat:'art',title:'"It\'s OK" — Gulf War Photography',text:'Exhibition "W porządku" (It\'s OK) at Mała Galeria, Warsaw and BWA Lublin — Gulf War press photography with artistic interventions.',exp:'A famous Newsweek war photograph underwent interventions showing, in Grzegorz Borkowski\'s words, the "gradual transformation of disaster documentation into increasingly abstract sign." Identical images carry radically different meanings depending on context — the "empty sign" principle in action.'},
+  {year:1996,cat:'event',title:'Performances in Korea and Romania',text:'Performs at the 9 Dragons\' Heads Festival in South Korea and the AnnART Festival in Romania.',exp:'Also that year: "Second Hand" at Dziekanka Gallery, Warsaw. The decade brought further festival appearances from Vilnius ("Dimension 0," 1997) to Mexico City (Ex Teresa, 1998).'},
+  {year:1997,cat:'theory',title:'"Art is a Fact"',text:'Poster manifesto for 20th anniversary of contextual art. Syntax Arts Society, Calgary.',exp:'"Notions such as art, artist, the world of art, function only as convenient identifiers which are useful only so long as they can serve in a given situation." Art neither builds nor destroys — those engaging with it resemble tourists who stop briefly, meet travellers from other cultures, exchange remarks, then continue their journey. Polish translation by B. Łukasiewicz.'},
+  {year:1998,cat:'art',title:'"Anomia"',text:'Exhibition "Anomia" at Stara Galeria, Lublin (May) — on Durkheim\'s concept of anomie: the breakdown of commonly accepted norms.',exp:'Enlarged amateur photographs of people leaning toward one another in conversation — the old gesture of Santa Conversazione, now a simulacrum: people talk without genuine understanding. Minimal gestures and sparse performance expose the breakdown of shared meaning.'},
+  {year:1999,cat:'event',title:'Interakcje Festival, Piotrków Trybunalski',text:'The International Art Festival Interakcje is founded — Świdziński serves as its curator and president from 1999.',exp:'Initiated by Ryszard Piegza with Stanisław Piotr Gajda and Gordian Piec, Interakcje has been held in Piotrków Trybunalski every year since 1999 and remains Poland\'s longest-running performance art festival. Świdziński performed at every edition from 1999 to 2004.'},
   {year:2003,cat:'art',title:'International Asian Performances',text:'Performs at Asiatopia Festival (Bangkok) and Lange Atem Festival (Essen, Münster).',exp:'One of his final major international performance tours. Also continued performing at Interakcje and Navinki (Minsk) festivals.'},
-  {year:2005,cat:'life',title:'Polonia Restituta Order',text:'Awarded for contribution to the development and promotion of Polish culture.',exp:'Recognition came after decades of international teaching (Paris, Montreal, New York, Calgary, Vancouver) and organizing major conferences and performance festivals.'},
-  {year:2006,cat:'event',title:'"In the Context of Art / Differences" Festival',text:'First festival explicitly dedicated to contextual art. Co-created with Jan Lubicz Przyłuski.',exp:'Connected to "The Differences" documentary film — Przyłuski\'s directorial debut, created in collaboration with Świdziński. Przyłuski also launched the Art of Action Archives (ASA) this year.'},
-  {year:2009,cat:'event',title:'Polish Publications & CSW Symposium',text:'Two books published in Polish: "Sztuka i jej kontekst" and "Sztuka, społeczeństwo, samoświadomość." Symposium at CSW Ujazdowski Castle.',exp:'Panelists: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz, Małgorzata Butterwick. "In Context Now" conference held in Radom. Also: Jan Lubicz Przyłuski creates filmed conversation "Jesteśmy zaplątani" (We Are Entangled) with Świdziński at the artist\'s Warsaw studio.'},
-  {year:2014,cat:'life',title:'Death in Warsaw',text:'Jan Świdziński dies on February 9, 2014 in Warsaw.',exp:'His legacy: a body of theory and practice arguing that art gains meaning only through pragmatic context — time, place, situation, and persons involved. The contextual art movement he founded continues to influence contemporary art discourse.'},
-  {year:2014,cat:'event',title:'CSW Ujazdowski Castle Retrospective',text:'Major posthumous exhibition at the Centre for Contemporary Art in Warsaw.',exp:'One of the most significant presentations of Świdziński\'s work. 24+ documented installation photographs. The exhibition consolidated his legacy as the leading figure of Polish post-conceptual art.'},
+  {year:2005,cat:'life',title:'Polonia Restituta Order',text:'Awarded the Officer\'s Cross of the Order of Polonia Restituta (May 2005) for contribution to the development and promotion of Polish culture.',exp:'Recognition came after decades of international teaching (Paris, Montreal, New York, Calgary, Vancouver) and organizing major conferences and performance festivals. The same year, "L\'Art et son Contexte" appeared in Québec.'},
+  {year:2006,cat:'event',title:'"In the Context of Art / Differences" Festival',text:'First festival explicitly dedicated to contextual art, held in Warsaw in October 2006 (and again in 2007). Co-created with Jan Lubicz Przyłuski.',exp:'Performers included Zbigniew Warpechowski, Ewa Zarzycka, Janusz Bałdyga and Przemysław Kwiek, with guests from Israel, Italy, France, Canada, and beyond. Connected to "Różnice" (The Differences) — Przyłuski\'s first documentary film, dedicated to Świdziński. Przyłuski also began the Art of Action Archive (Archiwum Sztuki Akcji, ASA) around this time.'},
+  {year:2009,cat:'event',title:'Polish Publications & CSW Symposium',text:'Two books published in Polish: "Sztuka i jej kontekst" and "Sztuka, społeczeństwo, samoświadomość." Symposium at CSW Ujazdowski Castle.',exp:'Panelists: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz, and Małgorzata Butterwick; moderated by Grzegorz Borkowski (16 December 2009). The "In Context Now" symposium was held in Radom, its proceedings published as "Global Communication."'},
+  {year:2010,cat:'art',title:'"In My Context" at CSW Ujazdowski Castle',text:'Exhibition "W moim kontekście. Wybrane działania z fotografią i tekstem" (In My Context: Selected Actions with Photography and Text) at the Centre for Contemporary Art in Warsaw.',exp:'On view until 28 February 2010; an expanded version, accompanied by a theoretical symposium, followed at Galeria Labirynt in Lublin. On 24 June 2010 — his name day — the evening "Evening in the Context," held within The Knot project at Galeria Nizio, presented Jan Lubicz Przyłuski\'s filmed conversation with the artist, "Jesteśmy zaplątani" (We Are Entangled).'},
+  {year:2014,cat:'life',title:'Death in Warsaw',text:'Jan Świdziński dies on February 9, 2014 in Warsaw.',exp:'He was buried at the Powązki Military Cemetery in Warsaw. His legacy: a body of theory and practice arguing that art gains meaning only through pragmatic context — time, place, situation, and persons involved. The contextual art movement he founded continues to influence contemporary art discourse.'},
 ];
 
 // ═══════════════════════════════════════════
@@ -519,7 +520,7 @@ const people = [
    concepts:['Contextual Art','Empty Sign','12 Points','Pragmatic Context']},
   {id:'kosuth',name:'Joseph Kosuth',dates:'1945–',x:.18,y:.28,r:26,color:'#e05555',group:'conceptual',
    bio:'American conceptual artist. "Art as Idea as Idea." Art as analytical proposition, tautological self-reference.',
-   quote:'The artist, like the analyst, is not directly concerned with the physical properties of things.',
+   quote:'A work of art is a tautology in that it is a presentation of the artist\'s intention, that is, he is saying that that particular work of art is art, which means, is a definition of art.',
    concepts:['Art after Philosophy','Tautology','Analytical Proposition']},
   {id:'wittgenstein',name:'Ludwig Wittgenstein',dates:'1889–1951',x:.35,y:.12,r:22,color:'#55a580',group:'philosophy',
    bio:'Late-period philosophy of language games and forms of life. Key influence on both conceptualism and contextualism.',
@@ -530,22 +531,21 @@ const people = [
    quote:'The only principle that does not inhibit progress is: anything goes.',
    concepts:['Against Method','Incommensurability','Epistemological Anarchism']},
   {id:'fischer',name:'Hervé Fischer',dates:'1941–',x:.82,y:.35,r:20,color:'#c490e0',group:'parallel',
-   bio:'French artist, founder of Art Sociologique. Parallel movement to contextual art, allied at 1977 Warsaw conference.',
-   quote:'Art must question social reality rather than decorate it.',
+   bio:'French-born artist and theorist, co-founder of the Collectif Art Sociologique (1974, with Fred Forest and Jean-Paul Thénot). A movement parallel to contextual art, allied at the 1977 conferences in Warsaw and Paris.',
    concepts:['Art Sociologique','Social Practice']},
   {id:'dlubak',name:'Zbigniew Dłubak',dates:'1921–2005',x:.28,y:.55,r:18,color:'#e0a040',group:'polish',
-   bio:'Polish photographer and conceptual artist. Key collaborator in Warsaw Seminary with Świdziński.',
-   concepts:['Photography as Art','Warsaw Seminary','Conceptual Photography']},
+   bio:'Polish photographer and conceptual artist. Key collaborator of Świdziński in the Warsaw Seminar (Seminarium Warszawskie).',
+   concepts:['Photography as Art','Warsaw Seminar','Conceptual Photography']},
   {id:'kutera',name:'Anna & Romuald Kutera',dates:'active 1970s–',x:.42,y:.65,r:16,color:'#e0a040',group:'polish',
-   bio:'Polish artists from Sztuka Najnowsza Gallery, Wrocław. Exhibited with Świdziński in Lund 1976.',
-   concepts:['Performance','Sztuka Najnowsza','Polish Avant-garde']},
+   bio:'Polish artists of Galeria Sztuki Najnowszej, Wrocław. Exhibited with Świdziński in Lund, 1976.',
+   concepts:['Performance','Galeria Sztuki Najnowszej','Polish Avant-garde']},
   {id:'gajewski',name:'Henryk Gajewski',dates:'1948–',x:.6,y:.6,r:16,color:'#e0a040',group:'polish',
-   bio:'Polish artist from Remont Gallery, Warsaw. Participated in contextual art exhibitions and conferences.',
-   concepts:['Remont Gallery','Performance','Installation']},
-  {id:'guzek',name:'Łukasz Guzek',dates:'scholar',x:.72,y:.55,r:16,color:'#8090c0',group:'scholar',
+   bio:'Founder and director of Remont Gallery, Warsaw (1972–1979); organizer of Poland\'s first performance art festival, I AM (1978). Took part in contextual art exhibitions and conferences.',
+   concepts:['Remont Gallery','Performance','I AM Festival']},
+  {id:'guzek',name:'Łukasz Guzek',dates:'art historian',x:.72,y:.55,r:16,color:'#8090c0',group:'scholar',
    bio:'Art historian analyzing contextual art in relation to Bourriaud\'s relational aesthetics and documentation theory.',
    concepts:['Documentation','Relational Aesthetics','Art History']},
-  {id:'ronduda',name:'Łukasz Ronduda',dates:'scholar',x:.15,y:.68,r:16,color:'#8090c0',group:'scholar',
+  {id:'ronduda',name:'Łukasz Ronduda',dates:'art historian & curator',x:.15,y:.68,r:16,color:'#8090c0',group:'scholar',
    bio:'Author of comprehensive analysis of contextual art as response to globalization and post-modern practice.',
    concepts:['Post-conceptualism','Globalization','Polish Art History']},
   {id:'duchamp',name:'Marcel Duchamp',dates:'1887–1968',x:.5,y:.15,r:22,color:'#999',group:'precursor',
@@ -559,7 +559,7 @@ const graphConnections = [
   {from:'swidzinski',to:'wittgenstein',label:'Influence: late Wittgenstein (meaning as use)',s:2},
   {from:'swidzinski',to:'feyerabend',label:'Epistemological influence',s:2},
   {from:'swidzinski',to:'fischer',label:'Allied movement (Art Sociologique)',s:2},
-  {from:'swidzinski',to:'dlubak',label:'Warsaw Seminary collaborator',s:2},
+  {from:'swidzinski',to:'dlubak',label:'Warsaw Seminar collaborator',s:2},
   {from:'swidzinski',to:'kutera',label:'Lund 1976 exhibition',s:1},
   {from:'swidzinski',to:'gajewski',label:'Remont Gallery collaborator',s:1},
   {from:'swidzinski',to:'guzek',label:'Scholarly analysis',s:1},
@@ -625,7 +625,7 @@ const textsData = [
    ]},
   {id:'o70',title:'About the 1970s (O latach 70-tych)',year:1996,type:'Essay',
    sections:[
-    {h:'',t:'The 1970s art scene in Poland was a reaction to "total shame of reality" and "paranoia." The period witnessed unprecedented artistic activity: numerous groups, independent galleries like Galeria Sztuki Najnowsza in Wrocław, Labirynt in Lublin, operating without government cultural officials.'},
+    {h:'',t:'The 1970s art scene in Poland was a reaction to "total shame of reality" and "paranoia." The period witnessed unprecedented artistic activity: numerous groups, independent galleries like Galeria Sztuki Najnowszej in Wrocław, Labirynt in Lublin, operating without government cultural officials.'},
     {h:'',t:'Artists united around rejecting intermediaries — "ambiguous signs, symbols, allegories, metaphors, ideologies, propaganda, fiction, utopias, visions" — seeking instead immediate reality presented as "real-time here and now."'},
     {h:'',t:'The central problem: how to escape Duchamp\'s "Dadaist trap," where anything could theoretically be art, leaving no meaningful criteria. Rather than seeking art\'s essence internally, meaning must be found in external conditions — context.'},
     {h:'',t:'For contemporary strategy, art becomes "performance" — not performance art, but "art\'s performance" — as one force among many within accelerating cultural change. Art no longer makes declarations; it simply acts as a component within broader processes.'},
@@ -649,7 +649,7 @@ const textsData = [
    sections:[
     {h:'',t:'Contextual art discovered by Jan Świdziński translates into reality. It denies the existence of one reality and propagates their multiplicity. Like Giordano Bruno, who was burned at the stake for claiming the plurality of worlds, Świdziński went deeply into linguistic and semiotic analyses to prove that pluralist logic is the logic of our times.'},
     {h:'',t:'Thanks to Jan Świdziński\'s contextual art, the world of art became a plurality of worlds and a space of infinite creative possibilities. The 1976 "Manifest of Contextual Art" published in Lund, Sweden, found its practical equivalent in performance art and action art — forms of direct contact with audiences in shared contexts of time, place, and situation.'},
-    {h:'',t:'Filmed conversation with Świdziński at the artist\'s Warsaw studio, created for "Imieniny Jana" (Jan\'s Nameday) event at Galeria Nizio, Warsaw. Produced in collaboration with Kuba Szreder. Part of the Art of Action Archives (ASA) collection — preserving documentation of artists working in the contextual art tradition.'},
+    {h:'',t:'Filmed conversation with Świdziński at the artist\'s Warsaw studio, created for "Imieniny Jana" (Jan\'s Name Day) — the "Evening in the Context" held on 24 June 2010 at Galeria Nizio, Warsaw, within The Knot project, in collaboration with Kuba Szreder. Part of the Art of Action Archive (Archiwum Sztuki Akcji, ASA) — preserving documentation of artists working in the contextual art tradition.'},
    ]},
 ];
 
@@ -700,10 +700,11 @@ const concepts = [
 // ═══════════════════════════════════════════
 const biblioData = {
   books: [
-    {title:'Art as Contextual Art',year:1976,place:'Lund, Sweden',type:'Manifesto / Book',note:'First publication of the 12 Points. Published at St. Petri Gallery during exhibition of Polish artists.'},
+    {title:'Art as Contextual Art',year:1976,place:'Lund, Sweden',type:'Manifesto / Book',note:'First publication of the 12 Points. Edited by Jean Sellem; published at Galerie S:t Petri during an exhibition of Polish artists.'},
+    {title:'Sztuka jako sztuka kontekstualna (Art as Contextual Art)',year:1977,place:'Warsaw, Poland',type:'Book (Polish)',note:'Collection of texts on contextual art theory, published by Remont Gallery, Warsaw.'},
     {title:'Art, Society and Self-consciousness',year:1979,place:'Calgary, Canada',type:'Book',note:'Published by Alberta College of Art Gallery. Comprehensive theoretical framework.'},
-    {title:'Freedom and Limitation — The Anatomy of Post-modernism',year:1987,place:'Calgary, Canada',type:'Book',note:'Documents Polish village life on the Soviet border. Photography as "symptoms of reality."'},
-    {title:'Quotations on Contextual Art',year:1988,place:'Eindhoven, Netherlands',type:'Book',note:'Published by Het Apollohuis. Includes documentation of the 1976 Toronto debate with Kosuth.'},
+    {title:'Freedom and Limitation — The Anatomy of Post-modernism',year:1987,place:'Calgary, Canada',type:'Book',note:'Edited by Brian Dyson; published by Syntax, Calgary. A theoretical anatomy of post-modernism, sharing its title with the 1984 photographic cycle "Wolność i ograniczenie."'},
+    {title:'Quotations on Contextual Art',year:1988,place:'Eindhoven, Netherlands',type:'Book',note:'Edited by Michael Gibbs; published by Het Apollohuis.'},
     {title:'L\'Art et son Contexte',year:2005,place:'Québec, Canada',type:'Book',note:'French-language edition of contextual art theory.'},
     {title:'Sztuka i jej kontekst (Art and Its Context)',year:2009,place:'Poland',type:'Book (Polish)',note:'Polish compilation of theoretical writings. Presented at CSW Ujazdowski Castle symposium.'},
     {title:'Sztuka, społeczeństwo, samoświadomość (Art, Society, Self-consciousness)',year:2009,place:'Poland',type:'Book (Polish)',note:'Polish translation of the 1979 Calgary publication.'},
@@ -719,30 +720,30 @@ const biblioData = {
     {title:'Poglądy — Konsekwencje (Views — Consequences)',year:1983,publication:'BWA Łomża catalog',note:'Personal views on art\'s function and the inseparability of artistic and personal identity.'},
   ],
   scholarly: [
-    {author:'Kazimierz Piotrowski',title:'Hommage à Jan Świdziński',year:2005,note:'Monumental essay (13,000+ words). Comprehensive defense of contextual art as post-conceptual doctrine. Analyzes the linguistic turn, intensionality, and Świdziński\'s critique of Kosuth\'s tautological model. Essential reading for understanding contextual art\'s philosophical foundations.'},
-    {author:'Łukasz Ronduda',title:'Flexibility Makes Our Existence Possible: On Contextual Art',year:2008,note:'Published in Art Margins. Comprehensive analysis positioning contextual art as response to globalization and post-modern practice addressing accelerated civilizational change.'},
+    {author:'Kazimierz Piotrowski',title:'Hommage à Jan Świdziński',year:2005,note:'Monumental essay (dated 21 January 2005). Comprehensive defense of contextual art as post-conceptual doctrine. Analyzes the linguistic turn, intensionality, and Świdziński\'s critique of Kosuth\'s tautological model. Essential reading for understanding contextual art\'s philosophical foundations.'},
+    {author:'Łukasz Ronduda',title:'Flexibility Makes Our Existence Possible: The Contextual Art of Jan Świdziński',year:2008,note:'Published in ArtMargins (10 September 2008). Comprehensive analysis positioning contextual art as response to globalization and post-modern practice addressing accelerated civilizational change.'},
     {author:'Łukasz Guzek',title:'Co stanowi kontekst sztuki? (What Constitutes the Context of Art?)',year:null,note:'Published on Obieg.pl. Compares contextual art with Nicolas Bourriaud\'s relational aesthetics. Analyzes documentation as communication problem.'},
     {author:'Bartosz Łukasiewicz',title:'Kilka dogmatów kontekstualizmu (Several Dogmas of Contextualism)',year:null,note:'Published on Obieg.pl. Critical examination questioning universal applicability of contextual art formula.'},
-    {author:'Kazimierz Piotrowski',title:'Debata w Toronto 1976 — nieistotność jako kategoria epistemologiczna',year:null,note:'Analysis of the Toronto debate, non-monotonic logic, and irrelevance as epistemological category.'},
-    {author:'Grzegorz Borkowski',title:'On Świdziński\'s Photographic Practices',year:null,note:'Analysis of photography\'s role in contextual art and performance.'},
-    {author:'Eulalia Domanowska',title:'Interview: Logical Models in Contextual Art',year:null,note:'Explores binary, three-value, and game logic in contextual art theory.'},
-    {author:'Jan Lubicz Przyłuski',title:'Jesteśmy zaplątani (We Are Entangled)',year:2010,note:'Filmed conversation with Jan Świdziński. Created for "Imieniny Jana" event at Galeria Nizio, Warsaw. Documents Świdziński\'s theoretical impact and personal artistic philosophy.'},
-    {author:'Jan Lubicz Przyłuski',title:'Sztuka Akcji: Dziesięć zdarzeń w Polsce (Art of Action: Ten Events in Poland)',year:2007,note:'Published by Bałtycka Galeria Sztuki Współczesnej, Słupsk. ISBN 978-83-922414-9-2. Awarded by Polish Ministry of Culture. Covers Polish performative art history 1950-1980.'},
+    {author:'Kazimierz Piotrowski',title:'Debata "In the Context of the Art World". Jan Świdziński w Toronto 1976',year:2010,note:'Published on Obieg.pl. Analysis of the Toronto debate, monotonic and non-monotonic thinking, and irrelevance as an epistemological category.'},
+    {author:'Grzegorz Borkowski',title:'Jana Świdzińskiego działania z fotografią (Jan Świdziński\'s Actions with Photography)',year:2003,note:'Published in Fototapeta (1/2003). Analysis of photography\'s role in contextual art and performance.'},
+    {author:'Eulalia Domanowska',title:'Sztuka kontekstualna — rozmowa z Janem Świdzińskim (Contextual Art — A Conversation)',year:'1995/96',note:'Published in "art newsletter" (PGS Sopot). Explores binary, three-value, and game logic in contextual art theory.'},
+    {author:'Jan Lubicz Przyłuski',title:'Jesteśmy zaplątani (We Are Entangled)',year:2010,note:'Filmed conversation with Jan Świdziński. Created for the "Imieniny Jana" evening within The Knot project at Galeria Nizio, Warsaw (24 June 2010). Documents Świdziński\'s theoretical impact and personal artistic philosophy.'},
+    {author:'Jan Lubicz Przyłuski',title:'Sztuka akcji: dziesięć zdarzeń w Polsce (Art of Action: Ten Events in Poland)',year:2007,note:'Published by Bałtycka Galeria Sztuki Współczesnej, Słupsk. ISBN 978-83-922414-9-2. Ten landmark events in the history of Polish action art.'},
   ],
   interviews: [
-    {interviewer:'Adam Mazur',title:'Interview with Jan Świdziński',year:2001,publication:'Fototapeta',note:'Extensive autobiographical conversation covering Warsaw artistic circles, Remont Gallery, Small Gallery founding, international conferences, martial law effects, and American residencies.'},
-    {interviewer:'Bartosz Łukasiewicz',title:'Interview on Contextual Art',year:null,publication:'swidzinski.art.pl',note:'Discussion of pragmatic vs. theoretical dimensions of contextualism.'},
+    {interviewer:'Adam Mazur',title:'Miało być pięknie i optymistycznie (It Was Supposed to Be Beautiful and Optimistic)',year:2001,publication:'Fototapeta',note:'Extensive autobiographical conversation (30 March 2001) covering Warsaw artistic circles, Remont Gallery, Mała Galeria founding, international conferences, martial law effects, and American residencies.'},
+    {interviewer:'Bartosz Łukasiewicz',title:'Kilka uwag o sztuce jako sztuce kontekstualnej (A Few Remarks on Art as Contextual Art)',year:2006,publication:'Sztuka i Filozofia',note:'Extended conversation (June 2005) on the pragmatic and theoretical dimensions of contextualism.'},
   ],
   citedPhilosophy: [
     'A. Church — Introduction to Mathematical Logic (1944)',
-    'J. Hintikka — Knowledge and Beliefs (1962)',
+    'J. Hintikka — Knowledge and Belief (1962)',
     'W.v.O. Quine — "Reference and Modality" (1966)',
-    'L. Aqvist — A New Approach to the Logical Theory of Interrogatives (1965)',
+    'L. Åqvist — A New Approach to the Logical Theory of Interrogatives (1965)',
     'R. Barthes — Le Degré Zéro de l\'Écriture (1964)',
     'M. Foucault — Les Mots et les Choses (1966)',
     'N. Chomsky — Syntactic Structures (1957)',
     'J. Kristeva — "Sémanalyse et production de sens" (1972)',
-    'A. Tarski — Logic, Semantics, Mathematics (1956)',
+    'A. Tarski — Logic, Semantics, Metamathematics (1956)',
     'P. Feyerabend — Against Method (1975)',
     'K. Gödel — On Formally Undecidable Propositions (1931)',
     'A. Malraux — Le Musée Imaginaire (1948)',
@@ -756,14 +757,14 @@ const festivalsData = {
   organized: [
     {name:'Art Activity in the Context of Reality',year:1977,place:'Remont Gallery, Warsaw',desc:'International conference of artists and theorists from 35 countries. Signed agreements between Polish contextual art, French Art Sociologique, Art and Language, and Latin American artists.'},
     {name:'Interscop International Festival',year:1990,place:'Łucznica, Poland',desc:'International performance festival organized by Świdziński.'},
-    {name:'Real Time — Story Telling International Performance Art Festival',year:1993,place:'Sopot, Poland',desc:'International performance art festival. Later editions held at Grodzka Gallery, Lublin.'},
-    {name:'Interakcje International Art Festival',year:'1996–2004',place:'Piotrków Trybunalski, Poland',desc:'Recurring international performance art festival. Editions documented: 1996, 1999, 2000, 2001, 2002, 2003, 2004.'},
-    {name:'In the Context of Art / Differences',year:2006,place:'Poland',desc:'First festival explicitly dedicated to contextual art. Co-created with Jan Lubicz Przyłuski. Connected to "The Differences" documentary film.'},
+    {name:'Real Time — Story Telling International Performance Art Festival',year:1991,place:'Sopot, Poland',desc:'International performance art festival; the 1993 edition was held at Grodzka Gallery, Lublin.'},
+    {name:'Interakcje International Art Festival',year:'1999–2004',place:'Piotrków Trybunalski, Poland',desc:'Founded in 1999 on the initiative of Ryszard Piegza, with Stanisław Piotr Gajda and Gordian Piec. Świdziński served as the festival\'s curator and president from 1999 and performed at every edition from 1999 to 2004.'},
+    {name:'In the Context of Art / Differences',year:'2006–2007',place:'Warsaw, Poland',desc:'First festival explicitly dedicated to contextual art, held in October 2006 and again in 2007. Co-created with Jan Lubicz Przyłuski. Connected to "Różnice" (The Differences) documentary film.'},
   ],
   participated: [
     {name:'F-Art Counterculture Festival',year:1975,place:'Gdańsk',desc:'First presentation of contextual art theses. Jean Sellem attended and later organized the Lund exhibition.'},
-    {name:'CEAC Conference: In the Context of the Art World',year:1976,place:'Toronto, Canada',desc:'Public debate with Joseph Kosuth, Sarah Charlesworth, Hervé Fischer, Amerigo Marras.'},
-    {name:'Art Sociologique Conference — "Third Front Against New York"',year:1977,place:'Paris, France',desc:'Joint declaration with Collectif Art Sociologique against New York art world hegemony.'},
+    {name:'CEAC Conference: In the Context of the Art World',year:1976,place:'Toronto, Canada',desc:'Public debate with Joseph Kosuth, Sarah Charlesworth, Carole Condé, Anthony McCall, and Hervé Fischer, organized by Amerigo Marras of CEAC.'},
+    {name:'"Art et Transformation Sociale" — Third Front Conference',year:1977,place:'Paris, France',desc:'Conference of the Collectif Art Sociologique (10–13 May 1977); joint declaration of a "third front in art against New York."'},
     {name:'Espaces Affranchis Festival',year:1989,place:'Danaé Foundation, Paris',desc:'International performance festival.'},
     {name:'Interaction International Performance Festival',year:1990,place:'France',desc:'International performance festival.'},
     {name:'Première Biennale d\'Art Actuel',year:1990,place:'Québec, Canada',desc:'First biennial of contemporary art in Quebec.'},
@@ -780,9 +781,10 @@ const festivalsData = {
     {name:'European Performance Art Festival',year:2006,place:'CSW Ujazdowski Castle, Warsaw',desc:'Major European festival at the Centre for Contemporary Art.'},
   ],
   posthumous: [
-    {name:'Jan Świdziński Exhibition',year:2014,place:'CSW Ujazdowski Castle, Warsaw',desc:'Major retrospective exhibition at the Centre for Contemporary Art. 24+ documented installation photographs. One of the most significant posthumous presentations of Świdziński\'s work.'},
-    {name:'Symposium: "In Context Now"',year:2009,place:'Radom, Poland',desc:'Conference on contextual art\'s contemporary relevance. Held alongside publication of Polish editions of Świdziński\'s books.'},
-    {name:'Academic Discussion at CSW',year:2009,place:'CSW Ujazdowski Castle, Warsaw',desc:'December 16, 2009. Panelists: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz, Małgorzata Butterwick. Discussion of Świdziński\'s books "Art, Society and Self-consciousness" and "Art and Its Context."'},
+    {name:'Symposium: "In Context Now"',year:2009,place:'Radom, Poland',desc:'Conference on contextual art\'s contemporary relevance, held alongside the publication of Polish editions of Świdziński\'s books; its proceedings were published as "Global Communication."'},
+    {name:'Academic Discussion at CSW',year:2009,place:'CSW Ujazdowski Castle, Warsaw',desc:'December 16, 2009. Panelists: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz, and Małgorzata Butterwick; moderated by Grzegorz Borkowski. Discussion of Świdziński\'s books "Art, Society and Self-consciousness" and "Art and Its Context."'},
+    {name:'"In My Context" — Exhibition at CSW',year:2010,place:'CSW Ujazdowski Castle, Warsaw',desc:'"W moim kontekście. Wybrane działania z fotografią i tekstem" (In My Context: Selected Actions with Photography and Text), on view until 28 February 2010; an expanded version with a theoretical symposium followed at Galeria Labirynt, Lublin.'},
+    {name:'Filmoteka & Polish Performance Archive',year:'ongoing',place:'Museum of Modern Art in Warsaw',desc:'Świdziński\'s film documentation and performances are preserved in the Museum\'s Filmoteka and the Polish Performance Archive, keeping his work available to researchers and the public.'},
   ],
 };
 
@@ -831,13 +833,13 @@ const quizData = [
    correct:1, exp:'The universal model assumes signs are transparent, allowing direct access to reality. Leonardo da Vinci: "First learn theory, then apply practice born from theory." The artist\'s language is not self-referential.'},
   {cat:'Events',q:'The Centre for Experimental Art and Communication (CEAC) in Toronto hosted:',
    opts:['A retrospective exhibition of Świdziński\'s paintings from the Semantic Signs period (1952-1962)','A 1976 conference where Świdziński debated Kosuth and artists from multiple international movements participated','The first public reading of Świdziński\'s "Art is a Fact" poster manifesto in English translation','A collaborative workshop where Polish and Canadian artists created the first contextual art installation'],
-   correct:1, exp:'The CEAC organized the 1976 conference "In the Context of the Art World" with participation from Art Sociologique, Art and Language, Artist Meeting for Social Change, and the Fox group.'},
+   correct:1, exp:'The CEAC organized the 1976 conference "In the Context of the Art World" with participation from Art Sociologique, Art & Language, Artists Meeting for Cultural Change, and the circle of The Fox journal.'},
   {cat:'Core Theory',q:'Świdziński\'s claim that "art is part of life" specifically means:',
    opts:['Art should depict everyday scenes and ordinary people in realistic representational styles','Art functions as one of many productive activities participating in ongoing change, with no independent existence separate from lived reality','Art therapies and community workshops are the highest form of artistic achievement in the modern world','Artists must abandon studio practice and work exclusively in public spaces among ordinary citizens'],
    correct:1, exp:'From "Art is a Fact" (1997): "Art is not similar to life — it is part of it. It is neither natural nor artificial. It is what it happens to be." Art as productive activity, not autonomous domain.'},
   {cat:'Philosophy',q:'Świdziński invokes Gödel\'s incompleteness theorem to argue that:',
    opts:['Art can be reduced to a complete set of mathematical axioms if we find the right formal system','Autonomous self-explaining art systems (like Kosuth\'s conceptualism) are inherently impossible to construct','All artistic statements are either true or false, and formal logic can determine which category applies','Mathematics and art are fundamentally identical disciplines with the same truth criteria'],
-   correct:1, exp:'Just as Gödel proved that self-consistent formal systems cannot be both complete and consistent, Świdziński argues that autonomous formalistic art systems cannot be built — art must acknowledge its dependence on external reality.'},
+   correct:1, exp:'Gödel showed that a sufficiently rich formal system cannot be both complete and consistent; Świdziński argues by analogy that autonomous, self-explaining art systems cannot be built — art must acknowledge its dependence on external reality.'},
   {cat:'Practice',q:'The concept of "anomia" in Świdziński\'s 1998 work refers to:',
    opts:['A formal art technique involving the removal of names and titles from exhibited artworks','A state where commonly accepted social norms cease functioning, producing genuine misunderstanding between people','A logical paradox in which an artwork simultaneously affirms and denies its own status as art','A performance method using anonymity to eliminate the artist\'s identity from the creative process'],
    correct:1, exp:'Drawing on Durkheim\'s sociological concept, anomia describes a state of social disconnection. Świdziński documented conversations where people talk without genuine understanding — a breakdown of shared meaning.'},
@@ -852,16 +854,16 @@ const quizData = [
 const formulaScenarios = [
   {object:'A blank white canvas hanging on a wall',
    params:{
-    time:['1976','1520','2024','1917'],
-    place:['Lund Gallery, Sweden','Florence workshop','IKEA showroom','Zurich Cabaret Voltaire'],
+    time:['1976','1520','2024','1916'],
+    place:['St. Petri Gallery, Lund','Florence workshop','IKEA showroom','Zurich Cabaret Voltaire'],
     situation:['Contextual Art Exhibition','Apprentice training','Furniture display','Dada performance evening'],
     person:['Art critic','Renaissance master','Customer','Cabaret performer']
    },
    meanings:{
-    '1976|Lund Gallery, Sweden|Contextual Art Exhibition|Art critic':'A deliberate statement about the empty sign — art stripped to its contextual essence, awaiting meaning from the viewer\'s own context.',
+    '1976|St. Petri Gallery, Lund|Contextual Art Exhibition|Art critic':'A deliberate statement about the empty sign — art stripped to its contextual essence, awaiting meaning from the viewer\'s own context.',
     '1520|Florence workshop|Apprentice training|Renaissance master':'Raw material awaiting a commission. Potential for beauty — Leonardo\'s "practice born from theory" waiting to begin.',
     '2024|IKEA showroom|Furniture display|Customer':'A decoration placeholder, part of room staging. Not art at all — a prop for selling furniture.',
-    '1917|Zurich Cabaret Voltaire|Dada performance evening|Cabaret performer':'A provocation. The emptiness itself is the statement — mocking the entire tradition of painting.',
+    '1916|Zurich Cabaret Voltaire|Dada performance evening|Cabaret performer':'A provocation. The emptiness itself is the statement — mocking the entire tradition of painting.',
    }},
   {object:'A photograph of an elderly man sitting alone',
    params:{
@@ -874,7 +876,7 @@ const formulaScenarios = [
     '1994|Warsaw art gallery|Gulf War press exhibition|Art historian':'A "symptom of reality" — the photograph as evidence of human isolation amidst geopolitical violence. Context transforms news into art.',
     '1840|Daguerreotype studio|Portrait commission|Victorian gentleman':'A miracle of technology. The image is valued for its fidelity — truth to nature, preserving identity for posterity.',
     '2024|Instagram feed|Scrolling through stories|Teenager':'Content that appears and vanishes in seconds. The image has no fixed meaning — it\'s experienced as one fragment in an endless stream.',
-    '1979|Mała Galeria, Warsaw|Contextual art exhibition|Świdziński himself':'We always talk about the human being. A single photograph becomes philosophical statement through text and contextual framing.',
+    '1979|Mała Galeria, Warsaw|Contextual art exhibition|Świdziński himself':'In the spirit of "We Always Talk About Man" (Mała Galeria, 1979): a photograph becomes a philosophical statement through text and contextual framing.',
    }},
   {object:'Someone standing silently in a room for ten minutes',
    params:{
@@ -916,12 +918,12 @@ const compareItems = [
 // ═══════════════════════════════════════════
 function buildArchive() {
   const items = [
-    {label:'Timeline',title:'Life & Events',desc:'25 key moments from 1925 to 2014 — painting, theory, performance, and legacy.',view:'timeline',tags:['biography','chronology']},
+    {label:'Timeline',title:'Life & Events',desc:'28 key moments from 1923 to 2014 — painting, theory, performance, and legacy.',view:'timeline',tags:['biography','chronology']},
     {label:'Network',title:'People & Connections',desc:'Interactive graph of artists, philosophers, scholars, and movements connected to Świdziński.',view:'graph',tags:['people','influence']},
     {label:'Texts',title:'Writings & Manifestos',desc:'Primary sources — the 12 Points, theoretical essays, critical reflections in Świdziński\'s own words.',view:'texts',tags:['manifesto','theory','essay']},
     {label:'Encyclopedia',title:'Key Concepts',desc:'Empty Sign, Three Models, Context Formula, Deontic Logic — the building blocks of contextual art.',view:'concepts',tags:['theory','definitions']},
     {label:'Bibliography',title:'Publications & Research',desc:'Books, essays, scholarly analysis, interviews — essential references for researchers and art students.',view:'biblio',tags:['publications','research','scholarly']},
-    {label:'Festivals',title:'Festivals & Performances',desc:'International festivals, conferences, performances, and posthumous exhibitions.',view:'festivals',tags:['festivals','performance','events']},
+    {label:'Festivals',title:'Festivals & Performances',desc:'International festivals, conferences, performances — and the late tributes that secure his legacy.',view:'festivals',tags:['festivals','performance','events']},
     {label:'Study',title:'Comprehensive Study',desc:'From Semantic Signs to the Neo-Pragmatic Tourist — a full academic study based on primary sources. 5 parts, 36 chapters.',view:'_study',tags:['academic','research','primary sources']},
   ];
   document.getElementById('archiveGrid').innerHTML = items.map(i=>`
@@ -1150,7 +1152,7 @@ function buildFestivals() {
   html+='<h3 style="font-family:Playfair Display,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">International Festivals & Conferences</h3>';
   html+='<div class="card-grid">'+d.participated.map(f=>`<div class="card" style="cursor:default;"><div class="card-label">${f.year}</div><h3 style="font-size:15px;">${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('')+'</div>';
 
-  html+='<h3 style="font-family:Playfair Display,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Posthumous Exhibitions & Events</h3>';
+  html+='<h3 style="font-family:Playfair Display,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Late Recognition & Legacy</h3>';
   html+=d.posthumous.map(f=>`<div class="card" style="cursor:default;margin-bottom:10px;border-color:var(--accent);"><div class="card-label">${f.year}</div><h3>${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('');
 
   document.getElementById('festivalsContainer').innerHTML=html;
@@ -1161,7 +1163,7 @@ function buildFestivals() {
 // ═══════════════════════════════════════════
 function buildGameHub() {
   const modes = [
-    {icon:'🧠',title:'Contextual Quiz',desc:'Test your knowledge across 8 categories — from core theory to philosophy and events.',view:'quiz'},
+    {icon:'🧠',title:'Contextual Quiz',desc:'Test your knowledge across 9 categories — from core theory to philosophy and events.',view:'quiz'},
     {icon:'⚗️',title:'The Context Formula',desc:'Change the parameters of time, place, situation, and person — watch meaning transform before your eyes.',view:'formula'},
     {icon:'⚖️',title:'Conceptual vs. Contextual',desc:'Drag each idea to the correct column. Can you tell Kosuth\'s conceptualism from Świdziński\'s contextualism?',view:'compare'},
     {icon:'🔓',title:'12 Points Challenge',desc:'Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.',view:'points'},
