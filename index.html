@@ -1056,7 +1056,12 @@ var DATA_REFS = {
   'festivalsData.participated': festivalsData.participated,
   'festivalsData.posthumous': festivalsData.posthumous
 };
-var PL_DATA = window.PL_DATA || {};
+var PL_DATA = {};
+// polska treść trzymana osobno, żeby index.html nie puchł; dociąga się i nakłada po starcie
+fetch('tresc-pl.json?v=' + Date.now())
+  .then(function(r){ return r.ok ? r.json() : null; })
+  .then(function(d){ if (d) { PL_DATA = d; if (LANG_NOW === 'pl') setDataLang('pl'); } })
+  .catch(function(){});
 var EN_DATA = {};
 (function(){
   Object.keys(DATA_REFS).forEach(function(k){
@@ -1134,7 +1139,7 @@ function buildTimeline() {
     <div class="tl-item" onclick="this.classList.toggle('expanded')" style="animation-delay:${i*60}ms">
       <div class="tl-dot" style="border-color:${colors[e.cat]||'var(--accent)'}"></div>
       <span class="tl-arrow">▼</span>
-      <span class="year">${e.year}</span><span class="category">${e.cat}</span>
+      <span class="year">${e.year}</span><span class="category">${T('f.'+e.cat, e.cat)}</span>
       <h3>${e.title}</h3>
       <div class="tl-summary">${e.text}</div>
       ${e.exp?`<div class="tl-expanded">${e.exp}</div>`:''}
