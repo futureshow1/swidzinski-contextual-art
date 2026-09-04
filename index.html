@@ -336,24 +336,24 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
 <canvas id="landingCanvas" style="display:none;"></canvas>
 
 <div class="context-bar" aria-label="Ramka kontekstu sesji">
-  <span class="cb-label">Kontekst 001</span>
+  <span class="cb-label" data-i18n="ctx.label">Kontekst 001</span>
   <span class="cb-item" id="cbPlace">Warszawa</span>
   <span class="cb-item" id="cbTime">21:47</span>
   <span class="cb-item" id="cbLang">PL</span>
-  <span class="cb-note"><b>Ta strona jest pracą kontekstualną.</b> Odczyt zmienia się z miejscem i porą.</span>
+  <span class="cb-note" data-i18n="ctx.note"><b>Ta strona jest pracą kontekstualną.</b> Odczyt zmienia się z miejscem i porą.</span>
 </div>
 
 <nav>
   <a class="nav-logo" href="#" onclick="showView('landing');return false;">Świdziński</a>
-  <button onclick="showView('archive')" data-view="archive">Archiwum</button>
-  <button onclick="showView('timeline')" data-view="timeline">Kalendarium</button>
-  <button onclick="showView('graph')" data-view="graph">Konstelacja</button>
-  <button onclick="showView('texts')" data-view="texts">Korpus</button>
-  <button onclick="showView('concepts')" data-view="concepts">Pojęcia</button>
-  <button onclick="showView('biblio')" data-view="biblio">Bibliografia</button>
-  <button onclick="showView('festivals')" data-view="festivals">Wystąpienia</button>
-  <button onclick="showView('game')" data-view="game">Gra</button>
-  <button onclick="window.open('study.html','_blank')" style="color:var(--gold) !important">Studium ↗</button>
+  <button onclick="showView('archive')" data-view="archive" data-i18n="nav.archive">Archiwum</button>
+  <button onclick="showView('timeline')" data-view="timeline" data-i18n="nav.timeline">Kalendarium</button>
+  <button onclick="showView('graph')" data-view="graph" data-i18n="nav.graph">Konstelacja</button>
+  <button onclick="showView('texts')" data-view="texts" data-i18n="nav.texts">Korpus</button>
+  <button onclick="showView('concepts')" data-view="concepts" data-i18n="nav.concepts">Pojęcia</button>
+  <button onclick="showView('biblio')" data-view="biblio" data-i18n="nav.biblio">Bibliografia</button>
+  <button onclick="showView('festivals')" data-view="festivals" data-i18n="nav.festivals">Wystąpienia</button>
+  <button onclick="showView('game')" data-view="game" data-i18n="nav.game">Gra</button>
+  <button onclick="window.open('study.html','_blank')" style="color:var(--gold) !important" data-i18n="nav.study">Studium ↗</button>
   <div class="nav-right">
     <div class="lang" aria-label="Język">
       <a class="active" href="#">PL</a>
@@ -382,48 +382,48 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
         <img src="swidzinski_portrait.jpg" alt="Jan Świdziński z fajką, portret archiwalny">
       </div>
       <div class="hero-cstrip">
-        <span>Warszawa · ok. 1978</span>
-        <span>fot. n.n.</span>
-        <span>archiwum prywatne</span>
+        <span data-i18n="hero.cstrip_place">Warszawa · ok. 1978</span>
+        <span data-i18n="hero.cstrip_credit">fot. n.n.</span>
+        <span data-i18n="hero.cstrip_source">archiwum prywatne</span>
       </div>
     </div>
     <div class="hero-text-col">
-      <div class="hero-eyebrow">Sztuka kontekstualna · 1923—2014</div>
-      <h1 class="hero-h1" id="heroTitle">Sztuka jest tym,<br>co pokazuję<br><em>jako sztukę.</em></h1>
-      <div class="hero-h1-en"><em>Art is what I show as art.</em></div>
-      <p class="hero-lead">An interdisciplinary artist, theorist, and philosopher who argued that meaning is never fixed — it emerges from <em>context</em>.</p>
+      <div class="hero-eyebrow" data-i18n="hero.eyebrow">Sztuka kontekstualna · 1923—2014</div>
+      <h1 class="hero-h1" id="heroTitle" data-i18n="hero.h1">Sztuka jest tym,<br>co pokazuję<br><em>jako sztukę.</em></h1>
+      <div class="hero-h1-en" data-i18n="hero.h1_echo"><em>Art is what I show as art.</em></div>
+      <p class="hero-lead" data-i18n="hero.lead">An interdisciplinary artist, theorist, and philosopher who argued that meaning is never fixed — it emerges from <em>context</em>.</p>
       <div class="hero-cta">
-        <button class="primary" onclick="showView('archive')">Explore the Archive</button>
-        <button onclick="showView('game')">Play the Game</button>
+        <button class="primary" onclick="showView('archive')" data-i18n="hero.cta_primary">Explore the Archive</button>
+        <button onclick="showView('game')" data-i18n="hero.cta_secondary">Play the Game</button>
       </div>
       <div class="hero-byline">
-        <span>Kurator portalu: <b>Jan Lubicz Przyłuski</b></span>
-        <span>Wydanie <b>1.0</b> · IX 2026</span>
+        <span><span data-i18n="hero.byline_curator">Kurator portalu:</span> <b>Jan Lubicz Przyłuski</b></span>
+        <span><span data-i18n="hero.byline_edition">Wydanie</span> <b>1.0</b> · IX 2026</span>
       </div>
     </div>
   </section>
   <section class="hero-latest" aria-label="Ostatnie wpisy w korpusie">
-    <div class="hero-latest-label"><b>Ostatnie</b>wpisy<br>w&nbsp;korpusie</div>
+    <div class="hero-latest-label" data-i18n="latest.label"><b>Ostatnie</b>wpisy<br>w&nbsp;korpusie</div>
     <div class="hero-latest-list">
       <div class="hero-latest-item">
         <div class="y">1976 · VIII</div>
         <h4>12 punktów sztuki kontekstualnej</h4>
-        <div class="pl">Warszawa · manifest · pl</div>
+        <div class="pl" data-i18n="latest.1.pl">Warszawa · manifest · pl</div>
       </div>
       <div class="hero-latest-item">
         <div class="y">1976 · II</div>
         <h4>Freedom of Art?</h4>
-        <div class="pl">S:t Petri Lund · wykład · en</div>
+        <div class="pl" data-i18n="latest.2.pl">S:t Petri Lund · wykład · en</div>
       </div>
       <div class="hero-latest-item">
         <div class="y">1977 · V</div>
         <h4>Art et Transformation Sociale</h4>
-        <div class="pl">Paryż · sympozjum · fr</div>
+        <div class="pl" data-i18n="latest.3.pl">Paryż · sympozjum · fr</div>
       </div>
       <div class="hero-latest-item">
         <div class="y">2010</div>
         <h4>W moim kontekście</h4>
-        <div class="pl">CSW Warszawa · retrospektywa</div>
+        <div class="pl" data-i18n="latest.4.pl">CSW Warszawa · retrospektywa</div>
       </div>
     </div>
   </section>
@@ -1607,6 +1607,128 @@ function answerPointQuiz(idx,correct,target) {
 
 // init
 showView('landing');
+
+// ═══════════════════════════════════════════
+// i18n · PL / EN / FR / JA / ZH
+// ═══════════════════════════════════════════
+var I18N = {
+  pl: {
+    'nav.archive':'Archiwum','nav.timeline':'Kalendarium','nav.graph':'Konstelacja',
+    'nav.texts':'Korpus','nav.concepts':'Pojęcia','nav.biblio':'Bibliografia',
+    'nav.festivals':'Wystąpienia','nav.game':'Gra','nav.study':'Studium ↗',
+    'ctx.label':'Kontekst 001',
+    'ctx.note':'<b>Ta strona jest pracą kontekstualną.</b> Odczyt zmienia się z miejscem i porą.',
+    'hero.eyebrow':'Sztuka kontekstualna · 1923—2014',
+    'hero.h1':'Sztuka jest tym,<br>co pokazuję<br><em>jako sztukę.</em>',
+    'hero.h1_echo':'<em>Art is what I show as art.</em>',
+    'hero.lead':'Interdyscyplinarny artysta, teoretyk i filozof — dowodzący, że znaczenie nigdy nie jest ustalone; wyłania się z <em>kontekstu</em>.',
+    'hero.cta_primary':'Wejdź do archiwum','hero.cta_secondary':'Zagraj w kontekst',
+    'hero.byline_curator':'Kurator portalu:','hero.byline_edition':'Wydanie',
+    'hero.cstrip_place':'Warszawa · ok. 1978','hero.cstrip_credit':'fot. n.n.','hero.cstrip_source':'archiwum prywatne',
+    'latest.label':'<b>Ostatnie</b>wpisy<br>w&nbsp;korpusie',
+    'latest.1.pl':'Warszawa · manifest · pl','latest.2.pl':'S:t Petri Lund · wykład · en',
+    'latest.3.pl':'Paryż · sympozjum · fr','latest.4.pl':'CSW Warszawa · retrospektywa'
+  },
+  en: {
+    'nav.archive':'Archive','nav.timeline':'Chronology','nav.graph':'Constellation',
+    'nav.texts':'Corpus','nav.concepts':'Concepts','nav.biblio':'Bibliography',
+    'nav.festivals':'Appearances','nav.game':'Game','nav.study':'Study ↗',
+    'ctx.label':'Context 001',
+    'ctx.note':'<b>This site is a contextual work.</b> Its reading shifts with place and hour.',
+    'hero.eyebrow':'Contextual Art · 1923—2014',
+    'hero.h1':'Art is what<br>I show<br><em>as art.</em>',
+    'hero.h1_echo':'<em>Sztuka jest tym, co pokazuję jako sztukę.</em>',
+    'hero.lead':'An interdisciplinary artist, theorist, and philosopher who argued that meaning is never fixed — it emerges from <em>context</em>.',
+    'hero.cta_primary':'Explore the Archive','hero.cta_secondary':'Play the Game',
+    'hero.byline_curator':'Portal curator:','hero.byline_edition':'Edition',
+    'hero.cstrip_place':'Warsaw · c. 1978','hero.cstrip_credit':'photo n.n.','hero.cstrip_source':'private archive',
+    'latest.label':'<b>Latest</b>entries<br>in&nbsp;the corpus',
+    'latest.1.pl':'Warsaw · manifesto · pl','latest.2.pl':'S:t Petri Lund · lecture · en',
+    'latest.3.pl':'Paris · symposium · fr','latest.4.pl':'CSW Warsaw · retrospective'
+  },
+  fr: {
+    'nav.archive':'Archives','nav.timeline':'Chronologie','nav.graph':'Constellation',
+    'nav.texts':'Corpus','nav.concepts':'Notions','nav.biblio':'Bibliographie',
+    'nav.festivals':'Interventions','nav.game':'Jeu','nav.study':'Étude ↗',
+    'ctx.label':'Contexte 001',
+    'ctx.note':"<b>Cette page est une œuvre contextuelle.</b> Sa lecture change selon le lieu et l'heure.",
+    'hero.eyebrow':'Art contextuel · 1923—2014',
+    'hero.h1':"L'art est ce<br>que je montre<br><em>comme art.</em>",
+    'hero.h1_echo':'<em>Art is what I show as art.</em>',
+    'hero.lead':"Artiste interdisciplinaire, théoricien et philosophe — pour qui le sens n'est jamais fixé ; il émerge du <em>contexte</em>.",
+    'hero.cta_primary':'Explorer les archives','hero.cta_secondary':'Jouer',
+    'hero.byline_curator':'Commissaire du portail :','hero.byline_edition':'Édition',
+    'hero.cstrip_place':'Varsovie · c. 1978','hero.cstrip_credit':'photo n.n.','hero.cstrip_source':'archives privées',
+    'latest.label':'<b>Derniers</b>ajouts<br>au&nbsp;corpus',
+    'latest.1.pl':'Varsovie · manifeste · pl','latest.2.pl':'S:t Petri Lund · conférence · en',
+    'latest.3.pl':'Paris · colloque · fr','latest.4.pl':'CSW Varsovie · rétrospective'
+  },
+  ja: {
+    'nav.archive':'アーカイブ','nav.timeline':'年表','nav.graph':'コンステレーション',
+    'nav.texts':'コーパス','nav.concepts':'概念','nav.biblio':'文献',
+    'nav.festivals':'出演','nav.game':'ゲーム','nav.study':'研究 ↗',
+    'ctx.label':'コンテクスト 001',
+    'ctx.note':'<b>このページはコンテクスチュアル・アート作品です。</b>読解は場所と時刻とともに変化します。',
+    'hero.eyebrow':'コンテクスチュアル・アート · 1923—2014',
+    'hero.h1':'アートとは<br>私がアートとして<br><em>示すもの。</em>',
+    'hero.h1_echo':'<em>Art is what I show as art.</em>',
+    'hero.lead':'意味は決して固定されず、コンテクストから立ち上がる——そう主張した、学際的な芸術家・理論家・哲学者。',
+    'hero.cta_primary':'アーカイブへ','hero.cta_secondary':'ゲームを開始',
+    'hero.byline_curator':'ポータル・キュレーター:','hero.byline_edition':'版',
+    'hero.cstrip_place':'ワルシャワ · 1978年頃','hero.cstrip_credit':'撮影 n.n.','hero.cstrip_source':'個人所蔵',
+    'latest.label':'<b>最新</b>コーパス<br>収録',
+    'latest.1.pl':'ワルシャワ · マニフェスト · pl','latest.2.pl':'S:t Petri Lund · 講演 · en',
+    'latest.3.pl':'パリ · シンポジウム · fr','latest.4.pl':'CSW ワルシャワ · 回顧展'
+  },
+  zh: {
+    'nav.archive':'档案','nav.timeline':'年表','nav.graph':'星座',
+    'nav.texts':'文集','nav.concepts':'概念','nav.biblio':'参考文献',
+    'nav.festivals':'活动','nav.game':'游戏','nav.study':'研究 ↗',
+    'ctx.label':'语境 001',
+    'ctx.note':'<b>本页面是一件情境作品。</b>阅读随地点与时间而变化。',
+    'hero.eyebrow':'情境艺术 · 1923—2014',
+    'hero.h1':'艺术,<br>就是我<br><em>作为艺术展示的东西。</em>',
+    'hero.h1_echo':'<em>Art is what I show as art.</em>',
+    'hero.lead':'一位跨学科艺术家、理论家和哲学家,主张意义从不固定——它从<em>情境</em>中涌现。',
+    'hero.cta_primary':'进入档案','hero.cta_secondary':'开始游戏',
+    'hero.byline_curator':'门户策展人:','hero.byline_edition':'版本',
+    'hero.cstrip_place':'华沙 · 约1978','hero.cstrip_credit':'摄影 n.n.','hero.cstrip_source':'私人收藏',
+    'latest.label':'<b>最新</b>收录<br>条目',
+    'latest.1.pl':'华沙 · 宣言 · pl','latest.2.pl':'S:t Petri Lund · 讲座 · en',
+    'latest.3.pl':'巴黎 · 研讨会 · fr','latest.4.pl':'CSW 华沙 · 回顾展'
+  }
+};
+var LANG_CODE_MAP = {pl:'pl', en:'en', fr:'fr', jp:'ja', cn:'zh'};
+var LANG_LABEL_MAP = {pl:'PL', en:'EN', fr:'FR', ja:'JP', zh:'CN'};
+function applyLang(lang) {
+  var dict = I18N[lang] || I18N.pl;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.querySelectorAll('.lang a').forEach(function(a){
+    a.classList.toggle('active', a.textContent.trim() === (LANG_LABEL_MAP[lang] || lang.toUpperCase()));
+  });
+  document.documentElement.setAttribute('lang', lang);
+  var cbLang = document.getElementById('cbLang');
+  if (cbLang) cbLang.textContent = LANG_LABEL_MAP[lang] || lang.toUpperCase();
+  try { localStorage.setItem('sw-lang', lang); } catch(e) {}
+}
+document.querySelectorAll('.lang a').forEach(function(a){
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    var code = a.textContent.trim().toLowerCase();
+    applyLang(LANG_CODE_MAP[code] || code);
+  });
+});
+(function(){
+  try {
+    var saved = localStorage.getItem('sw-lang');
+    if (saved && I18N[saved]) { applyLang(saved); return; }
+  } catch(e) {}
+  var nav = (navigator.language || 'pl').split('-')[0];
+  if (I18N[nav]) applyLang(nav);
+})();
 
 // context bar — miejsce, godzina, język przeglądarki
 (function(){
