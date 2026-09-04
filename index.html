@@ -1164,22 +1164,11 @@ async function initGraph() {
   var canvas = document.getElementById('graphCanvas');
   var ctx = canvas.getContext('2d');
 
-  var CATS = {
-    teoretyk:   {label:'Teoretyk / krytyk',        color:'#D63A16'},
-    kurator:    {label:'Kurator / wydawca',        color:'#8B2A2A'},
-    performer:  {label:'Performer / mail-artysta', color:'#B0562A'},
-    filmowiec:  {label:'Filmowiec / fotograf',     color:'#5C4A6B'},
-    artysta:    {label:'Konceptualista / artysta', color:'#3B2A6B'},
-    inny:       {label:'Inne',                     color:'#7A6C4E'}
-  };
-  function catBucket(cat) {
-    var c = (cat||'').toLowerCase();
-    if (c.indexOf('teoretyk')>=0 || c.indexOf('filozof')>=0 || c.indexOf('krytyk')>=0 || c.indexOf('socjolog')>=0 || c.indexOf('historyk')>=0) return 'teoretyk';
-    if (c.indexOf('kurator')>=0 || c.indexOf('wydawca')>=0 || c.indexOf('redaktor')>=0) return 'kurator';
-    if (c.indexOf('performer')>=0 || c.indexOf('mail-artysta')>=0 || c.indexOf('rzeźbiarz')>=0) return 'performer';
-    if (c.indexOf('filmowiec')>=0 || c.indexOf('fotograf')>=0 || c.indexOf('dźwięku')>=0) return 'filmowiec';
-    if (c.indexOf('konceptualist')>=0 || c.indexOf('artyst')>=0 || c.indexOf('malar')>=0 || c.indexOf('poeta')>=0 || c.indexOf('grafik')>=0 || c.indexOf('architekt')>=0 || c.indexOf('nihilista')>=0 || c.indexOf('błazen')>=0 || c.indexOf('duet')>=0) return 'artysta';
-    return 'inny';
+  // Role nie wykluczają się: jedna osoba bywa naraz performerem, malarzem i teoretykiem.
+  // Nie przypisujemy więc nikogo do jednej grupy i nie kolorujemy węzłów kategorią.
+  var INK = '#7A6C4E';
+  function roles(cat){
+    return (cat||'').toLowerCase().split('/').map(function(x){ return x.trim(); }).filter(Boolean);
   }
 
   var data;
@@ -1192,25 +1181,21 @@ async function initGraph() {
   }
 
   data.nodes.forEach(function(n){
-    n.bucket = catBucket(n.category);
-    n.color = CATS[n.bucket].color;
+    n.roles = roles(n.category);
+    n.color = INK;
   });
-  // stabilna kolejność: bucket → kraj → imię
-  data.nodes.sort(function(a,b){ return (a.bucket+'/'+a.country+'/'+a.name).localeCompare(b.bucket+'/'+b.country+'/'+b.name); });
+  data.nodes.sort(function(a,b){ return ((a.country||'')+'/'+a.name).localeCompare((b.country||'')+'/'+b.name); });
 
   var people = [];
   var swid = {
     id:'swidzinski', name:'Jan Świdziński', years:'1923–2014', country:'PL',
-    category:'artysta / teoretyk kontekstualizmu',
-    relation:'Centrum kłącza — twórca sztuki kontekstualnej. Manifest „12 punktów" (Warszawa VIII 1976).',
-    x:0.5, y:0.5, r:15, color:'#C4960A', bucket:'artysta', center:true
+    x:0.5, y:0.5, r:15, color:'#C4960A', roles:[], center:true
   };
   people.push(swid);
 
   var seed = 42;
   function rnd(){ seed = (seed*9301 + 49297) % 233280; return seed/233280; }
 
-  // rozrzut startowy: pierścień z dużym jitterem, symulacja i tak to rozplącze
   data.nodes.forEach(function(n, i){
     var angle = (i / data.nodes.length) * Math.PI * 2 + rnd()*0.6;
     var rad = 0.20 + rnd()*0.24;
@@ -1221,7 +1206,7 @@ async function initGraph() {
     people.push(n);
   });
 
-  // ── KŁĄCZE: krawędzie boczne, bez hierarchii ──
+  // ── KŁĄCZE: nici wiąże wspólna rola (osoba może mieć ich kilka) i wspólny kraj ──
   var links = [];
   var seen = {};
   function link(a, b, k){
@@ -1230,17 +1215,21 @@ async function initGraph() {
     if (seen[key]) return;
     seen[key] = 1; links.push({a:a, b:b, k:k});
   }
-  // każdy trzyma się środka, ale słabo — to nie gwiazda, tylko splot
   people.forEach(function(p){ if (p !== swid) link(swid, p, 0.006); });
-  // pasma poziome: łańcuch wewnątrz każdej kategorii
-  var byBucket = {};
-  people.forEach(function(p){ if (p===swid) return; (byBucket[p.bucket]=byBucket[p.bucket]||[]).push(p); });
-  Object.keys(byBucket).forEach(function(k){
-    var arr = byBucket[k];
-    for (var i=0;i<arr.length;i++) link(arr[i], arr[(i+1)%arr.length], 0.055);
-    for (var j=0;j<arr.length;j+=3) link(arr[j], arr[(j+5)%arr.length], 0.030);
+
+  // każda rola tworzy własne pasmo; kto pełni kilka ról, leży w kilku pasmach naraz
+  var byRole = {};
+  people.forEach(function(p){
+    if (p === swid) return;
+    (p.roles || []).forEach(function(r){ (byRole[r] = byRole[r] || []).push(p); });
   });
-  // pasma poprzeczne: wspólny kraj wiąże różne kategorie
+  Object.keys(byRole).forEach(function(r){
+    var arr = byRole[r];
+    if (arr.length < 2) return;
+    for (var i=0;i<arr.length;i++) link(arr[i], arr[(i+1)%arr.length], 0.055);
+  });
+
+  // pasma poprzeczne: wspólny kraj
   var byCountry = {};
   people.forEach(function(p){ if (p===swid || !p.country) return; (byCountry[p.country]=byCountry[p.country]||[]).push(p); });
   Object.keys(byCountry).forEach(function(k){
@@ -1301,13 +1290,9 @@ async function initGraph() {
   document.getElementById('graphLegend').innerHTML =
     '<span style="display:flex;align-items:center;gap:8px;font-weight:600;color:#C4960A;">'+
     '<span class="dot" style="background:#C4960A;width:12px;height:12px;"></span>Jan Świdziński</span>' +
-    Object.keys(CATS).map(function(k){
-      var g = CATS[k];
-      return '<span><span class="dot" style="background:'+g.color+'"></span>'+g.label+'</span>';
-    }).join('') +
-    '<div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border);font-size:10px;color:var(--text-light);line-height:1.5;">' +
-    'Kłącze bez hierarchii — przeciągnij dowolny węzeł, żeby zmienić układ.' +
-    '</div>';
+    '<span><span class="dot" style="background:'+INK+'"></span>' + T('gr.person','Osoby wokół') + '</span>' +
+    '<div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border);font-size:10px;color:var(--text-light);line-height:1.5;max-width:236px;">' +
+    T('gr.note','') + '</div>';
 
   var W, H;
   function resize(){ W=canvas.parentElement.clientWidth; H=window.innerHeight-64; canvas.width=W*devicePixelRatio; canvas.height=H*devicePixelRatio; canvas.style.width=W+'px'; canvas.style.height=H+'px'; ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
@@ -1441,7 +1426,7 @@ async function initGraph() {
   }
   function pressEnd(){
     if (dragNode) {
-      if (movedPx < 5) selectGraphNode(dragNode);
+      // biogramy chwilowo wyłączone — klik tylko podnosi węzeł
       dragNode.fixed = false;         // wraca do splotu, ale w nowym miejscu
       dragNode = null;
     }
@@ -1454,7 +1439,7 @@ async function initGraph() {
     if (pressMove(e)) return;
     var node = findNode(p.x, p.y);
     graphHover = node ? node.id : null;
-    canvas.style.cursor = node ? 'pointer' : 'grab';
+    canvas.style.cursor = 'grab';
     var tt = document.getElementById('tooltip');
     if (node) {
       tt.style.display = 'block';
@@ -1462,7 +1447,7 @@ async function initGraph() {
       tt.style.top = (p.cy + 16) + 'px';
       document.getElementById('ttName').textContent = node.name;
       document.getElementById('ttDates').textContent = [node.years, node.country].filter(Boolean).join(' · ');
-      document.getElementById('ttDesc').textContent = node.category || '';
+      document.getElementById('ttDesc').textContent = '';
     } else { tt.style.display = 'none'; }
   });
   canvas.addEventListener('mousedown', pressStart);
@@ -1931,6 +1916,9 @@ showView('landing');
 // ═══════════════════════════════════════════
 var I18N = {
   pl: {
+    'gr.person':"Osoby wokół",
+    'gr.note':"Kłącze bez hierarchii i bez szufladek. Nici wiąże wspólna rola albo wspólny kraj, a jedna osoba bywa w kilku pasmach naraz. Przeciągnij dowolny węzeł, żeby zmienić układ.",
+
     'pt.0':"Przedmioty i znaczenia",
     'pt.1':"Wieloznaczność społeczna",
     'pt.2':"Konwencjonalne a pojęciowe",
@@ -2066,6 +2054,9 @@ var I18N = {
     'latest.3.pl':'Paryż · sympozjum · fr','latest.4.pl':'CSW Warszawa · retrospektywa'
   },
   en: {
+    'gr.person':"People around",
+    'gr.note':"A rhizome with no hierarchy and no pigeonholes. Strands follow a shared role or a shared country, and one person may sit in several at once. Drag any node to change the layout.",
+
     'pt.0':"Objects & Meanings",
     'pt.1':"Social Ambiguity",
     'pt.2':"Conventional vs. Conceptual",
@@ -2201,6 +2192,9 @@ var I18N = {
     'latest.3.pl':'Paris · symposium · fr','latest.4.pl':'CSW Warsaw · retrospective'
   },
   fr: {
+    'gr.person':"People around",
+    'gr.note':"A rhizome with no hierarchy and no pigeonholes. Strands follow a shared role or a shared country, and one person may sit in several at once. Drag any node to change the layout.",
+
     'pt.0':"Objects & Meanings",
     'pt.1':"Social Ambiguity",
     'pt.2':"Conventional vs. Conceptual",
@@ -2336,6 +2330,9 @@ var I18N = {
     'latest.3.pl':'Paris · colloque · fr','latest.4.pl':'CSW Varsovie · rétrospective'
   },
   ja: {
+    'gr.person':"People around",
+    'gr.note':"A rhizome with no hierarchy and no pigeonholes. Strands follow a shared role or a shared country, and one person may sit in several at once. Drag any node to change the layout.",
+
     'pt.0':"Objects & Meanings",
     'pt.1':"Social Ambiguity",
     'pt.2':"Conventional vs. Conceptual",
@@ -2471,6 +2468,9 @@ var I18N = {
     'latest.3.pl':'パリ · シンポジウム · fr','latest.4.pl':'CSW ワルシャワ · 回顧展'
   },
   zh: {
+    'gr.person':"People around",
+    'gr.note':"A rhizome with no hierarchy and no pigeonholes. Strands follow a shared role or a shared country, and one person may sit in several at once. Drag any node to change the layout.",
+
     'pt.0':"Objects & Meanings",
     'pt.1':"Social Ambiguity",
     'pt.2':"Conventional vs. Conceptual",
