@@ -1091,7 +1091,7 @@ function buildTimeline() {
 // ═══════════════════════════════════════════
 let graphPan={x:0,y:0}, graphZoom=1, graphDrag=null, graphHover=null, graphSelected=null;
 
-let konstelacjaPeople = [];
+let konstelacjaPeople = [], konstelacjaLinks = [], konstelacjaStep = null;
 async function initGraph() {
   S.graphInit = true;
   var canvas = document.getElementById('graphCanvas');
@@ -1124,48 +1124,111 @@ async function initGraph() {
     return;
   }
 
-  var rings = {core:[], important:[], peripheral:[]};
   data.nodes.forEach(function(n){
     n.bucket = catBucket(n.category);
     n.color = CATS[n.bucket].color;
-    (rings[n.importance] || rings.peripheral).push(n);
   });
-  // stabilne sortowanie: bucket → kraj → imię, potem lekki jitter przy rozmieszczaniu
-  Object.keys(rings).forEach(function(k){
-    rings[k].sort(function(a,b){ return (a.bucket+'/'+a.country+'/'+a.name).localeCompare(b.bucket+'/'+b.country+'/'+b.name); });
-  });
-
-  var RING_R = {core:0.16, important:0.30, peripheral:0.46};
-  var RING_SIZE = {core:11, important:8, peripheral:6};
+  // stabilna kolejność: bucket → kraj → imię
+  data.nodes.sort(function(a,b){ return (a.bucket+'/'+a.country+'/'+a.name).localeCompare(b.bucket+'/'+b.country+'/'+b.name); });
 
   var people = [];
-  people.push({
+  var swid = {
     id:'swidzinski', name:'Jan Świdziński', years:'1923–2014', country:'PL',
     category:'artysta / teoretyk kontekstualizmu',
-    relation:'Centrum sieci — twórca sztuki kontekstualnej. Manifest „12 punktów" (Warszawa VIII 1976).',
-    x:0.5, y:0.5, r:16, color:'#C4960A', importance:'center', bucket:'artysta'
-  });
-  // seed pseudo-losowy z ziarna (deterministyczne rozstawienie)
+    relation:'Centrum kłącza — twórca sztuki kontekstualnej. Manifest „12 punktów" (Warszawa VIII 1976).',
+    x:0.5, y:0.5, r:15, color:'#C4960A', bucket:'artysta', center:true
+  };
+  people.push(swid);
+
   var seed = 42;
   function rnd(){ seed = (seed*9301 + 49297) % 233280; return seed/233280; }
 
-  Object.keys(rings).forEach(function(impKey){
-    var arr = rings[impKey];
-    var radius = RING_R[impKey];
-    var size = RING_SIZE[impKey];
-    var count = arr.length;
-    // przesunięcie kątowe per pierścień, żeby nie leżały jeden za drugim
-    var phase = impKey==='core' ? 0 : impKey==='important' ? Math.PI/count : Math.PI/2;
-    arr.forEach(function(n, i){
-      var angle = (i / count) * Math.PI * 2 - Math.PI/2 + phase;
-      var jitter = 0.014;
-      n.id = 'n_' + impKey + '_' + i;
-      n.x = 0.5 + Math.cos(angle) * radius + (rnd()-0.5)*jitter;
-      n.y = 0.5 + Math.sin(angle) * radius + (rnd()-0.5)*jitter;
-      n.r = size;
-      people.push(n);
-    });
+  // rozrzut startowy: pierścień z dużym jitterem, symulacja i tak to rozplącze
+  data.nodes.forEach(function(n, i){
+    var angle = (i / data.nodes.length) * Math.PI * 2 + rnd()*0.6;
+    var rad = 0.20 + rnd()*0.24;
+    n.id = 'n_' + i;
+    n.x = 0.5 + Math.cos(angle) * rad;
+    n.y = 0.5 + Math.sin(angle) * rad;
+    n.r = 7;
+    people.push(n);
   });
+
+  // ── KŁĄCZE: krawędzie boczne, bez hierarchii ──
+  var links = [];
+  var seen = {};
+  function link(a, b, k){
+    if (a === b) return;
+    var key = a.id < b.id ? a.id+'|'+b.id : b.id+'|'+a.id;
+    if (seen[key]) return;
+    seen[key] = 1; links.push({a:a, b:b, k:k});
+  }
+  // każdy trzyma się środka, ale słabo — to nie gwiazda, tylko splot
+  people.forEach(function(p){ if (p !== swid) link(swid, p, 0.006); });
+  // pasma poziome: łańcuch wewnątrz każdej kategorii
+  var byBucket = {};
+  people.forEach(function(p){ if (p===swid) return; (byBucket[p.bucket]=byBucket[p.bucket]||[]).push(p); });
+  Object.keys(byBucket).forEach(function(k){
+    var arr = byBucket[k];
+    for (var i=0;i<arr.length;i++) link(arr[i], arr[(i+1)%arr.length], 0.055);
+    for (var j=0;j<arr.length;j+=3) link(arr[j], arr[(j+5)%arr.length], 0.030);
+  });
+  // pasma poprzeczne: wspólny kraj wiąże różne kategorie
+  var byCountry = {};
+  people.forEach(function(p){ if (p===swid || !p.country) return; (byCountry[p.country]=byCountry[p.country]||[]).push(p); });
+  Object.keys(byCountry).forEach(function(k){
+    var arr = byCountry[k];
+    for (var i=0;i+1<arr.length;i+=2) link(arr[i], arr[i+1], 0.038);
+  });
+  konstelacjaLinks = links;
+
+  // ── symulacja sił ──
+  people.forEach(function(p){ p.vx = 0; p.vy = 0; });
+  var REP = 0.000020, MIND2 = 0.0022, VMAX = 0.020;
+  function step(){
+    var i, j, a, b, dx, dy, d2, d, f, ux, uy;
+    for (i=0;i<people.length;i++){
+      a = people[i];
+      for (j=i+1;j<people.length;j++){
+        b = people[j];
+        dx = b.x - a.x; dy = b.y - a.y;
+        d2 = dx*dx + dy*dy;
+        if (d2 > 0.16) continue;                 // odpychanie tylko lokalnie
+        if (d2 < 1e-7){ dx = (rnd()-0.5)*1e-3; dy = (rnd()-0.5)*1e-3; d2 = dx*dx+dy*dy; }
+        d = Math.sqrt(d2);
+        f = REP / Math.max(d2, MIND2);           // z podłogą, żeby nie wybuchało
+        ux = dx/d; uy = dy/d;
+        if (!a.fixed){ a.vx -= ux*f; a.vy -= uy*f; }
+        if (!b.fixed){ b.vx += ux*f; b.vy += uy*f; }
+      }
+    }
+    for (i=0;i<links.length;i++){
+      var L = links[i]; a = L.a; b = L.b;
+      dx = b.x - a.x; dy = b.y - a.y;
+      d = Math.hypot(dx, dy) || 1e-4;
+      var rest = L.k > 0.02 ? 0.070 : 0.26;
+      f = (d - rest) * L.k;
+      ux = (dx/d)*f; uy = (dy/d)*f;
+      if (!a.fixed){ a.vx += ux; a.vy += uy; }
+      if (!b.fixed){ b.vx -= ux; b.vy -= uy; }
+    }
+    for (i=0;i<people.length;i++){
+      a = people[i];
+      if (a.fixed){ a.vx = a.vy = 0; continue; }
+      var cw = a.center ? 0.030 : 0.0045;        // Świdziński trzyma się środka
+      a.vx += (0.5 - a.x) * cw;
+      a.vy += (0.5 - a.y) * cw;
+      a.vx *= 0.88; a.vy *= 0.88;
+      var sp = Math.hypot(a.vx, a.vy);
+      if (sp > VMAX){ a.vx = a.vx/sp*VMAX; a.vy = a.vy/sp*VMAX; }
+      a.x += a.vx; a.y += a.vy;
+      a.x = Math.max(0.03, Math.min(0.97, a.x));
+      a.y = Math.max(0.05, Math.min(0.95, a.y));
+    }
+  }
+  for (var w=0; w<700; w++) step();              // rozplątanie przed pierwszym rysowaniem
+  konstelacjaStep = step;
+
   konstelacjaPeople = people;
 
   document.getElementById('graphLegend').innerHTML =
@@ -1175,8 +1238,8 @@ async function initGraph() {
       var g = CATS[k];
       return '<span><span class="dot" style="background:'+g.color+'"></span>'+g.label+'</span>';
     }).join('') +
-    '<div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border);font-size:10px;color:var(--text-light);">' +
-    '● core &nbsp; ● important &nbsp; · peripheral' +
+    '<div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border);font-size:10px;color:var(--text-light);line-height:1.5;">' +
+    'Kłącze bez hierarchii — przeciągnij dowolny węzeł, żeby zmienić układ.' +
     '</div>';
 
   var W, H;
@@ -1189,37 +1252,40 @@ async function initGraph() {
   function screenY(wy){ return (wy + graphPan.y) * graphZoom; }
 
   function draw(){
+    if (konstelacjaStep) konstelacjaStep();
     ctx.clearRect(0, 0, W, H);
 
-    var swid = people[0];
-    var sx = screenX(worldX(swid));
-    var sy = screenY(worldY(swid));
+    var hoverId = graphHover, selId = graphSelected;
+    var live = {};
+    if (hoverId) live[hoverId] = 1;
+    if (selId) live[selId] = 1;
 
-    // radialne krawędzie do centrum, przezroczystość wg wagi węzła
-    people.forEach(function(p){
-      if (p === swid) return;
-      var px = screenX(worldX(p));
-      var py = screenY(worldY(p));
-      var op = p.importance === 'core' ? 0.28 : p.importance === 'important' ? 0.12 : 0.05;
-      var highlighted = graphHover === p.id || graphSelected === p.id;
-      if (highlighted) {
-        ctx.strokeStyle = p.color;
-        ctx.lineWidth = 1.6;
+    // krawędzie kłącza
+    links.forEach(function(L){
+      var ax = screenX(worldX(L.a)), ay = screenY(worldY(L.a));
+      var bx = screenX(worldX(L.b)), by = screenY(worldY(L.b));
+      var hot = live[L.a.id] || live[L.b.id];
+      if (hot) {
+        ctx.strokeStyle = (L.a.center ? L.b.color : L.a.color);
+        ctx.lineWidth = 1.5;
+        ctx.globalAlpha = 0.85;
       } else {
-        ctx.strokeStyle = S.dark ? 'rgba(236,228,209,'+op+')' : 'rgba(13,12,8,'+op+')';
-        ctx.lineWidth = p.importance === 'core' ? 0.9 : 0.5;
+        ctx.strokeStyle = S.dark ? 'rgba(236,228,209,1)' : 'rgba(13,12,8,1)';
+        ctx.lineWidth = L.k > 0.02 ? 0.7 : 0.45;
+        ctx.globalAlpha = L.k > 0.02 ? 0.13 : 0.07;
       }
-      ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(px, py); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke();
     });
+    ctx.globalAlpha = 1;
 
-    // węzły
+    // węzły — wszystkie równe, tylko środek większy
     people.forEach(function(p){
       var x = screenX(worldX(p));
       var y = screenY(worldY(p));
       var r = p.r * graphZoom;
       var isHover = graphHover === p.id;
       var isSel = graphSelected === p.id;
-      var isCenter = p === swid;
+      var isCenter = !!p.center;
 
       ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2);
       ctx.fillStyle = p.color;
@@ -1233,9 +1299,8 @@ async function initGraph() {
         ctx.beginPath(); ctx.arc(x, y, r + 2, 0, Math.PI*2); ctx.stroke();
       }
 
-      // etykieta — dla środka, core, hover, sel
-      var showLabel = isHover || isSel || isCenter || p.importance === 'core';
-      if (showLabel && graphZoom > 0.5) {
+      var showLabel = isHover || isSel || isCenter;
+      if (showLabel && graphZoom > 0.4) {
         var label = p.name;
         ctx.font = (isCenter ? 'italic 600 ' : '') + Math.max(10, 12 * graphZoom) + "px 'IBM Plex Sans', system-ui, sans-serif";
         var tw = ctx.measureText(label).width;
@@ -1261,31 +1326,98 @@ async function initGraph() {
     return null;
   }
 
-  canvas.addEventListener('mousemove', function(e){
+  // ekran -> wspolrzedne znormalizowane
+  function toWorld(mx, my){
+    return {
+      x: ((mx / graphZoom) - graphPan.x - W * 0.07) / (W * 0.86),
+      y: ((my / graphZoom) - graphPan.y - H * 0.07) / (H * 0.86)
+    };
+  }
+  var dragNode = null, panning = false, movedPx = 0, lastPt = null;
+
+  function localPt(e){
     var rect = canvas.getBoundingClientRect();
-    var mx = e.clientX - rect.left, my = e.clientY - rect.top;
-    if (graphDrag) { graphPan.x += e.movementX/graphZoom; graphPan.y += e.movementY/graphZoom; return; }
-    var node = findNode(mx, my);
+    var t = e.touches && e.touches[0] ? e.touches[0] : e;
+    return {x: t.clientX - rect.left, y: t.clientY - rect.top, cx: t.clientX, cy: t.clientY};
+  }
+
+  function pressStart(e){
+    var p = localPt(e);
+    lastPt = p; movedPx = 0;
+    var node = findNode(p.x, p.y);
+    if (node) {
+      dragNode = node; node.fixed = true; panning = false;
+      canvas.style.cursor = 'grabbing';
+    } else {
+      dragNode = null; panning = true; canvas.style.cursor = 'grabbing';
+    }
+  }
+  function pressMove(e){
+    var p = localPt(e);
+    if (dragNode) {
+      var w = toWorld(p.x, p.y);
+      dragNode.x = Math.max(0.02, Math.min(0.98, w.x));
+      dragNode.y = Math.max(0.02, Math.min(0.98, w.y));
+      dragNode.vx = dragNode.vy = 0;
+      movedPx += Math.hypot(p.x - lastPt.x, p.y - lastPt.y);
+      lastPt = p;
+      return true;
+    }
+    if (panning && lastPt) {
+      graphPan.x += (p.x - lastPt.x) / graphZoom;
+      graphPan.y += (p.y - lastPt.y) / graphZoom;
+      movedPx += Math.hypot(p.x - lastPt.x, p.y - lastPt.y);
+      lastPt = p;
+      return true;
+    }
+    return false;
+  }
+  function pressEnd(){
+    if (dragNode) {
+      if (movedPx < 5) selectGraphNode(dragNode);
+      dragNode.fixed = false;         // wraca do splotu, ale w nowym miejscu
+      dragNode = null;
+    }
+    panning = false; lastPt = null;
+    canvas.style.cursor = 'grab';
+  }
+
+  canvas.addEventListener('mousemove', function(e){
+    var p = localPt(e);
+    if (pressMove(e)) return;
+    var node = findNode(p.x, p.y);
     graphHover = node ? node.id : null;
     canvas.style.cursor = node ? 'pointer' : 'grab';
     var tt = document.getElementById('tooltip');
     if (node) {
       tt.style.display = 'block';
-      tt.style.left = Math.min(e.clientX + 16, window.innerWidth - 360) + 'px';
-      tt.style.top = (e.clientY + 16) + 'px';
+      tt.style.left = Math.min(p.cx + 16, window.innerWidth - 360) + 'px';
+      tt.style.top = (p.cy + 16) + 'px';
       document.getElementById('ttName').textContent = node.name;
-      document.getElementById('ttDates').textContent = (node.years || '') + ' · ' + (node.country || '');
+      document.getElementById('ttDates').textContent = [node.years, node.country].filter(Boolean).join(' · ');
       document.getElementById('ttDesc').textContent = node.category || '';
     } else { tt.style.display = 'none'; }
   });
-  canvas.addEventListener('mousedown', function(){ graphDrag = true; canvas.style.cursor = 'grabbing'; });
-  canvas.addEventListener('mouseup', function(e){
-    if (!graphDrag) return;
-    graphDrag = false; canvas.style.cursor = 'grab';
-    var rect = canvas.getBoundingClientRect();
-    var node = findNode(e.clientX - rect.left, e.clientY - rect.top);
-    if (node) selectGraphNode(node);
+  canvas.addEventListener('mousedown', pressStart);
+  window.addEventListener('mouseup', pressEnd);
+  canvas.addEventListener('mouseleave', function(){
+    var tt = document.getElementById('tooltip'); if (tt) tt.style.display='none';
+    graphHover = null;
   });
+
+  canvas.addEventListener('touchstart', function(e){
+    if (e.touches.length !== 1) return;
+    pressStart(e);
+    var p = localPt(e); var node = findNode(p.x, p.y);
+    if (node) e.preventDefault();          // palec ciągnie węzeł, nie stronę
+  }, {passive:false});
+  canvas.addEventListener('touchmove', function(e){
+    if (e.touches.length !== 1) return;
+    if (dragNode || panning) { e.preventDefault(); pressMove(e); }
+  }, {passive:false});
+  canvas.addEventListener('touchend', pressEnd, {passive:true});
+  canvas.addEventListener('touchcancel', pressEnd, {passive:true});
+
   canvas.addEventListener('wheel', function(e){
     e.preventDefault();
     var factor = e.deltaY > 0 ? 0.9 : 1.1;
@@ -1301,7 +1433,7 @@ function selectGraphNode(p){
   panel.innerHTML =
     '<button class="close-btn" onclick="document.getElementById(\'graphPanel\').classList.remove(\'show\');graphSelected=null;">✕</button>' +
     '<h3>' + esc(p.name) + '</h3>' +
-    '<div class="gp-dates">' + esc(p.years || '') + ' · ' + esc(p.country || '') + '</div>' +
+    '<div class="gp-dates">' + [p.years, p.country].filter(Boolean).map(esc).join(' · ') + '</div>' +
     '<div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-family:\'IBM Plex Mono\',monospace;">' + esc(p.category || '') + '</div>' +
     '<div class="gp-desc" style="font-family:\'Fraunces\',serif;font-size:14.5px;line-height:1.65;">' + esc(p.relation || '') + '</div>' +
     (ev.type ?
@@ -1314,7 +1446,7 @@ function selectGraphNode(p){
       (ev.source_file ? '<div style="margin-top:8px;font-family:\'IBM Plex Mono\',monospace;font-size:11px;color:var(--text-light);word-break:break-all;">' + esc(ev.source_file) + '</div>' : '') +
       '</div></div>'
     : '') +
-    (p.importance ? '<div style="margin-top:14px;font-family:\'IBM Plex Mono\',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);">Waga w sieci: <b style="color:var(--text)">' + esc(p.importance) + '</b></div>' : '');
+    '';
   panel.classList.add('show');
 }
 
