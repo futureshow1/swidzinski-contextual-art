@@ -1247,19 +1247,19 @@ function buildBiblio() {
   if(biblioBuilt) return; biblioBuilt=true;
   const d=biblioData;
   let html='';
-  html+='<h3 style="font-family:'Fraunces',serif;font-size:20px;margin:24px 0 14px;color:var(--text)">Books by Świdziński</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:24px 0 14px;color:var(--text)">Books by Świdziński</h3>';
   html+=d.books.map(b=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${b.title}</h3><div class="meta">${b.year} · ${b.place} · ${b.type}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${b.note}</p></div></div>`).join('');
 
-  html+='<h3 style="font-family:'Fraunces',serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Key Essays & Texts</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Key Essays & Texts</h3>';
   html+=d.essays.map(e=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${e.title}</h3><div class="meta">${e.year||''} · ${e.publication}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${e.note}</p></div></div>`).join('');
 
-  html+='<h3 style="font-family:'Fraunces',serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Scholarly Works & Critical Analysis</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Scholarly Works & Critical Analysis</h3>';
   html+=d.scholarly.map(s=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${s.title}</h3><div class="meta">${s.author} · ${s.year||''}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${s.note}</p></div></div>`).join('');
 
-  html+='<h3 style="font-family:'Fraunces',serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Interviews</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Interviews</h3>';
   html+=d.interviews.map(i=>`<div class="text-card"><div class="text-card-header"><div><h3>${i.title}</h3><div class="meta">${i.interviewer} · ${i.year||''} · ${i.publication}</div></div></div></div>`).join('');
 
-  html+='<h3 style="font-family:'Fraunces',serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Cited Philosophical Works</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Cited Philosophical Works</h3>';
   html+='<div style="columns:2;column-gap:24px;font-size:13px;color:var(--text-dim);line-height:2;">'+d.citedPhilosophy.map(c=>`<div style="break-inside:avoid;">${c}</div>`).join('')+'</div>';
 
   document.getElementById('biblioContainer').innerHTML=html;
@@ -1274,13 +1274,13 @@ function buildFestivals() {
   const d=festivalsData;
   let html='';
 
-  html+='<h3 style="font-family:'Fraunces',serif;font-size:20px;margin:24px 0 14px;color:var(--text)">Organized & Co-organized by Świdziński</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:24px 0 14px;color:var(--text)">Organized & Co-organized by Świdziński</h3>';
   html+=d.organized.map(f=>`<div class="card" style="cursor:default;margin-bottom:10px;"><div class="card-label">${f.year}</div><h3>${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('');
 
-  html+='<h3 style="font-family:'Fraunces',serif;font-size:20px;margin:32px 0 14px;color:var(--text)">International Festivals & Conferences</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">International Festivals & Conferences</h3>';
   html+='<div class="card-grid">'+d.participated.map(f=>`<div class="card" style="cursor:default;"><div class="card-label">${f.year}</div><h3 style="font-size:15px;">${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('')+'</div>';
 
-  html+='<h3 style="font-family:'Fraunces',serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Late Recognition & Legacy</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Late Recognition & Legacy</h3>';
   html+=d.posthumous.map(f=>`<div class="card" style="cursor:default;margin-bottom:10px;border-color:var(--accent);"><div class="card-label">${f.year}</div><h3>${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('');
 
   document.getElementById('festivalsContainer').innerHTML=html;
