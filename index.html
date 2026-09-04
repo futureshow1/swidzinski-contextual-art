@@ -432,7 +432,7 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
 <!-- ═══ ARCHIVE HUB ═══ -->
 <div id="archiveView" class="view">
   <h2 data-i18n="view.archive.h">Archive</h2>
-  <p class="section-desc">Navigate the collected works, life events, intellectual network, and key ideas of Jan Świdziński's contextual art.</p>
+  <p class="section-desc" data-i18n="view.archive.d">Navigate the collected works, life events, intellectual network, and key ideas of Jan Świdziński's contextual art.</p>
   <div class="card-grid" id="archiveGrid"></div>
 </div>
 
@@ -454,7 +454,7 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
 <!-- ═══ TEXTS ═══ -->
 <div id="textsView" class="view">
   <h2 data-i18n="view.texts.h">Texts & Writings</h2>
-  <p class="section-desc">Primary sources — manifestos, theoretical essays, critical reflections. Świdziński's own words.</p>
+  <p class="section-desc" data-i18n="view.texts.d">Primary sources — manifestos, theoretical essays, critical reflections. Świdziński's own words.</p>
   <div id="textsContainer"></div>
 </div>
 
@@ -469,14 +469,14 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
 <!-- ═══ BIBLIOGRAPHY ═══ -->
 <div id="biblioView" class="view">
   <h2 data-i18n="view.biblio.h">Bibliography & Resources</h2>
-  <p class="section-desc">Publications, scholarly works, and essential references for researchers, art historians, and students of contextual art.</p>
+  <p class="section-desc" data-i18n="view.biblio.d">Publications, scholarly works, and essential references for researchers, art historians, and students of contextual art.</p>
   <div id="biblioContainer"></div>
 </div>
 
 <!-- ═══ FESTIVALS ═══ -->
 <div id="festivalsView" class="view">
   <h2 data-i18n="view.fest.h">Festivals & Performances</h2>
-  <p class="section-desc">International festivals, performances, and exhibitions — and the late exhibitions, symposia, and archives that secure Świdziński's legacy.</p>
+  <p class="section-desc" data-i18n="view.fest.d">International festivals, performances, and exhibitions — and the late exhibitions, symposia, and archives that secure Świdziński's legacy.</p>
   <div id="festivalsContainer"></div>
 </div>
 
@@ -498,14 +498,14 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
 <!-- ═══ FORMULA GAME ═══ -->
 <div id="formulaView" class="view">
   <h2 data-i18n="view.formula.h">The Context Formula</h2>
-  <p class="section-desc">Change the parameters — watch the meaning transform. Świdziński's core insight, made interactive.</p>
+  <p class="section-desc" data-i18n="view.formula.d">Change the parameters — watch the meaning transform. Świdziński's core insight, made interactive.</p>
   <div class="formula-widget" id="formulaWidget"></div>
 </div>
 
 <!-- ═══ COMPARE GAME ═══ -->
 <div id="compareView" class="view">
   <h2 data-i18n="view.compare.h">Conceptual vs. Contextual</h2>
-  <p class="section-desc">Drag each idea to the correct column. Kosuth's conceptualism or Świdziński's contextualism?</p>
+  <p class="section-desc" data-i18n="view.compare.d">Drag each idea to the correct column. Kosuth's conceptualism or Świdziński's contextualism?</p>
   <div id="compareArea"></div>
 </div>
 
@@ -600,6 +600,7 @@ function showView(id) {
   if(id==='compare') initCompare();
   if(id==='points') buildPoints();
   if(id==='archive') buildArchive();
+  if (typeof applyI18nDom === 'function') applyI18nDom();
   window.scrollTo(0,0);
   updateContext();
 }
@@ -1075,11 +1076,16 @@ function setDataLang(lang){
   Object.keys(DATA_REFS).forEach(function(k){
     var live = DATA_REFS[k], base = EN_DATA[k], over = usePL ? (PL_DATA[k] || []) : [];
     live.forEach(function(item, i){
+      var b = base[i]; if (b === undefined) return;
+      var o = over[i];
+      if (typeof b === 'string') {
+        // tablica gołych napisów — podmieniamy cały element
+        live[i] = (o && o.text) ? o.text : b;
+        return;
+      }
       // 1) przywróć angielski oryginał
-      var b = base[i]; if (!b) return;
       Object.keys(b).forEach(function(f){ item[f] = JSON.parse(JSON.stringify(b[f])); });
       // 2) nałóż polskie pola, jeśli są
-      var o = over[i];
       if (o) Object.keys(o).forEach(function(f){ if (f !== 'i' && o[f] != null && o[f] !== '') item[f] = o[f]; });
     });
   });
@@ -1100,6 +1106,7 @@ function rebuildCurrentView(){
   else if (v==='archive') buildArchive();
   else if (v==='compare') initCompare();
   else if (v==='formula') initFormula();
+  applyI18nDom();
 }
 
 // BUILD: ARCHIVE HUB
@@ -1119,7 +1126,7 @@ function buildArchive() {
       <div class="card-label">${i.label}</div>
       <h3>${i.title}</h3>
       <p>${i.desc}</p>
-      <div class="tags">${i.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="tags">${i.tags.map(t=>`<span class="tag">${T('tag.'+t, t)}</span>`).join('')}</div>
     </div>`).join('');
 }
 
@@ -1558,19 +1565,19 @@ function buildBiblio() {
   if(biblioBuilt) return; biblioBuilt=true;
   const d=biblioData;
   let html='';
-  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:24px 0 14px;color:var(--text)">Books by Świdziński</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:24px 0 14px;color:var(--text)">'+T('b.books')+'</h3>';
   html+=d.books.map(b=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${b.title}</h3><div class="meta">${b.year} · ${b.place} · ${b.type}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${b.note}</p></div></div>`).join('');
 
-  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Key Essays & Texts</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('b.essays')+'</h3>';
   html+=d.essays.map(e=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${e.title}</h3><div class="meta">${e.year||''} · ${e.publication}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${e.note}</p></div></div>`).join('');
 
-  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Scholarly Works & Critical Analysis</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('b.scholarly')+'</h3>';
   html+=d.scholarly.map(s=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${s.title}</h3><div class="meta">${s.author} · ${s.year||''}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${s.note}</p></div></div>`).join('');
 
-  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Interviews</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('b.interviews')+'</h3>';
   html+=d.interviews.map(i=>`<div class="text-card"><div class="text-card-header"><div><h3>${i.title}</h3><div class="meta">${i.interviewer} · ${i.year||''} · ${i.publication}</div></div></div></div>`).join('');
 
-  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Cited Philosophical Works</h3>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('b.cited')+'</h3>';
   html+='<div style="columns:2;column-gap:24px;font-size:13px;color:var(--text-dim);line-height:2;">'+d.citedPhilosophy.map(c=>`<div style="break-inside:avoid;">${c}</div>`).join('')+'</div>';
 
   document.getElementById('biblioContainer').innerHTML=html;
@@ -1585,14 +1592,14 @@ function buildFestivals() {
   const d=festivalsData;
   let html='';
 
-  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:24px 0 14px;color:var(--text)">Organized & Co-organized by Świdziński</h3>';
-  html+=d.organized.map(f=>`<div class="card" style="cursor:default;margin-bottom:10px;"><div class="card-label">${f.year}</div><h3>${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('');
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:24px 0 14px;color:var(--text)">'+T('f.organized')+'</h3>';
+  html+=d.organized.map(f=>`<div class="card" style="cursor:default;margin-bottom:10px;"><div class="card-label">${f.year==='ongoing'?T('fest.ongoing'):f.year}</div><h3>${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('');
 
-  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">International Festivals & Conferences</h3>';
-  html+='<div class="card-grid">'+d.participated.map(f=>`<div class="card" style="cursor:default;"><div class="card-label">${f.year}</div><h3 style="font-size:15px;">${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('')+'</div>';
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('f.participated')+'</h3>';
+  html+='<div class="card-grid">'+d.participated.map(f=>`<div class="card" style="cursor:default;"><div class="card-label">${f.year==='ongoing'?T('fest.ongoing'):f.year}</div><h3 style="font-size:15px;">${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('')+'</div>';
 
-  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">Late Recognition & Legacy</h3>';
-  html+=d.posthumous.map(f=>`<div class="card" style="cursor:default;margin-bottom:10px;border-color:var(--accent);"><div class="card-label">${f.year}</div><h3>${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('');
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('f.posthumous')+'</h3>';
+  html+=d.posthumous.map(f=>`<div class="card" style="cursor:default;margin-bottom:10px;border-color:var(--accent);"><div class="card-label">${f.year==='ongoing'?T('fest.ongoing'):f.year}</div><h3>${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('');
 
   document.getElementById('festivalsContainer').innerHTML=html;
 }
@@ -1602,10 +1609,10 @@ function buildFestivals() {
 // ═══════════════════════════════════════════
 function buildGameHub() {
   const modes = [
-    {icon:'🧠',title:'Contextual Quiz',desc:'Test your knowledge across 9 categories — from core theory to philosophy and events.',view:'quiz'},
-    {icon:'⚗️',title:'The Context Formula',desc:'Change the parameters of time, place, situation, and person — watch meaning transform before your eyes.',view:'formula'},
-    {icon:'⚖️',title:'Conceptual vs. Contextual',desc:'Drag each idea to the correct column. Can you tell Kosuth\'s conceptualism from Świdziński\'s contextualism?',view:'compare'},
-    {icon:'🔓',title:'12 Points Challenge',desc:'Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.',view:'points'},
+    {icon:'🧠',title:T('g.quiz.t'),desc:T('g.quiz.d'),view:'quiz'},
+    {icon:'⚗️',title:T('g.formula.t'),desc:T('g.formula.d'),view:'formula'},
+    {icon:'⚖️',title:T('g.compare.t'),desc:T('g.compare.d'),view:'compare'},
+    {icon:'🔓',title:T('g.points.t'),desc:T('g.points.d'),view:'points'},
   ];
   document.getElementById('gameGrid').innerHTML=modes.map(m=>`
     <div class="game-card" onclick="showView('${m.view}')">
@@ -1622,9 +1629,9 @@ let quizCat='All', quizQ=[], quizIdx=0, quizCorrect=0;
 
 function initQuiz(cat) {
   if(cat) quizCat=cat;
-  const cats=['All',...new Set(quizData.map(q=>q.cat))];
+  const cats=['All',...new Set(quizData.map(q=>q.cat))];  // etykieta 'All' tlumaczona przy renderowaniu
   document.getElementById('quizCats').innerHTML=cats.map(c=>
-    `<button class="${c===quizCat?'active':''}" onclick="initQuiz('${c}')">${c}</button>`
+    `<button class="${c===quizCat?'active':''}" onclick="initQuiz('${c}')">${c==='All'?T('q.all'):c}</button>`
   ).join('');
   quizQ = (quizCat==='All'?[...quizData]:quizData.filter(q=>q.cat===quizCat))
     .sort(()=>Math.random()-0.5).slice(0,12);
@@ -1639,13 +1646,13 @@ function renderQuizQ() {
   document.getElementById('quizArea').innerHTML=`
     <div class="quiz-card">
       <div class="q-cat">${q.cat}</div>
-      <div class="q-num">Question ${quizIdx+1} of ${quizQ.length}</div>
+      <div class="q-num">${T('q.num').replace('{n}',quizIdx+1).replace('{m}',quizQ.length)}</div>
       <h3>${q.q}</h3>
       <div class="quiz-options">
         ${q.opts.map((o,i)=>`<button class="quiz-option" onclick="answerQuiz(${i})">${o}</button>`).join('')}
       </div>
       <div class="quiz-explanation" id="quizExp">${q.exp}</div>
-      <div class="quiz-next" id="quizNext"><button onclick="quizIdx++;renderQuizQ()">Next Question →</button></div>
+      <div class="quiz-next" id="quizNext"><button onclick="quizIdx++;renderQuizQ()">'+T('q.next')+'</button></div>
     </div>`;
 }
 
@@ -1684,14 +1691,14 @@ function initFormula() {
   w.innerHTML=`
     <div class="formula-display">
       <div class="object-name">"${sc.object}"</div>
-      <div class="meaning-box" id="meaningBox">Select all parameters to discover the meaning in this context...</div>
+      <div class="meaning-box" id="meaningBox">${T('fm.hint')}</div>
     </div>
     <div class="formula-notation" id="formulaNotation"></div>
     <div class="param-grid">
       ${keys.map(k=>`<div class="param-slot">
-        <label>${k}</label>
+        <label>${T('fm.'+k, k)}</label>
         <select onchange="updateFormulaMeaning()" data-param="${k}">
-          <option value="">— select —</option>
+          <option value="">${T('fm.select')}</option>
           ${sc.params[k].map(v=>`<option value="${v}">${v}</option>`).join('')}
         </select>
       </div>`).join('')}
@@ -1737,7 +1744,7 @@ function updateFormulaMeaning() {
     box.style.background='var(--surface2)';
     renderPills(vals.time,vals.place,vals.situation,vals.person);
   } else {
-    box.textContent='Select all parameters to discover the meaning in this context...';
+    box.textContent=T('fm.hint');
     box.style.background='var(--surface2)';
     renderPills(vals.time||'?',vals.place||'?',vals.situation||'?',vals.person||'?');
   }
@@ -1755,11 +1762,11 @@ function initCompare() {
   document.getElementById('compareArea').innerHTML=`
     <div class="compare-columns">
       <div class="compare-col" id="colConceptual" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="dropCompare(event,'conceptual')">
-        <h3>Conceptual Art (Kosuth)</h3>
+        <h3 data-i18n="c.kosuth">Conceptual Art (Kosuth)</h3>
         <div id="placedConceptual"></div>
       </div>
       <div class="compare-col" id="colContextual" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="dropCompare(event,'contextual')">
-        <h3>Contextual Art (Świdziński)</h3>
+        <h3 data-i18n="c.swid">Contextual Art (Świdziński)</h3>
         <div id="placedContextual"></div>
       </div>
     </div>
@@ -1767,8 +1774,8 @@ function initCompare() {
       ${shuffled.map((item,i)=>`<div class="drag-card" draggable="true" ondragstart="event.dataTransfer.setData('text/plain','${i}')" data-idx="${i}" id="drag-${i}">${item.text}</div>`).join('')}
     </div>
     <div style="text-align:center;margin-top:16px;">
-      <button class="btn-primary" id="checkCompareBtn" onclick="checkCompare()">Check Answers</button>
-      <button class="btn-secondary" onclick="initCompare()" style="margin-left:8px;">Reset</button>
+      <button class="btn-primary" id="checkCompareBtn" onclick="checkCompare()" data-i18n="c.check">Check Answers</button>
+      <button class="btn-secondary" onclick="initCompare()" style="margin-left:8px;" data-i18n="c.reset">Reset</button>
     </div>`;
   // Touch support
   document.querySelectorAll('.drag-card').forEach(card=>{
@@ -1840,16 +1847,16 @@ const pointsTitles = [
 function buildPoints() {
   const pts=textsData.find(t=>t.id==='12points').sections;
   document.getElementById('pointsProgress').textContent=
-    `${S.unlockedPoints.size}/12 points unlocked · ${S.unlockedPoints.size*20} bonus points earned`;
+    T('p.unlocked').replace('{n}',S.unlockedPoints.size).replace('{b}',S.unlockedPoints.size*20);
   document.getElementById('pointsGrid').innerHTML=pts.map((p,i)=>{
     const unlocked=S.unlockedPoints.has(i);
     return `<div class="point-card ${unlocked?'unlocked':'locked'}">
-      <div class="point-num">Point ${i+1}</div>
-      <h4>${pointsTitles[i]}</h4>
+      <div class="point-num">${T('p.point').replace('{n}',i+1)}</div>
+      <h4>${T('pt.'+i, pointsTitles[i])}</h4>
       <p>${p.t}</p>
     </div>`;
   }).join('') + `<div style="grid-column:1/-1;text-align:center;padding:20px;">
-    <button class="btn-primary" onclick="unlockPointQuiz()">Answer a Question to Unlock</button>
+    <button class="btn-primary" onclick="unlockPointQuiz()">${T('p.unlockbtn')}</button>
   </div>`;
 }
 
@@ -1857,7 +1864,7 @@ function unlockPointQuiz() {
   // Find first locked point
   const locked=[];
   for(let i=0;i<12;i++) if(!S.unlockedPoints.has(i)) locked.push(i);
-  if(!locked.length) { alert('All 12 points unlocked! Congratulations!'); return; }
+  if(!locked.length) { alert(T('p.alldone')); return; }
   const target=locked[Math.floor(Math.random()*locked.length)];
   const q=quizData[Math.floor(Math.random()*quizData.length)];
   const area=document.getElementById('pointsGrid');
@@ -1924,6 +1931,79 @@ showView('landing');
 // ═══════════════════════════════════════════
 var I18N = {
   pl: {
+    'pt.0':"Przedmioty i znaczenia",
+    'pt.1':"Wieloznaczność społeczna",
+    'pt.2':"Konwencjonalne a pojęciowe",
+    'pt.3':"Dewaluacja znaczeń",
+    'pt.4':"Formuła kontekstu",
+    'pt.5':"Odrzucenie kanonów",
+    'pt.6':"Przeciw stabilizacji",
+    'pt.7':"Oba człony ruchome",
+    'pt.8':"Relacja jako gotowość",
+    'pt.9':"Artysta a grupa",
+    'pt.10':"Poza logiką formalną",
+    'pt.11':"Przeciw relatywizmowi",
+    'p.point':"Punkt {n}",
+    'p.unlockbtn':"Odpowiedz na pytanie, żeby odblokować",
+    'c.kosuth':"Sztuka konceptualna (Kosuth)",
+    'c.swid':"Sztuka kontekstualna (Świdziński)",
+    'c.check':"Sprawdź odpowiedzi",
+    'c.reset':"Od nowa",
+    'fest.ongoing':"w toku",
+
+    'g.quiz.t':"Quiz kontekstualny",
+    'g.quiz.d':"Sprawdź wiedzę w dziewięciu kategoriach — od teorii podstawowej po filozofię i wydarzenia.",
+    'g.formula.t':"Formuła kontekstu",
+    'g.formula.d':"Zmieniaj czas, miejsce, sytuację i osobę — patrz, jak znaczenie przekształca się na oczach.",
+    'g.compare.t':"Konceptualne a kontekstualne",
+    'g.compare.d':"Przeciągnij każdą myśl do właściwej kolumny. Odróżnisz konceptualizm Kosutha od kontekstualizmu Świdzińskiego?",
+    'g.points.t':"Wyzwanie: 12 punktów",
+    'g.points.d':"Odblokuj każdy z dwunastu punktów sztuki kontekstualnej, pokazując, że go rozumiesz.",
+    'fm.hint':"Wybierz wszystkie parametry, żeby poznać znaczenie w tym kontekście…",
+    'fm.select':"— wybierz —",
+    'fm.time':"CZAS",
+    'fm.place':"MIEJSCE",
+    'fm.situation':"SYTUACJA",
+    'fm.person':"OSOBA",
+    'q.all':"Wszystko",
+    'p.unlocked':"Odblokowano {n} z 12 punktów · {b} punktów premii",
+    'p.alldone':"Wszystkie dwanaście punktów odblokowane. Gratulacje!",
+
+    'tag.biography':"biografia",
+    'tag.chronology':"chronologia",
+    'tag.people':"ludzie",
+    'tag.influence':"wpływy",
+    'tag.manifesto':"manifest",
+    'tag.theory':"teoria",
+    'tag.essay':"esej",
+    'tag.definitions':"definicje",
+    'tag.publications':"publikacje",
+    'tag.research':"badania",
+    'tag.scholarly':"nauka",
+    'tag.festivals':"festiwale",
+    'tag.performance':"performans",
+    'tag.events':"wydarzenia",
+    'tag.academic':"akademickie",
+    'tag.primary sources':"źródła pierwotne",
+
+    'view.archive.d':"Przeglądaj zebrane pisma, wydarzenia z życia, sieć intelektualną i kluczowe idee Jana Świdzińskiego.",
+    'view.formula.d':"Zmieniaj parametry i patrz, jak przekształca się znaczenie. Główna intuicja Świdzińskiego, oddana interaktywnie.",
+    'view.compare.d':"Przeciągnij każdą myśl do właściwej kolumny. Konceptualizm Kosutha czy kontekstualizm Świdzińskiego?",
+
+    'view.texts.d':"Źródła pierwotne — manifesty, eseje teoretyczne, refleksje krytyczne. Słowami samego Świdzińskiego.",
+    'view.biblio.d':"Publikacje, opracowania naukowe i podstawowe źródła dla badaczy, historyków sztuki i studentów sztuki kontekstualnej.",
+    'view.fest.d':"Międzynarodowe festiwale, performanse i wystawy — oraz późne wystawy, sympozja i archiwa, które utrwalają dziedzictwo Świdzińskiego.",
+    'b.books':"Książki Świdzińskiego",
+    'b.essays':"Najważniejsze eseje i teksty",
+    'b.scholarly':"Opracowania naukowe i analizy krytyczne",
+    'b.interviews':"Wywiady",
+    'b.cited':"Przywoływane prace filozoficzne",
+    'f.organized':"Organizowane i współorganizowane przez Świdzińskiego",
+    'f.participated':"Międzynarodowe festiwale i konferencje",
+    'f.posthumous':"Późne uznanie i dziedzictwo",
+    'q.num':"Pytanie {n} z {m}",
+    'q.next':"Następne pytanie →",
+
     'hub.timeline.l':"Kalendarium",
     'hub.timeline.t':"Życie i wydarzenia",
     'hub.timeline.d':"28 kluczowych momentów od 1923 do 2014 — malarstwo, teoria, performans, dziedzictwo.",
@@ -1986,6 +2066,79 @@ var I18N = {
     'latest.3.pl':'Paryż · sympozjum · fr','latest.4.pl':'CSW Warszawa · retrospektywa'
   },
   en: {
+    'pt.0':"Objects & Meanings",
+    'pt.1':"Social Ambiguity",
+    'pt.2':"Conventional vs. Conceptual",
+    'pt.3':"Devaluation of Meanings",
+    'pt.4':"The Context Formula",
+    'pt.5':"Rejecting Canons",
+    'pt.6':"Against Stabilization",
+    'pt.7':"Both Terms Mobile",
+    'pt.8':"Relation as Readiness",
+    'pt.9':"Artist vs. Group",
+    'pt.10':"Beyond Formal Logic",
+    'pt.11':"Against Relativism",
+    'p.point':"Point {n}",
+    'p.unlockbtn':"Answer a Question to Unlock",
+    'c.kosuth':"Conceptual Art (Kosuth)",
+    'c.swid':"Contextual Art (Świdziński)",
+    'c.check':"Check Answers",
+    'c.reset':"Reset",
+    'fest.ongoing':"ongoing",
+
+    'g.quiz.t':"Contextual Quiz",
+    'g.quiz.d':"Test your knowledge across 9 categories — from core theory to philosophy and events.",
+    'g.formula.t':"The Context Formula",
+    'g.formula.d':"Change the parameters of time, place, situation, and person — watch meaning transform before your eyes.",
+    'g.compare.t':"Conceptual vs. Contextual",
+    'g.compare.d':"Drag each idea to the correct column. Can you tell Kosuth's conceptualism from Świdziński's contextualism?",
+    'g.points.t':"12 Points Challenge",
+    'g.points.d':"Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.",
+    'fm.hint':"Select all parameters to discover the meaning in this context...",
+    'fm.select':"— select —",
+    'fm.time':"TIME",
+    'fm.place':"PLACE",
+    'fm.situation':"SITUATION",
+    'fm.person':"PERSON",
+    'q.all':"All",
+    'p.unlocked':"{n}/12 points unlocked · {b} bonus points earned",
+    'p.alldone':"All 12 points unlocked! Congratulations!",
+
+    'tag.biography':"biography",
+    'tag.chronology':"chronology",
+    'tag.people':"people",
+    'tag.influence':"influence",
+    'tag.manifesto':"manifesto",
+    'tag.theory':"theory",
+    'tag.essay':"essay",
+    'tag.definitions':"definitions",
+    'tag.publications':"publications",
+    'tag.research':"research",
+    'tag.scholarly':"scholarly",
+    'tag.festivals':"festivals",
+    'tag.performance':"performance",
+    'tag.events':"events",
+    'tag.academic':"academic",
+    'tag.primary sources':"primary sources",
+
+    'view.archive.d':"Navigate the collected works, life events, intellectual network, and key ideas of Jan Świdziński's contextual art.",
+    'view.formula.d':"Change the parameters — watch the meaning transform. Świdziński's core insight, made interactive.",
+    'view.compare.d':"Drag each idea to the correct column. Kosuth's conceptualism or Świdziński's contextualism?",
+
+    'view.texts.d':"Primary sources — manifestos, theoretical essays, critical reflections. Świdziński’s own words.",
+    'view.biblio.d':"Publications, scholarly works, and essential references for researchers, art historians, and students of contextual art.",
+    'view.fest.d':"International festivals, performances, and exhibitions — and the late exhibitions, symposia, and archives that secure Świdziński’s legacy.",
+    'b.books':"Books by Świdziński",
+    'b.essays':"Key Essays & Texts",
+    'b.scholarly':"Scholarly Works & Critical Analysis",
+    'b.interviews':"Interviews",
+    'b.cited':"Cited Philosophical Works",
+    'f.organized':"Organized & Co-organized by Świdziński",
+    'f.participated':"International Festivals & Conferences",
+    'f.posthumous':"Late Recognition & Legacy",
+    'q.num':"Question {n} of {m}",
+    'q.next':"Next Question →",
+
     'hub.timeline.l':"Timeline",
     'hub.timeline.t':"Life & Events",
     'hub.timeline.d':"28 key moments from 1923 to 2014 — painting, theory, performance, and legacy.",
@@ -2048,6 +2201,79 @@ var I18N = {
     'latest.3.pl':'Paris · symposium · fr','latest.4.pl':'CSW Warsaw · retrospective'
   },
   fr: {
+    'pt.0':"Objects & Meanings",
+    'pt.1':"Social Ambiguity",
+    'pt.2':"Conventional vs. Conceptual",
+    'pt.3':"Devaluation of Meanings",
+    'pt.4':"The Context Formula",
+    'pt.5':"Rejecting Canons",
+    'pt.6':"Against Stabilization",
+    'pt.7':"Both Terms Mobile",
+    'pt.8':"Relation as Readiness",
+    'pt.9':"Artist vs. Group",
+    'pt.10':"Beyond Formal Logic",
+    'pt.11':"Against Relativism",
+    'p.point':"Point {n}",
+    'p.unlockbtn':"Answer a Question to Unlock",
+    'c.kosuth':"Conceptual Art (Kosuth)",
+    'c.swid':"Contextual Art (Świdziński)",
+    'c.check':"Check Answers",
+    'c.reset':"Reset",
+    'fest.ongoing':"ongoing",
+
+    'g.quiz.t':"Contextual Quiz",
+    'g.quiz.d':"Test your knowledge across 9 categories — from core theory to philosophy and events.",
+    'g.formula.t':"The Context Formula",
+    'g.formula.d':"Change the parameters of time, place, situation, and person — watch meaning transform before your eyes.",
+    'g.compare.t':"Conceptual vs. Contextual",
+    'g.compare.d':"Drag each idea to the correct column. Can you tell Kosuth's conceptualism from Świdziński's contextualism?",
+    'g.points.t':"12 Points Challenge",
+    'g.points.d':"Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.",
+    'fm.hint':"Select all parameters to discover the meaning in this context...",
+    'fm.select':"— select —",
+    'fm.time':"TIME",
+    'fm.place':"PLACE",
+    'fm.situation':"SITUATION",
+    'fm.person':"PERSON",
+    'q.all':"All",
+    'p.unlocked':"{n}/12 points unlocked · {b} bonus points earned",
+    'p.alldone':"All 12 points unlocked! Congratulations!",
+
+    'tag.biography':"biography",
+    'tag.chronology':"chronology",
+    'tag.people':"people",
+    'tag.influence':"influence",
+    'tag.manifesto':"manifesto",
+    'tag.theory':"theory",
+    'tag.essay':"essay",
+    'tag.definitions':"definitions",
+    'tag.publications':"publications",
+    'tag.research':"research",
+    'tag.scholarly':"scholarly",
+    'tag.festivals':"festivals",
+    'tag.performance':"performance",
+    'tag.events':"events",
+    'tag.academic':"academic",
+    'tag.primary sources':"primary sources",
+
+    'view.archive.d':"Navigate the collected works, life events, intellectual network, and key ideas of Jan Świdziński's contextual art.",
+    'view.formula.d':"Change the parameters — watch the meaning transform. Świdziński's core insight, made interactive.",
+    'view.compare.d':"Drag each idea to the correct column. Kosuth's conceptualism or Świdziński's contextualism?",
+
+    'view.texts.d':"Primary sources — manifestos, theoretical essays, critical reflections. Świdziński’s own words.",
+    'view.biblio.d':"Publications, scholarly works, and essential references for researchers, art historians, and students of contextual art.",
+    'view.fest.d':"International festivals, performances, and exhibitions — and the late exhibitions, symposia, and archives that secure Świdziński’s legacy.",
+    'b.books':"Books by Świdziński",
+    'b.essays':"Key Essays & Texts",
+    'b.scholarly':"Scholarly Works & Critical Analysis",
+    'b.interviews':"Interviews",
+    'b.cited':"Cited Philosophical Works",
+    'f.organized':"Organized & Co-organized by Świdziński",
+    'f.participated':"International Festivals & Conferences",
+    'f.posthumous':"Late Recognition & Legacy",
+    'q.num':"Question {n} of {m}",
+    'q.next':"Next Question →",
+
     'hub.timeline.l':"Timeline",
     'hub.timeline.t':"Life & Events",
     'hub.timeline.d':"28 key moments from 1923 to 2014 — painting, theory, performance, and legacy.",
@@ -2110,6 +2336,79 @@ var I18N = {
     'latest.3.pl':'Paris · colloque · fr','latest.4.pl':'CSW Varsovie · rétrospective'
   },
   ja: {
+    'pt.0':"Objects & Meanings",
+    'pt.1':"Social Ambiguity",
+    'pt.2':"Conventional vs. Conceptual",
+    'pt.3':"Devaluation of Meanings",
+    'pt.4':"The Context Formula",
+    'pt.5':"Rejecting Canons",
+    'pt.6':"Against Stabilization",
+    'pt.7':"Both Terms Mobile",
+    'pt.8':"Relation as Readiness",
+    'pt.9':"Artist vs. Group",
+    'pt.10':"Beyond Formal Logic",
+    'pt.11':"Against Relativism",
+    'p.point':"Point {n}",
+    'p.unlockbtn':"Answer a Question to Unlock",
+    'c.kosuth':"Conceptual Art (Kosuth)",
+    'c.swid':"Contextual Art (Świdziński)",
+    'c.check':"Check Answers",
+    'c.reset':"Reset",
+    'fest.ongoing':"ongoing",
+
+    'g.quiz.t':"Contextual Quiz",
+    'g.quiz.d':"Test your knowledge across 9 categories — from core theory to philosophy and events.",
+    'g.formula.t':"The Context Formula",
+    'g.formula.d':"Change the parameters of time, place, situation, and person — watch meaning transform before your eyes.",
+    'g.compare.t':"Conceptual vs. Contextual",
+    'g.compare.d':"Drag each idea to the correct column. Can you tell Kosuth's conceptualism from Świdziński's contextualism?",
+    'g.points.t':"12 Points Challenge",
+    'g.points.d':"Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.",
+    'fm.hint':"Select all parameters to discover the meaning in this context...",
+    'fm.select':"— select —",
+    'fm.time':"TIME",
+    'fm.place':"PLACE",
+    'fm.situation':"SITUATION",
+    'fm.person':"PERSON",
+    'q.all':"All",
+    'p.unlocked':"{n}/12 points unlocked · {b} bonus points earned",
+    'p.alldone':"All 12 points unlocked! Congratulations!",
+
+    'tag.biography':"biography",
+    'tag.chronology':"chronology",
+    'tag.people':"people",
+    'tag.influence':"influence",
+    'tag.manifesto':"manifesto",
+    'tag.theory':"theory",
+    'tag.essay':"essay",
+    'tag.definitions':"definitions",
+    'tag.publications':"publications",
+    'tag.research':"research",
+    'tag.scholarly':"scholarly",
+    'tag.festivals':"festivals",
+    'tag.performance':"performance",
+    'tag.events':"events",
+    'tag.academic':"academic",
+    'tag.primary sources':"primary sources",
+
+    'view.archive.d':"Navigate the collected works, life events, intellectual network, and key ideas of Jan Świdziński's contextual art.",
+    'view.formula.d':"Change the parameters — watch the meaning transform. Świdziński's core insight, made interactive.",
+    'view.compare.d':"Drag each idea to the correct column. Kosuth's conceptualism or Świdziński's contextualism?",
+
+    'view.texts.d':"Primary sources — manifestos, theoretical essays, critical reflections. Świdziński’s own words.",
+    'view.biblio.d':"Publications, scholarly works, and essential references for researchers, art historians, and students of contextual art.",
+    'view.fest.d':"International festivals, performances, and exhibitions — and the late exhibitions, symposia, and archives that secure Świdziński’s legacy.",
+    'b.books':"Books by Świdziński",
+    'b.essays':"Key Essays & Texts",
+    'b.scholarly':"Scholarly Works & Critical Analysis",
+    'b.interviews':"Interviews",
+    'b.cited':"Cited Philosophical Works",
+    'f.organized':"Organized & Co-organized by Świdziński",
+    'f.participated':"International Festivals & Conferences",
+    'f.posthumous':"Late Recognition & Legacy",
+    'q.num':"Question {n} of {m}",
+    'q.next':"Next Question →",
+
     'hub.timeline.l':"Timeline",
     'hub.timeline.t':"Life & Events",
     'hub.timeline.d':"28 key moments from 1923 to 2014 — painting, theory, performance, and legacy.",
@@ -2172,6 +2471,79 @@ var I18N = {
     'latest.3.pl':'パリ · シンポジウム · fr','latest.4.pl':'CSW ワルシャワ · 回顧展'
   },
   zh: {
+    'pt.0':"Objects & Meanings",
+    'pt.1':"Social Ambiguity",
+    'pt.2':"Conventional vs. Conceptual",
+    'pt.3':"Devaluation of Meanings",
+    'pt.4':"The Context Formula",
+    'pt.5':"Rejecting Canons",
+    'pt.6':"Against Stabilization",
+    'pt.7':"Both Terms Mobile",
+    'pt.8':"Relation as Readiness",
+    'pt.9':"Artist vs. Group",
+    'pt.10':"Beyond Formal Logic",
+    'pt.11':"Against Relativism",
+    'p.point':"Point {n}",
+    'p.unlockbtn':"Answer a Question to Unlock",
+    'c.kosuth':"Conceptual Art (Kosuth)",
+    'c.swid':"Contextual Art (Świdziński)",
+    'c.check':"Check Answers",
+    'c.reset':"Reset",
+    'fest.ongoing':"ongoing",
+
+    'g.quiz.t':"Contextual Quiz",
+    'g.quiz.d':"Test your knowledge across 9 categories — from core theory to philosophy and events.",
+    'g.formula.t':"The Context Formula",
+    'g.formula.d':"Change the parameters of time, place, situation, and person — watch meaning transform before your eyes.",
+    'g.compare.t':"Conceptual vs. Contextual",
+    'g.compare.d':"Drag each idea to the correct column. Can you tell Kosuth's conceptualism from Świdziński's contextualism?",
+    'g.points.t':"12 Points Challenge",
+    'g.points.d':"Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.",
+    'fm.hint':"Select all parameters to discover the meaning in this context...",
+    'fm.select':"— select —",
+    'fm.time':"TIME",
+    'fm.place':"PLACE",
+    'fm.situation':"SITUATION",
+    'fm.person':"PERSON",
+    'q.all':"All",
+    'p.unlocked':"{n}/12 points unlocked · {b} bonus points earned",
+    'p.alldone':"All 12 points unlocked! Congratulations!",
+
+    'tag.biography':"biography",
+    'tag.chronology':"chronology",
+    'tag.people':"people",
+    'tag.influence':"influence",
+    'tag.manifesto':"manifesto",
+    'tag.theory':"theory",
+    'tag.essay':"essay",
+    'tag.definitions':"definitions",
+    'tag.publications':"publications",
+    'tag.research':"research",
+    'tag.scholarly':"scholarly",
+    'tag.festivals':"festivals",
+    'tag.performance':"performance",
+    'tag.events':"events",
+    'tag.academic':"academic",
+    'tag.primary sources':"primary sources",
+
+    'view.archive.d':"Navigate the collected works, life events, intellectual network, and key ideas of Jan Świdziński's contextual art.",
+    'view.formula.d':"Change the parameters — watch the meaning transform. Świdziński's core insight, made interactive.",
+    'view.compare.d':"Drag each idea to the correct column. Kosuth's conceptualism or Świdziński's contextualism?",
+
+    'view.texts.d':"Primary sources — manifestos, theoretical essays, critical reflections. Świdziński’s own words.",
+    'view.biblio.d':"Publications, scholarly works, and essential references for researchers, art historians, and students of contextual art.",
+    'view.fest.d':"International festivals, performances, and exhibitions — and the late exhibitions, symposia, and archives that secure Świdziński’s legacy.",
+    'b.books':"Books by Świdziński",
+    'b.essays':"Key Essays & Texts",
+    'b.scholarly':"Scholarly Works & Critical Analysis",
+    'b.interviews':"Interviews",
+    'b.cited':"Cited Philosophical Works",
+    'f.organized':"Organized & Co-organized by Świdziński",
+    'f.participated':"International Festivals & Conferences",
+    'f.posthumous':"Late Recognition & Legacy",
+    'q.num':"Question {n} of {m}",
+    'q.next':"Next Question →",
+
     'hub.timeline.l':"Timeline",
     'hub.timeline.t':"Life & Events",
     'hub.timeline.d':"28 key moments from 1923 to 2014 — painting, theory, performance, and legacy.",
@@ -2238,16 +2610,21 @@ var LANG_CODE_MAP = {pl:'pl', en:'en', fr:'fr', jp:'ja', cn:'zh'};
 var LANG_LABEL_MAP = {pl:'PL', en:'EN', fr:'FR', ja:'JP', zh:'CN'};
 var LANG_NOW = 'pl';
 function T(key, fallback){
-  var d = I18N[LANG_NOW] || I18N.pl || {};
+  var d = (typeof I18N !== 'undefined' && I18N) ? (I18N[LANG_NOW] || I18N.pl || {}) : {};
   return d[key] !== undefined ? d[key] : (fallback !== undefined ? fallback : key);
 }
-function applyLang(lang) {
-  LANG_NOW = lang;
-  var dict = I18N[lang] || I18N.pl;
+function applyI18nDom(lang){
+  if (typeof I18N === 'undefined' || !I18N) return;   // showView('landing') biegnie przed przypisaniem słownika
+  var dict = I18N[lang || LANG_NOW] || I18N.pl || {};
   document.querySelectorAll('[data-i18n]').forEach(function(el){
     var key = el.getAttribute('data-i18n');
     if (dict[key] !== undefined) el.innerHTML = dict[key];
   });
+}
+function applyLang(lang) {
+  LANG_NOW = lang;
+  var dict = (typeof I18N !== 'undefined' && I18N) ? (I18N[lang] || I18N.pl || {}) : {};
+  applyI18nDom(lang);
   document.querySelectorAll('.lang a').forEach(function(a){
     a.classList.toggle('active', a.textContent.trim() === (LANG_LABEL_MAP[lang] || lang.toUpperCase()));
   });
