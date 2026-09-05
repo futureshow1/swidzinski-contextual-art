@@ -640,68 +640,6 @@ const timeline = [
 ];
 
 // ═══════════════════════════════════════════
-// DATA: PEOPLE / GRAPH
-// ═══════════════════════════════════════════
-const people = [
-  {id:'swidzinski',name:'Jan Świdziński',dates:'1923–2014',x:.5,y:.4,r:38,color:'#4a6cf7',group:'contextual',
-   bio:'Creator of contextual art theory. Argued that meaning emerges from pragmatic context, not universal rules.',
-   quote:'Art is not similar to life — it is part of it. It is neither natural nor artificial. It is what it happens to be.',
-   concepts:['Contextual Art','Empty Sign','12 Points','Pragmatic Context']},
-  {id:'kosuth',name:'Joseph Kosuth',dates:'1945–',x:.18,y:.28,r:26,color:'#e05555',group:'conceptual',
-   bio:'American conceptual artist. "Art as Idea as Idea." Art as analytical proposition, tautological self-reference.',
-   quote:'A work of art is a tautology in that it is a presentation of the artist\'s intention, that is, he is saying that that particular work of art is art, which means, is a definition of art.',
-   concepts:['Art after Philosophy','Tautology','Analytical Proposition']},
-  {id:'wittgenstein',name:'Ludwig Wittgenstein',dates:'1889–1951',x:.35,y:.12,r:22,color:'#55a580',group:'philosophy',
-   bio:'Late-period philosophy of language games and forms of life. Key influence on both conceptualism and contextualism.',
-   quote:'The meaning of a word is its use in the language.',
-   concepts:['Language Games','Forms of Life','Family Resemblance']},
-  {id:'feyerabend',name:'Paul Feyerabend',dates:'1924–1994',x:.65,y:.12,r:20,color:'#55a580',group:'philosophy',
-   bio:'Epistemological anarchist. Argued against universal scientific method — knowledge is always contextual.',
-   quote:'The only principle that does not inhibit progress is: anything goes.',
-   concepts:['Against Method','Incommensurability','Epistemological Anarchism']},
-  {id:'fischer',name:'Hervé Fischer',dates:'1941–',x:.82,y:.35,r:20,color:'#c490e0',group:'parallel',
-   bio:'French-born artist and theorist, co-founder of the Collectif Art Sociologique (1974, with Fred Forest and Jean-Paul Thénot). A movement parallel to contextual art, allied at the 1977 conferences in Warsaw and Paris.',
-   concepts:['Art Sociologique','Social Practice']},
-  {id:'dlubak',name:'Zbigniew Dłubak',dates:'1921–2005',x:.28,y:.55,r:18,color:'#e0a040',group:'polish',
-   bio:'Polish photographer and conceptual artist. Key collaborator of Świdziński in the Warsaw Seminar (Seminarium Warszawskie).',
-   concepts:['Photography as Art','Warsaw Seminar','Conceptual Photography']},
-  {id:'kutera',name:'Anna & Romuald Kutera',dates:'active 1970s–',x:.42,y:.65,r:16,color:'#e0a040',group:'polish',
-   bio:'Polish artists of Galeria Sztuki Najnowszej, Wrocław. Exhibited with Świdziński in Lund, 1976.',
-   concepts:['Performance','Galeria Sztuki Najnowszej','Polish Avant-garde']},
-  {id:'gajewski',name:'Henryk Gajewski',dates:'1948–',x:.6,y:.6,r:16,color:'#e0a040',group:'polish',
-   bio:'Founder and director of Remont Gallery, Warsaw (1972–1979); organizer of Poland\'s first performance art festival, I AM (1978). Took part in contextual art exhibitions and conferences.',
-   concepts:['Remont Gallery','Performance','I AM Festival']},
-  {id:'guzek',name:'Łukasz Guzek',dates:'art historian',x:.72,y:.55,r:16,color:'#8090c0',group:'scholar',
-   bio:'Art historian analyzing contextual art in relation to Bourriaud\'s relational aesthetics and documentation theory.',
-   concepts:['Documentation','Relational Aesthetics','Art History']},
-  {id:'ronduda',name:'Łukasz Ronduda',dates:'art historian & curator',x:.15,y:.68,r:16,color:'#8090c0',group:'scholar',
-   bio:'Author of comprehensive analysis of contextual art as response to globalization and post-modern practice.',
-   concepts:['Post-conceptualism','Globalization','Polish Art History']},
-  {id:'duchamp',name:'Marcel Duchamp',dates:'1887–1968',x:.5,y:.15,r:22,color:'#999',group:'precursor',
-   bio:'Created the foundational rupture: anything can be art. Świdziński\'s project begins from Duchamp\'s "trap."',
-   quote:'I have forced myself to contradict myself in order to avoid conforming to my own taste.',
-   concepts:['Readymade','Anti-art','Institutional Critique']},
-];
-
-const graphConnections = [
-  {from:'swidzinski',to:'kosuth',label:'Critic / debater (Toronto 1976)',s:3},
-  {from:'swidzinski',to:'wittgenstein',label:'Influence: late Wittgenstein (meaning as use)',s:2},
-  {from:'swidzinski',to:'feyerabend',label:'Epistemological influence',s:2},
-  {from:'swidzinski',to:'fischer',label:'Allied movement (Art Sociologique)',s:2},
-  {from:'swidzinski',to:'dlubak',label:'Warsaw Seminar collaborator',s:2},
-  {from:'swidzinski',to:'kutera',label:'Lund 1976 exhibition',s:1},
-  {from:'swidzinski',to:'gajewski',label:'Remont Gallery collaborator',s:1},
-  {from:'swidzinski',to:'guzek',label:'Scholarly analysis',s:1},
-  {from:'swidzinski',to:'ronduda',label:'Critical interpreter',s:1},
-  {from:'swidzinski',to:'duchamp',label:'Starts from Duchamp\'s rupture',s:2},
-  {from:'kosuth',to:'wittgenstein',label:'Early Wittgenstein influence',s:2},
-  {from:'kosuth',to:'duchamp',label:'Inherits readymade logic',s:2},
-  {from:'fischer',to:'kosuth',label:'Parallel critique from France',s:1},
-  {from:'dlubak',to:'kutera',label:'Polish conceptual circle',s:1},
-  {from:'dlubak',to:'gajewski',label:'Warsaw art community',s:1},
-];
-
-// ═══════════════════════════════════════════
 // DATA: TEXTS
 // ═══════════════════════════════════════════
 const textsData = [
@@ -1356,12 +1294,49 @@ async function initGraph() {
         var label = p.name;
         ctx.font = (isCenter ? 'italic 600 ' : '') + Math.max(10, 12 * graphZoom) + "px 'IBM Plex Sans', system-ui, sans-serif";
         var tw = ctx.measureText(label).width;
-        var ly = y + r + 12;
-        ctx.fillStyle = S.dark ? 'rgba(23,19,12,0.88)' : 'rgba(232,224,208,0.9)';
-        ctx.fillRect(x - tw/2 - 6, ly - 9, tw + 12, 18);
+        var lx, ly, tAlign;
+        if (isCenter) {
+          // Świdziński: etykieta pod węzłem
+          lx = x; ly = y + r + 14; tAlign = 'center';
+        } else {
+          // wszystkie pozostałe: etykieta wypycha się RADIALNIE od Świdzińskiego
+          var cx = screenX(worldX(swid)), cy = screenY(worldY(swid));
+          var vx = x - cx, vy = y - cy;
+          var vd = Math.hypot(vx, vy) || 1;
+          var ux = vx / vd, uy = vy / vd;
+          var off = r + 10;
+          lx = x + ux * off;
+          ly = y + uy * off;
+          // wyrównanie zależnie od dominującej osi
+          if (Math.abs(vx) > Math.abs(vy) * 0.6) {
+            tAlign = vx > 0 ? 'left' : 'right';
+          } else {
+            tAlign = 'center';
+            if (vy < 0) ly -= 6; else ly += 6;
+          }
+        }
+        // rysowanie chipa pod tekstem
+        var padX = 8, padY = 4;
+        var chipX;
+        if (tAlign === 'center') chipX = lx - tw/2 - padX;
+        else if (tAlign === 'left') chipX = lx - padX;
+        else chipX = lx - tw - padX;
+        var chipY = ly - 9 - padY/2;
+        var chipW = tw + padX*2;
+        var chipH = 18 + padY;
+        // upewnij się, że chip nie wychodzi za canvas — łagodne dociągnięcie
+        if (chipX < 4) { lx += (4 - chipX); chipX = 4; }
+        if (chipX + chipW > W - 4) { var over = chipX + chipW - (W - 4); lx -= over; chipX -= over; }
+        if (chipY < 4) { ly += (4 - chipY); chipY = 4; }
+        if (chipY + chipH > H - 4) { var over2 = chipY + chipH - (H - 4); ly -= over2; chipY -= over2; }
+        ctx.fillStyle = S.dark ? 'rgba(23,19,12,0.94)' : 'rgba(232,224,208,0.95)';
+        ctx.fillRect(chipX, chipY, chipW, chipH);
+        ctx.strokeStyle = S.dark ? 'rgba(236,228,209,0.14)' : 'rgba(13,12,8,0.10)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(chipX + 0.5, chipY + 0.5, chipW - 1, chipH - 1);
         ctx.fillStyle = S.dark ? '#ECE4D1' : '#0D0C08';
-        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.fillText(label, x, ly);
+        ctx.textAlign = tAlign; ctx.textBaseline = 'middle';
+        ctx.fillText(label, lx, ly);
       }
     });
 
