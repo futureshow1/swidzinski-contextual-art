@@ -152,6 +152,28 @@ main { padding-top:24px !important; }
 h2 { font-family:'Fraunces',serif; font-size:28px; margin-bottom:8px; color:var(--text); }
 h2 + .section-desc { color:var(--text-dim); font-size:14px; margin-bottom:28px; line-height:1.6; }
 .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
+
+/* ═══ BOOKS GRID ═══ */
+.books-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:32px 24px; margin-top:8px; }
+.book-card { display:flex; flex-direction:column; gap:14px; }
+.book-cover { position:relative; aspect-ratio:2/3; background:var(--surface2); border:1px solid var(--border); overflow:hidden; box-shadow:var(--shadow-lg); }
+.book-cover img { display:block; width:100%; height:100%; object-fit:cover; }
+.book-cover-empty { display:flex; align-items:center; justify-content:center; text-align:center; background:linear-gradient(140deg, var(--surface) 0%, var(--surface2) 100%); border:1px dashed var(--border); }
+.book-cover-empty .bc-note { padding:24px 18px; }
+.book-cover-empty .bc-year { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:2px; color:var(--accent); font-weight:600; margin-bottom:10px; }
+.book-cover-empty .bc-title { font-family:'Fraunces',serif; font-style:italic; font-size:17px; line-height:1.25; color:var(--text); margin-bottom:14px; text-wrap:balance; }
+.book-cover-empty .bc-hint { font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--text-dim); line-height:1.55; }
+.book-meta { display:flex; flex-direction:column; gap:6px; }
+.book-meta .b-year-lang { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:1.6px; text-transform:uppercase; color:var(--text-dim); }
+.book-meta .b-year-lang .b-year { color:var(--accent); font-weight:600; }
+.book-meta .b-title { font-family:'Fraunces',serif; font-style:italic; font-variation-settings:"opsz" 36; font-size:19px; font-weight:400; line-height:1.2; letter-spacing:-0.01em; color:var(--text); margin:2px 0; }
+.book-meta .b-pub { font-family:'IBM Plex Sans',sans-serif; font-size:12.5px; color:var(--text-dim); line-height:1.5; }
+.book-meta .b-note { font-family:'IBM Plex Sans',sans-serif; font-size:13px; color:var(--text); line-height:1.55; margin-top:6px; }
+.book-meta .b-isbn-row { margin-top:4px; }
+.book-meta .b-isbn { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.5px; color:var(--text-light); }
+@media (max-width:640px) {
+  .books-grid { grid-template-columns:1fr; gap:36px; }
+}
 .card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px; cursor:pointer; transition:all .3s; }
 .card:hover { border-color:var(--accent); transform:translateY(-3px); box-shadow:var(--shadow-lg); }
 .card .card-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:6px; }
@@ -349,6 +371,7 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
   <button onclick="showView('timeline')" data-view="timeline" data-i18n="nav.timeline">Kalendarium</button>
   <button onclick="showView('graph')" data-view="graph" data-i18n="nav.graph">Konstelacja</button>
   <button onclick="showView('texts')" data-view="texts" data-i18n="nav.texts">Teksty</button>
+  <button onclick="showView('books')" data-view="books" data-i18n="nav.books">Książki</button>
   <button onclick="showView('concepts')" data-view="concepts" data-i18n="nav.concepts">Pojęcia</button>
   <button onclick="showView('biblio')" data-view="biblio" data-i18n="nav.biblio">Bibliografia</button>
   <button onclick="showView('festivals')" data-view="festivals" data-i18n="nav.festivals">Wystąpienia</button>
@@ -464,6 +487,13 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
   <p class="section-desc" data-i18n="view.concepts.d">Key ideas, theories, and terms from contextual art and its intellectual context.</p>
   <input class="search-bar" id="conceptSearch" placeholder="Search concepts..." oninput="filterConcepts()">
   <div class="card-grid" id="conceptsGrid"></div>
+</div>
+
+<!-- ═══ BOOKS ═══ -->
+<div id="booksView" class="view">
+  <h2 data-i18n="view.books.h">Książki Świdzińskiego</h2>
+  <p class="section-desc" data-i18n="view.books.d">Wszystkie książki autorskie Jana Świdzińskiego, od pierwszej broszury manifestu (Lund 1976) po pośmiertną monografię trójjęzyczną (Québec/Halifax 2015). Kliknij okładkę, żeby zobaczyć szczegóły.</p>
+  <div id="booksContainer"></div>
 </div>
 
 <!-- ═══ BIBLIOGRAPHY ═══ -->
@@ -763,6 +793,122 @@ const concepts = [
 ];
 
 // ═══════════════════════════════════════════
+// DATA: BOOKS (książki autorskie Świdzińskiego)
+// ═══════════════════════════════════════════
+const booksData = [
+  {
+    slug:'1976-lund-artascontextual',
+    title:'Art as Contextual Art',
+    year:1976, place:'Lund',
+    publisher:'Galerie S:t Petri / Archive of Experimental Art',
+    editor:'red. Jean Sellem',
+    language:'en',
+    isbn:null,
+    cover:null,
+    note:'Manifest wygłoszony w lutym 1976; publikacja towarzysząca wystawie „Contextual Art" w Galerie S:t Petri, Lund. Wprowadzenie do idei kontekstualizmu — pierwsza książka Świdzińskiego jako teoretyka.'
+  },
+  {
+    slug:'1977-warsaw-remont',
+    title:'Sztuka jako sztuka kontekstualna / Art as Contextual Art',
+    year:1977, place:'Warszawa',
+    publisher:'Galeria Remont (SZSP), seria „Art Text"',
+    editor:'red. Henryk Gajewski',
+    language:'pl · en',
+    isbn:null,
+    cover:'covers/1977-warsaw-remont.jpg',
+    note:'Wydanie dwujęzyczne, 92 s., 19,5 × 14 cm, druk na brązowym papierze. Rozdawane bezpłatnie. Egzemplarz w archiwum Druków Artystycznych Galerii Wymiany (MSN Warszawa).'
+  },
+  {
+    slug:'1979-calgary-artsociety',
+    title:'Art, Society and Self-consciousness',
+    year:1979, place:'Calgary',
+    publisher:'Alberta College of Art Gallery',
+    editor:null,
+    language:'en',
+    isbn:null,
+    cover:null,
+    note:'Napisana po angielsku podczas pobytu Świdzińskiego w Kanadzie; najważniejsza rozprawa filozoficzno-teoretyczna. Polskie wydanie: 2009, CSW Zamek Ujazdowski (tłum. Guzek).'
+  },
+  {
+    slug:'1987-calgary-freedom',
+    title:'Freedom and Limitation. The Anatomy of Post-modernism',
+    year:1987, place:'Calgary',
+    publisher:'Syntax',
+    editor:'red. Brian Dyson',
+    language:'en',
+    isbn:null,
+    cover:null,
+    note:'Świdziński często datował ją jako 1985; faktyczne wydanie 1987 pod redakcją Briana Dysona w kalgaryjskim Syntax. Anatomia postmodernizmu z pozycji sztuki kontekstualnej.'
+  },
+  {
+    slug:'1988-eindhoven-quotations',
+    title:'Quotations on Contextual Art',
+    year:1988, place:'Eindhoven',
+    publisher:'Het Apollohuis',
+    editor:'red. Michael Gibbs',
+    language:'en',
+    isbn:'978-90-71638-04-6',
+    cover:null,
+    note:'Zawiera zapis dyskusji „In the Context of the Art World" z konferencji w CEAC Toronto (XI 1976), opublikowany 12 lat po debacie.'
+  },
+  {
+    slug:'1997-quebec-artcontextuel',
+    title:'Art contextuel',
+    year:1997, place:'Québec',
+    publisher:'Éditions Intervention / Les presses du réel',
+    editor:null,
+    language:'fr',
+    isbn:'978-2-920500-15-0',
+    cover:'covers/1997-quebec-artcontextuel.jpg',
+    note:'Broszura 16 s., 23 × 34 cm; dwa teksty napisane w odstępie dwudziestu lat plus manifest z 1976 i fotografie. Wynik rezydencji w Le Lieu (Québec).'
+  },
+  {
+    slug:'2005-quebec-lartetson',
+    title:'L\'art et son contexte. Au fait, qu\'est-ce que l\'art ?',
+    year:2005, place:'Québec',
+    publisher:'Éditions Intervention / Le Lieu, Centre en art actuel',
+    editor:'red. Richard Martel',
+    language:'fr',
+    isbn:'978-2-920500-27-3',
+    cover:'covers/2005-quebec-lartetson.jpg',
+    note:'156 s., 12,5 × 20,2 cm. Reissue / dystrybucja przez Les presses du réel.'
+  },
+  {
+    slug:'2009-radom-sztukaijej',
+    title:'Sztuka i jej kontekst. Właściwie, co to jest sztuka?',
+    year:2009, place:'Piotrków Trybunalski / Radom',
+    publisher:'ODA Piotrków Trybunalski + MCSW „Elektrownia" Radom',
+    editor:null,
+    language:'pl',
+    isbn:'978-83-924930-9-9',
+    cover:'covers/2009-radom-sztukaijej.jpg',
+    note:'94–96 s., ilustracje. Polska wersja L\'art et son contexte (2005). Druk AMAT Piotrków.'
+  },
+  {
+    slug:'2009-warsaw-samoswiadomosc',
+    title:'Sztuka, społeczeństwo i samoświadomość',
+    year:2009, place:'Warszawa',
+    publisher:'Centrum Sztuki Współczesnej Zamek Ujazdowski',
+    editor:'tłum. Łukasz Guzek',
+    language:'pl',
+    isbn:'978-83-61156-21-5',
+    cover:'covers/2009-warsaw-samoswiadomosc.jpg',
+    note:'Polskie tłumaczenie Art, Society and Self-consciousness (Calgary 1979). 144 s., 21,5 × 15,4 cm.'
+  },
+  {
+    slug:'2015-halifax-incontext',
+    title:'Jan Świdziński en contexte / W Kontekście / In Context (+ DVD)',
+    year:2015, place:'Québec / Halifax',
+    publisher:'Éditions Intervention (dystrybucja Les presses du réel)',
+    editor:'red. Richard Martel; teksty: Paul Ardenne, Bruce Barber, Brian Dyson, Richard Martel, Artur Tajber',
+    language:'fr · pl · en',
+    isbn:'978-2-924298-12-1',
+    cover:'covers/2015-halifax-incontext.jpg',
+    note:'Trójjęzyczna monografia pośmiertna 160 s., 19,5 × 22 cm, z DVD. Zawiera reedycję manifestu z 1976 (po raz pierwszy po francusku) + eseje.'
+  }
+];
+
+// ═══════════════════════════════════════════
 // DATA: BIBLIOGRAPHY
 // ═══════════════════════════════════════════
 const biblioData = {
@@ -796,6 +942,7 @@ const biblioData = {
     {author:'Eulalia Domanowska',title:'Sztuka kontekstualna — rozmowa z Janem Świdzińskim (Contextual Art — A Conversation)',year:'1995/96',note:'Published in "art newsletter" (PGS Sopot). Explores binary, three-value, and game logic in contextual art theory.'},
     {author:'Jan Lubicz Przyłuski',title:'Jesteśmy zaplątani (We Are Entangled)',year:2010,note:'Filmed conversation with Jan Świdziński. Created for the "Imieniny Jana" evening within The Knot project at Galeria Nizio, Warsaw (24 June 2010). Documents Świdziński\'s theoretical impact and personal artistic philosophy.'},
     {author:'Jan Lubicz Przyłuski',title:'Sztuka akcji: dziesięć zdarzeń w Polsce (Art of Action: Ten Events in Poland)',year:2007,note:'Published by Bałtycka Galeria Sztuki Współczesnej, Słupsk. ISBN 978-83-922414-9-2. Ten landmark events in the history of Polish action art.'},
+    {author:'Jan Lubicz Przyłuski',title:'Odzyskać sztukę dla rozwoju świadomości. Zapiski o Janie Świdzińskim i sztuce kontekstualnej',year:2018,note:'Zeszyty Artystyczne UAP Poznań, nr 1(32)/2018, s. 68–87. Monograficzny numer poświęcony kontekstualizmowi (red. Izabela Kowalczyk); PDF całego tomu publicznie dostępny na za.uap.edu.pl. Kluczowa autorska interpretacja spuścizny Świdzińskiego z perspektywy współpracownika i filmowca.',url:'http://za.uap.edu.pl/wp-content/uploads/2019/03/Zeszyty-32_WEB.pdf'},
   ],
   interviews: [
     {interviewer:'Adam Mazur',title:'Miało być pięknie i optymistycznie (It Was Supposed to Be Beautiful and Optimistic)',year:2001,publication:'Fototapeta',note:'Extensive autobiographical conversation (30 March 2001) covering Warsaw artistic circles, Remont Gallery, Mała Galeria founding, international conferences, martial law effects, and American residencies.'},
@@ -1038,6 +1185,7 @@ function rebuildCurrentView(){
   else if (v==='texts') buildTexts();
   else if (v==='concepts') buildConcepts();
   else if (v==='biblio') buildBiblio();
+  else if (v==='books') buildBooks();
   else if (v==='festivals') buildFestivals();
   else if (v==='game') buildGameHub();
   else if (v==='points') buildPoints();
@@ -1521,6 +1669,35 @@ function filterConcepts() { buildConcepts(); }
 // BUILD: BIBLIOGRAPHY
 // ═══════════════════════════════════════════
 let biblioBuilt=false;
+// ═══════════════════════════════════════════
+// BUILD: BOOKS (Książki Świdzińskiego)
+// ═══════════════════════════════════════════
+let booksBuilt = false;
+function buildBooks() {
+  if (booksBuilt) return; booksBuilt = true;
+  var html = '<div class="books-grid">' + booksData.map(function(b){
+    var cover = b.cover
+      ? '<div class="book-cover"><img src="'+b.cover+'" alt="Okładka: '+b.title.replace(/"/g,'&quot;')+'" loading="lazy"></div>'
+      : '<div class="book-cover book-cover-empty"><div class="bc-note">' +
+        '<div class="bc-year">'+b.year+'</div>' +
+        '<div class="bc-title">'+b.title.split(/[\/\.]/)[0].trim()+'</div>' +
+        '<div class="bc-hint">okładka do zeskanowania<br>z egzemplarza fizycznego</div>' +
+        '</div></div>';
+    var isbn = b.isbn ? '<span class="b-isbn">'+b.isbn+'</span>' : '';
+    return '<article class="book-card">' +
+      cover +
+      '<div class="book-meta">' +
+        '<div class="b-year-lang"><span class="b-year">'+b.year+'</span> · <span class="b-place">'+b.place+'</span> · <span class="b-lang">'+b.language+'</span></div>' +
+        '<h3 class="b-title">'+b.title+'</h3>' +
+        '<div class="b-pub">'+b.publisher+(b.editor?' · '+b.editor:'')+'</div>' +
+        '<p class="b-note">'+b.note+'</p>' +
+        (isbn ? '<div class="b-isbn-row">'+isbn+'</div>' : '') +
+      '</div>' +
+    '</article>';
+  }).join('') + '</div>';
+  document.getElementById('booksContainer').innerHTML = html;
+}
+
 function buildBiblio() {
   if(biblioBuilt) return; biblioBuilt=true;
   const d=biblioData;
@@ -1532,7 +1709,7 @@ function buildBiblio() {
   html+=d.essays.map(e=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${e.title}</h3><div class="meta">${e.year||''} · ${e.publication}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${e.note}</p></div></div>`).join('');
 
   html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('b.scholarly')+'</h3>';
-  html+=d.scholarly.map(s=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${s.title}</h3><div class="meta">${s.author} · ${s.year||''}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${s.note}</p></div></div>`).join('');
+  html+=d.scholarly.map(s=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${s.title}</h3><div class="meta">${s.author} · ${s.year||''}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${s.note}</p>${s.url?`<p style="margin-top:10px;"><a href="${s.url}" target="_blank" rel="noopener" style="color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;">Pobierz PDF ↗</a></p>`:''}</div></div>`).join('');
 
   html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('b.interviews')+'</h3>';
   html+=d.interviews.map(i=>`<div class="text-card"><div class="text-card-header"><div><h3>${i.title}</h3><div class="meta">${i.interviewer} · ${i.year||''} · ${i.publication}</div></div></div></div>`).join('');
@@ -2013,7 +2190,9 @@ var I18N = {
     'hero.q2':"Art et Transformation Sociale",
 
     'nav.archive':'Archiwum','nav.timeline':'Kalendarium','nav.graph':'Konstelacja',
-    'nav.texts':'Teksty','nav.concepts':'Pojęcia','nav.biblio':'Bibliografia',
+    'nav.texts':'Teksty','nav.books':'Książki','nav.concepts':'Pojęcia','nav.biblio':'Bibliografia',
+    'view.books.h':"Książki Świdzińskiego",
+    'view.books.d':"Wszystkie książki autorskie Jana Świdzińskiego, od pierwszej broszury manifestu (Lund 1976) po pośmiertną monografię trójjęzyczną (Québec/Halifax 2015). Cztery okładki wciąż wymagają zeskanowania z egzemplarza fizycznego — jeśli macie skan, wyślijcie do kuratora portalu.",
     'nav.festivals':'Wystąpienia','nav.game':'Gra','nav.study':'Studium ↗',
     'ctx.label':'Kontekst 001',
     'ctx.note':'<b>Ta strona jest pracą kontekstualną.</b> Odczyt zmienia się z miejscem i porą.',
@@ -2151,7 +2330,9 @@ var I18N = {
     'hero.q2':"Art et Transformation Sociale",
 
     'nav.archive':'Archive','nav.timeline':'Chronology','nav.graph':'Constellation',
-    'nav.texts':'Texts','nav.concepts':'Concepts','nav.biblio':'Bibliography',
+    'nav.texts':'Texts','nav.books':'Books','nav.concepts':'Concepts','nav.biblio':'Bibliography',
+    'view.books.h':"Świdziński's Books",
+    'view.books.d':"Every book authored by Jan Świdziński, from the first manifesto pamphlet (Lund 1976) to the posthumous trilingual monograph (Québec/Halifax 2015). Four covers still need to be scanned from physical copies — please send a scan to the portal curator if you have one.",
     'nav.festivals':'Appearances','nav.game':'Game','nav.study':'Study ↗',
     'ctx.label':'Context 001',
     'ctx.note':'<b>This site is a contextual work.</b> Its reading shifts with place and hour.',
@@ -2289,7 +2470,9 @@ var I18N = {
     'hero.q2':"Art et Transformation Sociale",
 
     'nav.archive':'Archives','nav.timeline':'Chronologie','nav.graph':'Constellation',
-    'nav.texts':'Textes','nav.concepts':'Notions','nav.biblio':'Bibliographie',
+    'nav.texts':'Textes','nav.books':'Livres','nav.concepts':'Notions','nav.biblio':'Bibliographie',
+    'view.books.h':"Livres de Świdziński",
+    'view.books.d':"Tous les livres écrits par Jan Świdziński, du premier fascicule-manifeste (Lund 1976) à la monographie trilingue posthume (Québec/Halifax 2015). Quatre couvertures restent à scanner d'un exemplaire physique — merci d'envoyer le scan au commissaire du portail.",
     'nav.festivals':'Interventions','nav.game':'Jeu','nav.study':'Étude ↗',
     'ctx.label':'Contexte 001',
     'ctx.note':"<b>Cette page est une œuvre contextuelle.</b> Sa lecture change selon le lieu et l'heure.",
@@ -2427,7 +2610,9 @@ var I18N = {
     'hero.q2':"Art et Transformation Sociale",
 
     'nav.archive':'アーカイブ','nav.timeline':'年表','nav.graph':'コンステレーション',
-    'nav.texts':'テキスト','nav.concepts':'概念','nav.biblio':'文献',
+    'nav.texts':'テキスト','nav.books':'書籍','nav.concepts':'概念','nav.biblio':'文献',
+    'view.books.h':"シフィジンスキの書籍",
+    'view.books.d':"ヤン・シフィジンスキが著した全ての書籍。最初のマニフェスト小冊子(ルンド1976)から、没後の三言語モノグラフィ(ケベック/ハリファックス2015)まで。4冊の表紙はまだ物理コピーからのスキャンが必要です — スキャンをお持ちの方はポータル管理者にお送りください。",
     'nav.festivals':'出演','nav.game':'ゲーム','nav.study':'研究 ↗',
     'ctx.label':'コンテクスト 001',
     'ctx.note':'<b>このページはコンテクスチュアル・アート作品です。</b>読解は場所と時刻とともに変化します。',
@@ -2565,7 +2750,9 @@ var I18N = {
     'hero.q2':"Art et Transformation Sociale",
 
     'nav.archive':'档案','nav.timeline':'年表','nav.graph':'星座',
-    'nav.texts':'文本','nav.concepts':'概念','nav.biblio':'参考文献',
+    'nav.texts':'文本','nav.books':'书籍','nav.concepts':'概念','nav.biblio':'参考文献',
+    'view.books.h':"希维津斯基的著作",
+    'view.books.d':"扬·希维津斯基所著全部书籍,从最初的宣言小册(隆德1976)到身后出版的三语专著(魁北克/哈利法克斯2015)。四本封面仍需从实体本扫描 — 如您有扫描件,请发送给门户策展人。",
     'nav.festivals':'活动','nav.game':'游戏','nav.study':'研究 ↗',
     'ctx.label':'语境 001',
     'ctx.note':'<b>本页面是一件情境作品。</b>阅读随地点与时间而变化。',
