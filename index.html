@@ -618,6 +618,7 @@ function showView(id) {
     b.classList.toggle('active', b.dataset.view===id);
   });
   S.view = id; S.interactions++;
+  try{history.replaceState(null,'','#widok='+id)}catch(e){}
   if(id==='timeline'&&!S.tlInit) buildTimeline();
   if(id==='graph'&&!S.graphInit) initGraph();
   if(id==='texts') buildTexts();
@@ -1272,6 +1273,7 @@ async function initGraph() {
     n.color = INK;
   });
   data.nodes.sort(function(a,b){ return ((a.country||'')+'/'+a.name).localeCompare((b.country||'')+'/'+b.name); });
+  window.graphNodes = data.nodes;   // dla linków #osoba=<id>
 
   var people = [];
   var swid = {
@@ -1601,8 +1603,14 @@ async function initGraph() {
   }, {passive: false});
 }
 
+function osobaSlug(n){
+  return String(n && n.name || '').toLowerCase().replace(/ł/g,'l')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+}
 function selectGraphNode(p){
   graphSelected = p.id;
+  try{history.replaceState(null,'','#osoba='+osobaSlug(p))}catch(e){}
   var panel = document.getElementById('graphPanel');
   var ev = p.evidence || {};
   var esc = function(s){ return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
@@ -2062,7 +2070,32 @@ function answerPointQuiz(idx,correct,target) {
 })();
 
 // init
-showView('landing');
+/* ---- udostępnianie: #widok=<sekcja>, #osoba=<id>, #tekst=<id> ---- */
+function openFromHash(){
+  var h = location.hash, m;
+  if((m = h.match(/^#osoba=(.+)$/))){
+    var id = decodeURIComponent(m[1]);
+    showView('graph');
+    setTimeout(function(){
+      var lista = window.graphNodes || [];
+      var p = lista.find(function(x){return osobaSlug(x)===id}) || lista.find(function(x){return x.id===id});
+      if(p) selectGraphNode(p);
+    }, 700);
+    return true;
+  }
+  if((m = h.match(/^#tekst=([\w-]+)$/))){
+    showView('texts');
+    setTimeout(function(){
+      var el = document.getElementById('text-'+m[1]);
+      if(el){ el.classList.add('open'); el.scrollIntoView({block:'center'}); }
+    }, 200);
+    return true;
+  }
+  if((m = h.match(/^#widok=(\w+)$/)) && document.getElementById(m[1]+'View')){ showView(m[1]); return true; }
+  return false;
+}
+if(!openFromHash()) showView('landing');
+addEventListener('hashchange', openFromHash);
 
 // ═══════════════════════════════════════════
 // i18n · PL / EN / FR / JA / ZH
