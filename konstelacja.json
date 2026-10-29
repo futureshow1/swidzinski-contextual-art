@@ -779,12 +779,12 @@
    "years": "b.d.",
    "country": "PL",
    "category": "filmowiec",
-   "relation": "Reżyser pełnometrażowego dokumentu „Jan Świdziński. W kontekście sztuki / In The Context of Art" (pokaz 22 XI 2013, Fundacja Arton; finansowanie MKiDN). Jądrem filmu jest rozmowa z Josephem Kosuthem zarejestrowana w jego rzymskiej pracowni (ok. 2007) — pierwsze spotkanie obu teoretyków na filmie od debaty w Toronto 1976. Zawiera też komentarz Richarda Martela, krótkie filmy wg niezrealizowanych scenariuszy Świdzińskiego, archiwalne zapisy performansów.",
+   "relation": "Autor dwóch filmów dokumentalnych o Świdzińskim: (1) „Kosuth — Świdziński. Spotkanie w Rzymie" (2010, 38:59; współautorstwo Jan Świdziński + Piotr Weychert; polski z konsekutywnym tłumaczeniem na EN; emisja TVP Kultura 2010; Filmoteka MSN) — zapis podróży i rozmowy w pracowni Kosutha w Rzymie VII 2008, drugie spotkanie teoretyków po Toronto 1976; (2) „Jan Świdziński. Poza dostarczony kontekst" (reż. i scen. Piotr Weychert, 37 min, 2015; prod. Mirosław Chojecki i Piotr Weychert; produkcja Media Kontakt; współfinansowanie Fundacja Arton + MKiDN; lektor Władysław Kowalski; muzyka Lublin/Purcell/Satie) — portret biograficzno-teoretyczny z komentarzem Richarda Martela i krótkimi filmami wg niezrealizowanych scenariuszy; pokaz premierowy 22 XI 2013 w Fundacji Arton.",
    "evidence": {
-    "type": "film dokumentalny",
-    "date": "2007 (nagranie) / 2013 (pokaz)",
+    "type": "dwa filmy dokumentalne",
+    "date": "2010 (Spotkanie w Rzymie) + 2015 (Poza dostarczony kontekst)",
     "place": "Rzym / Warszawa",
-    "source_file": "fundacjaarton.pl/en/activities/jan-swidzinski-s-archive-and-film; spotkanie_tr.txt"
+    "source_file": "archiwum.artmuseum.pl/pl/filmoteka/praca/swidzinski-jan-weychert-piotr-kosuth-swidzinski-spotkanie-w; filmpolski.pl film=1242216; fundacjaarton.pl/en/activities/jan-swidzinski-s-archive-and-film"
    }
   },
   {

@@ -128,6 +128,9 @@ main { padding-top:24px !important; }
 .hero-latest-label { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); padding-top:6px; line-height:1.4; }
 .hero-latest-label b { color:var(--accent); font-weight:600; display:block; margin-bottom:4px; }
 .hero-latest-list { display:grid; grid-template-columns:repeat(4,1fr); gap:20px 32px; }
+a.hero-latest-item { display:block; text-decoration:none; color:inherit; transition:transform .15s ease, opacity .15s ease; cursor:pointer; }
+a.hero-latest-item:hover { transform:translateY(-2px); }
+a.hero-latest-item:hover h4 { color:var(--accent); }
 .hero-latest-item .y { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:1.8px; color:var(--accent); font-weight:600; margin-bottom:6px; text-transform:uppercase; }
 .hero-latest-item h4 { font-family:'Fraunces',serif; font-variation-settings:"opsz" 24; font-style:italic; font-size:15.5px; font-weight:400; color:var(--text); line-height:1.22; letter-spacing:-0.01em; margin:0; }
 .hero-latest-item .pl { font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:1.5px; color:var(--text-dim); margin-top:5px; text-transform:uppercase; }
@@ -428,26 +431,26 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
   <section class="hero-latest" aria-label="Ostatnie wpisy w korpusie">
     <div class="hero-latest-label" data-i18n="latest.label"><b>Ostatnie</b>wpisy<br>w&nbsp;korpusie</div>
     <div class="hero-latest-list">
-      <div class="hero-latest-item">
+      <a class="hero-latest-item" href="#tekst=12points">
         <div class="y">1976 · VIII</div>
         <h4>12 punktów sztuki kontekstualnej</h4>
         <div class="pl" data-i18n="latest.1.pl">Warszawa · manifest · pl</div>
-      </div>
-      <div class="hero-latest-item">
+      </a>
+      <a class="hero-latest-item" href="#tekst=12points">
         <div class="y">1976 · II</div>
         <h4 data-i18n="hero.q1">Freedom of Art?</h4>
         <div class="pl" data-i18n="latest.2.pl">S:t Petri Lund · wykład · en</div>
-      </div>
-      <div class="hero-latest-item">
-        <div class="y">1977 · V</div>
-        <h4 data-i18n="hero.q2">Art et Transformation Sociale</h4>
-        <div class="pl" data-i18n="latest.3.pl">Paryż · sympozjum · fr</div>
-      </div>
-      <div class="hero-latest-item">
-        <div class="y">2010</div>
-        <h4>W moim kontekście</h4>
-        <div class="pl" data-i18n="latest.4.pl">CSW Warszawa · retrospektywa</div>
-      </div>
+      </a>
+      <a class="hero-latest-item" href="#tekst=o70">
+        <div class="y">1996</div>
+        <h4>O latach 70-tych</h4>
+        <div class="pl" data-i18n="latest.3.pl">Stara Galeria Lublin · esej · pl</div>
+      </a>
+      <a class="hero-latest-item" href="#tekst=artisfact">
+        <div class="y">1997</div>
+        <h4>Sztuka jest faktem</h4>
+        <div class="pl" data-i18n="latest.4.pl">Calgary · plakat-manifest · en · pl</div>
+      </a>
     </div>
   </section>
 </div>
@@ -668,7 +671,8 @@ const timeline = [
   {year:2006,cat:'event',title:'"In the Context of Art / Differences" Festival',text:'First festival explicitly dedicated to contextual art, held in Warsaw in October 2006 (and again in 2007). Co-created with Jan Lubicz Przyłuski.',exp:'Performers included Zbigniew Warpechowski, Ewa Zarzycka, Janusz Bałdyga and Przemysław Kwiek, with guests from Israel, Italy, France, Canada, and beyond. Connected to "Różnice" (The Differences) — Przyłuski\'s first documentary film, dedicated to Świdziński. Przyłuski also began the Art of Action Archive (Archiwum Sztuki Akcji, ASA) around this time.'},
   {year:2009,cat:'event',title:'Polish Publications & CSW Symposium',text:'Two books published in Polish: "Sztuka i jej kontekst" and "Sztuka, społeczeństwo, samoświadomość." Symposium at CSW Ujazdowski Castle.',exp:'Panelists: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz, and Małgorzata Butterwick; moderated by Grzegorz Borkowski (16 December 2009). The "In Context Now" symposium was held in Radom, its proceedings published as "Global Communication."'},
   {year:2010,cat:'art',title:'"In My Context" at CSW Ujazdowski Castle',text:'Exhibition "W moim kontekście. Wybrane działania z fotografią i tekstem" (In My Context: Selected Actions with Photography and Text) at the Centre for Contemporary Art in Warsaw.',exp:'On view until 28 February 2010; an expanded version, accompanied by a theoretical symposium, followed at Galeria Labirynt in Lublin. On 24 June 2010 — his name day — the evening "Evening in the Context," held within The Knot project at Galeria Nizio, presented Jan Lubicz Przyłuski\'s filmed conversation with the artist, "Jesteśmy zaplątani" (We Are Entangled).'},
-  {year:2013,cat:'art',title:'Weychert\'s Documentary — "Jan Świdziński. W kontekście sztuki / In The Context of Art"',text:'Piotr Weychert\'s feature documentary on Świdziński is finished and screened on 22 November 2013 at the Arton Foundation\'s presentation of the artist\'s archive.',exp:'Made in collaboration with Świdziński over several years and financed by the Ministry of Culture. The film mixes archival performance recordings, Świdziński\'s own statements, texts and photographs with short films based on his unrealised screenplays, and features commentary by Richard Martel. Its documentary heart is a long conversation with Joseph Kosuth, recorded in Kosuth\'s Rome studio (c. 2007) — the two theorists meeting on film for the first time since their 1976 Toronto debate.'},
+  {year:2010,cat:'art',title:'Film: "Kosuth — Świdziński. Spotkanie w Rzymie" (reż. Piotr Weychert)',text:'Film dokumentalny Piotra Weycherta (38 min 59 s, Polska, polski z konsekutywnym tłumaczeniem na angielski), realizacja przypisana Janowi Świdzińskiemu i Piotrowi Weychertowi. Wyemitowany w 2010 roku w TVP Kultura; w kolekcji Filmoteki MSN Warszawa.',exp:'Film dokumentuje podróż Świdzińskiego do Rzymu i spotkanie z Josephem Kosuthem w jego rzymskiej pracowni (lipiec 2008). Była to kontynuacja polemik, które obaj artyści toczyli korespondencyjnie od lat 70. — rzeczywiście spotkali się na żywo tylko raz, w czasie debaty "In the Context of the Art World" w Toronto (XI 1976). Rzym 2008 to drugie spotkanie dwóch głównych teoretyków tego pola na przestrzeni ponad trzech dekad; obaj wracają w rozmowie do dawnych idei, które w międzyczasie zostały wchłonięte przez świat sztuki, reklamę i kreatywne branże.'},
+  {year:2015,cat:'art',title:'Film: "Jan Świdziński. Poza dostarczony kontekst" (reż. Piotr Weychert)',text:'Pełnometrażowy portret dokumentalny (37 min, barwny, 2015) powstawał w Media Kontakt pod producką Mirosława Chojeckiego i Piotra Weycherta, przy współfinansowaniu Fundacji Arton i MKiDN.',exp:'Reżyseria i scenariusz: Piotr Weychert; współpraca reżyserska: Elwira Kozłowska i Janusz Weychert. Zdjęcia: Sławomir Orman, Ryszard Piegza, Grzegorz Siwicki, Marko Stojanović, Piotr Weychert. Muzyka: Jarosław Lublin, Henry Purcell, Erik Satie. Montaż: Rafał Borowy, Monika Sirojc. Lektor: Władysław Kowalski. Film łączy materiał archiwalny performansów, wypowiedzi, teksty i fotografie Świdzińskiego z krótkimi filmami wg jego niezrealizowanych scenariuszy; włączono też komentarze Richarda Martela i fragmenty rozmowy z Josephem Kosuthem z Rzymu 2008. Pokaz premierowy 22 XI 2013 w ramach prezentacji archiwum artysty w Fundacji Arton.'},
   {year:2014,cat:'life',title:'Death in Warsaw',text:'Jan Świdziński dies on February 9, 2014 in Warsaw.',exp:'He was buried at the Powązki Military Cemetery in Warsaw. His legacy: a body of theory and practice arguing that art gains meaning only through pragmatic context — time, place, situation, and persons involved. The contextual art movement he founded continues to influence contemporary art discourse.'},
 ];
 
@@ -2239,7 +2243,7 @@ var I18N = {
     'hero.cstrip_place':'Warszawa · ok. 1978','hero.cstrip_credit':'fot. n.n.','hero.cstrip_source':'archiwum prywatne',
     'latest.label':'<b>Ostatnie</b>wpisy<br>w&nbsp;korpusie',
     'latest.1.pl':'Warszawa · manifest · pl','latest.2.pl':'S:t Petri Lund · wykład · en',
-    'latest.3.pl':'Paryż · sympozjum · fr','latest.4.pl':'CSW Warszawa · retrospektywa'
+    'latest.3.pl':'Stara Galeria Lublin · esej · pl','latest.4.pl':'Calgary · plakat-manifest · en · pl'
   },
   en: {
     'gr.person':"People around",
@@ -2379,7 +2383,7 @@ var I18N = {
     'hero.cstrip_place':'Warsaw · c. 1978','hero.cstrip_credit':'photo n.n.','hero.cstrip_source':'private archive',
     'latest.label':'<b>Latest</b>entries<br>in&nbsp;the corpus',
     'latest.1.pl':'Warsaw · manifesto · pl','latest.2.pl':'S:t Petri Lund · lecture · en',
-    'latest.3.pl':'Paris · symposium · fr','latest.4.pl':'CSW Warsaw · retrospective'
+    'latest.3.pl':'Stara Galeria Lublin · essay · pl','latest.4.pl':'Calgary · poster manifesto · en · pl'
   },
   fr: {
     'gr.person':"People around",
@@ -2519,7 +2523,7 @@ var I18N = {
     'hero.cstrip_place':'Varsovie · c. 1978','hero.cstrip_credit':'photo n.n.','hero.cstrip_source':'archives privées',
     'latest.label':'<b>Derniers</b>ajouts<br>au&nbsp;corpus',
     'latest.1.pl':'Varsovie · manifeste · pl','latest.2.pl':'S:t Petri Lund · conférence · en',
-    'latest.3.pl':'Paris · colloque · fr','latest.4.pl':'CSW Varsovie · rétrospective'
+    'latest.3.pl':'Stara Galeria Lublin · essai · pl','latest.4.pl':'Calgary · affiche-manifeste · en · pl'
   },
   ja: {
     'gr.person':"People around",
@@ -2659,7 +2663,7 @@ var I18N = {
     'hero.cstrip_place':'ワルシャワ · 1978年頃','hero.cstrip_credit':'撮影 n.n.','hero.cstrip_source':'個人所蔵',
     'latest.label':'<b>最新</b>コーパス<br>収録',
     'latest.1.pl':'ワルシャワ · マニフェスト · pl','latest.2.pl':'S:t Petri Lund · 講演 · en',
-    'latest.3.pl':'パリ · シンポジウム · fr','latest.4.pl':'CSW ワルシャワ · 回顧展'
+    'latest.3.pl':'Stara Galeria ルブリン · エッセイ · pl','latest.4.pl':'カルガリー · ポスター・マニフェスト · en · pl'
   },
   zh: {
     'gr.person':"People around",
@@ -2799,7 +2803,7 @@ var I18N = {
     'hero.cstrip_place':'华沙 · 约1978','hero.cstrip_credit':'摄影 n.n.','hero.cstrip_source':'私人收藏',
     'latest.label':'<b>最新</b>收录<br>条目',
     'latest.1.pl':'华沙 · 宣言 · pl','latest.2.pl':'S:t Petri Lund · 讲座 · en',
-    'latest.3.pl':'巴黎 · 研讨会 · fr','latest.4.pl':'CSW 华沙 · 回顾展'
+    'latest.3.pl':'Stara Galeria 卢布林 · 随笔 · pl','latest.4.pl':'卡尔加里 · 海报宣言 · en · pl'
   }
 };
 var LANG_CODE_MAP = {pl:'pl', en:'en', fr:'fr', jp:'ja', cn:'zh'};
