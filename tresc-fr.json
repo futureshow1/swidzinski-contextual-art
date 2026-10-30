@@ -3,7 +3,7 @@
 {
 "id": "tl01",
 "title": "Naissance à Bydgoszcz",
-"text": "Jan Świdziński naît le 25 mai à Bydgoszcz, en Pologne.",
+"text": "Jan Świdziński naît le 23 mai à Bydgoszcz, en Pologne.",
 "exp": "Son père, prénommé lui aussi Jan, était officier de l'armée polonaise et ancien soldat des Légions de Piłsudski ; les Świdziński descendaient d'une vieille famille de la szlachta, aux armes de Półkozic. Un ancêtre notable, Konstanty Świdziński, fut un grand collectionneur et mécène de la culture polonaise ; sa bibliothèque fut détruite en 1944, au lendemain de l'insurrection de Varsovie."
 },
 {
@@ -129,8 +129,8 @@
 {
 "id": "tl22",
 "title": "Festival Interakcje, Piotrków Trybunalski",
-"text": "Fondation du Festival international d'art Interakcje — Świdziński en est le commissaire et le président à partir de 1999.",
-"exp": "Lancé par Ryszard Piegza avec Stanisław Piotr Gajda et Gordian Piec, Interakcje se tient à Piotrków Trybunalski depuis 1999 — sa 25e édition a eu lieu en septembre 2026 — et demeure le plus ancien festival de performance de Pologne encore en activité. Świdziński s'y est produit à chaque édition de 1999 à 2004."
+"text": "Fondation du Festival international d'art Interakcje — Świdziński en est le commissaire et le président à partir de 1998.",
+"exp": "Lancé par Ryszard Piegza avec Stanisław Piotr Gajda et Gordian Piec, Interakcje se tient à Piotrków Trybunalski depuis 1998 — sa 25e édition a eu lieu en septembre 2026 — et demeure le plus ancien festival de performance de Pologne encore en activité. Świdziński s'y est produit à chaque édition de 1999 à 2004. Piotrków Trybunalski lui a décerné le titre de citoyen d'honneur."
 },
 {
 "id": "tl23",
@@ -171,14 +171,62 @@
 {
 "id": "tl29",
 "title": "Décès à Varsovie",
-"text": "Jan Świdziński meurt le 9 février 2014 à Varsovie.",
-"exp": "Il est inhumé au cimetière militaire de Powązki, à Varsovie. Son héritage : un ensemble de théorie et de pratique soutenant que l'art ne prend sens que par le contexte pragmatique — le temps, le lieu, la situation et les personnes impliquées. Le mouvement de l'art contextuel qu'il a fondé continue d'influencer le discours sur l'art contemporain."
+"text": "Jan Świdziński meurt le 9 février 2014 à Varsovie. Il est inhumé au cimetière militaire de Powązki, section D-1-29.",
+"exp": "Son héritage : un ensemble de théorie et de pratique soutenant que l'art ne prend sens que par le contexte pragmatique — le temps, le lieu, la situation et les personnes impliquées. Le mouvement de l'art contextuel qu'il a fondé continue d'influencer le discours sur l'art contemporain."
 },
 {
 "id": "tl30",
 "title": "Film : « Jan Świdziński. Poza dostarczony kontekst » (Au-delà du contexte fourni), réal. Piotr Weychert",
 "text": "Portrait documentaire (37 min, couleur ; année de production 2015). Production : Media Kontakt ; producteurs : Mirosław Chojecki et Piotr Weychert ; cofinancé par la Fondation Arton et le ministère de la Culture.",
 "exp": "Scénario et réalisation : Piotr Weychert, avec Elwira Kozłowska et Janusz Weychert. Image : Sławomir Orman, Ryszard Piegza, Grzegorz Siwicki, Marko Stojanović, Piotr Weychert. Musique : Jarosław Lublin, Henry Purcell, Erik Satie. Montage : Rafał Borowy, Monika Sirojc. Narrateur : Władysław Kowalski. Le film associe des enregistrements d'archives de performances, des déclarations, des textes et des photographies de Świdziński à de courts films tirés de ses scénarios non réalisés, au commentaire de Richard Martel et à des extraits de l'entretien de 2008 avec Joseph Kosuth à Rome. Il a été projeté le 22 novembre 2013 lors de la présentation des archives de l'artiste par la Fondation Arton."
+},
+{
+"id": "tl31",
+"title": "Muzeum Zero",
+"text": "Cofonde le « Muzeum Zero » à Varsovie.",
+"exp": "Il aborde alors l'art comme pratique sociale et organise des interventions et des manifestations artistiques."
+},
+{
+"id": "tl32",
+"title": "« Czyszczenie Sztuki »",
+"text": "Coorganise « Czyszczenie Sztuki » (Nettoyer l'art), première manifestation de l'art nouveau réunissant plusieurs milieux.",
+"exp": "Elle a lieu dans la galerie du club étudiant, 24 rue Krakowskie Przedmieście à Varsovie (plus tard Repassage)."
+},
+{
+"id": "tl33",
+"title": "Acheté contre de la vodka",
+"text": "Lors du plein air d'Osieki, Jerzy Treliński « achète » Jan Świdziński.",
+"exp": "Treliński possède un certificat attestant la transaction. La monnaie : la vodka."
+},
+{
+"id": "tl34",
+"title": "Mała Galeria",
+"text": "Cofonde la Mała Galeria à Varsovie.",
+"exp": "Fondée avec Zbigniew Dłubak, cette galerie de la ZPAF fut l'un des premiers lieux en Pologne à montrer la photographie comme art autonome. Świdziński y présente cinq expositions personnelles (1979–1994)."
+},
+{
+"id": "tl35",
+"title": "Mouvement contextuel international",
+"text": "La conférence de Varsovie débouche sur un accord de coopération au sein de l'International Contextual Movement.",
+"exp": "Les signataires sont les groupes Arte de Systema Latina Americo et L'Art Sociologique. Świdziński organise aussi la « Conférence sur l'art contextuel 2 », fruit de la collaboration d'artistes de Pologne et du Canada."
+},
+{
+"id": "tl36",
+"title": "« To Take Position »",
+"text": "Organise le festival international d'art « To Take Position » à la galerie Stodoła, à Varsovie.",
+"exp": "Performance, vidéo et installation. La même année, il prépare avec Andrzej Mroczek l'échange artistique polono-canadien Halifax – Lublin."
+},
+{
+"id": "tl37",
+"title": "Voyage en Asie",
+"text": "Voyage au Japon, en Inde, au Sri Lanka, à Singapour, à Java et à Bali.",
+"exp": "Il rassemble des matériaux pour le livre « Real Time – Story Telling ». La même année, il organise à Lublin le festival « Real Time – Story Telling '93 » et se produit au NIPAF à Nagano."
+},
+{
+"id": "tl38",
+"title": "Conférence à Gorzów",
+"text": "Conférence sur le rôle du conceptualisme et du contextualisme à la Galeria Sztuki Najnowszej de Gorzów Wielkopolski (28–30 mars), avec l'ouverture de son exposition.",
+"exp": "Animée par Romuald Kutera et Bogusław Jasiński. Participants : Grzegorz Dziamski, Andrzej Saj, Łukasz Guzek, Adam Sobota. Artistes : Świdziński, Anna et Romuald Kutera, Natalia LL, Ryszard Waśko."
 }
 ],
 "textsData": [
@@ -1096,13 +1144,13 @@
 "id": "fo4",
 "name": "Festival international d'art Interakcje",
 "place": "Piotrków Trybunalski, Pologne",
-"desc": "Fondé en 1999 à l'initiative de Ryszard Piegza, avec Stanisław Piotr Gajda et Gordian Piec. Świdziński en a été le commissaire et le président à partir de 1999, et s'y est produit à chaque édition de 1999 à 2004. Le festival se poursuit : sa 25e édition, « Beyond Gravity », a eu lieu du 24 au 27 septembre 2026."
+"desc": "Fondé en 1998 à l'initiative de Ryszard Piegza, avec Stanisław Piotr Gajda et Gordian Piec. Świdziński en a été le commissaire et le président à partir de 1998, et s'y est produit à chaque édition de 1999 à 2004. Le festival se poursuit : sa 25e édition, « Beyond Gravity », a eu lieu du 24 au 27 septembre 2026."
 },
 {
 "id": "fo5",
 "name": "W kontekście sztuki / Różnice (Dans le contexte de l'art / Différences)",
 "place": "Varsovie, Pologne",
-"desc": "Premier festival explicitement consacré à l'art contextuel, tenu en octobre 2006 puis de nouveau en 2007. Cocréé avec Jan Przyłuski. Lié au film documentaire « Różnice » (Les Différences)."
+"desc": "Premier festival explicitement consacré à l'art contextuel, tenu en octobre 2006 puis de nouveau en 2007. Cocréé avec Jan Przyłuski. Lié au film documentaire « Różnice » (Les Différences). Première édition : 28 septembre – 2 octobre 2006, 64 artistes de 13 pays et plus de 80 présentations à Varsovie, Płock, Szydłowiec, Orońsko et Sokołów Podlaski. Organisateur principal : Centre mazovien de la culture et des arts."
 }
 ],
 "festivalsData.participated": [

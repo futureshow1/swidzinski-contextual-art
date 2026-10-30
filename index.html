@@ -228,6 +228,80 @@ h2 + .section-desc { color:var(--text-dim); font-size:14px; margin-bottom:28px; 
 .text-card-body { display:none; padding:0 22px 22px; font-size:14px; line-height:1.8; color:var(--text-dim); }
 .text-card.open .text-card-body { display:block; }
 .text-card.open { border-color:var(--accent); }
+/* czytelnia: lista i jeden tekst obok siebie, każda kolumna przewija się sama */
+.cz { display:grid; grid-template-columns:310px 1fr; gap:18px; height:calc(100vh - 346px); min-height:460px; }
+.cz-side { display:flex; flex-direction:column; min-height:0; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); }
+.cz-tools { padding:12px; border-bottom:1px solid var(--border); }
+.cz-tools input { width:100%; padding:8px 10px; font:inherit; font-size:13px; color:var(--text); background:var(--bg); border:1px solid var(--border); border-radius:6px; box-sizing:border-box; }
+.cz-chips { display:flex; flex-wrap:wrap; gap:5px; margin-top:9px; }
+.cz-chips button { font:inherit; font-size:11px; padding:3px 8px; color:var(--text-dim); background:none; border:1px solid var(--border); border-radius:99px; cursor:pointer; }
+.cz-chips button.on { color:#fff; background:var(--accent); border-color:var(--accent); }
+.cz-list { flex:1; overflow-y:auto; padding:4px 0 10px; min-height:0; }
+.cz-dec { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:1px; color:var(--text-light); padding:12px 14px 4px; }
+.cz-it { display:grid; grid-template-columns:36px 1fr; gap:6px; width:100%; text-align:left; padding:6px 14px; font:inherit; font-size:13px; line-height:1.35; color:var(--text); background:none; border:0; border-left:3px solid transparent; cursor:pointer; }
+.cz-it:hover { background:var(--surface2); }
+.cz-it.on { background:var(--surface2); border-left-color:var(--accent); font-weight:600; }
+.cz-it .r { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent); padding-top:1px; }
+.cz-pusto { padding:14px; font-size:13px; color:var(--text-dim); }
+.cz-read { overflow-y:auto; min-height:0; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px 36px 22px; }
+.cz-doc { max-width:68ch; margin:0 auto; }
+.cz-meta { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.5px; color:var(--text-light); }
+.cz-doc h3 { font-family:'Fraunces',serif; font-size:26px; line-height:1.2; margin:6px 0 8px; color:var(--text); }
+.cz-zr { font-size:12px; line-height:1.5; color:var(--text-dim); font-style:italic; }
+.cz-wer { display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 0; }
+.cz-wer button { font:inherit; font-size:12px; padding:3px 10px; color:var(--text-dim); background:none; border:1px solid var(--border); border-radius:6px; cursor:pointer; }
+.cz-wer button.on { color:var(--text); border-color:var(--accent); font-weight:600; }
+.cz-uw { margin:12px 0 0; padding:8px 12px; font-size:12px; color:var(--text-dim); background:var(--surface2); border-radius:6px; }
+.cz-tresc { margin-top:18px; font-size:16px; line-height:1.72; color:var(--text); }
+.cz-tresc p { margin:0 0 .95em; }
+.cz-tresc h4 { font-family:'Fraunces',serif; font-size:17px; margin:1.2em 0 .3em; }
+.cz-tresc mark { background:var(--accent); color:#fff; padding:0 2px; }
+.cz-nawi { display:flex; justify-content:space-between; gap:12px; margin-top:22px; padding-top:14px; border-top:1px solid var(--border); }
+.cz-nawi button { font:inherit; font-size:13px; max-width:48%; text-align:left; color:var(--text); background:none; border:0; cursor:pointer; padding:0; }
+.cz-nawi button:last-child { text-align:right; margin-left:auto; }
+.cz-nawi button:hover { color:var(--accent); }
+.cz-nawi small { display:block; font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--text-light); }
+.cz-sel { display:none; }
+@media (max-width:960px){
+  .cz { display:block; height:auto; min-height:0; }
+  .cz-side { border:0; background:none; }
+  .cz-tools { padding:0 0 10px; border:0; }
+  .cz-list { display:none; }
+  .cz-sel { display:block; width:100%; margin-top:9px; padding:9px 10px; font:inherit; font-size:14px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:6px; }
+  .cz-read { overflow:visible; padding:20px 16px; }
+  .cz-doc h3 { font-size:22px; }
+}
+/* filmy */
+.fm-sec { font-family:'Fraunces',serif; font-size:20px; margin:26px 0 12px; color:var(--text); }
+.fm-sec:first-child { margin-top:6px; }
+.fm-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:14px; }
+.fm { display:flex; flex-direction:column; text-align:left; font:inherit; padding:0; overflow:hidden; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); text-decoration:none; cursor:pointer; }
+.fm:hover { border-color:var(--accent); }
+.fm-img { position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--surface2); }
+.fm-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.fm-img span { position:absolute; left:10px; bottom:10px; font-size:11px; padding:3px 8px; color:#fff; background:rgba(0,0,0,.72); border-radius:4px; }
+.fm-b { padding:11px 13px 13px; }
+.fm-m { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent); }
+.fm-b h4 { font-family:'Fraunces',serif; font-size:15px; line-height:1.25; margin:3px 0 5px; }
+.fm-b p { font-size:12.5px; line-height:1.5; color:var(--text-dim); margin:0; }
+.fm-kas { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:10px; }
+.fm-kas div { padding:11px 13px; font-size:14px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); }
+.fm-kas small { display:block; margin-top:2px; font-size:12px; color:var(--text-dim); }
+.fm-uw { font-size:12.5px; line-height:1.55; color:var(--text-dim); margin:10px 0 0; }
+.fm-uw a { color:var(--accent); }
+#fmOkno { display:none; position:fixed; inset:0; z-index:300; align-items:center; justify-content:center; padding:16px; background:rgba(0,0,0,.85); }
+#fmOkno.on { display:flex; }
+#fmOkno iframe { width:min(1100px,100%); aspect-ratio:16/9; border:0; background:#000; }
+#fmOkno button { position:absolute; top:12px; right:16px; font-size:28px; line-height:1; color:#fff; background:none; border:0; cursor:pointer; }
+/* wykaz prac */
+.pr-bar { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+.pr-bar button { font:inherit; font-size:12px; padding:4px 11px; color:var(--text-dim); background:none; border:1px solid var(--border); border-radius:99px; cursor:pointer; }
+.pr-bar button.on { color:#fff; background:var(--accent); border-color:var(--accent); }
+.pr-box { max-height:430px; overflow-y:auto; padding:6px 16px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); columns:2; column-gap:30px; }
+.pr-rok { break-inside:avoid; padding:7px 0; }
+.pr-rok b { font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent); }
+.pr-rok div { font-size:13px; line-height:1.4; color:var(--text-dim); margin-top:3px; }
+@media (max-width:640px){ .pr-box { columns:1; } }
 .text-section { margin-bottom:20px; }
 .text-section h4 { font-family:'Fraunces',serif; font-size:15px; color:var(--text); margin-bottom:8px; }
 .text-section p { margin-bottom:10px; }
@@ -419,6 +493,7 @@ main { padding-bottom:88px; }
   <button onclick="showView('concepts')" data-view="concepts" data-i18n="nav.concepts">Pojęcia</button>
   <button onclick="showView('biblio')" data-view="biblio" data-i18n="nav.biblio">Bibliografia</button>
   <button onclick="showView('festivals')" data-view="festivals" data-i18n="nav.festivals">Wystąpienia</button>
+  <button onclick="showView('films')" data-view="films" data-i18n="nav.films">Filmy</button>
   <button onclick="showView('game')" data-view="game" data-i18n="nav.game">Gra</button>
   <button onclick="window.open('study.html','_blank')" style="color:var(--gold) !important" data-i18n="nav.study">Studium (EN) ↗</button>
   <div class="nav-right">
@@ -517,6 +592,14 @@ main { padding-bottom:88px; }
   <div class="graph-legend" id="graphLegend"></div>
   <div class="graph-panel" id="graphPanel"></div>
 </div>
+
+<!-- ═══ FILMS ═══ -->
+<div id="filmsView" class="view">
+  <h2 data-i18n="view.films.h">Filmy i wideo</h2>
+  <p class="section-desc" data-i18n="view.films.d">Filmy o Świdzińskim, rejestracje jego performansów i tytuły kaset wideo.</p>
+  <div id="filmsContainer"></div>
+</div>
+<div id="fmOkno" onclick="fmZamknij()"><button aria-label="×">×</button><iframe id="fmRamka" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
 
 <!-- ═══ TEXTS ═══ -->
 <div id="textsView" class="view">
@@ -669,6 +752,7 @@ function showView(id) {
   if(id==='biblio') buildBiblio();
   if(id==='books') buildBooks();
   if(id==='festivals') buildFestivals();
+  if(id==='films') buildFilms();
   if(id==='game') buildGameHub();
   if(id==='quiz') initQuiz();
   if(id==='formula') initFormula();
@@ -684,32 +768,40 @@ function showView(id) {
 // DATA: TIMELINE
 // ═══════════════════════════════════════════
 const timeline = [
-  {id:'tl01',year:1923,cat:'life',title:'Born in Bydgoszcz',text:'Jan Świdziński born on May 25 in Bydgoszcz, Poland.',exp:'His father, also named Jan, was a Polish Army officer and former soldier of Piłsudski\'s Legions; the Świdzińskis descended from old szlachta bearing the Półkozic coat of arms. A notable ancestor, Konstanty Świdziński, was a major collector and patron of Polish culture whose library was destroyed in 1944, in the wake of the Warsaw Uprising.'},
+  {id:'tl01',year:1923,cat:'life',title:'Born in Bydgoszcz',text:'Jan Świdziński born on May 23 in Bydgoszcz, Poland.',exp:'His father, also named Jan, was a Polish Army officer and former soldier of Piłsudski\'s Legions; the Świdzińskis descended from old szlachta bearing the Półkozic coat of arms. A notable ancestor, Konstanty Świdziński, was a major collector and patron of Polish culture whose library was destroyed in 1944, in the wake of the Warsaw Uprising.'},
   {id:'tl02',year:1947,cat:'life',title:'Academy of Fine Arts, Warsaw',text:'Begins studying painting under Jan Cybis, graphics under Tadeusz Kulisiewicz.',exp:'He graduated with a degree in painting in 1952. Between 1952 and 1962 he created a series of paintings called "Semantic Signs" (Znaki semantyczne).'},
   {id:'tl03',year:1952,cat:'life',title:'Graduates from Academy of Fine Arts',text:'Receives painting degree. Begins "Semantic Signs" (Znaki semantyczne) painting series (1952-1962).',exp:'Studies under Jan Cybis (painting) and Tadeusz Kulisiewicz (graphics) at the Higher School of Arts and Design (today Academy of Fine Arts) in Warsaw. During the Semantic Signs years he also studied Islamic art in Spain and Morocco, as well as Chinese calligraphy.'},
   {id:'tl04',year:1965,cat:'art',title:'Ends Painting Career',text:'Solo painting exhibition marks the end of traditional art practice.',exp:'He discovered that painting and other traditional art forms were unable to confront the fundamental and existential dilemmas faced by contemporary humanity. This crisis redirected him toward science, semiotics, linguistics, neopositivism and formal logic.'},
+  {id:'tl31',year:'1965–67',cat:'event',title:'Muzeum Zero',text:'Co-founds "Muzeum Zero" in Warsaw.',exp:'He now treats art as a social practice, organizing artistic interventions and demonstrations.'},
   {id:'tl05',year:'1965–70',cat:'life',title:'Studies in Semiotics and Cybernetics',text:'With Marek Konieczny, establishes the Art and Design Section at the Cybernetics Society.',exp:'Deep immersion in semiotics, linguistics, neopositivism, and formal logic. These studies enabled a critical view of the Anglo-American conceptualism emerging at the end of the 1960s. In the early 1970s this work fed a series of works and actions entitled "Z logiki niekompletnych rzeczywistości" (Out of the Logic of Incomplete Realities).'},
   {id:'tl06',year:1970,cat:'theory',title:'"Dispute over Art\'s Existence" Published',text:'First major theoretical text, published in "Życie i Myśl" nr 5/1970.',exp:'Considered the first attempt to give theoretical order to emerging aesthetic concepts. Written during a time of youth revolution, the article described how art and reality had changed so fundamentally that artists\' work no longer concerned creation of art objects but deliberation on art\'s essence.'},
+  {id:'tl32',year:'1970–75',cat:'event',title:'"Czyszczenie Sztuki"',text:'Co-organizes "Czyszczenie Sztuki" (Cleaning Art), the first cross-milieu demonstration of new art.',exp:'Held at the gallery in the student club at Krakowskie Przedmieście 24, Warsaw (later Repassage).'},
   {id:'tl07',year:1972,cat:'art',title:'On "N.S." Permafo Gallery',text:'Writes critical essay about the new situation in art, connecting to Wrocław avant-garde.',exp:'Argues that new art "ceases to be observation, investigation from outside of previously existing situations, but is production of successive links of reality." Art becomes an act of social action, not mirror reflection.'},
+  {id:'tl33',year:1972,cat:'life',title:'Bought for Vodka',text:'During the plein-air at Osieki, Jerzy Treliński "buys" Jan Świdziński.',exp:'Treliński holds a certificate of the transaction. The currency was vodka.'},
   {id:'tl08',year:1974,cat:'art',title:'First Performances',text:'Performance art begins at Teatr Dnia i Nocy, Poznań.',exp:'"My interest in performance art grew on the one hand out of my contextual theory, and on the other hand out of my experiences with dance, body movement and the gestures I used to give performances." For Świdziński, performance is the most accessible art form — direct contact with audience in shared context of time, place, and situation.'},
   {id:'tl09',year:1975,cat:'event',title:'F-Art Counterculture Festival, Gdańsk',text:'First public presentation of contextual art theses. Jean Sellem attends and later organizes the Lund exhibition.',exp:'Also presented at "Condition of Contemporary Art" symposium at Remont Gallery, Warsaw. These events laid the groundwork for the 1976 manifesto publication.'},
+  {id:'tl34',year:1975,cat:'event',title:'Mała Galeria',text:'Co-founds Mała Galeria in Warsaw.',exp:'Founded with Zbigniew Dłubak, this ZPAF gallery was among the first in Poland to show photography as an autonomous art. Świdziński held five solo shows there (1979–1994).'},
   {id:'tl10',year:1976,cat:'theory',title:'"Art as Contextual Art" — The Manifesto',text:'Publishes the 12 Points of Contextual Art in Lund, Sweden. Exhibits with Polish artists at St. Petri Gallery.',exp:'The foundational document of contextual art. Core formula: Object "O" assumes meaning "m" at time "t," in place "p," in situation "s," in relation to person/persons "o" — if and only then. The accompanying exhibition featured artists of Galeria Sztuki Najnowszej, Wrocław (Anna Kutera, Romuald Kutera, Lech Mrożek), the Warsaw Seminar circle (with Zbigniew Dłubak), the Film Form Workshop from Łódź (Józef Robakowski, Wojciech Bruszewski, Ryszard Waśko), and Henryk Gajewski of Remont Gallery.',highlight:true},
   {id:'tl11',year:1976,cat:'event',title:'Toronto Debate with Kosuth',text:'At CEAC conference "In the Context of the Art World," Świdziński publicly critiques Kosuth\'s tautological model.',exp:'Organized by Amerigo Marras of the Centre for Experimental Art and Communication; participants included Joseph Kosuth, Sarah Charlesworth, Carole Condé, Anthony McCall, Hervé Fischer, and Canadian artists and theorists. Świdziński argued art is an "empty sign" gaining meaning only in social context, not through self-reference.'},
   {id:'tl12',year:1977,cat:'event',title:'Warsaw International Conference',text:'Hosts "Art Activity in the Context of Reality" at Remont Gallery — participants from 35 countries.',exp:'Signed agreements between Polish contextual art, French Art Sociologique, American Art and Language, and Latin American artists. Government authorities responded harshly, viewing the extensive foreign contact as threatening.'},
+  {id:'tl35',year:1977,cat:'event',title:'International Contextual Movement',text:'The Warsaw conference results in a cooperation agreement within the International Contextual Movement.',exp:'The signatories are the groups Arte de Systema Latina Americo and L\'Art Sociologique. Świdziński also organizes "Conference on Contextual Art 2", the outcome of collaboration between artists from Poland and Canada.'},
   {id:'tl13',year:1977,cat:'event',title:'"Third Front Against New York" — Paris',text:'Conference "Art et Transformation Sociale" in Paris (10–13 May). Joint declaration against New York art world hegemony.',exp:'Organized by the Collectif Art Sociologique. Participants included Świdziński and Emil Cieślar from Poland, Brian Dyson and Paul Woodrow from Canada, and the British artists Loraine Leeson and Peter Dunn. The joint declaration announced a "third front in art against New York."'},
   {id:'tl14',year:1979,cat:'art',title:'"We Always Talk About Man"',text:'Exhibition "Stale mówimy o człowieku" opens at Mała Galeria, Warsaw (26 June) — a photograph of a crowd joined with philosophical text.',exp:'Its text began: "Always we talk about man, but don\'t talk about man, just talk to man." The same year "Art, Society and Self-consciousness" was published by the Alberta College of Art Gallery in Calgary, Canada. The work demonstrates how minimal material gains complex meaning through contextual framing.'},
   {id:'tl15',year:1987,cat:'theory',title:'"Freedom and Limitation"',text:'Publishes "Freedom and Limitation — The Anatomy of Post-modernism" in Calgary (Syntax, edited by Brian Dyson).',exp:'Three years earlier, the related photographic cycle "Wolność i ograniczenie" (Freedom and Limitation, Mała Galeria, 1984) had documented a Polish village on the Soviet border. Photographs as "symptoms of reality" — the artist presents not description but contextual evidence of the human condition under political constraint.'},
+  {id:'tl36',year:1988,cat:'event',title:'"To Take Position"',text:'Organizes the international art festival "To Take Position" at Galeria Stodoła, Warsaw.',exp:'Performance, video and installation. The same year, with Andrzej Mroczek, he prepares the Polish-Canadian artistic exchange Halifax – Lublin.'},
   {id:'tl16',year:1989,cat:'life',title:'President of Artists of the Other Arts',text:'Appointed President of the Artists of the Other Arts Association.',exp:'That April, the exhibition "Jestem z powrotem" (I\'m Back) at Mała Galeria marked his return from the United States. The fall of communism transforms the context of Polish art entirely.'},
   {id:'tl17',year:1990,cat:'event',title:'Interscop International Festival',text:'Major international performance festival in Łucznica, organized by Świdziński.',exp:'Also participated in Première Biennale d\'Art Actuel in Québec and Interaction International Performance Festival in France in the same year.'},
+  {id:'tl37',year:1993,cat:'life',title:'Journey Through Asia',text:'Travels through Japan, India, Sri Lanka, Singapore, Java and Bali.',exp:'He gathers material for the book "Real Time – Story Telling". The same year he organizes the "Real Time – Story Telling \'93" festival in Lublin and performs at NIPAF in Nagano.'},
   {id:'tl18',year:1994,cat:'art',title:'"It\'s OK" — Gulf War Photography',text:'Exhibition "W porządku" (It\'s OK) at Mała Galeria, Warsaw and BWA Lublin — Gulf War press photography with artistic interventions.',exp:'A famous Newsweek war photograph underwent interventions showing, in Grzegorz Borkowski\'s words, the "gradual transformation of disaster documentation into increasingly abstract sign." Identical images carry radically different meanings depending on context — the "empty sign" principle in action.'},
   {id:'tl19',year:1996,cat:'event',title:'Performances in Korea and Romania',text:'Performs at the 9 Dragons\' Heads Festival in South Korea and the AnnART Festival in Romania.',exp:'Also that year: "Second Hand" at Dziekanka Gallery, Warsaw. The decade brought further festival appearances from Vilnius ("Dimension 0," 1997) to Mexico City (Ex Teresa, 1998).'},
   {id:'tl20',year:1997,cat:'theory',title:'"Art is a Fact"',text:'Poster manifesto for 20th anniversary of contextual art. Syntax Arts Society, Calgary.',exp:'"Notions such as art, artist, the world of art, function only as convenient identifiers which are useful only so long as they can serve in a given situation." Art neither builds nor destroys — those engaging with it resemble tourists who stop briefly, meet travellers from other cultures, exchange remarks, then continue their journey. Polish translation by B. Łukasiewicz.'},
   {id:'tl21',year:1998,cat:'art',title:'"Anomia"',text:'Exhibition "Anomia" at Stara Galeria, Lublin (May) — on Durkheim\'s concept of anomie: the breakdown of commonly accepted norms.',exp:'Enlarged amateur photographs of people leaning toward one another in conversation — the old gesture of Santa Conversazione, now a simulacrum: people talk without genuine understanding. Minimal gestures and sparse performance expose the breakdown of shared meaning.'},
-  {id:'tl22',year:1999,cat:'event',title:'Interakcje Festival, Piotrków Trybunalski',text:'The International Art Festival Interakcje is founded — Świdziński serves as its curator and president from 1999.',exp:'Initiated by Ryszard Piegza with Stanisław Piotr Gajda and Gordian Piec, Interakcje has been held in Piotrków Trybunalski since 1999 — its 25th edition took place in September 2026 — and remains Poland\'s longest-running performance art festival. Świdziński performed at every edition from 1999 to 2004.'},
+  {id:'tl22',year:1998,cat:'event',title:'Interakcje Festival, Piotrków Trybunalski',text:'The International Art Festival Interakcje is founded — Świdziński serves as its curator and president from 1998.',exp:'Initiated by Ryszard Piegza with Stanisław Piotr Gajda and Gordian Piec, Interakcje has been held in Piotrków Trybunalski since 1998 — its 25th edition took place in September 2026 — and remains Poland\'s longest-running performance art festival. Świdziński performed at every edition from 1999 to 2004. Piotrków Trybunalski made him an honorary citizen.'},
   {id:'tl23',year:2003,cat:'art',title:'International Asian Performances',text:'Performs at Asiatopia Festival (Bangkok) and Lange Atem Festival (Essen, Münster).',exp:'One of his final major international performance tours. Also continued performing at Interakcje and Navinki (Minsk) festivals.'},
   {id:'tl24',year:2005,cat:'life',title:'Polonia Restituta Order',text:'Awarded the Officer\'s Cross of the Order of Polonia Restituta (May 2005) for contribution to the development and promotion of Polish culture.',exp:'Recognition came after decades of international teaching (Paris, Montreal, New York, Calgary, Vancouver) and organizing major conferences and performance festivals. The same year, "L\'Art et son Contexte" appeared in Québec.'},
   {id:'tl25',year:2006,cat:'event',title:'"In the Context of Art / Differences" Festival',text:'First festival explicitly dedicated to contextual art, held in Warsaw in October 2006 (and again in 2007). Co-created with Jan Przyłuski.',exp:'Performers included Zbigniew Warpechowski, Ewa Zarzycka, Janusz Bałdyga and Przemysław Kwiek, with guests from Israel, Italy, France, Canada, and beyond. Connected to "Różnice" (The Differences) — Przyłuski\'s first documentary film, dedicated to Świdziński. Przyłuski also began the Art of Action Archive (Archiwum Sztuki Akcji, ASA) around this time.'},
   {id:'tl26',year:2009,cat:'event',title:'Polish Publications & CSW Symposium',text:'Two books published in Polish: "Sztuka i jej kontekst" and "Sztuka, społeczeństwo, samoświadomość." Symposium at CSW Ujazdowski Castle.',exp:'Panelists: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz, and Małgorzata Butterwick; moderated by Grzegorz Borkowski (16 December 2009). The "In Context Now" symposium was held in Radom, its proceedings published as "Global Communication."'},
+  {id:'tl38',year:2009,cat:'event',title:'Gorzów Conference',text:'Conference on the role of conceptualism and contextualism at Galeria Sztuki Najnowszej, Gorzów Wielkopolski (28–30 March), with the opening of his exhibition.',exp:'Led by Romuald Kutera and Bogusław Jasiński. Participants: Grzegorz Dziamski, Andrzej Saj, Łukasz Guzek, Adam Sobota. Artists: Świdziński, Anna and Romuald Kutera, Natalia LL, Ryszard Waśko.'},
   {id:'tl27',year:2010,cat:'art',title:'"In My Context" at CSW Ujazdowski Castle',text:'Exhibition "W moim kontekście. Wybrane działania z fotografią i tekstem" (In My Context: Selected Actions with Photography and Text) at the Centre for Contemporary Art in Warsaw.',exp:'On view until 28 February 2010; an expanded version, accompanied by a theoretical symposium, followed at Galeria Labirynt in Lublin. On 24 June 2010 — his name day — the evening "Evening in the Context," held within The Knot project at Galeria Nizio, presented Jan Przyłuski\'s filmed conversation with the artist, "Jesteśmy zaplątani" (We Are Entangled).'},
   {id:'tl28',year:2010,cat:'art',title:'Film: "Kosuth — Świdziński. Spotkanie w Rzymie" (dir. Piotr Weychert)',text:'Documentary by Piotr Weychert (38 min 59 s, Poland; Polish with consecutive English interpretation), credited to Jan Świdziński and Piotr Weychert. Broadcast in 2010 on TVP Kultura; held in the film collection of the Museum of Modern Art in Warsaw.',exp:'The film follows Świdziński to Rome and records his meeting with Joseph Kosuth in Kosuth\'s studio (July 2008). It continued a polemic the two had carried on by correspondence since the 1970s — they had met in person only once, at the "In the Context of the Art World" debate in Toronto (November 1976). More than thirty years later they return to ideas that had meanwhile been absorbed by the art world, advertising and the creative industries.'},
   {id:'tl29',year:2014,cat:'life',title:'Death in Warsaw',text:'Jan Świdziński dies on February 9, 2014 in Warsaw. He was buried at the Powązki Military Cemetery, section D-1-29.',exp:'His legacy: a body of theory and practice arguing that art gains meaning only through pragmatic context — time, place, situation, and persons involved. The contextual art movement he founded continues to influence contemporary art discourse.'},
@@ -939,8 +1031,8 @@ const festivalsData = {
     {id:'fo1',name:'Art Activity in the Context of Reality',year:1977,place:'Remont Gallery, Warsaw',desc:'International conference of artists and theorists from 35 countries. Signed agreements between Polish contextual art, French Art Sociologique, Art and Language, and Latin American artists.'},
     {id:'fo2',name:'Interscop International Festival',year:1990,place:'Łucznica, Poland',desc:'International performance festival organized by Świdziński.'},
     {id:'fo3',name:'Real Time — Story Telling International Performance Art Festival',year:1991,place:'Sopot, Poland',desc:'International performance art festival; the 1993 edition was held at Grodzka Gallery, Lublin.'},
-    {id:'fo4',name:'Interakcje International Art Festival',year:'1999 →',place:'Piotrków Trybunalski, Poland',desc:'Founded in 1999 on the initiative of Ryszard Piegza, with Stanisław Piotr Gajda and Gordian Piec. Świdziński served as the festival\'s curator and president from 1999 and performed at every edition from 1999 to 2004. The festival is still running: its 25th edition, “Beyond Gravity”, took place on 24–27 September 2026.'},
-    {id:'fo5',name:'In the Context of Art / Differences',year:'2006–2007',place:'Warsaw, Poland',desc:'First festival explicitly dedicated to contextual art, held in October 2006 and again in 2007. Co-created with Jan Przyłuski. Connected to "Różnice" (The Differences) documentary film.'},
+    {id:'fo4',name:'Interakcje International Art Festival',year:'1998 →',place:'Piotrków Trybunalski, Poland',desc:'Founded in 1998 on the initiative of Ryszard Piegza, with Stanisław Piotr Gajda and Gordian Piec. Świdziński served as the festival\'s curator and president from 1998 and performed at every edition from 1999 to 2004. The festival is still running: its 25th edition, “Beyond Gravity”, took place on 24–27 September 2026.'},
+    {id:'fo5',name:'In the Context of Art / Differences',year:'2006–2007',place:'Warsaw, Poland',desc:'First festival explicitly dedicated to contextual art, held in October 2006 and again in 2007. Co-created with Jan Przyłuski. Connected to "Różnice" (The Differences) documentary film. First edition: 28 September – 2 October 2006, with 64 artists from 13 countries and over 80 presentations in Warsaw, Płock, Szydłowiec, Orońsko and Sokołów Podlaski. Main organizer: Mazovian Centre of Culture and Art.'},
   ],
   participated: [
     {id:'fp01',name:'F-Art Counterculture Festival',year:1975,place:'Gdańsk',desc:'First presentation of contextual art theses. Jean Sellem attended and later organized the Lund exhibition.'},
@@ -1166,7 +1258,7 @@ function applyDataLang(lang){
   });
   DATA_LANG = lang;
   // widoki budowane raz muszą się przerysować w nowym języku
-  textsBuilt = biblioBuilt = booksBuilt = festivalsBuilt = false;
+  textsBuilt = biblioBuilt = booksBuilt = festivalsBuilt = filmsBuilt = false; czWer = null;
   if (typeof conceptsBuilt !== 'undefined') conceptsBuilt = false;
   rebuildCurrentView();
 }
@@ -1187,6 +1279,7 @@ function rebuildCurrentView(){
   else if (v==='biblio') buildBiblio();
   else if (v==='books') buildBooks();
   else if (v==='festivals') buildFestivals();
+  else if (v==='films') buildFilms();
   else if (v==='game') buildGameHub();
   else if (v==='points') buildPoints();
   else if (v==='archive') buildArchive();
@@ -1205,6 +1298,7 @@ function buildArchive() {
     {label:T('hub.concepts.l'),title:T('hub.concepts.t'),desc:T('hub.concepts.d'),view:'concepts',tags:['theory','definitions']},
     {label:T('hub.biblio.l'),title:T('hub.biblio.t'),desc:T('hub.biblio.d'),view:'biblio',tags:['publications','research','scholarly']},
     {label:T('hub.fest.l'),title:T('hub.fest.t'),desc:T('hub.fest.d'),view:'festivals',tags:['festivals','performance','events']},
+    {label:T('nav.films'),title:T('view.films.h'),desc:T('view.films.d'),view:'films',tags:['video','performance']},
     {label:T('hub.study.l'),title:T('hub.study.t'),desc:T('hub.study.d'),view:'_study',tags:['academic','research','primary sources']}
   ];
   document.getElementById('archiveGrid').innerHTML = items.map(i=>`
@@ -1636,22 +1730,207 @@ function selectGraphNode(p){
 // BUILD: TEXTS
 // ═══════════════════════════════════════════
 let textsBuilt=false;
-function buildTexts() {
-  if(textsBuilt) return; textsBuilt=true;
-  document.getElementById('textsContainer').innerHTML = textsData.map(t=>`
-    <div class="text-card" id="text-${t.id}">
-      <div class="text-card-header" onclick="this.parentElement.classList.toggle('open')">
-        <div>
-          <h3>${t.title}</h3>
-          <div class="meta">${[t.year,t.type].filter(Boolean).join(' · ')}</div>
-        </div>
-        <span class="tl-arrow">▼</span>
-      </div>
-      <div class="text-card-body">
-        ${t.sections.map(s=>`<div class="text-section">${s.h?`<h4>${s.h}</h4>`:''}
-          <p>${s.t}</p></div>`).join('')}
-      </div>
-    </div>`).join('');
+// ═══ CZYTELNIA: pełne teksty ładowane z teksty.json, zawsze jeden tekst na ekranie ═══
+var czDane = null, czWybrany = '12punktow', czKat = 'all', czSzuk = '', czWer = null, filmsBuilt = false;
+var CZ_ALIAS = {'12points':'12punktow', dispute:'spor', artisfact:'syntaxpl', models:'modele'};
+var CZ_FRAG = {'12punktow':'12points', spor:'dispute', syntaxpl:'artisfact', modele:'models', kontekst3:'kontekst3', o70:'o70', permafo:'permafo'};
+var CZ_OBCE = ['piotrowski','entangled'];
+function czPl(){ return LANG_NOW === 'pl'; }
+function czLista(){
+  var l = czDane.map(function(t){ return {id:t.id, rok:t.rok, kat:t.kat, tyt:czPl()?t.t.pl:t.t.en, src:t}; });
+  CZ_OBCE.forEach(function(id){
+    var t = textsData.find(function(x){ return x.id===id; });
+    if(t) l.push({id:id, rok:t.year, kat:'inni', tyt:t.title, obcy:t});
+  });
+  return l;
+}
+function czAkapity(t){ return t.src ? t.src.pl.concat(t.src.en||[]).join(' ') : t.obcy.sections.map(function(s){return s.t}).join(' '); }
+function czWidoczne(){
+  var q = czSzuk.trim().toLowerCase();
+  return czLista().filter(function(t){
+    if(czKat!=='all' && t.kat!==czKat) return false;
+    return !q || (t.tyt+' '+czAkapity(t)).toLowerCase().indexOf(q)>=0;
+  });
+}
+function buildTexts(){
+  if(textsBuilt) return; textsBuilt = true;
+  var box = document.getElementById('textsContainer');
+  if(czDane){ czRysuj(); return; }
+  box.innerHTML = '<p class="cz-pusto">…</p>';
+  fetch('teksty.json?v=1').then(function(r){ return r.json(); }).then(function(d){ czDane = d; czRysuj(); })
+    .catch(function(){ box.innerHTML = '<p class="cz-pusto">'+T('cz.err')+'</p>'; });
+}
+function czRysuj(){
+  var box = document.getElementById('textsContainer');
+  var kats = [['all',T('cz.all')],['manifest',T('cz.manifest')],['teoria',T('cz.teoria')],['galerie',T('cz.galerie')],['inni',T('cz.inni')]];
+  box.innerHTML = '<div class="cz"><div class="cz-side"><div class="cz-tools">'
+    +'<input id="czQ" type="search" placeholder="'+T('cz.q')+'" value="'+czSzuk.replace(/"/g,'&quot;')+'" oninput="czSzuk=this.value;czListaRysuj()">'
+    +'<div class="cz-chips">'+kats.map(function(k){ return '<button class="'+(czKat===k[0]?'on':'')+'" onclick="czKat=\''+k[0]+'\';czRysuj()">'+k[1]+'</button>'; }).join('')+'</div>'
+    +'<select class="cz-sel" id="czSel" onchange="czWybierz(this.value)"></select></div>'
+    +'<div class="cz-list" id="czList"></div></div><div class="cz-read" id="czRead"></div></div>';
+  czListaRysuj();
+  czCzytaj();
+}
+function czListaRysuj(){
+  var w = czWidoczne(), html = '', opt = '', dek = null;
+  w.forEach(function(t){
+    var d = t.kat==='inni' ? T('cz.inni') : (Math.floor(t.rok/10)*10)+'–'+(Math.floor(t.rok/10)*10+9);
+    if(d!==dek){ if(dek!==null) opt+='</optgroup>'; opt+='<optgroup label="'+d+'">'; html+='<div class="cz-dec">'+d+'</div>'; dek=d; }
+    html += '<button class="cz-it'+(t.id===czWybrany?' on':'')+'" onclick="czWybierz(\''+t.id+'\')"><span class="r">'+t.rok+'</span><span>'+t.tyt+'</span></button>';
+    opt += '<option value="'+t.id+'"'+(t.id===czWybrany?' selected':'')+'>'+t.rok+' · '+t.tyt.replace(/<[^>]+>/g,'')+'</option>';
+  });
+  if(dek!==null) opt+='</optgroup>';
+  document.getElementById('czList').innerHTML = html || '<p class="cz-pusto">'+T('cz.none')+'</p>';
+  document.getElementById('czSel').innerHTML = opt;
+  czPodswietl();
+}
+function czWybierz(id){
+  czWybrany = id; czWer = null;
+  try{ history.replaceState(null,'','#tekst='+id); }catch(e){}
+  czListaRysuj();
+  czCzytaj();
+  var r = document.getElementById('czRead'); r.scrollTop = 0;
+  if(window.innerWidth<=960) window.scrollTo(0, r.getBoundingClientRect().top + window.scrollY - 80);
+}
+function czWersje(t){
+  var v = [];
+  if(t.obcy) return [{k:'x', n:'', s:t.obcy.sections}];
+  v.push({k:'pl', n:T('cz.pl'), p:t.src.pl});
+  var en = EN_DATA.textsData.find(function(x){ return x.id===CZ_FRAG[t.id]; });
+  if(t.src.en) v.push({k:'en', n:'English', p:t.src.en});
+  else if(t.id==='12punktow' && en) v.push({k:'en', n:'English', s:en.sections});
+  if(!czPl() && LANG_NOW!=='en'){
+    var loc = textsData.find(function(x){ return x.id===CZ_FRAG[t.id]; });
+    if(loc) v.push({k:'x', n:T('cz.frag'), s:loc.sections});
+  } else if(LANG_NOW==='en' && !v.some(function(x){return x.k==='en'}) && en){
+    v.push({k:'x', n:T('cz.frag'), s:en.sections});
+  }
+  return v;
+}
+function czDomyslna(v){
+  var pref = czPl() ? ['pl'] : LANG_NOW==='en' ? ['en','x','pl'] : ['x','en','pl'];
+  for(var i=0;i<pref.length;i++){ if(v.some(function(x){return x.k===pref[i]})) return pref[i]; }
+  return v[0].k;
+}
+function czCzytaj(){
+  var r = document.getElementById('czRead'); if(!r) return;
+  var w = czWidoczne(), all = czLista();
+  var t = all.find(function(x){return x.id===czWybrany}) || all[0];
+  var v = czWersje(t); if(!v.some(function(x){return x.k===czWer})) czWer = czDomyslna(v);
+  var cur = v.find(function(x){return x.k===czWer});
+  var znaki = (cur.p ? cur.p.join(' ') : cur.s.map(function(s){return s.t}).join(' ')).replace(/<[^>]+>/g,'').length;
+  var min = Math.max(1, Math.round(znaki/1100));
+  var ciag = w.some(function(x){return x.id===t.id}) ? w : all;
+  var i = ciag.findIndex(function(x){return x.id===t.id});
+  var prev = ciag[i-1], next = ciag[i+1];
+  var oryg = !czPl() && czWer==='pl';
+  var html = '<article class="cz-doc"><div class="cz-meta">'+t.rok+' · '+T('cz.'+t.kat)+' · ~'+min+' min</div><h3>'+t.tyt+'</h3>';
+  if(t.src && t.src.zr) html += '<div class="cz-zr">'+t.src.zr+'</div>';
+  if(v.length>1) html += '<div class="cz-wer">'+v.map(function(x){ return '<button class="'+(x.k===czWer?'on':'')+'" onclick="czWer=\''+x.k+'\';czCzytaj();document.getElementById(\'czRead\').scrollTop=0">'+x.n+'</button>'; }).join('')+'</div>';
+  if(oryg) html += '<div class="cz-uw">'+T('cz.oryg')+'</div>';
+  html += '<div class="cz-tresc" id="czTresc">';
+  if(cur.p) html += cur.p.map(function(a){ return '<p>'+(czWer==='pl'?noOrphans(a):a)+'</p>'; }).join('');
+  else html += cur.s.map(function(s){ return (s.h?'<h4>'+s.h+'</h4>':'')+'<p>'+s.t+'</p>'; }).join('');
+  html += '</div><div class="cz-nawi">';
+  if(prev) html += '<button onclick="czWybierz(\''+prev.id+'\')"><small>← '+T('cz.prev')+'</small>'+prev.tyt+'</button>';
+  if(next) html += '<button onclick="czWybierz(\''+next.id+'\')"><small>'+T('cz.next')+' →</small>'+next.tyt+'</button>';
+  html += '</div>';
+  if(t.src) html += '<p class="fm-uw">'+T('cz.zrc')+' <a href="https://swidzinskistudies.pl/" target="_blank" rel="noopener">swidzinskistudies.pl</a></p>';
+  html += '</article>';
+  r.innerHTML = html;
+  czPodswietl();
+}
+function czPodswietl(){
+  var el = document.getElementById('czTresc'); if(!el) return;
+  var q = czSzuk.trim();
+  if(!el.dataset.src) el.dataset.src = el.innerHTML;
+  if(!q){ el.innerHTML = el.dataset.src; return; }
+  var re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+  el.innerHTML = el.dataset.src.split(/(<[^>]+>)/).map(function(c){ return c.charAt(0)==='<' ? c : c.replace(re,'<mark>$1</mark>'); }).join('');
+}
+
+// ═══ FILMY ═══
+var FM_MSN = 'https://archiwum.artmuseum.pl/public/upload/filmoteka/0286_0215/';
+var filmyData = {
+  o: [
+    {t:'Różnice', en:'Differences', r:'2006', d:'51:38', yt:'SXVSJfbVupg', a:'Jan Przyłuski',
+     pl:'Dokument z festiwalu „W kontekście sztuki / Różnice”, pierwszej imprezy poświęconej w całości sztuce kontekstualnej.',
+     e:'A documentary from the “In the Context of Art / Differences” festival, the first event devoted entirely to contextual art.'},
+    {t:'Jesteśmy zaplątani', en:'We Are Entangled', r:'2010', d:'5:12', vm:'255372220', a:'Jan Przyłuski', img:'https://i.vimeocdn.com/video/682800922-c780064056567e59f21c466352c2fb61c04bd6eae78afbdcfa0318486c49f184-d_640',
+     pl:'Świdziński w telegraficznym skrócie o istocie sztuki kontekstualnej: splątaniu sztuki i życia.',
+     e:'Świdziński, in a telegraphic nutshell, on the essence of contextual art: the entanglement of art and life.'},
+    {t:'In the Context of Art', en:'In the Context of Art', r:'2006', d:'3:39', vm:'118756804', a:'Jan Przyłuski', img:'https://i.vimeocdn.com/video/682880181-be277828236e052c0f4e874cd85b6c9ed527483c426290563c601227087fb515-d_640',
+     pl:'Fragment „Różnic”: Świdziński wykłada własną teorię, sztukę jako sztukę kontekstualną.',
+     e:'An excerpt from “Differences”: Świdziński lays out his own theory, art as contextual art.'},
+    {t:'Interakcje', en:'Interakcje', r:'2010', yt:'dufoGtqm_6U',
+     pl:'Dokument z festiwalu sztuki akcji Interakcje w Piotrkowie Trybunalskim, którego Świdziński był kuratorem i prezesem.',
+     e:'A documentary from the Interakcje action art festival in Piotrków Trybunalski, of which Świdziński was curator and president.'},
+    {t:'Kosuth – Świdziński. Spotkanie w Rzymie', en:'Kosuth – Świdziński. Meeting in Rome', r:'2010', d:'38:59', msn:'swidzinski-jan-weychert-piotr-kosuth-swidzinski-spotkanie-w', img:FM_MSN+'58cabdc0cfd90.jpg', a:'Piotr Weychert',
+     pl:'Rozmowa obu artystów w rzymskiej pracowni Kosutha, 2 lipca 2008.',
+     e:'A conversation between the two artists in Kosuth’s Rome studio, 2 July 2008.'},
+    {t:'Jan Świdziński. Poza dostarczony kontekst', en:'Jan Świdziński. Beyond the Supplied Context', r:'2015', d:'37 min', msn:'swidzinski-jan-weychert-piotr-jan-swidzinski-poza', img:FM_MSN+'5a09a1ec7299d.jpg', a:'Piotr Weychert',
+     pl:'Portret artysty w świetle jego teorii: archiwalne performanse, wypowiedzi, teksty i fotografie.',
+     e:'A portrait of the artist in the light of his theory: archival performances, statements, texts and photographs.'}
+  ],
+  prace: [
+    {t:'Blurring (Thinking of Heidegger)', r:'1985', d:'13:17', msn:'swidzinski-jan-blurring-thinking-of-heidegger', img:FM_MSN+'58e369c64f3f9.jpg',
+     pl:'„Rozmywanie (myśląc o Heideggerze)”, działanie zrealizowane w Kanadzie: artysta zamazuje napis na ścianie. VHS, bez dźwięku.',
+     e:'An action realised in Canada: the artist blurs an inscription on the wall. VHS, silent.'},
+    {t:'Two Monitors', r:'1985', d:'6:51', msn:'swidzinski-jan-two-monitors', img:FM_MSN+'58e37e35e014b.jpg',
+     pl:'Rejestracja performansu: oglądanie tego samego materiału na dwóch telewizorach naraz. VHS, bez dźwięku.',
+     e:'A performance recording: watching the same footage on two television sets at once. VHS, silent.'},
+    {t:'Jestem z powrotem', en:'I’m Back', r:'1989', d:'3:36', msn:'swidzinski-jan-jestem-z-powrotem', img:FM_MSN+'519a0c8c0b31f.jpg',
+     pl:'Pierwsza praca po powrocie do Polski, w Małej Galerii. Nagrał Zygmunt Rytka. VHS.',
+     e:'His first work after returning to Poland, at Mała Galeria. Recorded by Zygmunt Rytka. VHS.'},
+    {t:'Ça marche, ça marche pas', r:'1990', d:'2:49', msn:'swidzinski-jan-ca-marche-ca-marche-pas', img:FM_MSN+'58e3861b08600.jpg',
+     pl:'„Działa, nie działa”: artysta testuje gadżety ze straganów, komentując nadejście kultury konsumpcyjnej. VHS.',
+     e:'“It works, it doesn’t”: the artist tests stall trinkets, commenting on the arrival of consumer culture. VHS.'},
+    {t:'Where We Are Going Baby? (Nagano)', r:'1993', d:'2:55', msn:'swidzinski-jan-where-we-are-going-baby-nagano', img:FM_MSN+'58e50560199fc.jpg',
+     pl:'Fragmenty performansu na festiwalu NIPAF w Japonii. VHS.',
+     e:'Excerpts from a performance at the NIPAF festival in Japan. VHS.'}
+  ],
+  kasety: ['Jestem tu','Patrząc','Świat, w którym żyjemy']
+};
+function fmKarta(f){
+  var pl = czPl(), lang = pl ? 'pl' : 'en';
+  var tyt = pl ? f.t : (f.en||f.t), op = pl ? noOrphans(f.pl) : f.e;
+  var img = f.img || (f.yt ? 'https://i.ytimg.com/vi/'+f.yt+'/hqdefault.jpg' : '');
+  var meta = [f.r, f.d, f.a].filter(Boolean).join(' · ');
+  var srodek = '<div class="fm-img"><img src="'+img+'" alt="" loading="lazy" onerror="this.style.display=\'none\'"><span>'+(f.msn?T('fm.msn'):'▶ '+T('fm.play'))+'</span></div>'
+    +'<div class="fm-b"><div class="fm-m">'+meta+'</div><h4>'+tyt+'</h4><p>'+op+'</p></div>';
+  if(f.msn) return '<a class="fm" href="https://archiwum.artmuseum.pl/'+lang+'/filmoteka/praca/'+f.msn+'" target="_blank" rel="noopener">'+srodek+'</a>';
+  var url = f.yt ? 'https://www.youtube-nocookie.com/embed/'+f.yt+'?rel=0&autoplay=1' : 'https://player.vimeo.com/video/'+f.vm+'?autoplay=1';
+  return '<button class="fm" onclick="fmOtworz(\''+url+'\')">'+srodek+'</button>';
+}
+function buildFilms(){
+  if(filmsBuilt) return; filmsBuilt = true;
+  var lang = czPl() ? 'pl' : 'en';
+  document.getElementById('filmsContainer').innerHTML =
+    '<h3 class="fm-sec">'+T('fm.o')+'</h3><div class="fm-grid">'+filmyData.o.map(fmKarta).join('')+'</div>'
+    +'<h3 class="fm-sec">'+T('fm.prace')+'</h3><div class="fm-grid">'+filmyData.prace.map(fmKarta).join('')+'</div>'
+    +'<p class="fm-uw">'+T('fm.prog')+' <a href="https://archiwum.artmuseum.pl/'+lang+'/filmoteka/programy/poza-kontekst-poza-ramy-instytucji-poza-uwarunkowania-rynku" target="_blank" rel="noopener">Poza kontekst, poza ramy instytucji, poza uwarunkowania rynku</a>.</p>'
+    +'<h3 class="fm-sec">'+T('fm.kasety')+'</h3><div class="fm-kas">'+filmyData.kasety.map(function(k){ return '<div>„'+k+'”<small>'+T('fm.vhs')+'</small></div>'; }).join('')
+    +'<div>„Krzesła”<small>1976 · '+T('fm.krzesla')+'</small></div></div>'
+    +'<p class="fm-uw">'+T('fm.kasuw')+'</p>';
+}
+function fmOtworz(u){ document.getElementById('fmRamka').src = u; document.getElementById('fmOkno').classList.add('on'); }
+function fmZamknij(){ document.getElementById('fmRamka').src = ''; document.getElementById('fmOkno').classList.remove('on'); }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') fmZamknij(); });
+
+// ═══ WYKAZ PRAC ═══
+var prDane = null, prTab = 'perf';
+function prRysuj(){
+  var box = document.getElementById('praceBox'); if(!box) return;
+  if(!prDane){
+    fetch('prace.json?v=1').then(function(r){ return r.json(); }).then(function(d){ prDane = d; prRysuj(); }).catch(function(){});
+    return;
+  }
+  var lata = {}, kol = [];
+  prDane[prTab].forEach(function(x){ if(!lata[x[0]]){ lata[x[0]] = []; kol.push(x[0]); } lata[x[0]].push(x[1]); });
+  box.innerHTML = '<div class="pr-bar">'+[['perf','pr.perf'],['wyst','pr.wyst'],['wyk','pr.wyk']].map(function(k){
+      return '<button class="'+(prTab===k[0]?'on':'')+'" onclick="prTab=\''+k[0]+'\';prRysuj()">'+T(k[1])+' ('+prDane[k[0]].length+')</button>'; }).join('')+'</div>'
+    +'<div class="pr-box">'+kol.map(function(r){ return '<div class="pr-rok"><b>'+(r==='Lata 70'?(czPl()?'Lata 70.':'1970s'):r)+'</b>'+lata[r].map(function(i){ return '<div>'+i+'</div>'; }).join('')+'</div>'; }).join('')+'</div>'
+    +(czPl()?'':'<p class="fm-uw">'+T('pr.pl')+'</p>');
 }
 
 // ═══════════════════════════════════════════
@@ -1750,7 +2029,9 @@ function buildFestivals() {
   html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('f.posthumous')+'</h3>';
   html+=d.posthumous.map(f=>`<div class="card" style="cursor:default;margin-bottom:10px;border-color:var(--accent);"><div class="card-label">${f.year==='ongoing'?T('fest.ongoing'):f.year}</div><h3>${f.name}</h3><p style="font-size:12px;color:var(--text-light);margin-bottom:4px;">${f.place}</p><p>${f.desc}</p></div>`).join('');
 
+  html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('pr.h')+'</h3><div id="praceBox"></div>';
   document.getElementById('festivalsContainer').innerHTML=html;
+  prRysuj();
 }
 
 // ═══════════════════════════════════════════
@@ -2048,11 +2329,9 @@ function openFromHash(){
     return true;
   }
   if((m = h.match(/^#tekst=([\w-]+)$/))){
+    czWybrany = CZ_ALIAS[m[1]] || m[1];
     showView('texts');
-    setTimeout(function(){
-      var el = document.getElementById('text-'+m[1]);
-      if(el){ el.classList.add('open'); window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 90); }
-    }, 200);
+    if (czDane) czRysuj();
     return true;
   }
   if((m = h.match(/^#widok=(\w+)$/)) && document.getElementById(m[1]+'View')){ showView(m[1]); return true; }
@@ -2066,6 +2345,38 @@ addEventListener('hashchange', openFromHash);
 // ═══════════════════════════════════════════
 var I18N = {
   pl: {
+    "cz.zrc":"Teksty za",
+    "nav.films":"Filmy",
+    "view.films.h":"Filmy i wideo",
+    "view.films.d":"Filmy o Świdzińskim, rejestracje jego performansów i tytuły kaset wideo.",
+    "view.texts.d":"Pełne teksty Świdzińskiego z lat 1970–1998. Wybierz tytuł z listy albo przeszukaj całość.",
+    "cz.q":"Szukaj we wszystkich tekstach…",
+    "cz.all":"Wszystkie",
+    "cz.manifest":"Manifesty",
+    "cz.teoria":"Teoria",
+    "cz.galerie":"Galerie i wystawy",
+    "cz.inni":"Inni autorzy",
+    "cz.none":"Nic nie znaleziono.",
+    "cz.prev":"Poprzedni",
+    "cz.next":"Następny",
+    "cz.pl":"Polski oryginał",
+    "cz.frag":"Fragment",
+    "cz.oryg":"Oryginał polski.",
+    "cz.err":"Nie udało się wczytać tekstów.",
+    "fm.o":"Filmy o Świdzińskim",
+    "fm.prace":"Rejestracje performansów",
+    "fm.kasety":"Kasety wideo",
+    "fm.play":"Oglądaj",
+    "fm.msn":"Filmoteka MSN ↗",
+    "fm.prog":"Prace są w Filmotece Muzeum Sztuki Nowoczesnej w Warszawie, także jako program",
+    "fm.vhs":"kaseta wideo",
+    "fm.krzesla":"performance w ramach filmu",
+    "fm.kasuw":"Tytuły z wykazu prac artysty. Nie znamy dat kaset ani miejsca, w którym są dziś dostępne.",
+    "pr.h":"Pełny wykaz prac",
+    "pr.perf":"Performance",
+    "pr.wyst":"Wybrane wystawy",
+    "pr.wyk":"Wykłady",
+    "pr.pl":"",
     'gr.person':"Osoby wokół",
     'gr.note':"Kłącze bez hierarchii i bez szufladek. Nici wiąże wspólna rola albo wspólny kraj, a jedna osoba bywa w kilku pasmach naraz. Przeciągnij dowolny węzeł, żeby zmienić układ.",
 
@@ -2128,7 +2439,6 @@ var I18N = {
     'view.formula.d':"Zmieniaj parametry i patrz, jak przekształca się znaczenie. Główna intuicja Świdzińskiego, oddana interaktywnie.",
     'view.compare.d':"Przypisz każdą myśl do właściwej kolumny – przeciągnij ją albo użyj przycisków na karcie. Konceptualizm Kosutha czy kontekstualizm Świdzińskiego?",
 
-    'view.texts.d':"Źródła pierwotne — manifesty, eseje teoretyczne, refleksje krytyczne. Słowami samego Świdzińskiego.",
     'view.biblio.d':"Publikacje, opracowania naukowe i podstawowe źródła dla badaczy, historyków sztuki i studentów sztuki kontekstualnej.",
     'view.fest.d':"Międzynarodowe festiwale, performanse i wystawy — oraz późne wystawy, sympozja i archiwa, które utrwalają dziedzictwo Świdzińskiego.",
     'b.books':"Książki Świdzińskiego",
@@ -2217,6 +2527,38 @@ var I18N = {
     'latest.3.pl':'Stara Galeria Lublin · esej · pl','latest.4.pl':'Calgary · plakat-manifest · en · pl'
   },
   en: {
+    "cz.zrc":"Texts from",
+    "nav.films":"Films",
+    "view.films.h":"Films & Video",
+    "view.films.d":"Films about Świdziński, recordings of his performances, and his video cassette titles.",
+    "view.texts.d":"Świdziński’s complete texts, 1970–1998. Pick a title from the list or search them all.",
+    "cz.q":"Search all texts…",
+    "cz.all":"All",
+    "cz.manifest":"Manifestos",
+    "cz.teoria":"Theory",
+    "cz.galerie":"Galleries & shows",
+    "cz.inni":"Other authors",
+    "cz.none":"Nothing found.",
+    "cz.prev":"Previous",
+    "cz.next":"Next",
+    "cz.pl":"Polish original",
+    "cz.frag":"Excerpt",
+    "cz.oryg":"Polish original; no full English translation is available.",
+    "cz.err":"The texts could not be loaded.",
+    "fm.o":"Films about Świdziński",
+    "fm.prace":"Performance recordings",
+    "fm.kasety":"Video cassettes",
+    "fm.play":"Watch",
+    "fm.msn":"MSN Filmoteka ↗",
+    "fm.prog":"These works are held by the Filmoteka of the Museum of Modern Art in Warsaw, also as the programme",
+    "fm.vhs":"video cassette",
+    "fm.krzesla":"performance within the film",
+    "fm.kasuw":"Titles from the artist’s list of works. We do not know their dates or where they can be seen today.",
+    "pr.h":"Complete list of works",
+    "pr.perf":"Performances",
+    "pr.wyst":"Selected exhibitions",
+    "pr.wyk":"Lectures",
+    "pr.pl":"Listed in Polish, as in the source.",
     'gr.person':"People around",
     'gr.note':"A rhizome with no hierarchy and no pigeonholes. Strands follow a shared role or a shared country, and one person may sit in several at once. Drag any node to change the layout.",
 
@@ -2279,7 +2621,6 @@ var I18N = {
     'view.formula.d':"Change the parameters — watch the meaning transform. Świdziński's core insight, made interactive.",
     'view.compare.d':"Sort each idea into the correct column — drag it or use the buttons on the card. Kosuth's conceptualism or Świdziński's contextualism?",
 
-    'view.texts.d':"Primary sources — manifestos, theoretical essays, critical reflections. Świdziński’s own words.",
     'view.biblio.d':"Publications, scholarly works, and essential references for researchers, art historians, and students of contextual art.",
     'view.fest.d':"International festivals, performances, and exhibitions — and the late exhibitions, symposia, and archives that secure Świdziński’s legacy.",
     'b.books':"Books by Świdziński",
@@ -2368,6 +2709,38 @@ var I18N = {
     'latest.3.pl':'Stara Galeria Lublin · essay · pl','latest.4.pl':'Calgary · poster manifesto · en · pl'
   },
   fr: {
+    "cz.zrc":"Textes d’après",
+    "nav.films":"Films",
+    "view.films.h":"Films et vidéo",
+    "view.films.d":"Films sur Świdziński, enregistrements de ses performances et titres de ses cassettes vidéo.",
+    "view.texts.d":"Les textes complets de Świdziński, 1970–1998. Choisissez un titre ou cherchez dans l’ensemble.",
+    "cz.q":"Chercher dans tous les textes…",
+    "cz.all":"Tous",
+    "cz.manifest":"Manifestes",
+    "cz.teoria":"Théorie",
+    "cz.galerie":"Galeries et expositions",
+    "cz.inni":"Autres auteurs",
+    "cz.none":"Aucun résultat.",
+    "cz.prev":"Précédent",
+    "cz.next":"Suivant",
+    "cz.pl":"Original polonais",
+    "cz.frag":"Extrait",
+    "cz.oryg":"Original polonais ; pas de traduction complète disponible.",
+    "cz.err":"Impossible de charger les textes.",
+    "fm.o":"Films sur Świdziński",
+    "fm.prace":"Enregistrements de performances",
+    "fm.kasety":"Cassettes vidéo",
+    "fm.play":"Regarder",
+    "fm.msn":"Filmoteka MSN ↗",
+    "fm.prog":"Ces œuvres sont conservées à la Filmoteka du Musée d’art moderne de Varsovie, aussi sous forme du programme",
+    "fm.vhs":"cassette vidéo",
+    "fm.krzesla":"performance dans le film",
+    "fm.kasuw":"Titres tirés de la liste des œuvres de l’artiste. Nous ignorons leurs dates et où les voir aujourd’hui.",
+    "pr.h":"Liste complète des œuvres",
+    "pr.perf":"Performances",
+    "pr.wyst":"Expositions choisies",
+    "pr.wyk":"Conférences",
+    "pr.pl":"Liste en polonais, comme dans la source.",
     "gr.person":"Entourage",
     "gr.note":"Un rhizome sans hiérarchie ni cases. Les fils suivent un rôle ou un pays communs, et une même personne peut appartenir à plusieurs à la fois. Faites glisser un nœud pour modifier la disposition.",
     "pt.0":"Objets et significations",
@@ -2425,7 +2798,6 @@ var I18N = {
     "view.archive.d":"Parcourez les écrits, les étapes de la vie, le réseau intellectuel et les idées clés de l'art contextuel de Jan Świdziński.",
     "view.formula.d":"Modifiez les paramètres — et voyez le sens se transformer. L'intuition centrale de Świdziński, rendue interactive.",
     "view.compare.d":"Classez chaque idée dans la bonne colonne — faites-la glisser ou utilisez les boutons de la carte. Conceptualisme de Kosuth ou contextualisme de Świdziński ?",
-    "view.texts.d":"Sources primaires — manifestes, essais théoriques, réflexions critiques. Świdziński dans ses propres mots.",
     "view.biblio.d":"Publications, travaux savants et références essentielles pour les chercheurs, les historiens de l'art et les étudiants qui s'intéressent à l'art contextuel.",
     "view.fest.d":"Festivals internationaux, performances et expositions — ainsi que les expositions tardives, les symposiums et les archives qui assurent l'héritage de Świdziński.",
     "b.books":"Livres de Świdziński",
@@ -2532,6 +2904,38 @@ var I18N = {
     "latest.4.pl":"Calgary · affiche-manifeste · en · pl"
   },
   ja: {
+    "cz.zrc":"出典：",
+    "nav.films":"映画",
+    "view.films.h":"映画とビデオ",
+    "view.films.d":"Świdzińskiについての映画、パフォーマンスの記録、ビデオカセットの題名。",
+    "view.texts.d":"Świdzińskiのテキスト全文（1970–1998年）。一覧から選ぶか、全文を検索できます。",
+    "cz.q":"全テキストを検索…",
+    "cz.all":"すべて",
+    "cz.manifest":"マニフェスト",
+    "cz.teoria":"理論",
+    "cz.galerie":"ギャラリーと展覧会",
+    "cz.inni":"他の著者",
+    "cz.none":"見つかりませんでした。",
+    "cz.prev":"前へ",
+    "cz.next":"次へ",
+    "cz.pl":"ポーランド語原文",
+    "cz.frag":"抜粋",
+    "cz.oryg":"ポーランド語原文です。全文の翻訳はありません。",
+    "cz.err":"テキストを読み込めませんでした。",
+    "fm.o":"Świdzińskiについての映画",
+    "fm.prace":"パフォーマンスの記録",
+    "fm.kasety":"ビデオカセット",
+    "fm.play":"見る",
+    "fm.msn":"MSN Filmoteka ↗",
+    "fm.prog":"これらの作品はワルシャワ近代美術館のFilmotekaに所蔵され、次のプログラムとしても公開されています：",
+    "fm.vhs":"ビデオカセット",
+    "fm.krzesla":"映画の中のパフォーマンス",
+    "fm.kasuw":"題名は作家の作品目録によります。制作年と現在の所在は不明です。",
+    "pr.h":"作品全目録",
+    "pr.perf":"パフォーマンス",
+    "pr.wyst":"主な展覧会",
+    "pr.wyk":"講義",
+    "pr.pl":"出典どおりポーランド語で記載しています。",
     "gr.person":"周辺の人物",
     "gr.note":"階層も分類箱もないリゾーム。線は共通の役割や国をたどり、ひとりの人物が同時に複数の線に属することもあります。ノードをドラッグすると配置を変えられます。",
     "pt.0":"対象と意味",
@@ -2589,7 +2993,6 @@ var I18N = {
     "view.archive.d":"Jan Świdzińskiのコンテクスチュアル・アートをめぐる著作、生涯の出来事、知的ネットワーク、主要概念をたどります。",
     "view.formula.d":"パラメータを変えると、意味が変わっていきます。Świdzińskiの中核的な洞察を、手で触れて確かめられるかたちにしました。",
     "view.compare.d":"それぞれの考えを正しい列に振り分けてください。カードをドラッグするか、カードのボタンを使います。Kosuthのコンセプチュアリズムか、Świdzińskiのコンテクスチュアリズムか？",
-    "view.texts.d":"一次資料——マニフェスト、理論的エッセイ、批評的考察。Świdziński自身の言葉。",
     "view.biblio.d":"研究者、美術史家、コンテクスチュアル・アートを学ぶ学生のための出版物、研究文献、基本文献。",
     "view.fest.d":"国際的なフェスティバル、パフォーマンス、展覧会——そして晩年と没後の展覧会、シンポジウム、Świdzińskiの遺産を守るアーカイヴ。",
     "b.books":"Świdzińskiの著書",
@@ -2696,6 +3099,38 @@ var I18N = {
     "latest.4.pl":"カルガリー · ポスター・マニフェスト · en · pl"
   },
   zh: {
+    "cz.zrc":"文本来源：",
+    "nav.films":"影片",
+    "view.films.h":"影片与录像",
+    "view.films.d":"关于Świdziński的影片、其行为艺术的记录，以及录像带的标题。",
+    "view.texts.d":"Świdziński的文本全文（1970–1998）。可从列表选择，或搜索全部内容。",
+    "cz.q":"搜索全部文本…",
+    "cz.all":"全部",
+    "cz.manifest":"宣言",
+    "cz.teoria":"理论",
+    "cz.galerie":"画廊与展览",
+    "cz.inni":"其他作者",
+    "cz.none":"未找到结果。",
+    "cz.prev":"上一篇",
+    "cz.next":"下一篇",
+    "cz.pl":"波兰语原文",
+    "cz.frag":"节选",
+    "cz.oryg":"波兰语原文；暂无完整译文。",
+    "cz.err":"无法加载文本。",
+    "fm.o":"关于Świdziński的影片",
+    "fm.prace":"行为艺术记录",
+    "fm.kasety":"录像带",
+    "fm.play":"观看",
+    "fm.msn":"MSN Filmoteka ↗",
+    "fm.prog":"这些作品收藏于华沙现代艺术博物馆Filmoteka，也可作为以下节目观看：",
+    "fm.vhs":"录像带",
+    "fm.krzesla":"影片中的行为艺术",
+    "fm.kasuw":"标题来自艺术家的作品目录。其年代与现存地点不详。",
+    "pr.h":"完整作品目录",
+    "pr.perf":"行为艺术",
+    "pr.wyst":"主要展览",
+    "pr.wyk":"讲座",
+    "pr.pl":"按来源以波兰语列出。",
     "gr.person":"相关人物",
     "gr.note":"一个没有等级、也没有分类格子的块茎。连线依据共同的角色或共同的国家，一个人可以同时处于多条线索之中。拖动任一节点即可改变布局。",
     "pt.0":"物与意义",
@@ -2753,7 +3188,6 @@ var I18N = {
     "view.archive.d":"浏览Jan Świdziński语境艺术的著作汇编、生平事件、思想网络与核心观念。",
     "view.formula.d":"改变参数，看意义如何转变。Świdziński的核心洞见，以互动方式呈现。",
     "view.compare.d":"把每个观点归入正确的一栏——拖动卡片或使用卡片上的按钮。Kosuth 的观念主义，还是 Świdziński 的语境主义？",
-    "view.texts.d":"原始文献——宣言、理论文章与批评性思考。Świdziński本人的文字。",
     "view.biblio.d":"出版物、学术研究与基本参考文献，供研究者、艺术史学者及语境艺术的学习者使用。",
     "view.fest.d":"国际艺术节、行为艺术演出与展览——以及确立Świdziński遗产的晚期展览、研讨会与档案。",
     "b.books":"Świdziński的著作",

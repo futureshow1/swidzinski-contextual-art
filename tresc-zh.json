@@ -3,7 +3,7 @@
 {
 "id": "tl01",
 "title": "生于比得哥什",
-"text": "Jan Świdziński于5月25日出生在波兰比得哥什（Bydgoszcz）。",
+"text": "Jan Świdziński于5月23日出生在波兰比得哥什（Bydgoszcz）。",
 "exp": "其父亦名Jan，是波兰军官，曾在毕苏斯基（Piłsudski）军团服役；Świdziński家族出身古老的什拉赫塔（波兰贵族），使用Półkozic纹章。家族中的知名先人Konstanty Świdziński是波兰文化的重要收藏家与赞助人，其藏书楼毁于1944年华沙起义之后。"
 },
 {
@@ -129,8 +129,8 @@
 {
 "id": "tl22",
 "title": "Piotrków Trybunalski的Interakcje艺术节",
-"text": "Interakcje国际艺术节创立——自1999年起由Świdziński担任策展人与主席。",
-"exp": "Interakcje由Ryszard Piegza与Stanisław Piotr Gajda、Gordian Piec共同发起，自1999年起在Piotrków Trybunalski举办——第25届于2026年9月举行——至今仍是波兰历史最长的行为艺术节。1999年至2004年，Świdziński在每一届都有演出。"
+"text": "Interakcje国际艺术节创立——自1998年起由Świdziński担任策展人与主席。",
+"exp": "Interakcje由Ryszard Piegza与Stanisław Piotr Gajda、Gordian Piec共同发起，自1998年起在Piotrków Trybunalski举办——第25届于2026年9月举行——至今仍是波兰历史最长的行为艺术节。1999年至2004年，Świdziński在每一届都有演出。 Piotrków Trybunalski市授予他荣誉市民称号。"
 },
 {
 "id": "tl23",
@@ -171,14 +171,62 @@
 {
 "id": "tl29",
 "title": "逝于华沙",
-"text": "Jan Świdziński于2014年2月9日在华沙逝世。",
-"exp": "他安葬于华沙波翁兹基军人公墓（Powązki Military Cemetery）。他留下的遗产是一整套理论与实践，主张艺术只有通过语用语境——时间、地点、情境与相关人物——才获得意义。他所创立的语境艺术运动至今仍影响着当代艺术话语。"
+"text": "Jan Świdziński于2014年2月9日在华沙逝世。安葬于波翁兹基军人公墓（Powązki Military Cemetery），墓区D-1-29。",
+"exp": "他留下的遗产是一整套理论与实践，主张艺术只有通过语用语境——时间、地点、情境与相关人物——才获得意义。他所创立的语境艺术运动至今仍影响着当代艺术话语。"
 },
 {
 "id": "tl30",
 "title": "电影：“Jan Świdziński. Poza dostarczony kontekst”（《Jan Świdziński：超越给定的语境》，导演Piotr Weychert）",
 "text": "纪录肖像片（37分钟，彩色；2015年制作）。出品：Media Kontakt；制片人：Mirosław Chojecki与Piotr Weychert；由Arton基金会与文化部联合资助。",
 "exp": "编剧、导演Piotr Weychert，合作者Elwira Kozłowska与Janusz Weychert。摄影：Sławomir Orman、Ryszard Piegza、Grzegorz Siwicki、Marko Stojanović、Piotr Weychert。音乐：Jarosław Lublin、Henry Purcell、Erik Satie。剪辑：Rafał Borowy、Monika Sirojc。旁白：Władysław Kowalski。影片将行为艺术的档案录像、Świdziński的陈述、文本与照片，同依据其未实现剧本拍摄的短片、Richard Martel的评论以及2008年在罗马与Joseph Kosuth对谈的片段结合在一起。影片于2013年11月22日在Arton基金会举办的艺术家档案发布会上放映。"
+},
+{
+"id": "tl31",
+"title": "Muzeum Zero",
+"text": "在华沙共同创立“Muzeum Zero”。",
+"exp": "这一时期他将艺术视为社会实践，组织艺术介入与宣示活动。"
+},
+{
+"id": "tl32",
+"title": "“Czyszczenie Sztuki”",
+"text": "共同组织“Czyszczenie Sztuki”（清洁艺术），这是新艺术首次跨圈层的宣示活动。",
+"exp": "地点在华沙Krakowskie Przedmieście 24号学生俱乐部的画廊（后来的Repassage）。"
+},
+{
+"id": "tl33",
+"title": "用伏特加买下",
+"text": "在Osieki的外光创作活动中，Jerzy Treliński“买下”了Jan Świdziński。",
+"exp": "Treliński持有证明这笔交易的证书。“货币”是伏特加。"
+},
+{
+"id": "tl34",
+"title": "Mała Galeria",
+"text": "在华沙共同创立Mała Galeria。",
+"exp": "这家与Zbigniew Dłubak共同创立的ZPAF画廊，是波兰最早将摄影作为独立艺术展出的场所之一。Świdziński在此举办过五次个展（1979–1994）。"
+},
+{
+"id": "tl35",
+"title": "国际语境运动",
+"text": "华沙会议后，在International Contextual Movement框架内达成合作协议。",
+"exp": "签署方为Arte de Systema Latina Americo与L'Art Sociologique两个团体。Świdziński还组织了“语境艺术会议2”，这是波兰与加拿大艺术家合作的成果。"
+},
+{
+"id": "tl36",
+"title": "“To Take Position”",
+"text": "在华沙Stodoła画廊组织国际艺术节“To Take Position”。",
+"exp": "内容包括行为艺术、录像与装置。同年他与Andrzej Mroczek筹备了波兰与加拿大之间的哈利法克斯—卢布林艺术交流。"
+},
+{
+"id": "tl37",
+"title": "亚洲之旅",
+"text": "前往日本、印度、斯里兰卡、新加坡、爪哇和巴厘岛旅行。",
+"exp": "为《Real Time – Story Telling》一书收集资料。同年在卢布林组织“Real Time – Story Telling '93”艺术节，并在长野NIPAF演出。"
+},
+{
+"id": "tl38",
+"title": "戈茹夫会议",
+"text": "在大波兰地区戈茹夫的Galeria Sztuki Najnowszej举行关于观念主义与语境主义作用的会议（3月28–30日），同时开幕其个展。",
+"exp": "由Romuald Kutera与Bogusław Jasiński主持。与会者：Grzegorz Dziamski、Andrzej Saj、Łukasz Guzek、Adam Sobota。艺术家：Świdziński、Anna与Romuald Kutera、Natalia LL、Ryszard Waśko。"
 }
 ],
 "textsData": [
@@ -1096,13 +1144,13 @@
 "id": "fo4",
 "name": "Interakcje国际艺术节",
 "place": "波兰Piotrków Trybunalski",
-"desc": "1999年由Ryszard Piegza倡议，与Stanisław Piotr Gajda、Gordian Piec共同创办。自1999年起，Świdziński担任艺术节策展人与主席，并在1999年至2004年的每一届都有演出。艺术节至今仍在举办：第25届“Beyond Gravity”（“超越引力”）于2026年9月24–27日举行。"
+"desc": "1998年由Ryszard Piegza倡议，与Stanisław Piotr Gajda、Gordian Piec共同创办。自1998年起，Świdziński担任艺术节策展人与主席，并在1999年至2004年的每一届都有演出。艺术节至今仍在举办：第25届“Beyond Gravity”（“超越引力”）于2026年9月24–27日举行。"
 },
 {
 "id": "fo5",
 "name": "在艺术的语境中 / 差异",
 "place": "波兰华沙",
-"desc": "首个明确以语境艺术为主题的艺术节，于2006年10月举行，2007年再度举办。与Jan Przyłuski共同创办。与纪录片“Różnice”（《差异》）相关联。"
+"desc": "首个明确以语境艺术为主题的艺术节，于2006年10月举行，2007年再度举办。与Jan Przyłuski共同创办。与纪录片“Różnice”（《差异》）相关联。 首届于2006年9月28日至10月2日举行，来自13个国家的64位艺术家在华沙、普沃茨克、希德沃维茨、奥龙斯科和索科武夫波德拉斯基进行了80多场展示。主办方为马佐夫舍文化艺术中心。"
 }
 ],
 "festivalsData.participated": [

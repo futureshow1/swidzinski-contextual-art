@@ -3,7 +3,7 @@
 {
 "id": "tl01",
 "title": "ビドゴシュチュに生まれる",
-"text": "5月25日、Jan Świdzińskiはポーランドのビドゴシュチュに生まれる。",
+"text": "5月23日、Jan Świdzińskiはポーランドのビドゴシュチュに生まれる。",
 "exp": "同名の父Janはポーランド軍の将校で、かつてPiłsudskiのポーランド軍団に属した兵士であった。Świdziński家はPółkozic紋章を掲げる古いシュラフタ（士族）の家系に連なる。祖先のひとりKonstanty Świdzińskiはポーランド文化の重要な収集家・パトロンであったが、その蔵書は1944年、ワルシャワ蜂起ののちに焼失した。"
 },
 {
@@ -129,8 +129,8 @@
 {
 "id": "tl22",
 "title": "Piotrków Trybunalskiの「Interakcje」フェスティバル",
-"text": "国際芸術フェスティバル「Interakcje」（相互作用）が創設される。Świdzińskiは1999年からそのキュレーター兼会長を務める。",
-"exp": "Ryszard Piegzaの発案により、Stanisław Piotr GajdaとGordian Piecとともに始められたInterakcjeは、1999年以来Piotrków Trybunalskiで開催されている。2026年9月には第25回を迎え、ポーランドで最も長く続くパフォーマンス・アートのフェスティバルとなっている。Świdzińskiは1999年から2004年までの全回に出演した。"
+"text": "国際芸術フェスティバル「Interakcje」（相互作用）が創設される。Świdzińskiは1998年からそのキュレーター兼会長を務める。",
+"exp": "Ryszard Piegzaの発案により、Stanisław Piotr GajdaとGordian Piecとともに始められたInterakcjeは、1998年以来Piotrków Trybunalskiで開催されている。2026年9月には第25回を迎え、ポーランドで最も長く続くパフォーマンス・アートのフェスティバルとなっている。Świdzińskiは1999年から2004年までの全回に出演した。 Piotrków Trybunalski市は彼に名誉市民の称号を贈った。"
 },
 {
 "id": "tl23",
@@ -171,14 +171,62 @@
 {
 "id": "tl29",
 "title": "ワルシャワで死去",
-"text": "Jan Świdzińskiは2014年2月9日、ワルシャワで死去した。",
-"exp": "ワルシャワのポヴォンズキ軍人墓地に埋葬された。彼が遺したのは、芸術は語用論的コンテクスト——時間、場所、状況、関与する人々——を通じてのみ意味を獲得すると論じる、理論と実践の総体である。彼が創始したコンテクスチュアル・アートの運動は、いまも現代美術の言説に影響を与え続けている。"
+"text": "Jan Świdzińskiは2014年2月9日、ワルシャワで死去した。ポヴォンズキ軍人墓地（区画D-1-29）に埋葬された。",
+"exp": "彼が遺したのは、芸術は語用論的コンテクスト——時間、場所、状況、関与する人々——を通じてのみ意味を獲得すると論じる、理論と実践の総体である。彼が創始したコンテクスチュアル・アートの運動は、いまも現代美術の言説に影響を与え続けている。"
 },
 {
 "id": "tl30",
 "title": "映画「Jan Świdziński. Poza dostarczony kontekst」（Jan Świdziński——与えられたコンテクストの外へ、Piotr Weychert監督）",
 "text": "ドキュメンタリーによる肖像（37分、カラー、2015年製作）。製作：Media Kontakt。プロデューサー：Mirosław Chojecki、Piotr Weychert。Arton財団と文化省の助成を受けた。",
 "exp": "脚本・監督はPiotr Weychert（Elwira Kozłowska、Janusz Weychertと共同）。撮影：Sławomir Orman、Ryszard Piegza、Grzegorz Siwicki、Marko Stojanović、Piotr Weychert。音楽：Jarosław Lublin、Henry Purcell、Erik Satie。編集：Rafał Borowy、Monika Sirojc。ナレーター：Władysław Kowalski。パフォーマンスの記録映像、Świdzińskiの発言、テクスト、写真に、彼の実現しなかった脚本にもとづく短編映画、Richard Martelによる解説、2008年にローマで行われたJoseph Kosuthとの対話の抜粋を組み合わせている。2013年11月22日、Arton財団による作家アーカイヴの公開の場で上映された。"
+},
+{
+"id": "tl31",
+"title": "Muzeum Zero",
+"text": "ワルシャワで「Muzeum Zero」を共同設立する。",
+"exp": "この時期、芸術を社会的実践としてとらえ、芸術的介入やマニフェステーションを組織した。"
+},
+{
+"id": "tl32",
+"title": "「Czyszczenie Sztuki」",
+"text": "新しい芸術の初の領域横断的マニフェステーション「Czyszczenie Sztuki」（芸術の清掃）を共同組織する。",
+"exp": "会場はワルシャワ、Krakowskie Przedmieście 24番地の学生クラブのギャラリー（のちのRepassage）。"
+},
+{
+"id": "tl33",
+"title": "ウォッカで買われる",
+"text": "Osiekiのプレネールで、Jerzy TrelińskiがJan Świdzińskiを「買う」。",
+"exp": "取引を証明する証書をTrelińskiが所持している。通貨はウォッカだった。"
+},
+{
+"id": "tl34",
+"title": "Mała Galeria",
+"text": "ワルシャワでMała Galeriaを共同設立する。",
+"exp": "Zbigniew Dłubakとともに設立したZPAFのギャラリーで、写真を自律した芸術として示したポーランド初期の場のひとつ。Świdzińskiはここで5回の個展を開いた（1979–1994年）。"
+},
+{
+"id": "tl35",
+"title": "国際コンテクスト運動",
+"text": "ワルシャワ会議の結果、International Contextual Movementの枠組みで協力協定が結ばれる。",
+"exp": "署名したのはArte de Systema Latina AmericoとL'Art Sociologiqueの両グループ。Świdzińskiはポーランドとカナダの作家の協働から生まれた「コンテクスチュアル・アート会議2」も組織した。"
+},
+{
+"id": "tl36",
+"title": "「To Take Position」",
+"text": "ワルシャワのStodołaギャラリーで国際芸術祭「To Take Position」を組織する。",
+"exp": "パフォーマンス、ビデオ、インスタレーション。同年、Andrzej Mroczekとともにポーランド＝カナダ芸術交流（ハリファックス―ルブリン）を準備した。"
+},
+{
+"id": "tl37",
+"title": "アジアへの旅",
+"text": "日本、インド、スリランカ、シンガポール、ジャワ、バリを旅する。",
+"exp": "著書「Real Time – Story Telling」の資料を集めた。同年、ルブリンでフェスティバル「Real Time – Story Telling '93」を組織し、長野のNIPAFに出演した。"
+},
+{
+"id": "tl38",
+"title": "ゴジュフでの会議",
+"text": "ゴジュフ・ヴィエルコポルスキのGaleria Sztuki Najnowszejで、コンセプチュアリズムとコンテクスチュアリズムの役割をめぐる会議を開催（3月28–30日）。あわせて個展が開幕した。",
+"exp": "司会はRomuald KuteraとBogusław Jasiński。参加者はGrzegorz Dziamski、Andrzej Saj、Łukasz Guzek、Adam Sobota。作家はŚwidziński、Anna・Romuald Kutera、Natalia LL、Ryszard Waśko。"
 }
 ],
 "textsData": [
@@ -1096,13 +1144,13 @@
 "id": "fo4",
 "name": "国際芸術フェスティバル「Interakcje」",
 "place": "ポーランド、Piotrków Trybunalski",
-"desc": "1999年、Ryszard Piegzaの発案により、Stanisław Piotr GajdaとGordian Piecとともに創設。Świdzińskiは1999年からフェスティバルのキュレーター兼会長を務め、1999年から2004年までの全回に出演した。フェスティバルはいまも続いており、第25回「Beyond Gravity」は2026年9月24–27日に開催された。"
+"desc": "1998年、Ryszard Piegzaの発案により、Stanisław Piotr GajdaとGordian Piecとともに創設。Świdzińskiは1998年からフェスティバルのキュレーター兼会長を務め、1999年から2004年までの全回に出演した。フェスティバルはいまも続いており、第25回「Beyond Gravity」は2026年9月24–27日に開催された。"
 },
 {
 "id": "fo5",
 "name": "W kontekście sztuki / Różnice（芸術のコンテクストにおいて／差異）",
 "place": "ポーランド、ワルシャワ",
-"desc": "コンテクスチュアル・アートを明確に掲げた初めてのフェスティバル。2006年10月に開催され、2007年にも開かれた。Jan Przyłuskiとの共同企画。ドキュメンタリー映画「Różnice」（差異）と結びついている。"
+"desc": "コンテクスチュアル・アートを明確に掲げた初めてのフェスティバル。2006年10月に開催され、2007年にも開かれた。Jan Przyłuskiとの共同企画。ドキュメンタリー映画「Różnice」（差異）と結びついている。 第1回は2006年9月28日–10月2日。13か国64人の作家が、ワルシャワ、プウォツク、シドウォヴィエツ、オロンスコ、ソコウフ・ポドラスキで80以上の発表を行った。主催はマゾフシェ文化芸術センター。"
 }
 ],
 "festivalsData.participated": [
