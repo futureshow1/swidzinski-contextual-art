@@ -41,8 +41,6 @@ html { scroll-behavior: smooth; }
 body { font-family:'IBM Plex Sans',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; transition: background .5s, color .5s; }
 
 /* ═══ CANVAS ═══ */
-#bgCanvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity:0.35; }
-[data-theme="dark"] #bgCanvas { opacity:0.25; }
 #landingCanvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:1; }
 
 /* ═══ NAV ═══ */
@@ -157,15 +155,15 @@ h2 + .section-desc { color:var(--text-dim); font-size:14px; margin-bottom:28px; 
 .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
 
 /* ═══ BOOKS GRID ═══ */
-.books-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:32px 24px; margin-top:8px; }
+.books-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:40px 28px; margin-top:8px; }
 .book-card { display:flex; flex-direction:column; gap:14px; }
 .book-cover { position:relative; aspect-ratio:2/3; background:var(--surface2); border:1px solid var(--border); overflow:hidden; box-shadow:var(--shadow-lg); }
 .book-cover img { display:block; width:100%; height:100%; object-fit:cover; }
-.book-cover-empty { display:flex; align-items:center; justify-content:center; text-align:center; background:linear-gradient(140deg, var(--surface) 0%, var(--surface2) 100%); border:1px dashed var(--border); }
-.book-cover-empty .bc-note { padding:24px 18px; }
-.book-cover-empty .bc-year { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:2px; color:var(--accent); font-weight:600; margin-bottom:10px; }
-.book-cover-empty .bc-title { font-family:'Fraunces',serif; font-style:italic; font-size:17px; line-height:1.25; color:var(--text); margin-bottom:14px; text-wrap:balance; }
-.book-cover-empty .bc-hint { font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--text-dim); line-height:1.55; }
+.book-cover-type { display:flex; flex-direction:column; padding:18px 16px 16px; background:#1A1712; color:#ECE4D1; border-color:#1A1712; }
+.book-cover-type .bct-author { font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:2.2px; text-transform:uppercase; color:#C9BFA8; }
+.book-cover-type .bct-rule { width:28px; height:2px; background:var(--accent); margin:12px 0 14px; }
+.book-cover-type .bct-title { font-family:'Fraunces',serif; font-style:italic; font-variation-settings:"opsz" 72; font-size:21px; line-height:1.12; letter-spacing:-0.01em; text-wrap:balance; }
+.book-cover-type .bct-foot { margin-top:auto; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:1.6px; text-transform:uppercase; color:#C9BFA8; line-height:1.6; }
 .book-meta { display:flex; flex-direction:column; gap:6px; }
 .book-meta .b-year-lang { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:1.6px; text-transform:uppercase; color:var(--text-dim); }
 .book-meta .b-year-lang .b-year { color:var(--accent); font-weight:600; }
@@ -331,8 +329,6 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
 .point-card p { font-size:13px; color:var(--text-dim); line-height:1.6; }
 
 /* ═══ CONTEXT FOOTER ═══ */
-#contextFooter { position:fixed; bottom:0; left:0; right:0; z-index:90; background:rgba(245,242,237,0.85); backdrop-filter:blur(10px); border-top:1px solid var(--border); padding:6px 16px; font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text-light); letter-spacing:.5px; text-align:center; transition:background .5s; }
-[data-theme="dark"] #contextFooter { background:rgba(14,14,20,0.85); }
 
 /* ═══ TOOLTIP ═══ */
 #tooltip { position:fixed; display:none; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px; max-width:340px; z-index:200; pointer-events:none; box-shadow:var(--shadow-lg); }
@@ -353,11 +349,55 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
   .graph-panel { width:100%; top:auto; bottom:0; max-height:50vh; border-left:none; border-top:1px solid var(--border); }
   .graph-legend { bottom:auto; top:70px; left:8px; font-size:10px; padding:10px; }
 }
+
+/* ═══ DOPRACOWANIE (X 2026) ═══ */
+main { padding-bottom:88px; }
+.hero-eyebrow { white-space:nowrap; }
+@media (max-width:420px){ .hero-eyebrow { white-space:normal; } .hero-eyebrow::after { display:none; } }
+/* czytanie dłuższych tekstów */
+.text-card-body { padding:4px 28px 28px; }
+.text-card-body .text-section { max-width:68ch; }
+.text-card-body .text-section h4 { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin:22px 0 8px; font-weight:600; }
+.text-card-body .text-section p, .text-card-body > p { font-family:'Fraunces',serif; font-variation-settings:"opsz" 14; font-size:16.5px; line-height:1.68; color:var(--text); }
+.tl-expanded, .gp-desc { max-width:72ch; }
+/* spis książek w bibliografii */
+.book-index { list-style:none; padding:0; margin:0 0 6px; border-top:1px solid var(--border); }
+.book-index li { display:grid; grid-template-columns:56px 1fr auto; gap:16px; align-items:baseline; padding:11px 4px; border-bottom:1px solid var(--border); cursor:pointer; transition:background .15s; }
+.book-index li:hover { background:var(--surface); }
+.book-index .bi-year { font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent); font-weight:600; }
+.book-index .bi-title { font-family:'Fraunces',serif; font-style:italic; font-size:16px; color:var(--text); }
+.book-index .bi-place { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--text-dim); text-align:right; }
+.book-index-more { margin:12px 0 4px; }
+.book-index-more a { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:2px; }
+@media (max-width:640px){ .book-index li { grid-template-columns:48px 1fr; } .book-index .bi-place { grid-column:2; text-align:left; } }
+/* gry: znaki typograficzne zamiast emoji */
+.game-card .game-icon { font-family:'Fraunces',serif; font-style:italic; font-weight:700; font-size:34px; line-height:1; color:var(--accent); margin-bottom:14px; letter-spacing:-0.02em; }
+#gameGrid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; max-width:900px; }
+@media (max-width:640px){ #gameGrid { grid-template-columns:1fr !important; } }
+/* archiwum: ostatnia karta (Studium) na całą szerokość */
+#archiveGrid .card-wide { grid-column:1 / -1; }
+/* porównanie: przyciski kierunku na kartach (działa także na dotyku) */
+.drag-card { display:flex; flex-direction:column; gap:10px; }
+.cmp-actions { display:flex; gap:8px; }
+.cmp-actions button { flex:1; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:1.2px; text-transform:uppercase; padding:7px 8px; border:1px solid var(--border); background:var(--bg); color:var(--text); border-radius:0; cursor:pointer; }
+.cmp-actions button:hover { border-color:var(--accent); color:var(--accent); }
+.placed-card { cursor:pointer; }
+.placed-card .cmp-undo { display:block; margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--text-dim); }
+/* menu na telefonie */
+.nav-menu-btn { display:none; }
+@media (max-width:960px){
+  nav { flex-wrap:wrap; height:auto !important; min-height:56px; padding:8px 16px !important; gap:10px !important; overflow:visible !important; }
+  .nav-menu-btn { display:inline-flex; align-items:center; margin-left:auto; order:2; font-family:'IBM Plex Mono',monospace !important; font-size:11px !important; letter-spacing:1.8px !important; text-transform:uppercase; border:1px solid var(--text) !important; padding:8px 12px !important; color:var(--text) !important; }
+  nav > button[data-view], nav > button[onclick*="study"] { display:none; }
+  nav.open > button[data-view], nav.open > button[onclick*="study"] { display:block; width:100%; order:3; text-align:left; padding:12px 0 !important; border-bottom:1px solid var(--border) !important; font-size:13px !important; }
+  .nav-right { order:4; width:100%; margin-left:0 !important; justify-content:space-between; padding:6px 0 4px; display:none !important; }
+  nav.open .nav-right { display:flex !important; }
+  .lang a { padding:6px 6px; font-size:12px; }
+}
 </style>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"></head>
 <body>
 
-<canvas id="bgCanvas"></canvas>
 <canvas id="landingCanvas" style="display:none;"></canvas>
 
 <div class="context-bar" aria-label="Ramka kontekstu sesji">
@@ -370,6 +410,7 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
 
 <nav>
   <a class="nav-logo" href="#" onclick="showView('landing');return false;">Świdziński</a>
+  <button class="nav-menu-btn" type="button" onclick="this.closest('nav').classList.toggle('open')" data-i18n="nav.menu">Menu</button>
   <button onclick="showView('archive')" data-view="archive" data-i18n="nav.archive">Archiwum</button>
   <button onclick="showView('timeline')" data-view="timeline" data-i18n="nav.timeline">Kalendarium</button>
 <!-- Konstelacja wycofana (nav) — niepełna; widok i dane zostają w kodzie na później -->
@@ -379,7 +420,7 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
   <button onclick="showView('biblio')" data-view="biblio" data-i18n="nav.biblio">Bibliografia</button>
   <button onclick="showView('festivals')" data-view="festivals" data-i18n="nav.festivals">Wystąpienia</button>
   <button onclick="showView('game')" data-view="game" data-i18n="nav.game">Gra</button>
-  <button onclick="window.open('study.html','_blank')" style="color:var(--gold) !important" data-i18n="nav.study">Studium ↗</button>
+  <button onclick="window.open('study.html','_blank')" style="color:var(--gold) !important" data-i18n="nav.study">Studium (EN) ↗</button>
   <div class="nav-right">
     <div class="lang" aria-label="Język">
       <a class="active" href="#">PL</a>
@@ -414,7 +455,7 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
       </div>
     </div>
     <div class="hero-text-col">
-      <div class="hero-eyebrow" data-i18n="hero.eyebrow">Sztuka kontekstualna · 1923—2014</div>
+      <div class="hero-eyebrow" data-i18n="hero.eyebrow">Sztuka kontekstualna · 1923–2014</div>
       <h1 class="hero-h1" id="heroTitle" data-i18n="hero.h1">Sztuka jest tym,<br>co pokazuję<br><em>jako sztukę.</em></h1>
       <div class="hero-h1-en" data-i18n="hero.h1_echo"><em>Art is what I show as art.</em></div>
       <p class="hero-lead" data-i18n="hero.lead">An interdisciplinary artist, theorist, and philosopher who argued that meaning is never fixed — it emerges from <em>context</em>.</p>
@@ -423,7 +464,7 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
         <button onclick="showView('game')" data-i18n="hero.cta_secondary">Play the Game</button>
       </div>
       <div class="hero-byline">
-        <span><span data-i18n="hero.byline_curator">Kurator portalu:</span> <b>Jan Lubicz Przyłuski</b></span>
+        <span><span data-i18n="hero.byline_curator">Kurator portalu:</span> <b>Jan Przyłuski</b></span>
         <span><span data-i18n="hero.byline_edition">Wydanie</span> <b>1.0</b> · IX 2026</span>
       </div>
     </div>
@@ -488,7 +529,7 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
 <div id="conceptsView" class="view">
   <h2 data-i18n="view.concepts.h">Concept Encyclopedia</h2>
   <p class="section-desc" data-i18n="view.concepts.d">Key ideas, theories, and terms from contextual art and its intellectual context.</p>
-  <input class="search-bar" id="conceptSearch" placeholder="Search concepts..." oninput="filterConcepts()">
+  <input class="search-bar" id="conceptSearch" placeholder="Szukaj pojęć…" data-i18n-ph="c.search" oninput="filterConcepts()">
   <div class="card-grid" id="conceptsGrid"></div>
 </div>
 
@@ -538,7 +579,7 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
 <!-- ═══ COMPARE GAME ═══ -->
 <div id="compareView" class="view">
   <h2 data-i18n="view.compare.h">Conceptual vs. Contextual</h2>
-  <p class="section-desc" data-i18n="view.compare.d">Drag each idea to the correct column. Kosuth's conceptualism or Świdziński's contextualism?</p>
+  <p class="section-desc" data-i18n="view.compare.d">Sort each idea into the correct column. Kosuth's conceptualism or Świdziński's contextualism?</p>
   <div id="compareArea"></div>
 </div>
 
@@ -552,7 +593,6 @@ blockquote { margin:12px 0; padding:12px 18px; border-left:3px solid var(--accen
 
 </main>
 
-<div id="contextFooter"></div>
 
 <script>
 // ═══════════════════════════════════════════
@@ -595,8 +635,7 @@ function updateContext() {
   S.hue = Math.round((200+timeShift+scrollShift+interShift)%360);
   document.documentElement.style.setProperty('--ctx-hue', S.hue);
   const pad=n=>String(n).padStart(2,'0');
-  document.getElementById('contextFooter').textContent =
-    `Context: t=${pad(h)}:${pad(m)} | p=${S.view} | interactions=${S.interactions} | hue=${S.hue}°`;
+
 }
 setInterval(updateContext, 2000);
 updateContext();
@@ -621,6 +660,7 @@ function showView(id) {
     b.classList.toggle('active', b.dataset.view===id);
   });
   S.view = id; S.interactions++;
+  var navEl = document.querySelector('nav'); if (navEl) navEl.classList.remove('open');
   try{history.replaceState(null,'','#widok='+id)}catch(e){}
   if(id==='timeline'&&!S.tlInit) buildTimeline();
   if(id==='graph'&&!S.graphInit) initGraph();
@@ -644,36 +684,36 @@ function showView(id) {
 // DATA: TIMELINE
 // ═══════════════════════════════════════════
 const timeline = [
-  {year:1923,cat:'life',title:'Born in Bydgoszcz',text:'Jan Świdziński born on May 25 in Bydgoszcz, Poland.',exp:'His father, also named Jan, was a Polish Army officer and former soldier of Piłsudski\'s Legions; the Świdzińskis descended from old szlachta bearing the Półkozic coat of arms. A notable ancestor, Konstanty Świdziński, was a major collector and patron of Polish culture whose library was destroyed in 1944, in the wake of the Warsaw Uprising.'},
-  {year:1947,cat:'life',title:'Academy of Fine Arts, Warsaw',text:'Begins studying painting under Jan Cybis, graphics under Tadeusz Kulisiewicz.',exp:'He graduated with a degree in painting in 1952. Between 1952 and 1962 he created a series of paintings called "Semantic Signs" (Znaki semantyczne).'},
-  {year:1952,cat:'life',title:'Graduates from Academy of Fine Arts',text:'Receives painting degree. Begins "Semantic Signs" (Znaki semantyczne) painting series (1952-1962).',exp:'Studies under Jan Cybis (painting) and Tadeusz Kulisiewicz (graphics) at the Higher School of Arts and Design (today Academy of Fine Arts) in Warsaw. During the Semantic Signs years he also studied Islamic art in Spain and Morocco, as well as Chinese calligraphy.'},
-  {year:1965,cat:'art',title:'Ends Painting Career',text:'Solo painting exhibition marks the end of traditional art practice.',exp:'He discovered that painting and other traditional art forms were unable to confront the fundamental and existential dilemmas faced by contemporary humanity. This crisis redirected him toward science, semiotics, linguistics, neopositivism and formal logic.'},
-  {year:'1965–70',cat:'life',title:'Studies in Semiotics and Cybernetics',text:'With Marek Konieczny, establishes the Art and Design Section at the Cybernetics Society.',exp:'Deep immersion in semiotics, linguistics, neopositivism, and formal logic. These studies enabled a critical view of the Anglo-American conceptualism emerging at the end of the 1960s. In the early 1970s this work fed a series of works and actions entitled "Z logiki niekompletnych rzeczywistości" (Out of the Logic of Incomplete Realities).'},
-  {year:1970,cat:'theory',title:'"Dispute over Art\'s Existence" Published',text:'First major theoretical text, published in "Życie i Myśl" nr 5/1970.',exp:'Considered the first attempt to give theoretical order to emerging aesthetic concepts. Written during a time of youth revolution, the article described how art and reality had changed so fundamentally that artists\' work no longer concerned creation of art objects but deliberation on art\'s essence.'},
-  {year:1972,cat:'art',title:'On "N.S." Permafo Gallery',text:'Writes critical essay about the new situation in art, connecting to Wrocław avant-garde.',exp:'Argues that new art "ceases to be observation, investigation from outside of previously existing situations, but is production of successive links of reality." Art becomes an act of social action, not mirror reflection.'},
-  {year:1974,cat:'art',title:'First Performances',text:'Performance art begins at Teatr Dnia i Nocy, Poznań.',exp:'"My interest in performance art grew on the one hand out of my contextual theory, and on the other hand out of my experiences with dance, body movement and the gestures I used to give performances." For Świdziński, performance is the most accessible art form — direct contact with audience in shared context of time, place, and situation.'},
-  {year:1975,cat:'event',title:'F-Art Counterculture Festival, Gdańsk',text:'First public presentation of contextual art theses. Jean Sellem attends and later organizes the Lund exhibition.',exp:'Also presented at "Condition of Contemporary Art" symposium at Remont Gallery, Warsaw. These events laid the groundwork for the 1976 manifesto publication.'},
-  {year:1976,cat:'theory',title:'"Art as Contextual Art" — The Manifesto',text:'Publishes the 12 Points of Contextual Art in Lund, Sweden. Exhibits with Polish artists at St. Petri Gallery.',exp:'The foundational document of contextual art. Core formula: Object "O" assumes meaning "m" at time "t," in place "p," in situation "s," in relation to person/persons "o" — if and only then. The accompanying exhibition featured artists of Galeria Sztuki Najnowszej, Wrocław (Anna Kutera, Romuald Kutera, Lech Mrożek), the Warsaw Seminar circle (with Zbigniew Dłubak), the Film Form Workshop from Łódź (Józef Robakowski, Wojciech Bruszewski, Ryszard Waśko), and Henryk Gajewski of Remont Gallery.',highlight:true},
-  {year:1976,cat:'event',title:'Toronto Debate with Kosuth',text:'At CEAC conference "In the Context of the Art World," Świdziński publicly critiques Kosuth\'s tautological model.',exp:'Organized by Amerigo Marras of the Centre for Experimental Art and Communication; participants included Joseph Kosuth, Sarah Charlesworth, Carole Condé, Anthony McCall, Hervé Fischer, and Canadian artists and theorists. Świdziński argued art is an "empty sign" gaining meaning only in social context, not through self-reference.'},
-  {year:1977,cat:'event',title:'Warsaw International Conference',text:'Hosts "Art Activity in the Context of Reality" at Remont Gallery — participants from 35 countries.',exp:'Signed agreements between Polish contextual art, French Art Sociologique, American Art and Language, and Latin American artists. Government authorities responded harshly, viewing the extensive foreign contact as threatening.'},
-  {year:1977,cat:'event',title:'"Third Front Against New York" — Paris',text:'Conference "Art et Transformation Sociale" in Paris (10–13 May). Joint declaration against New York art world hegemony.',exp:'Organized by the Collectif Art Sociologique. Participants included Świdziński and Emil Cieślar from Poland, Brian Dyson and Paul Woodrow from Canada, and the British artists Loraine Leeson and Peter Dunn. The joint declaration announced a "third front in art against New York."'},
-  {year:1979,cat:'art',title:'"We Always Talk About Man"',text:'Exhibition "Stale mówimy o człowieku" opens at Mała Galeria, Warsaw (26 June) — a photograph of a crowd joined with philosophical text.',exp:'Its text began: "Always we talk about man, but don\'t talk about man, just talk to man." The same year "Art, Society and Self-consciousness" was published by the Alberta College of Art Gallery in Calgary, Canada. The work demonstrates how minimal material gains complex meaning through contextual framing.'},
-  {year:1987,cat:'theory',title:'"Freedom and Limitation"',text:'Publishes "Freedom and Limitation — The Anatomy of Post-modernism" in Calgary (Syntax, edited by Brian Dyson).',exp:'Three years earlier, the related photographic cycle "Wolność i ograniczenie" (Freedom and Limitation, Mała Galeria, 1984) had documented a Polish village on the Soviet border. Photographs as "symptoms of reality" — the artist presents not description but contextual evidence of the human condition under political constraint.'},
-  {year:1989,cat:'life',title:'President of Artists of the Other Arts',text:'Appointed President of the Artists of the Other Arts Association.',exp:'That April, the exhibition "Jestem z powrotem" (I\'m Back) at Mała Galeria marked his return from the United States. The fall of communism transforms the context of Polish art entirely.'},
-  {year:1990,cat:'event',title:'Interscop International Festival',text:'Major international performance festival in Łucznica, organized by Świdziński.',exp:'Also participated in Première Biennale d\'Art Actuel in Québec and Interaction International Performance Festival in France in the same year.'},
-  {year:1994,cat:'art',title:'"It\'s OK" — Gulf War Photography',text:'Exhibition "W porządku" (It\'s OK) at Mała Galeria, Warsaw and BWA Lublin — Gulf War press photography with artistic interventions.',exp:'A famous Newsweek war photograph underwent interventions showing, in Grzegorz Borkowski\'s words, the "gradual transformation of disaster documentation into increasingly abstract sign." Identical images carry radically different meanings depending on context — the "empty sign" principle in action.'},
-  {year:1996,cat:'event',title:'Performances in Korea and Romania',text:'Performs at the 9 Dragons\' Heads Festival in South Korea and the AnnART Festival in Romania.',exp:'Also that year: "Second Hand" at Dziekanka Gallery, Warsaw. The decade brought further festival appearances from Vilnius ("Dimension 0," 1997) to Mexico City (Ex Teresa, 1998).'},
-  {year:1997,cat:'theory',title:'"Art is a Fact"',text:'Poster manifesto for 20th anniversary of contextual art. Syntax Arts Society, Calgary.',exp:'"Notions such as art, artist, the world of art, function only as convenient identifiers which are useful only so long as they can serve in a given situation." Art neither builds nor destroys — those engaging with it resemble tourists who stop briefly, meet travellers from other cultures, exchange remarks, then continue their journey. Polish translation by B. Łukasiewicz.'},
-  {year:1998,cat:'art',title:'"Anomia"',text:'Exhibition "Anomia" at Stara Galeria, Lublin (May) — on Durkheim\'s concept of anomie: the breakdown of commonly accepted norms.',exp:'Enlarged amateur photographs of people leaning toward one another in conversation — the old gesture of Santa Conversazione, now a simulacrum: people talk without genuine understanding. Minimal gestures and sparse performance expose the breakdown of shared meaning.'},
-  {year:1999,cat:'event',title:'Interakcje Festival, Piotrków Trybunalski',text:'The International Art Festival Interakcje is founded — Świdziński serves as its curator and president from 1999.',exp:'Initiated by Ryszard Piegza with Stanisław Piotr Gajda and Gordian Piec, Interakcje has been held in Piotrków Trybunalski since 1999 — its 25th edition took place in September 2026 — and remains Poland\'s longest-running performance art festival. Świdziński performed at every edition from 1999 to 2004.'},
-  {year:2003,cat:'art',title:'International Asian Performances',text:'Performs at Asiatopia Festival (Bangkok) and Lange Atem Festival (Essen, Münster).',exp:'One of his final major international performance tours. Also continued performing at Interakcje and Navinki (Minsk) festivals.'},
-  {year:2005,cat:'life',title:'Polonia Restituta Order',text:'Awarded the Officer\'s Cross of the Order of Polonia Restituta (May 2005) for contribution to the development and promotion of Polish culture.',exp:'Recognition came after decades of international teaching (Paris, Montreal, New York, Calgary, Vancouver) and organizing major conferences and performance festivals. The same year, "L\'Art et son Contexte" appeared in Québec.'},
-  {year:2006,cat:'event',title:'"In the Context of Art / Differences" Festival',text:'First festival explicitly dedicated to contextual art, held in Warsaw in October 2006 (and again in 2007). Co-created with Jan Lubicz Przyłuski.',exp:'Performers included Zbigniew Warpechowski, Ewa Zarzycka, Janusz Bałdyga and Przemysław Kwiek, with guests from Israel, Italy, France, Canada, and beyond. Connected to "Różnice" (The Differences) — Przyłuski\'s first documentary film, dedicated to Świdziński. Przyłuski also began the Art of Action Archive (Archiwum Sztuki Akcji, ASA) around this time.'},
-  {year:2009,cat:'event',title:'Polish Publications & CSW Symposium',text:'Two books published in Polish: "Sztuka i jej kontekst" and "Sztuka, społeczeństwo, samoświadomość." Symposium at CSW Ujazdowski Castle.',exp:'Panelists: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz, and Małgorzata Butterwick; moderated by Grzegorz Borkowski (16 December 2009). The "In Context Now" symposium was held in Radom, its proceedings published as "Global Communication."'},
-  {year:2010,cat:'art',title:'"In My Context" at CSW Ujazdowski Castle',text:'Exhibition "W moim kontekście. Wybrane działania z fotografią i tekstem" (In My Context: Selected Actions with Photography and Text) at the Centre for Contemporary Art in Warsaw.',exp:'On view until 28 February 2010; an expanded version, accompanied by a theoretical symposium, followed at Galeria Labirynt in Lublin. On 24 June 2010 — his name day — the evening "Evening in the Context," held within The Knot project at Galeria Nizio, presented Jan Lubicz Przyłuski\'s filmed conversation with the artist, "Jesteśmy zaplątani" (We Are Entangled).'},
-  {year:2010,cat:'art',title:'Film: "Kosuth — Świdziński. Spotkanie w Rzymie" (reż. Piotr Weychert)',text:'Film dokumentalny Piotra Weycherta (38 min 59 s, Polska, polski z konsekutywnym tłumaczeniem na angielski), realizacja przypisana Janowi Świdzińskiemu i Piotrowi Weychertowi. Wyemitowany w 2010 roku w TVP Kultura; w kolekcji Filmoteki MSN Warszawa.',exp:'Film dokumentuje podróż Świdzińskiego do Rzymu i spotkanie z Josephem Kosuthem w jego rzymskiej pracowni (lipiec 2008). Była to kontynuacja polemik, które obaj artyści toczyli korespondencyjnie od lat 70. — rzeczywiście spotkali się na żywo tylko raz, w czasie debaty "In the Context of the Art World" w Toronto (XI 1976). Rzym 2008 to drugie spotkanie dwóch głównych teoretyków tego pola na przestrzeni ponad trzech dekad; obaj wracają w rozmowie do dawnych idei, które w międzyczasie zostały wchłonięte przez świat sztuki, reklamę i kreatywne branże.'},
-  {year:2014,cat:'life',title:'Death in Warsaw',text:'Jan Świdziński dies on February 9, 2014 in Warsaw.',exp:'He was buried at the Powązki Military Cemetery in Warsaw. His legacy: a body of theory and practice arguing that art gains meaning only through pragmatic context — time, place, situation, and persons involved. The contextual art movement he founded continues to influence contemporary art discourse.'},
-  {year:2015,cat:'art',title:'Film: "Jan Świdziński. Poza dostarczony kontekst" (reż. Piotr Weychert)',text:'Portret dokumentalny (37 min, barwny, rok produkcji 2015). Produkcja: Media Kontakt; producenci: Mirosław Chojecki i Piotr Weychert; współfinansowanie: Fundacja Arton i MKiDN.',exp:'Reżyseria i scenariusz: Piotr Weychert; współpraca reżyserska: Elwira Kozłowska i Janusz Weychert. Zdjęcia: Sławomir Orman, Ryszard Piegza, Grzegorz Siwicki, Marko Stojanović, Piotr Weychert. Muzyka: Jarosław Lublin, Henry Purcell, Erik Satie. Montaż: Rafał Borowy, Monika Sirojc. Lektor: Władysław Kowalski. Film łączy materiał archiwalny performansów, wypowiedzi, teksty i fotografie Świdzińskiego z krótkimi filmami wg jego niezrealizowanych scenariuszy; włączono też komentarze Richarda Martela i fragmenty rozmowy z Josephem Kosuthem z Rzymu 2008. Film pokazano 22 XI 2013 podczas prezentacji archiwum artysty w Fundacji Arton.'},
+  {id:'tl01',year:1923,cat:'life',title:'Born in Bydgoszcz',text:'Jan Świdziński born on May 25 in Bydgoszcz, Poland.',exp:'His father, also named Jan, was a Polish Army officer and former soldier of Piłsudski\'s Legions; the Świdzińskis descended from old szlachta bearing the Półkozic coat of arms. A notable ancestor, Konstanty Świdziński, was a major collector and patron of Polish culture whose library was destroyed in 1944, in the wake of the Warsaw Uprising.'},
+  {id:'tl02',year:1947,cat:'life',title:'Academy of Fine Arts, Warsaw',text:'Begins studying painting under Jan Cybis, graphics under Tadeusz Kulisiewicz.',exp:'He graduated with a degree in painting in 1952. Between 1952 and 1962 he created a series of paintings called "Semantic Signs" (Znaki semantyczne).'},
+  {id:'tl03',year:1952,cat:'life',title:'Graduates from Academy of Fine Arts',text:'Receives painting degree. Begins "Semantic Signs" (Znaki semantyczne) painting series (1952-1962).',exp:'Studies under Jan Cybis (painting) and Tadeusz Kulisiewicz (graphics) at the Higher School of Arts and Design (today Academy of Fine Arts) in Warsaw. During the Semantic Signs years he also studied Islamic art in Spain and Morocco, as well as Chinese calligraphy.'},
+  {id:'tl04',year:1965,cat:'art',title:'Ends Painting Career',text:'Solo painting exhibition marks the end of traditional art practice.',exp:'He discovered that painting and other traditional art forms were unable to confront the fundamental and existential dilemmas faced by contemporary humanity. This crisis redirected him toward science, semiotics, linguistics, neopositivism and formal logic.'},
+  {id:'tl05',year:'1965–70',cat:'life',title:'Studies in Semiotics and Cybernetics',text:'With Marek Konieczny, establishes the Art and Design Section at the Cybernetics Society.',exp:'Deep immersion in semiotics, linguistics, neopositivism, and formal logic. These studies enabled a critical view of the Anglo-American conceptualism emerging at the end of the 1960s. In the early 1970s this work fed a series of works and actions entitled "Z logiki niekompletnych rzeczywistości" (Out of the Logic of Incomplete Realities).'},
+  {id:'tl06',year:1970,cat:'theory',title:'"Dispute over Art\'s Existence" Published',text:'First major theoretical text, published in "Życie i Myśl" nr 5/1970.',exp:'Considered the first attempt to give theoretical order to emerging aesthetic concepts. Written during a time of youth revolution, the article described how art and reality had changed so fundamentally that artists\' work no longer concerned creation of art objects but deliberation on art\'s essence.'},
+  {id:'tl07',year:1972,cat:'art',title:'On "N.S." Permafo Gallery',text:'Writes critical essay about the new situation in art, connecting to Wrocław avant-garde.',exp:'Argues that new art "ceases to be observation, investigation from outside of previously existing situations, but is production of successive links of reality." Art becomes an act of social action, not mirror reflection.'},
+  {id:'tl08',year:1974,cat:'art',title:'First Performances',text:'Performance art begins at Teatr Dnia i Nocy, Poznań.',exp:'"My interest in performance art grew on the one hand out of my contextual theory, and on the other hand out of my experiences with dance, body movement and the gestures I used to give performances." For Świdziński, performance is the most accessible art form — direct contact with audience in shared context of time, place, and situation.'},
+  {id:'tl09',year:1975,cat:'event',title:'F-Art Counterculture Festival, Gdańsk',text:'First public presentation of contextual art theses. Jean Sellem attends and later organizes the Lund exhibition.',exp:'Also presented at "Condition of Contemporary Art" symposium at Remont Gallery, Warsaw. These events laid the groundwork for the 1976 manifesto publication.'},
+  {id:'tl10',year:1976,cat:'theory',title:'"Art as Contextual Art" — The Manifesto',text:'Publishes the 12 Points of Contextual Art in Lund, Sweden. Exhibits with Polish artists at St. Petri Gallery.',exp:'The foundational document of contextual art. Core formula: Object "O" assumes meaning "m" at time "t," in place "p," in situation "s," in relation to person/persons "o" — if and only then. The accompanying exhibition featured artists of Galeria Sztuki Najnowszej, Wrocław (Anna Kutera, Romuald Kutera, Lech Mrożek), the Warsaw Seminar circle (with Zbigniew Dłubak), the Film Form Workshop from Łódź (Józef Robakowski, Wojciech Bruszewski, Ryszard Waśko), and Henryk Gajewski of Remont Gallery.',highlight:true},
+  {id:'tl11',year:1976,cat:'event',title:'Toronto Debate with Kosuth',text:'At CEAC conference "In the Context of the Art World," Świdziński publicly critiques Kosuth\'s tautological model.',exp:'Organized by Amerigo Marras of the Centre for Experimental Art and Communication; participants included Joseph Kosuth, Sarah Charlesworth, Carole Condé, Anthony McCall, Hervé Fischer, and Canadian artists and theorists. Świdziński argued art is an "empty sign" gaining meaning only in social context, not through self-reference.'},
+  {id:'tl12',year:1977,cat:'event',title:'Warsaw International Conference',text:'Hosts "Art Activity in the Context of Reality" at Remont Gallery — participants from 35 countries.',exp:'Signed agreements between Polish contextual art, French Art Sociologique, American Art and Language, and Latin American artists. Government authorities responded harshly, viewing the extensive foreign contact as threatening.'},
+  {id:'tl13',year:1977,cat:'event',title:'"Third Front Against New York" — Paris',text:'Conference "Art et Transformation Sociale" in Paris (10–13 May). Joint declaration against New York art world hegemony.',exp:'Organized by the Collectif Art Sociologique. Participants included Świdziński and Emil Cieślar from Poland, Brian Dyson and Paul Woodrow from Canada, and the British artists Loraine Leeson and Peter Dunn. The joint declaration announced a "third front in art against New York."'},
+  {id:'tl14',year:1979,cat:'art',title:'"We Always Talk About Man"',text:'Exhibition "Stale mówimy o człowieku" opens at Mała Galeria, Warsaw (26 June) — a photograph of a crowd joined with philosophical text.',exp:'Its text began: "Always we talk about man, but don\'t talk about man, just talk to man." The same year "Art, Society and Self-consciousness" was published by the Alberta College of Art Gallery in Calgary, Canada. The work demonstrates how minimal material gains complex meaning through contextual framing.'},
+  {id:'tl15',year:1987,cat:'theory',title:'"Freedom and Limitation"',text:'Publishes "Freedom and Limitation — The Anatomy of Post-modernism" in Calgary (Syntax, edited by Brian Dyson).',exp:'Three years earlier, the related photographic cycle "Wolność i ograniczenie" (Freedom and Limitation, Mała Galeria, 1984) had documented a Polish village on the Soviet border. Photographs as "symptoms of reality" — the artist presents not description but contextual evidence of the human condition under political constraint.'},
+  {id:'tl16',year:1989,cat:'life',title:'President of Artists of the Other Arts',text:'Appointed President of the Artists of the Other Arts Association.',exp:'That April, the exhibition "Jestem z powrotem" (I\'m Back) at Mała Galeria marked his return from the United States. The fall of communism transforms the context of Polish art entirely.'},
+  {id:'tl17',year:1990,cat:'event',title:'Interscop International Festival',text:'Major international performance festival in Łucznica, organized by Świdziński.',exp:'Also participated in Première Biennale d\'Art Actuel in Québec and Interaction International Performance Festival in France in the same year.'},
+  {id:'tl18',year:1994,cat:'art',title:'"It\'s OK" — Gulf War Photography',text:'Exhibition "W porządku" (It\'s OK) at Mała Galeria, Warsaw and BWA Lublin — Gulf War press photography with artistic interventions.',exp:'A famous Newsweek war photograph underwent interventions showing, in Grzegorz Borkowski\'s words, the "gradual transformation of disaster documentation into increasingly abstract sign." Identical images carry radically different meanings depending on context — the "empty sign" principle in action.'},
+  {id:'tl19',year:1996,cat:'event',title:'Performances in Korea and Romania',text:'Performs at the 9 Dragons\' Heads Festival in South Korea and the AnnART Festival in Romania.',exp:'Also that year: "Second Hand" at Dziekanka Gallery, Warsaw. The decade brought further festival appearances from Vilnius ("Dimension 0," 1997) to Mexico City (Ex Teresa, 1998).'},
+  {id:'tl20',year:1997,cat:'theory',title:'"Art is a Fact"',text:'Poster manifesto for 20th anniversary of contextual art. Syntax Arts Society, Calgary.',exp:'"Notions such as art, artist, the world of art, function only as convenient identifiers which are useful only so long as they can serve in a given situation." Art neither builds nor destroys — those engaging with it resemble tourists who stop briefly, meet travellers from other cultures, exchange remarks, then continue their journey. Polish translation by B. Łukasiewicz.'},
+  {id:'tl21',year:1998,cat:'art',title:'"Anomia"',text:'Exhibition "Anomia" at Stara Galeria, Lublin (May) — on Durkheim\'s concept of anomie: the breakdown of commonly accepted norms.',exp:'Enlarged amateur photographs of people leaning toward one another in conversation — the old gesture of Santa Conversazione, now a simulacrum: people talk without genuine understanding. Minimal gestures and sparse performance expose the breakdown of shared meaning.'},
+  {id:'tl22',year:1999,cat:'event',title:'Interakcje Festival, Piotrków Trybunalski',text:'The International Art Festival Interakcje is founded — Świdziński serves as its curator and president from 1999.',exp:'Initiated by Ryszard Piegza with Stanisław Piotr Gajda and Gordian Piec, Interakcje has been held in Piotrków Trybunalski since 1999 — its 25th edition took place in September 2026 — and remains Poland\'s longest-running performance art festival. Świdziński performed at every edition from 1999 to 2004.'},
+  {id:'tl23',year:2003,cat:'art',title:'International Asian Performances',text:'Performs at Asiatopia Festival (Bangkok) and Lange Atem Festival (Essen, Münster).',exp:'One of his final major international performance tours. Also continued performing at Interakcje and Navinki (Minsk) festivals.'},
+  {id:'tl24',year:2005,cat:'life',title:'Polonia Restituta Order',text:'Awarded the Officer\'s Cross of the Order of Polonia Restituta (May 2005) for contribution to the development and promotion of Polish culture.',exp:'Recognition came after decades of international teaching (Paris, Montreal, New York, Calgary, Vancouver) and organizing major conferences and performance festivals. The same year, "L\'Art et son Contexte" appeared in Québec.'},
+  {id:'tl25',year:2006,cat:'event',title:'"In the Context of Art / Differences" Festival',text:'First festival explicitly dedicated to contextual art, held in Warsaw in October 2006 (and again in 2007). Co-created with Jan Przyłuski.',exp:'Performers included Zbigniew Warpechowski, Ewa Zarzycka, Janusz Bałdyga and Przemysław Kwiek, with guests from Israel, Italy, France, Canada, and beyond. Connected to "Różnice" (The Differences) — Przyłuski\'s first documentary film, dedicated to Świdziński. Przyłuski also began the Art of Action Archive (Archiwum Sztuki Akcji, ASA) around this time.'},
+  {id:'tl26',year:2009,cat:'event',title:'Polish Publications & CSW Symposium',text:'Two books published in Polish: "Sztuka i jej kontekst" and "Sztuka, społeczeństwo, samoświadomość." Symposium at CSW Ujazdowski Castle.',exp:'Panelists: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz, and Małgorzata Butterwick; moderated by Grzegorz Borkowski (16 December 2009). The "In Context Now" symposium was held in Radom, its proceedings published as "Global Communication."'},
+  {id:'tl27',year:2010,cat:'art',title:'"In My Context" at CSW Ujazdowski Castle',text:'Exhibition "W moim kontekście. Wybrane działania z fotografią i tekstem" (In My Context: Selected Actions with Photography and Text) at the Centre for Contemporary Art in Warsaw.',exp:'On view until 28 February 2010; an expanded version, accompanied by a theoretical symposium, followed at Galeria Labirynt in Lublin. On 24 June 2010 — his name day — the evening "Evening in the Context," held within The Knot project at Galeria Nizio, presented Jan Przyłuski\'s filmed conversation with the artist, "Jesteśmy zaplątani" (We Are Entangled).'},
+  {id:'tl28',year:2010,cat:'art',title:'Film: "Kosuth — Świdziński. Spotkanie w Rzymie" (dir. Piotr Weychert)',text:'Documentary by Piotr Weychert (38 min 59 s, Poland; Polish with consecutive English interpretation), credited to Jan Świdziński and Piotr Weychert. Broadcast in 2010 on TVP Kultura; held in the film collection of the Museum of Modern Art in Warsaw.',exp:'The film follows Świdziński to Rome and records his meeting with Joseph Kosuth in Kosuth\'s studio (July 2008). It continued a polemic the two had carried on by correspondence since the 1970s — they had met in person only once, at the "In the Context of the Art World" debate in Toronto (November 1976). More than thirty years later they return to ideas that had meanwhile been absorbed by the art world, advertising and the creative industries.'},
+  {id:'tl29',year:2014,cat:'life',title:'Death in Warsaw',text:'Jan Świdziński dies on February 9, 2014 in Warsaw.',exp:'He was buried at the Powązki Military Cemetery in Warsaw. His legacy: a body of theory and practice arguing that art gains meaning only through pragmatic context — time, place, situation, and persons involved. The contextual art movement he founded continues to influence contemporary art discourse.'},
+  {id:'tl30',year:2015,cat:'art',title:'Film: "Jan Świdziński. Poza dostarczony kontekst" (dir. Piotr Weychert)',text:'Documentary portrait (37 min, colour; year of production 2015). Production: Media Kontakt; producers: Mirosław Chojecki and Piotr Weychert; co-financed by the Arton Foundation and the Ministry of Culture.',exp:'Written and directed by Piotr Weychert, with Elwira Kozłowska and Janusz Weychert. Cinematography: Sławomir Orman, Ryszard Piegza, Grzegorz Siwicki, Marko Stojanović, Piotr Weychert. Music: Jarosław Lublin, Henry Purcell, Erik Satie. Editing: Rafał Borowy, Monika Sirojc. Narrator: Władysław Kowalski. The film combines archival recordings of performances, Świdziński\'s statements, texts and photographs with short films based on his unrealised screenplays, commentary by Richard Martel and excerpts from the 2008 conversation with Joseph Kosuth in Rome. It was screened on 22 November 2013 at the Arton Foundation\'s presentation of the artist\'s archive.'},
 ];
 
 // ═══════════════════════════════════════════
@@ -749,7 +789,7 @@ const textsData = [
     {h:'Critique of Kosuth\'s Tautological Model',t:'Kosuth\'s "Art after Philosophy" proposed art as analytical proposition — the "idea as idea." Świdziński rightly observed that conceptualism replaced traditional formalism with the equally untenable formalism of neopositivist language philosophy. Hilbert\'s program for fully formalized systems proved unexecutable (Gödel), and acts of belief remain irreducible in logical inquiry. The tautological model could not answer: why do we use the expression "art" in this way and not another?'},
     {h:'The Practice of a Contextual Artist',t:'Piotrowski\'s famous characterization: "The practice of a contextual artist reminds one of the work of an ethnologist-therapist who travels to different places and helps the locals — whether they be inhabitants of the Kurpie region or of New York — to understand their context through exposing her or his own, all while bearing in mind that we have the right to be different and we should respect these differences."'},
    ]},
-  {id:'entangled',title:'Jesteśmy zaplątani (We Are Entangled) — Jan Lubicz Przyłuski',year:2010,type:'Conversation / Essay',
+  {id:'entangled',title:'Jesteśmy zaplątani (We Are Entangled) — Jan Przyłuski',year:2010,type:'Conversation / Essay',
    sections:[
     {h:'',t:'Contextual art discovered by Jan Świdziński translates into reality. It denies the existence of one reality and propagates their multiplicity. Like Giordano Bruno, who was burned at the stake for claiming the plurality of worlds, Świdziński went deeply into linguistic and semiotic analyses to prove that pluralist logic is the logic of our times.'},
     {h:'',t:'Thanks to Jan Świdziński\'s contextual art, the world of art became a plurality of worlds and a space of infinite creative possibilities. The 1976 "Manifest of Contextual Art" published in Lund, Sweden, found its practical equivalent in performance art and action art — forms of direct contact with audiences in shared contexts of time, place, and situation.'},
@@ -803,116 +843,36 @@ const concepts = [
 // DATA: BOOKS (książki autorskie Świdzińskiego)
 // ═══════════════════════════════════════════
 const booksData = [
-  {
-    slug:'1976-lund-artascontextual',
-    title:'Art as Contextual Art',
-    year:1976, place:'Lund',
-    publisher:'Galerie S:t Petri / Archive of Experimental Art',
-    editor:'red. Jean Sellem',
-    language:'en',
-    isbn:null,
-    cover:null,
-    note:'Manifest wygłoszony w lutym 1976; publikacja towarzysząca wystawie „Contextual Art" w Galerie S:t Petri, Lund. Wprowadzenie do idei kontekstualizmu — pierwsza książka Świdzińskiego jako teoretyka.'
-  },
-  {
-    slug:'1977-warsaw-remont',
-    title:'Sztuka jako sztuka kontekstualna / Art as Contextual Art',
-    year:1977, place:'Warszawa',
-    publisher:'Galeria Remont (SZSP), seria „Art Text"',
-    editor:'red. Henryk Gajewski',
-    language:'pl · en',
-    isbn:null,
-    cover:'covers/1977-warsaw-remont.jpg',
-    note:'Wydanie dwujęzyczne, 92 s., 19,5 × 14 cm, druk na brązowym papierze. Rozdawane bezpłatnie. Egzemplarz w archiwum Druków Artystycznych Galerii Wymiany (MSN Warszawa).'
-  },
-  {
-    slug:'1979-calgary-artsociety',
-    title:'Art, Society and Self-consciousness',
-    year:1979, place:'Calgary',
-    publisher:'Alberta College of Art Gallery',
-    editor:null,
-    language:'en',
-    isbn:null,
-    cover:null,
-    note:'Napisana po angielsku podczas pobytu Świdzińskiego w Kanadzie; najważniejsza rozprawa filozoficzno-teoretyczna. Polskie wydanie: 2009, CSW Zamek Ujazdowski (tłum. Guzek).'
-  },
-  {
-    slug:'1987-calgary-freedom',
-    title:'Freedom and Limitation. The Anatomy of Post-modernism',
-    year:1987, place:'Calgary',
-    publisher:'Syntax',
-    editor:'red. Brian Dyson',
-    language:'en',
-    isbn:null,
-    cover:null,
-    note:'Świdziński często datował ją jako 1985; faktyczne wydanie 1987 pod redakcją Briana Dysona w kalgaryjskim Syntax. Anatomia postmodernizmu z pozycji sztuki kontekstualnej.'
-  },
-  {
-    slug:'1988-eindhoven-quotations',
-    title:'Quotations on Contextual Art',
-    year:1988, place:'Eindhoven',
-    publisher:'Het Apollohuis',
-    editor:'red. Michael Gibbs',
-    language:'en',
-    isbn:'978-90-71638-04-6',
-    cover:null,
-    note:'Zawiera zapis dyskusji „In the Context of the Art World" z konferencji w CEAC Toronto (XI 1976), opublikowany 12 lat po debacie.'
-  },
-  {
-    slug:'1997-quebec-artcontextuel',
-    title:'Art contextuel',
-    year:1997, place:'Québec',
-    publisher:'Éditions Intervention / Les presses du réel',
-    editor:null,
-    language:'fr',
-    isbn:'978-2-920500-15-0',
-    cover:'covers/1997-quebec-artcontextuel.jpg',
-    note:'Broszura 16 s., 23 × 34 cm; dwa teksty napisane w odstępie dwudziestu lat plus manifest z 1976 i fotografie. Wynik rezydencji w Le Lieu (Québec).'
-  },
-  {
-    slug:'2005-quebec-lartetson',
-    title:'L\'art et son contexte. Au fait, qu\'est-ce que l\'art ?',
-    year:2005, place:'Québec',
-    publisher:'Éditions Intervention / Le Lieu, Centre en art actuel',
-    editor:'red. Richard Martel',
-    language:'fr',
-    isbn:'978-2-920500-27-3',
-    cover:'covers/2005-quebec-lartetson.jpg',
-    note:'156 s., 12,5 × 20,2 cm. Reissue / dystrybucja przez Les presses du réel.'
-  },
-  {
-    slug:'2009-radom-sztukaijej',
-    title:'Sztuka i jej kontekst. Właściwie, co to jest sztuka?',
-    year:2009, place:'Piotrków Trybunalski / Radom',
-    publisher:'ODA Piotrków Trybunalski + MCSW „Elektrownia" Radom',
-    editor:null,
-    language:'pl',
-    isbn:'978-83-924930-9-9',
-    cover:'covers/2009-radom-sztukaijej.jpg',
-    note:'94–96 s., ilustracje. Polska wersja L\'art et son contexte (2005). Druk AMAT Piotrków.'
-  },
-  {
-    slug:'2009-warsaw-samoswiadomosc',
-    title:'Sztuka, społeczeństwo i samoświadomość',
-    year:2009, place:'Warszawa',
-    publisher:'Centrum Sztuki Współczesnej Zamek Ujazdowski',
-    editor:'tłum. Łukasz Guzek',
-    language:'pl',
-    isbn:'978-83-61156-21-5',
-    cover:'covers/2009-warsaw-samoswiadomosc.jpg',
-    note:'Polskie tłumaczenie Art, Society and Self-consciousness (Calgary 1979). 144 s., 21,5 × 15,4 cm.'
-  },
-  {
-    slug:'2015-halifax-incontext',
-    title:'Jan Świdziński en contexte / W Kontekście / In Context (+ DVD)',
-    year:2015, place:'Québec / Halifax',
-    publisher:'Éditions Intervention (dystrybucja Les presses du réel)',
-    editor:'red. Richard Martel; teksty: Paul Ardenne, Bruce Barber, Brian Dyson, Richard Martel, Artur Tajber',
-    language:'fr · pl · en',
-    isbn:'978-2-924298-12-1',
-    cover:'covers/2015-halifax-incontext.jpg',
-    note:'Trójjęzyczna monografia pośmiertna 160 s., 19,5 × 22 cm, z DVD. Zawiera reedycję manifestu z 1976 (po raz pierwszy po francusku) + eseje.'
-  }
+  {id:'1976-lund-artascontextual', slug:'1976-lund-artascontextual', title:'Art as Contextual Art', year:1976, place:'Lund',
+   publisher:'Galerie S:t Petri / Archive of Experimental Art', editor:'ed. Jean Sellem', language:'en', isbn:null, cover:'covers/1976-lund-artascontextual.jpg',
+   note:'The manifesto delivered in February 1976, published to accompany the exhibition "Contextual Art" at Galerie S:t Petri in Lund. Świdziński\'s first publication as a theorist — the founding statement of contextualism.'},
+  {id:'1977-warsaw-remont', slug:'1977-warsaw-remont', title:'Sztuka jako sztuka kontekstualna / Art as Contextual Art', year:1977, place:'Warsaw',
+   publisher:'Galeria Remont (SZSP), "Art Text" series', editor:'ed. Henryk Gajewski', language:'pl · en', isbn:null, cover:'covers/1977-warsaw-remont.jpg',
+   note:'Bilingual edition, 92 pp., 19.5 × 14 cm, printed on brown paper and distributed free of charge. A copy is held in the Exchange Gallery artists\' prints collection (Museum of Modern Art in Warsaw).'},
+  {id:'1979-calgary-artsociety', slug:'1979-calgary-artsociety', title:'Art, Society and Self-consciousness', year:1979, place:'Calgary',
+   publisher:'Alberta College of Art Gallery', editor:null, language:'en', isbn:null, cover:'covers/1979-calgary-artsociety.jpg',
+   note:'Written in English during Świdziński\'s stay in Canada; his central philosophical and theoretical treatise. Polish edition: 2009, CSW Ujazdowski Castle (translated by Łukasz Guzek).'},
+  {id:'1987-calgary-freedom', slug:'1987-calgary-freedom', title:'Freedom and Limitation. The Anatomy of Post-modernism', year:1987, place:'Calgary',
+   publisher:'Syntax', editor:'ed. Brian Dyson', language:'en', isbn:null, cover:null,
+   note:'Świdziński often dated it 1985; it appeared in 1987, edited by Brian Dyson for Syntax in Calgary. An anatomy of post-modernism seen from the standpoint of contextual art.'},
+  {id:'1988-eindhoven-quotations', slug:'1988-eindhoven-quotations', title:'Quotations on Contextual Art', year:1988, place:'Eindhoven',
+   publisher:'Het Apollohuis', editor:'ed. Michael Gibbs', language:'en', isbn:'978-90-71638-04-6', cover:'covers/1988-eindhoven-quotations.jpg',
+   note:'Contains the record of the discussion "In the Context of the Art World" held at CEAC in Toronto (November 1976), published twelve years after the debate.'},
+  {id:'1997-quebec-artcontextuel', slug:'1997-quebec-artcontextuel', title:'Art contextuel', year:1997, place:'Québec',
+   publisher:'Éditions Intervention / Les presses du réel', editor:null, language:'fr', isbn:'978-2-920500-15-0', cover:'covers/1997-quebec-artcontextuel.jpg',
+   note:'A 16-page booklet, 23 × 34 cm: two texts written twenty years apart, the 1976 manifesto and photographs. The outcome of a residency at Le Lieu in Québec.'},
+  {id:'2005-quebec-lartetson', slug:'2005-quebec-lartetson', title:'L\'art et son contexte. Au fait, qu\'est-ce que l\'art ?', year:2005, place:'Québec',
+   publisher:'Éditions Intervention / Le Lieu, Centre en art actuel', editor:'ed. Richard Martel', language:'fr', isbn:'978-2-920500-27-3', cover:'covers/2005-quebec-lartetson.jpg',
+   note:'156 pp., 12.5 × 20.2 cm. Distributed by Les presses du réel.'},
+  {id:'2009-radom-sztukaijej', slug:'2009-radom-sztukaijej', title:'Sztuka i jej kontekst. Właściwie, co to jest sztuka?', year:2009, place:'Piotrków Trybunalski / Radom',
+   publisher:'ODA Piotrków Trybunalski and MCSW "Elektrownia", Radom', editor:null, language:'pl', isbn:'978-83-924930-9-9', cover:'covers/2009-radom-sztukaijej.jpg',
+   note:'Approx. 95 pp., illustrated. The Polish version of L\'art et son contexte (2005).'},
+  {id:'2009-warsaw-samoswiadomosc', slug:'2009-warsaw-samoswiadomosc', title:'Sztuka, społeczeństwo i samoświadomość', year:2009, place:'Warsaw',
+   publisher:'Centre for Contemporary Art Ujazdowski Castle', editor:'trans. Łukasz Guzek', language:'pl', isbn:'978-83-61156-21-5', cover:'covers/2009-warsaw-samoswiadomosc.jpg',
+   note:'The Polish translation of Art, Society and Self-consciousness (Calgary 1979). 144 pp., 21.5 × 15.4 cm.'},
+  {id:'2015-halifax-incontext', slug:'2015-halifax-incontext', title:'Jan Świdziński en contexte / W Kontekście / In Context (+ DVD)', year:2015, place:'Québec / Halifax',
+   publisher:'Éditions Intervention (distributed by Les presses du réel)', editor:'ed. Richard Martel; texts by Paul Ardenne, Bruce Barber, Brian Dyson, Richard Martel, Artur Tajber', language:'fr · pl · en', isbn:'978-2-924298-12-1', cover:'covers/2015-halifax-incontext.jpg',
+   note:'A posthumous trilingual monograph, 160 pp., 19.5 × 22 cm, with a DVD. Includes the 1976 manifesto (in French for the first time) and essays.'}
 ];
 
 // ═══════════════════════════════════════════
@@ -920,40 +880,40 @@ const booksData = [
 // ═══════════════════════════════════════════
 const biblioData = {
   books: [
-    {title:'Art as Contextual Art',year:1976,place:'Lund, Sweden',type:'Manifesto / Book',note:'First publication of the 12 Points. Edited by Jean Sellem; published at Galerie S:t Petri during an exhibition of Polish artists.'},
-    {title:'Sztuka jako sztuka kontekstualna (Art as Contextual Art)',year:1977,place:'Warsaw, Poland',type:'Book (Polish)',note:'Collection of texts on contextual art theory, published by Remont Gallery, Warsaw.'},
-    {title:'Art, Society and Self-consciousness',year:1979,place:'Calgary, Canada',type:'Book',note:'Published by Alberta College of Art Gallery. Comprehensive theoretical framework.'},
-    {title:'Freedom and Limitation — The Anatomy of Post-modernism',year:1987,place:'Calgary, Canada',type:'Book',note:'Edited by Brian Dyson; published by Syntax, Calgary. A theoretical anatomy of post-modernism, sharing its title with the 1984 photographic cycle "Wolność i ograniczenie."'},
-    {title:'Quotations on Contextual Art',year:1988,place:'Eindhoven, Netherlands',type:'Book',note:'Edited by Michael Gibbs; published by Het Apollohuis.'},
-    {title:'L\'Art et son Contexte',year:2005,place:'Québec, Canada',type:'Book',note:'French-language edition of contextual art theory.'},
-    {title:'Sztuka i jej kontekst (Art and Its Context)',year:2009,place:'Poland',type:'Book (Polish)',note:'Polish compilation of theoretical writings. Presented at CSW Ujazdowski Castle symposium.'},
-    {title:'Sztuka, społeczeństwo, samoświadomość (Art, Society, Self-consciousness)',year:2009,place:'Poland',type:'Book (Polish)',note:'Polish translation of the 1979 Calgary publication.'},
+    {id:'bb1',title:'Art as Contextual Art',year:1976,place:'Lund, Sweden',type:'Manifesto / Book',note:'First publication of the 12 Points. Edited by Jean Sellem; published at Galerie S:t Petri during an exhibition of Polish artists.'},
+    {id:'bb2',title:'Sztuka jako sztuka kontekstualna (Art as Contextual Art)',year:1977,place:'Warsaw, Poland',type:'Book (Polish)',note:'Collection of texts on contextual art theory, published by Remont Gallery, Warsaw.'},
+    {id:'bb3',title:'Art, Society and Self-consciousness',year:1979,place:'Calgary, Canada',type:'Book',note:'Published by Alberta College of Art Gallery. Comprehensive theoretical framework.'},
+    {id:'bb4',title:'Freedom and Limitation — The Anatomy of Post-modernism',year:1987,place:'Calgary, Canada',type:'Book',note:'Edited by Brian Dyson; published by Syntax, Calgary. A theoretical anatomy of post-modernism, sharing its title with the 1984 photographic cycle "Wolność i ograniczenie."'},
+    {id:'bb5',title:'Quotations on Contextual Art',year:1988,place:'Eindhoven, Netherlands',type:'Book',note:'Edited by Michael Gibbs; published by Het Apollohuis.'},
+    {id:'bb6',title:'L\'Art et son Contexte',year:2005,place:'Québec, Canada',type:'Book',note:'French-language edition of contextual art theory.'},
+    {id:'bb7',title:'Sztuka i jej kontekst (Art and Its Context)',year:2009,place:'Poland',type:'Book (Polish)',note:'Polish compilation of theoretical writings. Presented at CSW Ujazdowski Castle symposium.'},
+    {id:'bb8',title:'Sztuka, społeczeństwo, samoświadomość (Art, Society, Self-consciousness)',year:2009,place:'Poland',type:'Book (Polish)',note:'Polish translation of the 1979 Calgary publication.'},
   ],
   essays: [
-    {title:'Spór o istnienie sztuki (Dispute over Art\'s Existence)',year:1970,publication:'Życie i Myśl, nr 5/1970',note:'First major theoretical text. Considered the first attempt to theorize emerging post-conceptual aesthetics in Poland.'},
-    {title:'A propos N.S. galerii "Permafo"',year:1972,publication:'Fotografia, nr 5/1972',note:'Essay on the new situation in art, connecting to Wrocław avant-garde.'},
-    {title:'12 Points of Contextual Art',year:1976,publication:'St. Petri Gallery, Lund',note:'The foundational manifesto of contextual art theory.'},
-    {title:'Modele sztuki (Models of Art)',year:null,publication:'Theoretical text',note:'Analysis of three coexisting art models: universal, relativistic, contextual.'},
-    {title:'Sztuka kontekstualna (1-3)',year:null,publication:'Theoretical texts',note:'Three-part comprehensive theory of contextual art. Includes the context formula and analysis of deontic logic.'},
-    {title:'Sztuka jest faktem (Art is a Fact)',year:1997,publication:'Poster, Syntax Arts Society, Calgary',note:'20th anniversary of contextual art. Translated by B. Łukasiewicz.'},
-    {title:'O latach 70-tych (About the 1970s)',year:1996,publication:'Katalog, Stara Galeria, Lublin',note:'Retrospective on the 1970s Polish art scene and Duchamp\'s "Dadaist trap."'},
-    {title:'Poglądy — Konsekwencje (Views — Consequences)',year:1983,publication:'BWA Łomża catalog',note:'Personal views on art\'s function and the inseparability of artistic and personal identity.'},
+    {id:'be1',title:'Spór o istnienie sztuki (Dispute over Art\'s Existence)',year:1970,publication:'Życie i Myśl, nr 5/1970',note:'First major theoretical text. Considered the first attempt to theorize emerging post-conceptual aesthetics in Poland.'},
+    {id:'be2',title:'A propos N.S. galerii "Permafo"',year:1972,publication:'Fotografia, nr 5/1972',note:'Essay on the new situation in art, connecting to Wrocław avant-garde.'},
+    {id:'be3',title:'12 Points of Contextual Art',year:1976,publication:'St. Petri Gallery, Lund',note:'The foundational manifesto of contextual art theory.'},
+    {id:'be4',title:'Modele sztuki (Models of Art)',year:null,publication:'Theoretical text',note:'Analysis of three coexisting art models: universal, relativistic, contextual.'},
+    {id:'be5',title:'Sztuka kontekstualna (1-3)',year:null,publication:'Theoretical texts',note:'Three-part comprehensive theory of contextual art. Includes the context formula and analysis of deontic logic.'},
+    {id:'be6',title:'Sztuka jest faktem (Art is a Fact)',year:1997,publication:'Poster, Syntax Arts Society, Calgary',note:'20th anniversary of contextual art. Translated by B. Łukasiewicz.'},
+    {id:'be7',title:'O latach 70-tych (About the 1970s)',year:1996,publication:'Katalog, Stara Galeria, Lublin',note:'Retrospective on the 1970s Polish art scene and Duchamp\'s "Dadaist trap."'},
+    {id:'be8',title:'Poglądy — Konsekwencje (Views — Consequences)',year:1983,publication:'BWA Łomża catalog',note:'Personal views on art\'s function and the inseparability of artistic and personal identity.'},
   ],
   scholarly: [
-    {author:'Kazimierz Piotrowski',title:'Hommage à Jan Świdziński',year:2005,note:'Monumental essay (dated 21 January 2005). Comprehensive defense of contextual art as post-conceptual doctrine. Analyzes the linguistic turn, intensionality, and Świdziński\'s critique of Kosuth\'s tautological model. Essential reading for understanding contextual art\'s philosophical foundations.'},
-    {author:'Łukasz Ronduda',title:'Flexibility Makes Our Existence Possible: The Contextual Art of Jan Świdziński',year:2008,note:'Published in ArtMargins (10 September 2008). Comprehensive analysis positioning contextual art as response to globalization and post-modern practice addressing accelerated civilizational change.'},
-    {author:'Łukasz Guzek',title:'Co stanowi kontekst sztuki? (What Constitutes the Context of Art?)',year:null,note:'Published on Obieg.pl. Compares contextual art with Nicolas Bourriaud\'s relational aesthetics. Analyzes documentation as communication problem.'},
-    {author:'Bartosz Łukasiewicz',title:'Kilka dogmatów kontekstualizmu (Several Dogmas of Contextualism)',year:null,note:'Published on Obieg.pl. Critical examination questioning universal applicability of contextual art formula.'},
-    {author:'Kazimierz Piotrowski',title:'Debata "In the Context of the Art World". Jan Świdziński w Toronto 1976',year:2010,note:'Published on Obieg.pl. Analysis of the Toronto debate, monotonic and non-monotonic thinking, and irrelevance as an epistemological category.'},
-    {author:'Grzegorz Borkowski',title:'Jana Świdzińskiego działania z fotografią (Jan Świdziński\'s Actions with Photography)',year:2003,note:'Published in Fototapeta (1/2003). Analysis of photography\'s role in contextual art and performance.'},
-    {author:'Eulalia Domanowska',title:'Sztuka kontekstualna — rozmowa z Janem Świdzińskim (Contextual Art — A Conversation)',year:'1995/96',note:'Published in "art newsletter" (PGS Sopot). Explores binary, three-value, and game logic in contextual art theory.'},
-    {author:'Jan Lubicz Przyłuski',title:'Jesteśmy zaplątani (We Are Entangled)',year:2010,note:'Filmed conversation with Jan Świdziński. Created for the "Imieniny Jana" evening within The Knot project at Galeria Nizio, Warsaw (24 June 2010). Documents Świdziński\'s theoretical impact and personal artistic philosophy.'},
-    {author:'Jan Lubicz Przyłuski',title:'Sztuka akcji: dziesięć zdarzeń w Polsce (Art of Action: Ten Events in Poland)',year:2007,note:'Published by Bałtycka Galeria Sztuki Współczesnej, Słupsk. ISBN 978-83-922414-9-2. Ten landmark events in the history of Polish action art.'},
-    {author:'Jan Lubicz Przyłuski',title:'Odzyskać sztukę dla rozwoju świadomości. Zapiski o Janie Świdzińskim i sztuce kontekstualnej',year:2018,note:'Zeszyty Artystyczne UAP Poznań, nr 1(32)/2018, s. 68–87. Monograficzny numer poświęcony kontekstualizmowi (red. Izabela Kowalczyk); PDF całego tomu publicznie dostępny na za.uap.edu.pl. Kluczowa autorska interpretacja spuścizny Świdzińskiego z perspektywy współpracownika i filmowca.',url:'http://za.uap.edu.pl/wp-content/uploads/2019/03/Zeszyty-32_WEB.pdf'},
+    {id:'bs01',author:'Kazimierz Piotrowski',title:'Hommage à Jan Świdziński',year:2005,note:'Monumental essay (dated 21 January 2005). Comprehensive defense of contextual art as post-conceptual doctrine. Analyzes the linguistic turn, intensionality, and Świdziński\'s critique of Kosuth\'s tautological model. Essential reading for understanding contextual art\'s philosophical foundations.'},
+    {id:'bs02',author:'Łukasz Ronduda',title:'Flexibility Makes Our Existence Possible: The Contextual Art of Jan Świdziński',year:2008,note:'Published in ArtMargins (10 September 2008). Comprehensive analysis positioning contextual art as response to globalization and post-modern practice addressing accelerated civilizational change.'},
+    {id:'bs03',author:'Łukasz Guzek',title:'Co stanowi kontekst sztuki? (What Constitutes the Context of Art?)',year:null,note:'Published on Obieg.pl. Compares contextual art with Nicolas Bourriaud\'s relational aesthetics. Analyzes documentation as communication problem.'},
+    {id:'bs04',author:'Bartosz Łukasiewicz',title:'Kilka dogmatów kontekstualizmu (Several Dogmas of Contextualism)',year:null,note:'Published on Obieg.pl. Critical examination questioning universal applicability of contextual art formula.'},
+    {id:'bs05',author:'Kazimierz Piotrowski',title:'Debata "In the Context of the Art World". Jan Świdziński w Toronto 1976',year:2010,note:'Published on Obieg.pl. Analysis of the Toronto debate, monotonic and non-monotonic thinking, and irrelevance as an epistemological category.'},
+    {id:'bs06',author:'Grzegorz Borkowski',title:'Jana Świdzińskiego działania z fotografią (Jan Świdziński\'s Actions with Photography)',year:2003,note:'Published in Fototapeta (1/2003). Analysis of photography\'s role in contextual art and performance.'},
+    {id:'bs07',author:'Eulalia Domanowska',title:'Sztuka kontekstualna — rozmowa z Janem Świdzińskim (Contextual Art — A Conversation)',year:'1995/96',note:'Published in "art newsletter" (PGS Sopot). Explores binary, three-value, and game logic in contextual art theory.'},
+    {id:'bs08',author:'Jan Przyłuski',title:'Jesteśmy zaplątani (We Are Entangled)',year:2010,note:'Filmed conversation with Jan Świdziński. Created for the "Imieniny Jana" evening within The Knot project at Galeria Nizio, Warsaw (24 June 2010). Documents Świdziński\'s theoretical impact and personal artistic philosophy.'},
+    {id:'bs09',author:'Jan Przyłuski',title:'Sztuka akcji: dziesięć zdarzeń w Polsce (Art of Action: Ten Events in Poland)',year:2007,note:'Published by Bałtycka Galeria Sztuki Współczesnej, Słupsk. ISBN 978-83-922414-9-2. Ten landmark events in the history of Polish action art.'},
+    {id:'bs10',author:'Jan Przyłuski',title:'Odzyskać sztukę dla rozwoju świadomości. Zapiski o Janie Świdzińskim i sztuce kontekstualnej',year:2018,note:'Zeszyty Artystyczne (University of the Arts in Poznań), no. 1(32)/2018, pp. 68–87 — a special issue on contextualism edited by Izabela Kowalczyk; the whole volume is freely available as a PDF. An interpretation of Świdziński\'s legacy written by a collaborator and filmmaker who worked with him.',url:'http://za.uap.edu.pl/wp-content/uploads/2019/03/Zeszyty-32_WEB.pdf'},
   ],
   interviews: [
-    {interviewer:'Adam Mazur',title:'Miało być pięknie i optymistycznie (It Was Supposed to Be Beautiful and Optimistic)',year:2001,publication:'Fototapeta',note:'Extensive autobiographical conversation (30 March 2001) covering Warsaw artistic circles, Remont Gallery, Mała Galeria founding, international conferences, martial law effects, and American residencies.'},
-    {interviewer:'Bartosz Łukasiewicz',title:'Kilka uwag o sztuce jako sztuce kontekstualnej (A Few Remarks on Art as Contextual Art)',year:2006,publication:'Sztuka i Filozofia',note:'Extended conversation (June 2005) on the pragmatic and theoretical dimensions of contextualism.'},
+    {id:'bi1',interviewer:'Adam Mazur',title:'Miało być pięknie i optymistycznie (It Was Supposed to Be Beautiful and Optimistic)',year:2001,publication:'Fototapeta',note:'Extensive autobiographical conversation (30 March 2001) covering Warsaw artistic circles, Remont Gallery, Mała Galeria founding, international conferences, martial law effects, and American residencies.'},
+    {id:'bi2',interviewer:'Bartosz Łukasiewicz',title:'Kilka uwag o sztuce jako sztuce kontekstualnej (A Few Remarks on Art as Contextual Art)',year:2006,publication:'Sztuka i Filozofia',note:'Extended conversation (June 2005) on the pragmatic and theoretical dimensions of contextualism.'},
   ],
   citedPhilosophy: [
     'A. Church — Introduction to Mathematical Logic (1944)',
@@ -976,36 +936,36 @@ const biblioData = {
 // ═══════════════════════════════════════════
 const festivalsData = {
   organized: [
-    {name:'Art Activity in the Context of Reality',year:1977,place:'Remont Gallery, Warsaw',desc:'International conference of artists and theorists from 35 countries. Signed agreements between Polish contextual art, French Art Sociologique, Art and Language, and Latin American artists.'},
-    {name:'Interscop International Festival',year:1990,place:'Łucznica, Poland',desc:'International performance festival organized by Świdziński.'},
-    {name:'Real Time — Story Telling International Performance Art Festival',year:1991,place:'Sopot, Poland',desc:'International performance art festival; the 1993 edition was held at Grodzka Gallery, Lublin.'},
-    {name:'Interakcje International Art Festival',year:'1999 →',place:'Piotrków Trybunalski, Poland',desc:'Founded in 1999 on the initiative of Ryszard Piegza, with Stanisław Piotr Gajda and Gordian Piec. Świdziński served as the festival\'s curator and president from 1999 and performed at every edition from 1999 to 2004. The festival is still running: its 25th edition, “Beyond Gravity”, took place on 24–27 September 2026.'},
-    {name:'In the Context of Art / Differences',year:'2006–2007',place:'Warsaw, Poland',desc:'First festival explicitly dedicated to contextual art, held in October 2006 and again in 2007. Co-created with Jan Lubicz Przyłuski. Connected to "Różnice" (The Differences) documentary film.'},
+    {id:'fo1',name:'Art Activity in the Context of Reality',year:1977,place:'Remont Gallery, Warsaw',desc:'International conference of artists and theorists from 35 countries. Signed agreements between Polish contextual art, French Art Sociologique, Art and Language, and Latin American artists.'},
+    {id:'fo2',name:'Interscop International Festival',year:1990,place:'Łucznica, Poland',desc:'International performance festival organized by Świdziński.'},
+    {id:'fo3',name:'Real Time — Story Telling International Performance Art Festival',year:1991,place:'Sopot, Poland',desc:'International performance art festival; the 1993 edition was held at Grodzka Gallery, Lublin.'},
+    {id:'fo4',name:'Interakcje International Art Festival',year:'1999 →',place:'Piotrków Trybunalski, Poland',desc:'Founded in 1999 on the initiative of Ryszard Piegza, with Stanisław Piotr Gajda and Gordian Piec. Świdziński served as the festival\'s curator and president from 1999 and performed at every edition from 1999 to 2004. The festival is still running: its 25th edition, “Beyond Gravity”, took place on 24–27 September 2026.'},
+    {id:'fo5',name:'In the Context of Art / Differences',year:'2006–2007',place:'Warsaw, Poland',desc:'First festival explicitly dedicated to contextual art, held in October 2006 and again in 2007. Co-created with Jan Przyłuski. Connected to "Różnice" (The Differences) documentary film.'},
   ],
   participated: [
-    {name:'F-Art Counterculture Festival',year:1975,place:'Gdańsk',desc:'First presentation of contextual art theses. Jean Sellem attended and later organized the Lund exhibition.'},
-    {name:'CEAC Conference: In the Context of the Art World',year:1976,place:'Toronto, Canada',desc:'Public debate with Joseph Kosuth, Sarah Charlesworth, Carole Condé, Anthony McCall, and Hervé Fischer, organized by Amerigo Marras of CEAC.'},
-    {name:'"Art et Transformation Sociale" — Third Front Conference',year:1977,place:'Paris, France',desc:'Conference of the Collectif Art Sociologique (10–13 May 1977); joint declaration of a "third front in art against New York."'},
-    {name:'Espaces Affranchis Festival',year:1989,place:'Danaé Foundation, Paris',desc:'International performance festival.'},
-    {name:'Interaction International Performance Festival',year:1990,place:'France',desc:'International performance festival.'},
-    {name:'Première Biennale d\'Art Actuel',year:1990,place:'Québec, Canada',desc:'First biennial of contemporary art in Quebec.'},
-    {name:'Festival Internacional de Performance',year:1991,place:'Valencia, Spain',desc:'International performance festival in Spain.'},
-    {name:'Rencontres Internationales de Poésie Contemporaine',year:1992,place:'Tarascon, France',desc:'International contemporary poetry encounters.'},
-    {name:'Nihon International Performance Art Festival',year:1993,place:'Nagano, Japan',desc:'Japanese international performance art festival.'},
-    {name:'9 Dragons\' Heads Festival',year:1996,place:'Cheongwon-gun, South Korea',desc:'International art festival in South Korea.'},
-    {name:'Dimension 0 International Festival',year:1997,place:'Vilnius, Lithuania',desc:'International performance art festival in Lithuania.'},
-    {name:'Ex Teresa International Festival of Performance',year:1998,place:'Mexico City, Mexico',desc:'Major Mexican performance art festival.'},
-    {name:'Asiatopia International Performance Art Festival',year:2003,place:'Bangkok, Thailand',desc:'International Asian performance art festival.'},
-    {name:'Lange Atem Festival',year:2003,place:'Essen & Münster, Germany',desc:'German performance art festival.'},
-    {name:'Navinki International Performance Art Festival',year:'2001–2004',place:'Minsk, Belarus',desc:'Recurring Belarusian performance art festival. Multiple editions.'},
-    {name:'Tupada International Action Art Event',year:2005,place:'Manila, Philippines',desc:'International action art event in the Philippines.'},
-    {name:'European Performance Art Festival',year:2006,place:'CSW Ujazdowski Castle, Warsaw',desc:'Major European festival at the Centre for Contemporary Art.'},
+    {id:'fp01',name:'F-Art Counterculture Festival',year:1975,place:'Gdańsk',desc:'First presentation of contextual art theses. Jean Sellem attended and later organized the Lund exhibition.'},
+    {id:'fp02',name:'CEAC Conference: In the Context of the Art World',year:1976,place:'Toronto, Canada',desc:'Public debate with Joseph Kosuth, Sarah Charlesworth, Carole Condé, Anthony McCall, and Hervé Fischer, organized by Amerigo Marras of CEAC.'},
+    {id:'fp03',name:'"Art et Transformation Sociale" — Third Front Conference',year:1977,place:'Paris, France',desc:'Conference of the Collectif Art Sociologique (10–13 May 1977); joint declaration of a "third front in art against New York."'},
+    {id:'fp04',name:'Espaces Affranchis Festival',year:1989,place:'Danaé Foundation, Paris',desc:'International performance festival.'},
+    {id:'fp05',name:'Interaction International Performance Festival',year:1990,place:'France',desc:'International performance festival.'},
+    {id:'fp06',name:'Première Biennale d\'Art Actuel',year:1990,place:'Québec, Canada',desc:'First biennial of contemporary art in Quebec.'},
+    {id:'fp07',name:'Festival Internacional de Performance',year:1991,place:'Valencia, Spain',desc:'International performance festival in Spain.'},
+    {id:'fp08',name:'Rencontres Internationales de Poésie Contemporaine',year:1992,place:'Tarascon, France',desc:'International contemporary poetry encounters.'},
+    {id:'fp09',name:'Nihon International Performance Art Festival',year:1993,place:'Nagano, Japan',desc:'Japanese international performance art festival.'},
+    {id:'fp10',name:'9 Dragons\' Heads Festival',year:1996,place:'Cheongwon-gun, South Korea',desc:'International art festival in South Korea.'},
+    {id:'fp11',name:'Dimension 0 International Festival',year:1997,place:'Vilnius, Lithuania',desc:'International performance art festival in Lithuania.'},
+    {id:'fp12',name:'Ex Teresa International Festival of Performance',year:1998,place:'Mexico City, Mexico',desc:'Major Mexican performance art festival.'},
+    {id:'fp13',name:'Asiatopia International Performance Art Festival',year:2003,place:'Bangkok, Thailand',desc:'International Asian performance art festival.'},
+    {id:'fp14',name:'Lange Atem Festival',year:2003,place:'Essen & Münster, Germany',desc:'German performance art festival.'},
+    {id:'fp15',name:'Navinki International Performance Art Festival',year:'2001–2004',place:'Minsk, Belarus',desc:'Recurring Belarusian performance art festival. Multiple editions.'},
+    {id:'fp16',name:'Tupada International Action Art Event',year:2005,place:'Manila, Philippines',desc:'International action art event in the Philippines.'},
+    {id:'fp17',name:'European Performance Art Festival',year:2006,place:'CSW Ujazdowski Castle, Warsaw',desc:'Major European festival at the Centre for Contemporary Art.'},
   ],
   posthumous: [
-    {name:'Symposium: "In Context Now"',year:2009,place:'Radom, Poland',desc:'Conference on contextual art\'s contemporary relevance, held alongside the publication of Polish editions of Świdziński\'s books; its proceedings were published as "Global Communication."'},
-    {name:'Academic Discussion at CSW',year:2009,place:'CSW Ujazdowski Castle, Warsaw',desc:'December 16, 2009. Panelists: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz, and Małgorzata Butterwick; moderated by Grzegorz Borkowski. Discussion of Świdziński\'s books "Art, Society and Self-consciousness" and "Art and Its Context."'},
-    {name:'"In My Context" — Exhibition at CSW',year:2010,place:'CSW Ujazdowski Castle, Warsaw',desc:'"W moim kontekście. Wybrane działania z fotografią i tekstem" (In My Context: Selected Actions with Photography and Text), on view until 28 February 2010; an expanded version with a theoretical symposium followed at Galeria Labirynt, Lublin.'},
-    {name:'Filmoteka & Polish Performance Archive',year:'ongoing',place:'Museum of Modern Art in Warsaw',desc:'Świdziński\'s film documentation and performances are preserved in the Museum\'s Filmoteka and the Polish Performance Archive, keeping his work available to researchers and the public.'},
+    {id:'fh1',name:'Symposium: "In Context Now"',year:2009,place:'Radom, Poland',desc:'Conference on contextual art\'s contemporary relevance, held alongside the publication of Polish editions of Świdziński\'s books; its proceedings were published as "Global Communication."'},
+    {id:'fh2',name:'Academic Discussion at CSW',year:2009,place:'CSW Ujazdowski Castle, Warsaw',desc:'December 16, 2009. Panelists: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz, and Małgorzata Butterwick; moderated by Grzegorz Borkowski. Discussion of Świdziński\'s books "Art, Society and Self-consciousness" and "Art and Its Context."'},
+    {id:'fh3',name:'"In My Context" — Exhibition at CSW',year:2010,place:'CSW Ujazdowski Castle, Warsaw',desc:'"W moim kontekście. Wybrane działania z fotografią i tekstem" (In My Context: Selected Actions with Photography and Text), on view until 28 February 2010; an expanded version with a theoretical symposium followed at Galeria Labirynt, Lublin.'},
+    {id:'fh4',name:'Filmoteka & Polish Performance Archive',year:'ongoing',place:'Museum of Modern Art in Warsaw',desc:'Świdziński\'s film documentation and performances are preserved in the Museum\'s Filmoteka and the Polish Performance Archive, keeping his work available to researchers and the public.'},
   ],
 };
 
@@ -1013,58 +973,58 @@ const festivalsData = {
 // DATA: QUIZ
 // ═══════════════════════════════════════════
 const quizData = [
-  {cat:'Core Theory',q:'According to Świdziński, a sign in contemporary civilization is best described as:',
+  {id:'q01',cat:'Core Theory',q:'According to Świdziński, a sign in contemporary civilization is best described as:',
    opts:['A transparent window through which we perceive objective reality directly','A self-referential symbol that contains its own complete meaning within itself','An empty place to be filled by the pragmatic context of the current moment','A mathematical construct whose truth value is determined by formal axioms'],
    correct:2, exp:'Świdziński describes the sign as neither transparent (first model) nor self-referential (second model), but as an "empty sign, a place to be filled by reality." This is the foundation of contextual art.'},
-  {cat:'Core Theory',q:'What does Świdziński mean when he says contextual art "opposes relativism"?',
+  {id:'q02',cat:'Core Theory',q:'What does Świdziński mean when he says contextual art "opposes relativism"?',
    opts:['It advocates for a single universal aesthetic standard applicable across all contexts','It claims that while meaning is context-dependent, exactly one expression is true in each specific pragmatic context','It rejects the idea that different cultures can have different interpretations of art','It argues that all interpretations are equally invalid and art has no meaning at all'],
    correct:1, exp:'Point 12 of the manifesto states: "Only one expression is true in specific pragmatic context." This distinguishes contextualism from pure relativism — meaning is contextual but not arbitrary.'},
-  {cat:'Manifesto',q:'The 12 Points of Contextual Art were first published in:',
+  {id:'q03',cat:'Manifesto',q:'The 12 Points of Contextual Art were first published in:',
    opts:['1970, in the journal "Życie i Myśl" alongside "Dispute over Art\'s Existence"','1976, at St. Petri Gallery in Lund, Sweden, during an exhibition of Polish artists','1977, at the Remont Gallery in Warsaw, during the international conference on art activity','1979, in Calgary, Canada, as part of "Art, Society and Self-consciousness"'],
    correct:1, exp:'The manifesto was published in 1976 during the Lund exhibition, the same year as the Toronto debate with Kosuth. This was the foundational public statement of contextual art theory.'},
-  {cat:'Three Models',q:'In Świdziński\'s "Three Models of Art," the relativistic/modernist model is characterized by:',
+  {id:'q04',cat:'Three Models',q:'In Świdziński\'s "Three Models of Art," the relativistic/modernist model is characterized by:',
    opts:['Signs that are transparent to reality and universal aesthetic criteria based on objective truth','Signs that have become barriers, leading artists to focus on form itself rather than communicative function','Empty signs filled by the pragmatic context of time, place, situation and persons involved','Signs governed by deontic logic where meaning is determined by ideological structures'],
    correct:1, exp:'The second model emerges when signs lose their transparency (first model) and become self-referential barriers. Artists from Romanticism onward focused on signs themselves — form rather than content.'},
-  {cat:'Critique',q:'Świdziński\'s main objection to Kosuth\'s conceptualism was that:',
+  {id:'q05',cat:'Critique',q:'Świdziński\'s main objection to Kosuth\'s conceptualism was that:',
    opts:['Kosuth relied too heavily on visual aesthetics and traditional gallery exhibition formats','Kosuth\'s program of art as analytical proposition amounts to tautology — art defining art through self-reference, unable to engage with social reality','Kosuth\'s work was too politically engaged and insufficiently concerned with formal beauty','Kosuth failed to use proper philosophical language and lacked rigorous logical foundations'],
    correct:1, exp:'Świdziński argued that "art as idea as idea" is trapped in circular self-reference. The empty sign approach proposes art filled by external reality, not circling back to itself.'},
-  {cat:'Biography',q:'What event in 1965 transformed Świdziński\'s artistic direction?',
+  {id:'q06',cat:'Biography',q:'What event in 1965 transformed Świdziński\'s artistic direction?',
    opts:['The opening of Galeria Sztuki Najnowsza in Wrocław inspired him to abandon traditional painting','His solo painting exhibition convinced him that traditional forms could not address contemporary existential dilemmas','A meeting with Joseph Kosuth in New York introduced him to analytical conceptualism','His appointment to the Academy of Fine Arts required him to formalize his theoretical approach'],
    correct:1, exp:'The 1965 solo painting exhibition was a turning point — Świdziński discovered that painting and other traditional forms were unable to confront fundamental existential dilemmas. He then turned to science, semiotics, and formal logic.'},
-  {cat:'Philosophy',q:'The concept of "intensional expressions" in contextual art theory means:',
+  {id:'q07',cat:'Philosophy',q:'The concept of "intensional expressions" in contextual art theory means:',
    opts:['Expressions whose meaning is intense, emotional, and subjective rather than rational and analytical','Expressions whose meaning depends on facts beyond what the component parts of the expression contain','Expressions that intentionally mislead the viewer to provoke critical thought about art institutions','Expressions that intensify their meaning over time as more viewers encounter and interpret them'],
    correct:1, exp:'Unlike extensional expressions (used by science and conceptualism), intensional expressions require external context to determine their meaning. This is why contextual art rejects the extensionality condition.'},
-  {cat:'Events',q:'At the 1977 Warsaw conference at Remont Gallery:',
+  {id:'q08',cat:'Events',q:'At the 1977 Warsaw conference at Remont Gallery:',
    opts:['Świdziński and Kosuth reached a formal agreement to merge conceptual and contextual art theories','Participants from 35 countries attended, and agreements were signed between Polish contextual art, French Art Sociologique, and other international movements','The Polish government officially recognized contextual art as a valid artistic movement and provided funding','The conference resulted in a unified manifesto that replaced the original 12 Points with a broader statement'],
    correct:1, exp:'The 1977 "Art Activity in the Context of Reality" conference drew participants from 35 countries. Government authorities responded harshly, viewing the extensive foreign contact as threatening.'},
-  {cat:'Core Theory',q:'Świdziński describes contemporary civilization using the model of:',
+  {id:'q09',cat:'Core Theory',q:'Świdziński describes contemporary civilization using the model of:',
    opts:['A dialectical spiral where thesis and antithesis produce increasingly complex syntheses over time','A clock mechanism with cyclical repetitions that can be predicted and controlled through rational planning','A stochastic process of continuous rapid changes where individual phases cannot be separated from one another','A binary system where each cultural moment exists in opposition to its predecessor and successor'],
    correct:2, exp:'He distinguishes three civilization models: clock (pre-industrial, cyclical), discrete transformations (industrial), and stochastic process (contemporary) — where change is too rapid to isolate individual states.'},
-  {cat:'Theory',q:'When Świdziński writes that art operates through "deontic logic," he means:',
+  {id:'q10',cat:'Theory',q:'When Świdziński writes that art operates through "deontic logic," he means:',
    opts:['Art follows the same formal truth-and-falsity rules as mathematics and analytical philosophy','Art operates in the logic of obligations, beliefs, and convictions — knowing, acknowledging, rejecting, believing, supposing','Art must follow the ethical imperatives of social justice and political liberation movements','Art obeys a hierarchical logic where established institutions determine what qualifies as artistic expression'],
    correct:1, exp:'Deontic logic governs states like believing, supposing, and acknowledging. Art does not "speak truth" — it "convinces of truth," operating in ideological and existential registers rather than formal ones.'},
-  {cat:'Practice',q:'Świdziński describes his approach to photography as using photographs as:',
+  {id:'q11',cat:'Practice',q:'Świdziński describes his approach to photography as using photographs as:',
    opts:['Pure aesthetic objects whose formal beauty transcends their documentary content','Technical documentation of performance events intended solely for archival preservation','Symptoms of reality, around which a performance is created in the form of text or speech','Political propaganda tools designed to expose the failures of the communist system'],
    correct:2, exp:'Photography for Świdziński is "a symptom of reality" — not autonomous art, not mere documentation, but a contextual sign that gains meaning through the performance built around it.'},
-  {cat:'Manifesto',q:'Point 8 of the manifesto distinguishes contextual art from post-Duchamp art by arguing that:',
+  {id:'q12',cat:'Manifesto',q:'Point 8 of the manifesto distinguishes contextual art from post-Duchamp art by arguing that:',
    opts:['Duchamp liberated the object while keeping meaning fixed; contextual art makes both object and meaning mobile','Duchamp eliminated all meaning from art; contextual art restores fixed meaning through scientific analysis','Duchamp focused on gallery institutions; contextual art operates exclusively outside institutional spaces','Duchamp rejected aesthetics entirely; contextual art returns to beauty as a primary criterion of quality'],
    correct:0, exp:'Since Duchamp, one term became mobile (any object can signify art) while meaning remained fixed. In contextual art, both are mobile — any object can signify art and not-art simultaneously.'},
-  {cat:'Three Models',q:'The first model of art (universal/Renaissance) assumes that signs are:',
+  {id:'q13',cat:'Three Models',q:'The first model of art (universal/Renaissance) assumes that signs are:',
    opts:['Inherently ambiguous and require institutional validation to acquire fixed meaning','Transparent — art language can express reality as something truly existing in knowledge, not merely as a structure','Self-referential barriers that separate expressed reality from actual reality','Empty vessels that gain meaning only through the pragmatic context of their reception'],
    correct:1, exp:'The universal model assumes signs are transparent, allowing direct access to reality. Leonardo da Vinci: "First learn theory, then apply practice born from theory." The artist\'s language is not self-referential.'},
-  {cat:'Events',q:'The Centre for Experimental Art and Communication (CEAC) in Toronto hosted:',
+  {id:'q14',cat:'Events',q:'The Centre for Experimental Art and Communication (CEAC) in Toronto hosted:',
    opts:['A retrospective exhibition of Świdziński\'s paintings from the Semantic Signs period (1952-1962)','A 1976 conference where Świdziński debated Kosuth and artists from multiple international movements participated','The first public reading of Świdziński\'s "Art is a Fact" poster manifesto in English translation','A collaborative workshop where Polish and Canadian artists created the first contextual art installation'],
    correct:1, exp:'The CEAC organized the 1976 conference "In the Context of the Art World" with participation from Art Sociologique, Art & Language, Artists Meeting for Cultural Change, and the circle of The Fox journal.'},
-  {cat:'Core Theory',q:'Świdziński\'s claim that "art is part of life" specifically means:',
+  {id:'q15',cat:'Core Theory',q:'Świdziński\'s claim that "art is part of life" specifically means:',
    opts:['Art should depict everyday scenes and ordinary people in realistic representational styles','Art functions as one of many productive activities participating in ongoing change, with no independent existence separate from lived reality','Art therapies and community workshops are the highest form of artistic achievement in the modern world','Artists must abandon studio practice and work exclusively in public spaces among ordinary citizens'],
    correct:1, exp:'From "Art is a Fact" (1997): "Art is not similar to life — it is part of it. It is neither natural nor artificial. It is what it happens to be." Art as productive activity, not autonomous domain.'},
-  {cat:'Philosophy',q:'Świdziński invokes Gödel\'s incompleteness theorem to argue that:',
+  {id:'q16',cat:'Philosophy',q:'Świdziński invokes Gödel\'s incompleteness theorem to argue that:',
    opts:['Art can be reduced to a complete set of mathematical axioms if we find the right formal system','Autonomous self-explaining art systems (like Kosuth\'s conceptualism) are inherently impossible to construct','All artistic statements are either true or false, and formal logic can determine which category applies','Mathematics and art are fundamentally identical disciplines with the same truth criteria'],
    correct:1, exp:'Gödel showed that a sufficiently rich formal system cannot be both complete and consistent; Świdziński argues by analogy that autonomous, self-explaining art systems cannot be built — art must acknowledge its dependence on external reality.'},
-  {cat:'Practice',q:'The concept of "anomia" in Świdziński\'s 1998 work refers to:',
+  {id:'q17',cat:'Practice',q:'The concept of "anomia" in Świdziński\'s 1998 work refers to:',
    opts:['A formal art technique involving the removal of names and titles from exhibited artworks','A state where commonly accepted social norms cease functioning, producing genuine misunderstanding between people','A logical paradox in which an artwork simultaneously affirms and denies its own status as art','A performance method using anonymity to eliminate the artist\'s identity from the creative process'],
    correct:1, exp:'Drawing on Durkheim\'s sociological concept, anomia describes a state of social disconnection. Świdziński documented conversations where people talk without genuine understanding — a breakdown of shared meaning.'},
-  {cat:'Biography',q:'Between 1965 and 1970, after abandoning painting, Świdziński immersed himself in:',
+  {id:'q18',cat:'Biography',q:'Between 1965 and 1970, after abandoning painting, Świdziński immersed himself in:',
    opts:['Film theory and experimental cinema, collaborating with the Film Form Workshop in Łódź','Semiotics, linguistics, neopositivism, and formal logic, establishing the Art and Design Section at the Cybernetics Society','Political activism in the Solidarity trade union movement and underground publishing networks','Buddhist philosophy and Eastern meditation practices, seeking non-Western artistic paradigms'],
    correct:1, exp:'Together with Marek Konieczny, he established the Art and Design Section at the Cybernetics Society. His studies in semiotics enabled a critical view of emerging Anglo-American conceptualism.'},
 ];
@@ -1073,7 +1033,7 @@ const quizData = [
 // DATA: FORMULA SCENARIOS
 // ═══════════════════════════════════════════
 const formulaScenarios = [
-  {object:'A blank white canvas hanging on a wall',
+  {id:'fs1',object:'A blank white canvas hanging on a wall',
    params:{
     time:['1976','1520','2024','1916'],
     place:['St. Petri Gallery, Lund','Florence workshop','IKEA showroom','Zurich Cabaret Voltaire'],
@@ -1086,7 +1046,7 @@ const formulaScenarios = [
     '2024|IKEA showroom|Furniture display|Customer':'A decoration placeholder, part of room staging. Not art at all — a prop for selling furniture.',
     '1916|Zurich Cabaret Voltaire|Dada performance evening|Cabaret performer':'A provocation. The emptiness itself is the statement — mocking the entire tradition of painting.',
    }},
-  {object:'A photograph of an elderly man sitting alone',
+  {id:'fs2',object:'A photograph of an elderly man sitting alone',
    params:{
     time:['1994','1840','2024','1979'],
     place:['Warsaw art gallery','Daguerreotype studio','Instagram feed','Mała Galeria, Warsaw'],
@@ -1099,7 +1059,7 @@ const formulaScenarios = [
     '2024|Instagram feed|Scrolling through stories|Teenager':'Content that appears and vanishes in seconds. The image has no fixed meaning — it\'s experienced as one fragment in an endless stream.',
     '1979|Mała Galeria, Warsaw|Contextual art exhibition|Świdziński himself':'In the spirit of "We Always Talk About Man" (Mała Galeria, 1979): a photograph becomes a philosophical statement through text and contextual framing.',
    }},
-  {object:'Someone standing silently in a room for ten minutes',
+  {id:'fs3',object:'Someone standing silently in a room for ten minutes',
    params:{
     time:['1974','2024','1960','1998'],
     place:['Teatr Dnia i Nocy, Poznań','Corporate office lobby','Zen monastery','Small venue in Warsaw'],
@@ -1118,20 +1078,20 @@ const formulaScenarios = [
 // DATA: COMPARE
 // ═══════════════════════════════════════════
 const compareItems = [
-  {text:'Art as analytical proposition — meaning contained within the statement itself',correct:'conceptual'},
-  {text:'Meaning determined by pragmatic context of time, place, situation, and persons',correct:'contextual'},
-  {text:'Tautological self-reference: art defines art through its own definition',correct:'conceptual'},
-  {text:'Empty sign filled by reality — art gains meaning only in social context',correct:'contextual'},
-  {text:'Signs as self-referential barriers, requiring logical language analysis',correct:'conceptual'},
-  {text:'Signs as empty places, constantly constructed and reconstructed by practice',correct:'contextual'},
-  {text:'Art as autonomous discipline, independent of social or political reality',correct:'conceptual'},
-  {text:'Art as social practice — action provoked by other actions, causing further actions',correct:'contextual'},
-  {text:'Extensional expressions: meaning derived from component parts of the statement',correct:'conceptual'},
-  {text:'Intensional expressions: meaning depends on facts beyond the name\'s content',correct:'contextual'},
-  {text:'Truth determined through terminological convention and logical analysis',correct:'conceptual'},
-  {text:'Truth determined through practice — only empirical context validates a sign',correct:'contextual'},
-  {text:'Art-as-idea-as-idea: the concept is the artwork regardless of context',correct:'conceptual'},
-  {text:'Deontic logic: art convinces of truth through belief, acknowledgment, and rejection',correct:'contextual'},
+  {id:'cmp01',text:'Art as analytical proposition — meaning contained within the statement itself',correct:'conceptual'},
+  {id:'cmp02',text:'Meaning determined by pragmatic context of time, place, situation, and persons',correct:'contextual'},
+  {id:'cmp03',text:'Tautological self-reference: art defines art through its own definition',correct:'conceptual'},
+  {id:'cmp04',text:'Empty sign filled by reality — art gains meaning only in social context',correct:'contextual'},
+  {id:'cmp05',text:'Signs as self-referential barriers, requiring logical language analysis',correct:'conceptual'},
+  {id:'cmp06',text:'Signs as empty places, constantly constructed and reconstructed by practice',correct:'contextual'},
+  {id:'cmp07',text:'Art as autonomous discipline, independent of social or political reality',correct:'conceptual'},
+  {id:'cmp08',text:'Art as social practice — action provoked by other actions, causing further actions',correct:'contextual'},
+  {id:'cmp09',text:'Extensional expressions: meaning derived from component parts of the statement',correct:'conceptual'},
+  {id:'cmp10',text:'Intensional expressions: meaning depends on facts beyond the name\'s content',correct:'contextual'},
+  {id:'cmp11',text:'Truth determined through terminological convention and logical analysis',correct:'conceptual'},
+  {id:'cmp12',text:'Truth determined through practice — only empirical context validates a sign',correct:'contextual'},
+  {id:'cmp13',text:'Art-as-idea-as-idea: the concept is the artwork regardless of context',correct:'conceptual'},
+  {id:'cmp14',text:'Deontic logic: art convinces of truth through belief, acknowledgment, and rejection',correct:'contextual'},
 ];
 
 // ═══════════════════════════════════════════
@@ -1147,14 +1107,21 @@ var DATA_REFS = {
   'biblioData.citedPhilosophy': biblioData.citedPhilosophy,
   'festivalsData.organized': festivalsData.organized,
   'festivalsData.participated': festivalsData.participated,
-  'festivalsData.posthumous': festivalsData.posthumous
+  'festivalsData.posthumous': festivalsData.posthumous,
+  booksData: booksData
 };
-var PL_DATA = {};
-// polska treść trzymana osobno, żeby index.html nie puchł; dociąga się i nakłada po starcie
-fetch('tresc-pl.json?v=' + Date.now())
-  .then(function(r){ return r.ok ? r.json() : null; })
-  .then(function(d){ if (d) { PL_DATA = d; if (LANG_NOW === 'pl') setDataLang('pl'); } })
-  .catch(function(){});
+// Treść w innych językach trzymana osobno (tresc-<lang>.json) i nakładana na angielską bazę.
+// Wpisy dopasowujemy po stałym id (tablice gołych napisów — po pozycji), więc
+// wstawienie nowego wpisu w środek tablicy niczego nie przesuwa.
+var LANG_DATA = {};
+var LANG_FILES = {pl:1, fr:1, ja:1, zh:1};
+function loadLangData(lang, cb){
+  if (!LANG_FILES[lang] || LANG_DATA[lang]) { cb(); return; }
+  fetch('tresc-' + lang + '.json?v=' + Date.now())
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){ LANG_DATA[lang] = d || {}; cb(); })
+    .catch(function(){ LANG_DATA[lang] = {}; cb(); });
+}
 var EN_DATA = {};
 (function(){
   Object.keys(DATA_REFS).forEach(function(k){
@@ -1163,28 +1130,54 @@ var EN_DATA = {};
   });
 })();
 var DATA_LANG = 'en';
+// polskie sierotki: twarda spacja po jednoliterowych spójnikach i przyimkach
+function noOrphans(s){ return typeof s === 'string' ? s.replace(/(^|[\s(„])([aiouwzAIOUWZ]) /g, '$1$2 ') : s; }
+function deepMap(v, fn){
+  if (typeof v === 'string') return fn(v);
+  if (Array.isArray(v)) return v.map(function(x){ return deepMap(x, fn); });
+  if (v && typeof v === 'object') { var o = {}; Object.keys(v).forEach(function(k){ o[k] = deepMap(v[k], fn); }); return o; }
+  return v;
+}
 function setDataLang(lang){
-  var usePL = (lang === 'pl');
+  // nakładamy tylko, jeśli w międzyczasie nie wybrano innego języka (pliki doładowują się w różnym tempie)
+  loadLangData(lang, function(){ if (lang === LANG_NOW) applyDataLang(lang); });
+}
+function applyDataLang(lang){
+  var pack = LANG_DATA[lang] || {};
   Object.keys(DATA_REFS).forEach(function(k){
-    var live = DATA_REFS[k], base = EN_DATA[k], over = usePL ? (PL_DATA[k] || []) : [];
+    var live = DATA_REFS[k], base = EN_DATA[k], over = pack[k] || [];
+    var byId = {};
+    over.forEach(function(o){ if (o && o.id) byId[o.id] = o; });
     live.forEach(function(item, i){
       var b = base[i]; if (b === undefined) return;
-      var o = over[i];
       if (typeof b === 'string') {
-        // tablica gołych napisów — podmieniamy cały element
-        live[i] = (o && o.text) ? o.text : b;
+        var os = over[i];
+        live[i] = (os && os.text) ? os.text : b;
+        if (lang === 'pl') live[i] = noOrphans(live[i]);
         return;
       }
       // 1) przywróć angielski oryginał
       Object.keys(b).forEach(function(f){ item[f] = JSON.parse(JSON.stringify(b[f])); });
-      // 2) nałóż polskie pola, jeśli są
-      if (o) Object.keys(o).forEach(function(f){ if (f !== 'i' && o[f] != null && o[f] !== '') item[f] = o[f]; });
+      // 2) nałóż pola w danym języku, jeśli są
+      var o = byId[b.id || b.slug];
+      if (o) Object.keys(o).forEach(function(f){ if (f !== 'id' && f !== 'i' && o[f] != null && o[f] !== '') item[f] = JSON.parse(JSON.stringify(o[f])); });
+      if (lang === 'pl') Object.keys(item).forEach(function(f){ if (f !== 'id' && f !== 'cover' && f !== 'url') item[f] = deepMap(item[f], noOrphans); });
     });
   });
-  DATA_LANG = usePL ? 'pl' : 'en';
+  DATA_LANG = lang;
+  // widoki budowane raz muszą się przerysować w nowym języku
+  textsBuilt = biblioBuilt = booksBuilt = festivalsBuilt = false;
+  if (typeof conceptsBuilt !== 'undefined') conceptsBuilt = false;
   rebuildCurrentView();
 }
 function rebuildCurrentView(){
+  // zachowaj rozwinięte karty i przewinięcie przy przerysowaniu w innym języku
+  var openIds = [].map.call(document.querySelectorAll('.text-card.open[id]'), function(e){ return e.id; });
+  var y = window.scrollY;
+  setTimeout(function(){
+    openIds.forEach(function(id){ var e = document.getElementById(id); if (e) e.classList.add('open'); });
+    window.scrollTo(0, y);
+  }, 0);
   S.tlInit = false;
   var v = S.view;
   if (!v) return;
@@ -1208,13 +1201,14 @@ function buildArchive() {
   const items = [
     {label:T('hub.timeline.l'),title:T('hub.timeline.t'),desc:T('hub.timeline.d'),view:'timeline',tags:['biography','chronology']},
     {label:T('hub.texts.l'),title:T('hub.texts.t'),desc:T('hub.texts.d'),view:'texts',tags:['manifesto','theory','essay']},
+    {label:T('hub.books.l'),title:T('hub.books.t'),desc:T('hub.books.d'),view:'books',tags:['publications']},
     {label:T('hub.concepts.l'),title:T('hub.concepts.t'),desc:T('hub.concepts.d'),view:'concepts',tags:['theory','definitions']},
     {label:T('hub.biblio.l'),title:T('hub.biblio.t'),desc:T('hub.biblio.d'),view:'biblio',tags:['publications','research','scholarly']},
     {label:T('hub.fest.l'),title:T('hub.fest.t'),desc:T('hub.fest.d'),view:'festivals',tags:['festivals','performance','events']},
     {label:T('hub.study.l'),title:T('hub.study.t'),desc:T('hub.study.d'),view:'_study',tags:['academic','research','primary sources']}
   ];
   document.getElementById('archiveGrid').innerHTML = items.map(i=>`
-    <div class="card" onclick="${i.view==='_study'?'window.open(\'study.html\',\'_blank\')':`showView('${i.view}')`}">
+    <div class="card${i.view==='_study'?' card-wide':''}" onclick="${i.view==='_study'?'window.open(\'study.html\',\'_blank\')':`showView('${i.view}')`}">
       <div class="card-label">${i.label}</div>
       <h3>${i.title}</h3>
       <p>${i.desc}</p>
@@ -1649,7 +1643,7 @@ function buildTexts() {
       <div class="text-card-header" onclick="this.parentElement.classList.toggle('open')">
         <div>
           <h3>${t.title}</h3>
-          <div class="meta">${t.year||''} · ${t.type}</div>
+          <div class="meta">${[t.year,t.type].filter(Boolean).join(' · ')}</div>
         </div>
         <span class="tl-arrow">▼</span>
       </div>
@@ -1689,13 +1683,16 @@ let booksBuilt = false;
 function buildBooks() {
   if (booksBuilt) return; booksBuilt = true;
   var html = '<div class="books-grid">' + booksData.map(function(b){
+    var t = b.title.split(/ \/ |\. /)[0].trim();
     var cover = b.cover
-      ? '<div class="book-cover"><img src="'+b.cover+'" alt="Okładka: '+b.title.replace(/"/g,'&quot;')+'" loading="lazy"></div>'
-      : '<div class="book-cover book-cover-empty"><div class="bc-note">' +
-        '<div class="bc-year">'+b.year+'</div>' +
-        '<div class="bc-title">'+b.title.split(/[\/\.]/)[0].trim()+'</div>' +
-        '<div class="bc-hint">okładka do zeskanowania<br>z egzemplarza fizycznego</div>' +
-        '</div></div>';
+      ? '<div class="book-cover"><img src="'+b.cover+'" alt="'+b.title.replace(/"/g,'&quot;')+'" loading="lazy"></div>'
+      // okładka składana typograficznie, gdy nie mamy skanu oryginału
+      : '<div class="book-cover book-cover-type" aria-hidden="true">' +
+          '<div class="bct-author">Jan Świdziński</div>' +
+          '<div class="bct-rule"></div>' +
+          '<div class="bct-title">'+t+'</div>' +
+          '<div class="bct-foot">'+b.place+'<br>'+b.year+'</div>' +
+        '</div>';
     var isbn = b.isbn ? '<span class="b-isbn">'+b.isbn+'</span>' : '';
     return '<article class="book-card">' +
       cover +
@@ -1716,16 +1713,18 @@ function buildBiblio() {
   const d=biblioData;
   let html='';
   html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:24px 0 14px;color:var(--text)">'+T('b.books')+'</h3>';
-  html+=d.books.map(b=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${b.title}</h3><div class="meta">${b.year} · ${b.place} · ${b.type}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${b.note}</p></div></div>`).join('');
+  // książki mają jedno źródło: booksData (podstrona Książki); tu tylko zwięzły spis z odnośnikiem
+  html+='<ol class="book-index">'+booksData.map(b=>`<li onclick="showView('books')"><span class="bi-year">${b.year}</span><span class="bi-title">${b.title}</span><span class="bi-place">${b.place}</span></li>`).join('')+'</ol>';
+  html+=`<p class="book-index-more"><a href="#widok=books" onclick="showView('books');return false;">${T('b.allbooks')}</a></p>`;
 
   html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('b.essays')+'</h3>';
-  html+=d.essays.map(e=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${e.title}</h3><div class="meta">${e.year||''} · ${e.publication}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${e.note}</p></div></div>`).join('');
+  html+=d.essays.map(e=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${e.title}</h3><div class="meta">${[e.year,e.publication].filter(Boolean).join(' · ')}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${e.note}</p></div></div>`).join('');
 
   html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('b.scholarly')+'</h3>';
-  html+=d.scholarly.map(s=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${s.title}</h3><div class="meta">${s.author} · ${s.year||''}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${s.note}</p>${s.url?`<p style="margin-top:10px;"><a href="${s.url}" target="_blank" rel="noopener" style="color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;">Pobierz PDF ↗</a></p>`:''}</div></div>`).join('');
+  html+=d.scholarly.map(s=>`<div class="text-card"><div class="text-card-header" onclick="this.parentElement.classList.toggle(\'open\')"><div><h3>${s.title}</h3><div class="meta">${[s.author,s.year].filter(Boolean).join(' · ')}</div></div><span class="tl-arrow">▼</span></div><div class="text-card-body"><p>${s.note}</p>${s.url?`<p style="margin-top:10px;"><a href="${s.url}" target="_blank" rel="noopener" style="color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;">${T('b.pdf')}</a></p>`:''}</div></div>`).join('');
 
   html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('b.interviews')+'</h3>';
-  html+=d.interviews.map(i=>`<div class="text-card"><div class="text-card-header"><div><h3>${i.title}</h3><div class="meta">${i.interviewer} · ${i.year||''} · ${i.publication}</div></div></div></div>`).join('');
+  html+=d.interviews.map(i=>`<div class="text-card"><div class="text-card-header"><div><h3>${i.title}</h3><div class="meta">${[i.interviewer,i.year,i.publication].filter(Boolean).join(' · ')}</div></div></div></div>`).join('');
 
   html+='<h3 style="font-family:Fraunces,serif;font-size:20px;margin:32px 0 14px;color:var(--text)">'+T('b.cited')+'</h3>';
   html+='<div style="columns:2;column-gap:24px;font-size:13px;color:var(--text-dim);line-height:2;">'+d.citedPhilosophy.map(c=>`<div style="break-inside:avoid;">${c}</div>`).join('')+'</div>';
@@ -1759,10 +1758,10 @@ function buildFestivals() {
 // ═══════════════════════════════════════════
 function buildGameHub() {
   const modes = [
-    {icon:'🧠',title:T('g.quiz.t'),desc:T('g.quiz.d'),view:'quiz'},
-    {icon:'⚗️',title:T('g.formula.t'),desc:T('g.formula.d'),view:'formula'},
-    {icon:'⚖️',title:T('g.compare.t'),desc:T('g.compare.d'),view:'compare'},
-    {icon:'🔓',title:T('g.points.t'),desc:T('g.points.d'),view:'points'},
+    {icon:'?',title:T('g.quiz.t'),desc:T('g.quiz.d'),view:'quiz'},
+    {icon:'O(m)',title:T('g.formula.t'),desc:T('g.formula.d'),view:'formula'},
+    {icon:'K / Ś',title:T('g.compare.t'),desc:T('g.compare.d'),view:'compare'},
+    {icon:'12',title:T('g.points.t'),desc:T('g.points.d'),view:'points'},
   ];
   document.getElementById('gameGrid').innerHTML=modes.map(m=>`
     <div class="game-card" onclick="showView('${m.view}')">
@@ -1825,9 +1824,9 @@ function renderQuizResults() {
   document.getElementById('quizArea').innerHTML=`
     <div class="quiz-results">
       <div class="big-score">${pct}%</div>
-      <p>${quizCorrect} of ${quizQ.length} correct</p>
-      <p>${pct>=80?'Excellent contextual understanding!':pct>=50?'Good foundation — keep exploring the archive.':'The texts and concepts sections will deepen your understanding.'}</p>
-      <button class="btn-primary" onclick="initQuiz()" style="margin-top:20px">Play Again</button>
+      <p>${T('qr.score','{n} z {t} poprawnie').replace('{n}',quizCorrect).replace('{t}',quizQ.length)}</p>
+      <p>${pct>=80?T('qr.hi'):pct>=50?T('qr.mid'):T('qr.lo')}</p>
+      <button class="btn-primary" onclick="initQuiz()" style="margin-top:20px">${T('qr.again')}</button>
     </div>`;
 }
 
@@ -1854,8 +1853,8 @@ function initFormula() {
       </div>`).join('')}
     </div>
     <div style="text-align:center;margin-top:16px;">
-      <button class="btn-secondary" onclick="S.formulaScenario++;initFormula()">Next Scenario →</button>
-      <span style="font-size:12px;color:var(--text-light);margin-left:12px;">Scenario ${(S.formulaScenario%formulaScenarios.length)+1}/${formulaScenarios.length}</span>
+      <button class="btn-secondary" onclick="S.formulaScenario++;initFormula()">${T('fm.next')}</button>
+      <span style="font-size:12px;color:var(--text-light);margin-left:12px;">${T('fm.scenario')} ${(S.formulaScenario%formulaScenarios.length)+1}/${formulaScenarios.length}</span>
     </div>`;
   updateFormulaMeaning();
 }
@@ -1921,34 +1920,26 @@ function initCompare() {
       </div>
     </div>
     <div class="compare-pool" id="comparePool">
-      ${shuffled.map((item,i)=>`<div class="drag-card" draggable="true" ondragstart="event.dataTransfer.setData('text/plain','${i}')" data-idx="${i}" id="drag-${i}">${item.text}</div>`).join('')}
+      ${shuffled.map(item=>{const i=compareItems.indexOf(item);return `<div class="drag-card" draggable="true" ondragstart="event.dataTransfer.setData('text/plain','${i}')" data-idx="${i}" id="drag-${i}"><span>${item.text}</span><span class="cmp-actions"><button type="button" onclick="moveCompare(${i},'conceptual')">${T('cmp.toK')}</button><button type="button" onclick="moveCompare(${i},'contextual')">${T('cmp.toS')}</button></span></div>`;}).join('')}
     </div>
     <div style="text-align:center;margin-top:16px;">
       <button class="btn-primary" id="checkCompareBtn" onclick="checkCompare()" data-i18n="c.check">Check Answers</button>
       <button class="btn-secondary" onclick="initCompare()" style="margin-left:8px;" data-i18n="c.reset">Reset</button>
     </div>`;
-  // Touch support
-  document.querySelectorAll('.drag-card').forEach(card=>{
-    card.addEventListener('click',()=>{
-      if(compareChecked) return;
-      const idx=card.dataset.idx;
-      if(card.classList.contains('placed')) return;
-      // Cycle: pool -> conceptual -> contextual -> pool
-      const inC=S.comparePlaced.conceptual.includes(parseInt(idx));
-      const inX=S.comparePlaced.contextual.includes(parseInt(idx));
-      if(!inC&&!inX) { placeTo(parseInt(idx),'conceptual'); }
-      else if(inC) { removeFrom(parseInt(idx),'conceptual'); placeTo(parseInt(idx),'contextual'); }
-      else { removeFrom(parseInt(idx),'contextual'); }
-    });
-  });
+  // drag & drop zostaje dla myszy; przyciski na kartach działają wszędzie
 }
 
+function moveCompare(idx,col){
+  if(compareChecked) return;
+  ['conceptual','contextual'].forEach(c=>{ if(S.comparePlaced[c].includes(idx)) removeFrom(idx,c); });
+  placeTo(idx,col);
+}
 function placeTo(idx,col) {
   S.comparePlaced[col].push(idx);
   const card=document.getElementById('drag-'+idx);
   card.classList.add('placed');
   document.getElementById('placed'+col.charAt(0).toUpperCase()+col.slice(1)).innerHTML+=
-    `<div class="placed-card" data-idx="${idx}" onclick="removeFrom(${idx},'${col}')">${compareItems[idx].text}</div>`;
+    `<div class="placed-card" data-idx="${idx}" onclick="if(!compareChecked)removeFrom(${idx},'${col}')">${compareItems[idx].text}<span class="cmp-undo">${T('cmp.back')}</span></div>`;
 }
 
 function removeFrom(idx,col) {
@@ -1981,7 +1972,7 @@ function checkCompare() {
       cards.forEach(c=>{ if(parseInt(c.dataset.idx)===idx) c.classList.add(isCorrect?'correct-placed':'wrong-placed'); });
     });
   });
-  document.getElementById('checkCompareBtn').textContent=`${correct}/${compareItems.length} correct`;
+  document.getElementById('checkCompareBtn').textContent=T('qr.score','{n} / {t}').replace('{n}',correct).replace('{t}',compareItems.length);
   document.getElementById('checkCompareBtn').disabled=true;
 }
 
@@ -2041,37 +2032,6 @@ function answerPointQuiz(idx,correct,target) {
   setTimeout(()=>buildPoints(), 2000);
 }
 
-// ═══════════════════════════════════════════
-// BACKGROUND PARTICLES
-// ═══════════════════════════════════════════
-(function initBgParticles() {
-  const c=document.getElementById('bgCanvas');
-  const ctx=c.getContext('2d');
-  let W,H;
-  function resize() { W=window.innerWidth; H=window.innerHeight; c.width=W; c.height=H; }
-  resize(); window.addEventListener('resize',resize);
-  const N=800;
-  const px=new Float32Array(N), py=new Float32Array(N), pvx=new Float32Array(N), pvy=new Float32Array(N);
-  for(let i=0;i<N;i++) { px[i]=Math.random()*W; py[i]=Math.random()*H; pvx[i]=(Math.random()-.5)*.3; pvy[i]=(Math.random()-.5)*.3; }
-  let t=0;
-  function draw() {
-    t+=0.002;
-    ctx.fillStyle=S.dark?'rgba(14,14,20,0.08)':'rgba(245,242,237,0.08)';
-    ctx.fillRect(0,0,W,H);
-    const rgb=S.dark?'180,180,210':'60,50,80';
-    for(let i=0;i<N;i++) {
-      const angle=Math.sin(px[i]*0.003+t)*Math.cos(py[i]*0.003+t*0.7)*Math.PI*2;
-      pvx[i]+=Math.cos(angle)*0.02; pvy[i]+=Math.sin(angle)*0.02;
-      pvx[i]*=0.98; pvy[i]*=0.98;
-      px[i]+=pvx[i]; py[i]+=pvy[i];
-      if(px[i]<0)px[i]=W; if(px[i]>W)px[i]=0; if(py[i]<0)py[i]=H; if(py[i]>H)py[i]=0;
-      ctx.fillStyle=`rgba(${rgb},0.15)`;
-      ctx.fillRect(px[i],py[i],1.5,1.5);
-    }
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
 
 // init
 /* ---- udostępnianie: #widok=<sekcja>, #osoba=<id>, #tekst=<id> ---- */
@@ -2091,7 +2051,7 @@ function openFromHash(){
     showView('texts');
     setTimeout(function(){
       var el = document.getElementById('text-'+m[1]);
-      if(el){ el.classList.add('open'); el.scrollIntoView({block:'center'}); }
+      if(el){ el.classList.add('open'); window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 90); }
     }, 200);
     return true;
   }
@@ -2134,7 +2094,7 @@ var I18N = {
     'g.formula.t':"Formuła kontekstu",
     'g.formula.d':"Zmieniaj czas, miejsce, sytuację i osobę — patrz, jak znaczenie przekształca się na oczach.",
     'g.compare.t':"Konceptualne a kontekstualne",
-    'g.compare.d':"Przeciągnij każdą myśl do właściwej kolumny. Odróżnisz konceptualizm Kosutha od kontekstualizmu Świdzińskiego?",
+    'g.compare.d':"Przypisz każdą myśl do właściwej kolumny – przeciągnij ją albo użyj przycisków na karcie. Odróżnisz konceptualizm Kosutha od kontekstualizmu Świdzińskiego?",
     'g.points.t':"Wyzwanie: 12 punktów",
     'g.points.d':"Odblokuj każdy z dwunastu punktów sztuki kontekstualnej, pokazując, że go rozumiesz.",
     'fm.hint':"Wybierz wszystkie parametry, żeby poznać znaczenie w tym kontekście…",
@@ -2166,7 +2126,7 @@ var I18N = {
 
     'view.archive.d':"Przeglądaj zebrane pisma, wydarzenia z życia, sieć intelektualną i kluczowe idee Jana Świdzińskiego.",
     'view.formula.d':"Zmieniaj parametry i patrz, jak przekształca się znaczenie. Główna intuicja Świdzińskiego, oddana interaktywnie.",
-    'view.compare.d':"Przeciągnij każdą myśl do właściwej kolumny. Konceptualizm Kosutha czy kontekstualizm Świdzińskiego?",
+    'view.compare.d':"Przypisz każdą myśl do właściwej kolumny – przeciągnij ją albo użyj przycisków na karcie. Konceptualizm Kosutha czy kontekstualizm Świdzińskiego?",
 
     'view.texts.d':"Źródła pierwotne — manifesty, eseje teoretyczne, refleksje krytyczne. Słowami samego Świdzińskiego.",
     'view.biblio.d':"Publikacje, opracowania naukowe i podstawowe źródła dla badaczy, historyków sztuki i studentów sztuki kontekstualnej.",
@@ -2184,7 +2144,7 @@ var I18N = {
 
     'hub.timeline.l':"Kalendarium",
     'hub.timeline.t':"Życie i wydarzenia",
-    'hub.timeline.d':"28 kluczowych momentów od 1923 do 2014 — malarstwo, teoria, performans, dziedzictwo.",
+    'hub.timeline.d':"Życie i działalność od 1923 roku – malarstwo, teoria, performans i to, co po nim zostało.",
     'hub.graph.l':"Sieć",
     'hub.graph.t':"Ludzie i powiązania",
     'hub.graph.d':"Interaktywne kłącze artystów, filozofów, badaczy i ruchów związanych ze Świdzińskim.",
@@ -2202,7 +2162,7 @@ var I18N = {
     'hub.fest.d':"Międzynarodowe festiwale, konferencje, performanse — oraz późne hołdy, które utrwalają jego dziedzictwo.",
     'hub.study.l':"Studium",
     'hub.study.t':"Studium całościowe",
-    'hub.study.d':"Od „Znaków semantycznych\" po neopragmatycznego turystę — pełne opracowanie naukowe na podstawie źródeł pierwotnych. Pięć części, 36 rozdziałów.",
+    'hub.study.d':"Od „Znaków semantycznych\" po neopragmatycznego turystę — pełne opracowanie naukowe na podstawie źródeł pierwotnych. Pięć części, 36 rozdziałów – na razie w języku angielskim.",
     'f.all':"Wszystko",
     'f.life':"Życie",
     'f.art':"Sztuka",
@@ -2229,12 +2189,23 @@ var I18N = {
 
     'nav.archive':'Archiwum','nav.timeline':'Kalendarium','nav.graph':'Konstelacja',
     'nav.texts':'Teksty','nav.books':'Książki','nav.concepts':'Pojęcia','nav.biblio':'Bibliografia',
+    'nav.menu':'Menu','nav.close':'Zamknij',
+    'c.search':'Szukaj pojęć…',
+    'qr.score':'{n} z {t} poprawnie',
+    'qr.hi':'Znakomicie rozumiesz kontekst.','qr.mid':'Dobra podstawa – warto dalej zwiedzać archiwum.','qr.lo':'Działy Teksty i Pojęcia pomogą zrozumieć więcej.',
+    'qr.again':'Zagraj jeszcze raz',
+    'fm.next':'Następny scenariusz →','fm.scenario':'Scenariusz',
+    'b.pdf':'Pobierz PDF ↗',
+    'b.allbooks':'Wszystkie książki z okładkami →',
+    'hub.books.l':'Książki','hub.books.t':'Książki Świdzińskiego','hub.books.d':'Dziesięć książek autorskich – od manifestu z Lund (1976) po pośmiertną monografię (2015).',
+    'cmp.toK':'← Kosuth','cmp.toS':'Świdziński →','cmp.back':'Wróć',
+    'doc.title':'Jan Świdziński – sztuka kontekstualna. Archiwum i gra',
     'view.books.h':"Książki Świdzińskiego",
-    'view.books.d':"Wszystkie książki autorskie Jana Świdzińskiego, od pierwszej broszury manifestu (Lund 1976) po pośmiertną monografię trójjęzyczną (Québec/Halifax 2015). Cztery okładki wciąż wymagają zeskanowania z egzemplarza fizycznego — jeśli macie skan, wyślijcie do kuratora portalu.",
-    'nav.festivals':'Wystąpienia','nav.game':'Gra','nav.study':'Studium ↗',
+    'view.books.d':"Wszystkie książki autorskie Jana Świdzińskiego – od broszury z manifestem (Lund 1976) po pośmiertną monografię w trzech językach (Québec/Halifax 2015).",
+    'nav.festivals':'Wystąpienia','nav.game':'Gra','nav.study':'Studium (EN) ↗',
     'ctx.label':'Kontekst 001',
     'ctx.note':'<b>Ta strona jest pracą kontekstualną.</b> Odczyt zmienia się z miejscem i porą.',
-    'hero.eyebrow':'Sztuka kontekstualna · 1923—2014',
+    'hero.eyebrow':'Sztuka kontekstualna · 1923–2014',
     'hero.h1':'Sztuka jest tym,<br>co pokazuję<br><em>jako sztukę.</em>',
     'hero.h1_echo':'<em>Art is what I show as art.</em>',
     'hero.lead':'Interdyscyplinarny artysta, teoretyk i filozof — dowodzący, że znaczenie nigdy nie jest ustalone; wyłania się z <em>kontekstu</em>.',
@@ -2274,7 +2245,7 @@ var I18N = {
     'g.formula.t':"The Context Formula",
     'g.formula.d':"Change the parameters of time, place, situation, and person — watch meaning transform before your eyes.",
     'g.compare.t':"Conceptual vs. Contextual",
-    'g.compare.d':"Drag each idea to the correct column. Can you tell Kosuth's conceptualism from Świdziński's contextualism?",
+    'g.compare.d':"Sort each idea into the correct column — drag it or use the buttons on the card. Can you tell Kosuth's conceptualism from Świdziński's contextualism?",
     'g.points.t':"12 Points Challenge",
     'g.points.d':"Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.",
     'fm.hint':"Select all parameters to discover the meaning in this context...",
@@ -2306,7 +2277,7 @@ var I18N = {
 
     'view.archive.d':"Navigate the collected works, life events, intellectual network, and key ideas of Jan Świdziński's contextual art.",
     'view.formula.d':"Change the parameters — watch the meaning transform. Świdziński's core insight, made interactive.",
-    'view.compare.d':"Drag each idea to the correct column. Kosuth's conceptualism or Świdziński's contextualism?",
+    'view.compare.d':"Sort each idea into the correct column — drag it or use the buttons on the card. Kosuth's conceptualism or Świdziński's contextualism?",
 
     'view.texts.d':"Primary sources — manifestos, theoretical essays, critical reflections. Świdziński’s own words.",
     'view.biblio.d':"Publications, scholarly works, and essential references for researchers, art historians, and students of contextual art.",
@@ -2324,7 +2295,7 @@ var I18N = {
 
     'hub.timeline.l':"Timeline",
     'hub.timeline.t':"Life & Events",
-    'hub.timeline.d':"28 key moments from 1923 to 2014 — painting, theory, performance, and legacy.",
+    'hub.timeline.d':"Life and work from 1923 onward — painting, theory, performance, and legacy.",
     'hub.graph.l':"Network",
     'hub.graph.t':"People & Connections",
     'hub.graph.d':"Interactive graph of artists, philosophers, scholars, and movements connected to Świdziński.",
@@ -2369,12 +2340,23 @@ var I18N = {
 
     'nav.archive':'Archive','nav.timeline':'Chronology','nav.graph':'Constellation',
     'nav.texts':'Texts','nav.books':'Books','nav.concepts':'Concepts','nav.biblio':'Bibliography',
+    'nav.menu':'Menu','nav.close':'Close',
+    'c.search':'Search concepts…',
+    'qr.score':'{n} of {t} correct',
+    'qr.hi':'Excellent contextual understanding!','qr.mid':'Good foundation — keep exploring the archive.','qr.lo':'The Texts and Concepts sections will deepen your understanding.',
+    'qr.again':'Play again',
+    'fm.next':'Next scenario →','fm.scenario':'Scenario',
+    'b.pdf':'Download PDF ↗',
+    'b.allbooks':'All books with covers →',
+    'hub.books.l':'Books','hub.books.t':"Świdziński's Books",'hub.books.d':'Ten books by the artist — from the Lund manifesto (1976) to the posthumous monograph (2015).',
+    'cmp.toK':'← Kosuth','cmp.toS':'Świdziński →','cmp.back':'Undo',
+    'doc.title':'Jan Świdziński — Contextual Art: Archive & Game',
     'view.books.h':"Świdziński's Books",
-    'view.books.d':"Every book authored by Jan Świdziński, from the first manifesto pamphlet (Lund 1976) to the posthumous trilingual monograph (Québec/Halifax 2015). Four covers still need to be scanned from physical copies — please send a scan to the portal curator if you have one.",
+    'view.books.d':"Every book by Jan Świdziński — from the manifesto booklet (Lund 1976) to the posthumous trilingual monograph (Québec/Halifax 2015).",
     'nav.festivals':'Appearances','nav.game':'Game','nav.study':'Study ↗',
     'ctx.label':'Context 001',
     'ctx.note':'<b>This site is a contextual work.</b> Its reading shifts with place and hour.',
-    'hero.eyebrow':'Contextual Art · 1923—2014',
+    'hero.eyebrow':'Contextual Art · 1923–2014',
     'hero.h1':'Art is what<br>I show<br><em>as art.</em>',
     'hero.h1_echo':'<em>Sztuka jest tym, co pokazuję jako sztukę.</em>',
     'hero.lead':'An interdisciplinary artist, theorist, and philosopher who argued that meaning is never fixed — it emerges from <em>context</em>.',
@@ -2386,424 +2368,496 @@ var I18N = {
     'latest.3.pl':'Stara Galeria Lublin · essay · pl','latest.4.pl':'Calgary · poster manifesto · en · pl'
   },
   fr: {
-    'gr.person':"People around",
-    'gr.note':"A rhizome with no hierarchy and no pigeonholes. Strands follow a shared role or a shared country, and one person may sit in several at once. Drag any node to change the layout.",
-
-    'pt.0':"Objects & Meanings",
-    'pt.1':"Social Ambiguity",
-    'pt.2':"Conventional vs. Conceptual",
-    'pt.3':"Devaluation of Meanings",
-    'pt.4':"The Context Formula",
-    'pt.5':"Rejecting Canons",
-    'pt.6':"Against Stabilization",
-    'pt.7':"Both Terms Mobile",
-    'pt.8':"Relation as Readiness",
-    'pt.9':"Artist vs. Group",
-    'pt.10':"Beyond Formal Logic",
-    'pt.11':"Against Relativism",
-    'p.point':"Point {n}",
-    'p.unlockbtn':"Answer a Question to Unlock",
-    'c.kosuth':"Conceptual Art (Kosuth)",
-    'c.swid':"Contextual Art (Świdziński)",
-    'c.check':"Check Answers",
-    'c.reset':"Reset",
-    'fest.ongoing':"ongoing",
-
-    'g.quiz.t':"Contextual Quiz",
-    'g.quiz.d':"Test your knowledge across 9 categories — from core theory to philosophy and events.",
-    'g.formula.t':"The Context Formula",
-    'g.formula.d':"Change the parameters of time, place, situation, and person — watch meaning transform before your eyes.",
-    'g.compare.t':"Conceptual vs. Contextual",
-    'g.compare.d':"Drag each idea to the correct column. Can you tell Kosuth's conceptualism from Świdziński's contextualism?",
-    'g.points.t':"12 Points Challenge",
-    'g.points.d':"Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.",
-    'fm.hint':"Select all parameters to discover the meaning in this context...",
-    'fm.select':"— select —",
-    'fm.time':"TIME",
-    'fm.place':"PLACE",
-    'fm.situation':"SITUATION",
-    'fm.person':"PERSON",
-    'q.all':"All",
-    'p.unlocked':"{n}/12 points unlocked · {b} bonus points earned",
-    'p.alldone':"All 12 points unlocked! Congratulations!",
-
-    'tag.biography':"biography",
-    'tag.chronology':"chronology",
-    'tag.people':"people",
-    'tag.influence':"influence",
-    'tag.manifesto':"manifesto",
-    'tag.theory':"theory",
-    'tag.essay':"essay",
-    'tag.definitions':"definitions",
-    'tag.publications':"publications",
-    'tag.research':"research",
-    'tag.scholarly':"scholarly",
-    'tag.festivals':"festivals",
-    'tag.performance':"performance",
-    'tag.events':"events",
-    'tag.academic':"academic",
-    'tag.primary sources':"primary sources",
-
-    'view.archive.d':"Navigate the collected works, life events, intellectual network, and key ideas of Jan Świdziński's contextual art.",
-    'view.formula.d':"Change the parameters — watch the meaning transform. Świdziński's core insight, made interactive.",
-    'view.compare.d':"Drag each idea to the correct column. Kosuth's conceptualism or Świdziński's contextualism?",
-
-    'view.texts.d':"Primary sources — manifestos, theoretical essays, critical reflections. Świdziński’s own words.",
-    'view.biblio.d':"Publications, scholarly works, and essential references for researchers, art historians, and students of contextual art.",
-    'view.fest.d':"International festivals, performances, and exhibitions — and the late exhibitions, symposia, and archives that secure Świdziński’s legacy.",
-    'b.books':"Books by Świdziński",
-    'b.essays':"Key Essays & Texts",
-    'b.scholarly':"Scholarly Works & Critical Analysis",
-    'b.interviews':"Interviews",
-    'b.cited':"Cited Philosophical Works",
-    'f.organized':"Organized & Co-organized by Świdziński",
-    'f.participated':"International Festivals & Conferences",
-    'f.posthumous':"Late Recognition & Legacy",
-    'q.num':"Question {n} of {m}",
-    'q.next':"Next Question →",
-
-    'hub.timeline.l':"Timeline",
-    'hub.timeline.t':"Life & Events",
-    'hub.timeline.d':"28 key moments from 1923 to 2014 — painting, theory, performance, and legacy.",
-    'hub.graph.l':"Network",
-    'hub.graph.t':"People & Connections",
-    'hub.graph.d':"Interactive graph of artists, philosophers, scholars, and movements connected to Świdziński.",
-    'hub.texts.l':"Texts",
-    'hub.texts.t':"Writings & Manifestos",
-    'hub.texts.d':"Primary sources — the 12 Points, theoretical essays, critical reflections in Świdziński’s own words.",
-    'hub.concepts.l':"Encyclopedia",
-    'hub.concepts.t':"Key Concepts",
-    'hub.concepts.d':"Empty Sign, Three Models, Context Formula, Deontic Logic — the building blocks of contextual art.",
-    'hub.biblio.l':"Bibliography",
-    'hub.biblio.t':"Publications & Research",
-    'hub.biblio.d':"Books, essays, scholarly analysis, interviews — essential references for researchers and art students.",
-    'hub.fest.l':"Festivals",
-    'hub.fest.t':"Festivals & Performances",
-    'hub.fest.d':"International festivals, conferences, performances — and the late tributes that secure his legacy.",
-    'hub.study.l':"Study",
-    'hub.study.t':"Comprehensive Study",
-    'hub.study.d':"From Semantic Signs to the Neo-Pragmatic Tourist — a full academic study based on primary sources. 5 parts, 36 chapters.",
-    'f.all':"All",
-    'f.life':"Life",
-    'f.art':"Art",
-    'f.theory':"Theory",
-    'f.event':"Event",
-
-    'view.archive.h':"Archive",
-    'view.timeline.h':"Timeline",
-    'view.timeline.d':"From painting through conceptualism to contextual art — the path of a radical thinker.",
-    'view.texts.h':"Texts &amp; Writings",
-    'view.concepts.h':"Concept Encyclopedia",
-    'view.concepts.d':"Key ideas, theories, and terms from contextual art and its intellectual context.",
-    'view.biblio.h':"Bibliography &amp; Resources",
-    'view.fest.h':"Festivals &amp; Performances",
-    'view.game.h':"The Context Machine",
-    'view.game.d':"Learn contextual art through play. Four modes — from formula experiments to progressive challenges.",
-    'view.quiz.h':"Contextual Quiz",
-    'view.formula.h':"The Context Formula",
-    'view.compare.h':"Conceptual vs. Contextual",
-    'view.points.h':"12 Points Challenge",
-    'view.points.d':"Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.",
-    'hero.q1':"Freedom of Art?",
-    'hero.q2':"Art et Transformation Sociale",
-
-    'nav.archive':'Archives','nav.timeline':'Chronologie','nav.graph':'Constellation',
-    'nav.texts':'Textes','nav.books':'Livres','nav.concepts':'Notions','nav.biblio':'Bibliographie',
-    'view.books.h':"Livres de Świdziński",
-    'view.books.d':"Tous les livres écrits par Jan Świdziński, du premier fascicule-manifeste (Lund 1976) à la monographie trilingue posthume (Québec/Halifax 2015). Quatre couvertures restent à scanner d'un exemplaire physique — merci d'envoyer le scan au commissaire du portail.",
-    'nav.festivals':'Interventions','nav.game':'Jeu','nav.study':'Étude ↗',
-    'ctx.label':'Contexte 001',
-    'ctx.note':"<b>Cette page est une œuvre contextuelle.</b> Sa lecture change selon le lieu et l'heure.",
-    'hero.eyebrow':'Art contextuel · 1923—2014',
-    'hero.h1':"L'art est ce<br>que je montre<br><em>comme art.</em>",
-    'hero.h1_echo':'<em>Art is what I show as art.</em>',
-    'hero.lead':"Artiste interdisciplinaire, théoricien et philosophe — pour qui le sens n'est jamais fixé ; il émerge du <em>contexte</em>.",
-    'hero.cta_primary':'Explorer les archives','hero.cta_secondary':'Jouer',
-    'hero.byline_curator':'Commissaire du portail :','hero.byline_edition':'Édition',
-    'hero.cstrip_place':'Varsovie · c. 1978','hero.cstrip_credit':'photo n.n.','hero.cstrip_source':'archives privées',
-    'latest.label':'<b>Derniers</b>ajouts<br>au&nbsp;corpus',
-    'latest.1.pl':'Varsovie · manifeste · pl','latest.2.pl':'S:t Petri Lund · conférence · en',
-    'latest.3.pl':'Stara Galeria Lublin · essai · pl','latest.4.pl':'Calgary · affiche-manifeste · en · pl'
+    "gr.person":"Entourage",
+    "gr.note":"Un rhizome sans hiérarchie ni cases. Les fils suivent un rôle ou un pays communs, et une même personne peut appartenir à plusieurs à la fois. Faites glisser un nœud pour modifier la disposition.",
+    "pt.0":"Objets et significations",
+    "pt.1":"Ambiguïté sociale",
+    "pt.2":"Conventionnel ou conceptuel",
+    "pt.3":"Dévaluation des significations",
+    "pt.4":"La formule du contexte",
+    "pt.5":"Rejet des canons",
+    "pt.6":"Contre la stabilisation",
+    "pt.7":"Deux termes mobiles",
+    "pt.8":"La relation comme disponibilité",
+    "pt.9":"L'artiste et le groupe",
+    "pt.10":"Au-delà de la logique formelle",
+    "pt.11":"Contre le relativisme",
+    "p.point":"Point {n}",
+    "p.unlockbtn":"Répondre pour débloquer",
+    "c.kosuth":"Art conceptuel (Kosuth)",
+    "c.swid":"Art contextuel (Świdziński)",
+    "c.check":"Vérifier",
+    "c.reset":"Recommencer",
+    "fest.ongoing":"en cours",
+    "g.quiz.t":"Quiz contextuel",
+    "g.quiz.d":"Testez vos connaissances dans 9 catégories — de la théorie fondamentale à la philosophie et aux événements.",
+    "g.formula.t":"La formule du contexte",
+    "g.formula.d":"Modifiez le temps, le lieu, la situation et la personne — et voyez le sens se transformer sous vos yeux.",
+    "g.compare.t":"Conceptuel ou contextuel",
+    "g.compare.d":"Classez chaque idée dans la bonne colonne — faites-la glisser ou utilisez les boutons de la carte. Saurez-vous distinguer le conceptualisme de Kosuth du contextualisme de Świdziński ?",
+    "g.points.t":"Le défi des 12 points",
+    "g.points.d":"Débloquez un à un les 12 points de l'art contextuel en montrant que vous les avez compris.",
+    "fm.hint":"Choisissez tous les paramètres pour découvrir le sens dans ce contexte…",
+    "fm.select":"— choisir —",
+    "fm.time":"TEMPS",
+    "fm.place":"LIEU",
+    "fm.situation":"SITUATION",
+    "fm.person":"PERSONNE",
+    "q.all":"Toutes",
+    "p.unlocked":"Points débloqués : {n}/12 · points bonus : {b}",
+    "p.alldone":"Les 12 points sont débloqués. Félicitations !",
+    "tag.biography":"biographie",
+    "tag.chronology":"chronologie",
+    "tag.people":"personnes",
+    "tag.influence":"influence",
+    "tag.manifesto":"manifeste",
+    "tag.theory":"théorie",
+    "tag.essay":"essai",
+    "tag.definitions":"définitions",
+    "tag.publications":"publications",
+    "tag.research":"recherche",
+    "tag.scholarly":"travaux savants",
+    "tag.festivals":"festivals",
+    "tag.performance":"performance",
+    "tag.events":"événements",
+    "tag.academic":"université",
+    "tag.primary sources":"sources primaires",
+    "view.archive.d":"Parcourez les écrits, les étapes de la vie, le réseau intellectuel et les idées clés de l'art contextuel de Jan Świdziński.",
+    "view.formula.d":"Modifiez les paramètres — et voyez le sens se transformer. L'intuition centrale de Świdziński, rendue interactive.",
+    "view.compare.d":"Classez chaque idée dans la bonne colonne — faites-la glisser ou utilisez les boutons de la carte. Conceptualisme de Kosuth ou contextualisme de Świdziński ?",
+    "view.texts.d":"Sources primaires — manifestes, essais théoriques, réflexions critiques. Świdziński dans ses propres mots.",
+    "view.biblio.d":"Publications, travaux savants et références essentielles pour les chercheurs, les historiens de l'art et les étudiants qui s'intéressent à l'art contextuel.",
+    "view.fest.d":"Festivals internationaux, performances et expositions — ainsi que les expositions tardives, les symposiums et les archives qui assurent l'héritage de Świdziński.",
+    "b.books":"Livres de Świdziński",
+    "b.essays":"Essais et textes essentiels",
+    "b.scholarly":"Travaux savants et analyses critiques",
+    "b.interviews":"Entretiens",
+    "b.cited":"Ouvrages philosophiques cités",
+    "f.organized":"Organisés ou co-organisés par Świdziński",
+    "f.participated":"Festivals et conférences internationaux",
+    "f.posthumous":"Reconnaissance tardive et héritage",
+    "q.num":"Question {n} sur {m}",
+    "q.next":"Question suivante →",
+    "hub.timeline.l":"Chronologie",
+    "hub.timeline.t":"Vie et événements",
+    "hub.timeline.d":"La vie et l'œuvre depuis 1923 — peinture, théorie, performance et héritage.",
+    "hub.graph.l":"Réseau",
+    "hub.graph.t":"Personnes et liens",
+    "hub.graph.d":"Graphe interactif des artistes, philosophes, chercheurs et mouvements liés à Świdziński.",
+    "hub.texts.l":"Textes",
+    "hub.texts.t":"Écrits et manifestes",
+    "hub.texts.d":"Sources primaires — les 12 points, des essais théoriques, des réflexions critiques, dans les mots mêmes de Świdziński.",
+    "hub.concepts.l":"Encyclopédie",
+    "hub.concepts.t":"Notions clés",
+    "hub.concepts.d":"Signe vide, trois modèles, formule du contexte, logique déontique — les fondements de l'art contextuel.",
+    "hub.biblio.l":"Bibliographie",
+    "hub.biblio.t":"Publications et recherche",
+    "hub.biblio.d":"Livres, essais, analyses savantes, entretiens — les références essentielles pour les chercheurs et les étudiants en art.",
+    "hub.fest.l":"Festivals",
+    "hub.fest.t":"Festivals et performances",
+    "hub.fest.d":"Festivals internationaux, conférences, performances — et les hommages tardifs qui assurent son héritage.",
+    "hub.study.l":"Étude",
+    "hub.study.t":"Étude approfondie",
+    "hub.study.d":"Des Signes sémantiques au touriste néopragmatique — une étude universitaire complète fondée sur les sources primaires. 5 parties, 36 chapitres. Pour l’instant en anglais.",
+    "f.all":"Tout",
+    "f.life":"Vie",
+    "f.art":"Art",
+    "f.theory":"Théorie",
+    "f.event":"Événement",
+    "view.archive.h":"Archives",
+    "view.timeline.h":"Chronologie",
+    "view.timeline.d":"De la peinture à l'art contextuel en passant par le conceptualisme — le parcours d'un penseur radical.",
+    "view.texts.h":"Textes &amp; écrits",
+    "view.concepts.h":"Encyclopédie des notions",
+    "view.concepts.d":"Idées, théories et termes clés de l'art contextuel et de son contexte intellectuel.",
+    "view.biblio.h":"Bibliographie &amp; ressources",
+    "view.fest.h":"Festivals &amp; performances",
+    "view.game.h":"La machine à contexte",
+    "view.game.d":"Découvrir l'art contextuel en jouant. Quatre modes — des expériences sur la formule aux défis progressifs.",
+    "view.quiz.h":"Quiz contextuel",
+    "view.formula.h":"La formule du contexte",
+    "view.compare.h":"Conceptuel ou contextuel",
+    "view.points.h":"Le défi des 12 points",
+    "view.points.d":"Débloquez un à un les 12 points de l'art contextuel en montrant que vous les avez compris.",
+    "hero.q1":"La liberté de l'art ?",
+    "hero.q2":"Art et Transformation Sociale",
+    "nav.archive":"Archives",
+    "nav.timeline":"Chronologie",
+    "nav.graph":"Constellation",
+    "nav.texts":"Textes",
+    "nav.books":"Livres",
+    "nav.concepts":"Notions",
+    "nav.biblio":"Bibliographie",
+    "nav.menu":"Menu",
+    "nav.close":"Fermer",
+    "c.search":"Rechercher une notion…",
+    "qr.score":"{n} bonnes réponses sur {t}",
+    "qr.hi":"Excellente compréhension du contexte !",
+    "qr.mid":"De bonnes bases — continuez à explorer les archives.",
+    "qr.lo":"Les sections Textes et Notions vous aideront à approfondir.",
+    "qr.again":"Rejouer",
+    "fm.next":"Scénario suivant →",
+    "fm.scenario":"Scénario",
+    "b.pdf":"Télécharger le PDF ↗",
+    "b.allbooks":"Tous les livres et leurs couvertures →",
+    "hub.books.l":"Livres",
+    "hub.books.t":"Livres de Świdziński",
+    "hub.books.d":"Dix livres de l'artiste — du manifeste de Lund (1976) à la monographie posthume (2015).",
+    "cmp.toK":"← Kosuth",
+    "cmp.toS":"Świdziński →",
+    "cmp.back":"Annuler",
+    "doc.title":"Jan Świdziński — Art contextuel : archives et jeu",
+    "view.books.h":"Livres de Świdziński",
+    "view.books.d":"Tous les livres de Jan Świdziński — de la brochure du manifeste (Lund 1976) à la monographie trilingue posthume (Québec/Halifax 2015).",
+    "nav.festivals":"Interventions",
+    "nav.game":"Jeu",
+    "nav.study":"Étude (EN) ↗",
+    "ctx.label":"Contexte 001",
+    "ctx.note":"<b>Cette page est une œuvre contextuelle.</b> Sa lecture change selon le lieu et l'heure.",
+    "hero.eyebrow":"Art contextuel · 1923–2014",
+    "hero.h1":"L'art est ce<br>que je montre<br><em>comme art.</em>",
+    "hero.h1_echo":"<em>Sztuka jest tym, co pokazuję jako sztukę.</em>",
+    "hero.lead":"Artiste interdisciplinaire, théoricien et philosophe, pour qui le sens n'est jamais fixé : il émerge du <em>contexte</em>.",
+    "hero.cta_primary":"Explorer les archives",
+    "hero.cta_secondary":"Jouer",
+    "hero.byline_curator":"Commissaire du portail :",
+    "hero.byline_edition":"Édition",
+    "hero.cstrip_place":"Varsovie · v. 1978",
+    "hero.cstrip_credit":"photo : auteur inconnu",
+    "hero.cstrip_source":"archives privées",
+    "latest.label":"<b>Derniers</b>ajouts<br>au&nbsp;corpus",
+    "latest.1.pl":"Varsovie · manifeste · pl",
+    "latest.2.pl":"S:t Petri Lund · conférence · en",
+    "latest.3.pl":"Stara Galeria Lublin · essai · pl",
+    "latest.4.pl":"Calgary · affiche-manifeste · en · pl"
   },
   ja: {
-    'gr.person':"People around",
-    'gr.note':"A rhizome with no hierarchy and no pigeonholes. Strands follow a shared role or a shared country, and one person may sit in several at once. Drag any node to change the layout.",
-
-    'pt.0':"Objects & Meanings",
-    'pt.1':"Social Ambiguity",
-    'pt.2':"Conventional vs. Conceptual",
-    'pt.3':"Devaluation of Meanings",
-    'pt.4':"The Context Formula",
-    'pt.5':"Rejecting Canons",
-    'pt.6':"Against Stabilization",
-    'pt.7':"Both Terms Mobile",
-    'pt.8':"Relation as Readiness",
-    'pt.9':"Artist vs. Group",
-    'pt.10':"Beyond Formal Logic",
-    'pt.11':"Against Relativism",
-    'p.point':"Point {n}",
-    'p.unlockbtn':"Answer a Question to Unlock",
-    'c.kosuth':"Conceptual Art (Kosuth)",
-    'c.swid':"Contextual Art (Świdziński)",
-    'c.check':"Check Answers",
-    'c.reset':"Reset",
-    'fest.ongoing':"ongoing",
-
-    'g.quiz.t':"Contextual Quiz",
-    'g.quiz.d':"Test your knowledge across 9 categories — from core theory to philosophy and events.",
-    'g.formula.t':"The Context Formula",
-    'g.formula.d':"Change the parameters of time, place, situation, and person — watch meaning transform before your eyes.",
-    'g.compare.t':"Conceptual vs. Contextual",
-    'g.compare.d':"Drag each idea to the correct column. Can you tell Kosuth's conceptualism from Świdziński's contextualism?",
-    'g.points.t':"12 Points Challenge",
-    'g.points.d':"Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.",
-    'fm.hint':"Select all parameters to discover the meaning in this context...",
-    'fm.select':"— select —",
-    'fm.time':"TIME",
-    'fm.place':"PLACE",
-    'fm.situation':"SITUATION",
-    'fm.person':"PERSON",
-    'q.all':"All",
-    'p.unlocked':"{n}/12 points unlocked · {b} bonus points earned",
-    'p.alldone':"All 12 points unlocked! Congratulations!",
-
-    'tag.biography':"biography",
-    'tag.chronology':"chronology",
-    'tag.people':"people",
-    'tag.influence':"influence",
-    'tag.manifesto':"manifesto",
-    'tag.theory':"theory",
-    'tag.essay':"essay",
-    'tag.definitions':"definitions",
-    'tag.publications':"publications",
-    'tag.research':"research",
-    'tag.scholarly':"scholarly",
-    'tag.festivals':"festivals",
-    'tag.performance':"performance",
-    'tag.events':"events",
-    'tag.academic':"academic",
-    'tag.primary sources':"primary sources",
-
-    'view.archive.d':"Navigate the collected works, life events, intellectual network, and key ideas of Jan Świdziński's contextual art.",
-    'view.formula.d':"Change the parameters — watch the meaning transform. Świdziński's core insight, made interactive.",
-    'view.compare.d':"Drag each idea to the correct column. Kosuth's conceptualism or Świdziński's contextualism?",
-
-    'view.texts.d':"Primary sources — manifestos, theoretical essays, critical reflections. Świdziński’s own words.",
-    'view.biblio.d':"Publications, scholarly works, and essential references for researchers, art historians, and students of contextual art.",
-    'view.fest.d':"International festivals, performances, and exhibitions — and the late exhibitions, symposia, and archives that secure Świdziński’s legacy.",
-    'b.books':"Books by Świdziński",
-    'b.essays':"Key Essays & Texts",
-    'b.scholarly':"Scholarly Works & Critical Analysis",
-    'b.interviews':"Interviews",
-    'b.cited':"Cited Philosophical Works",
-    'f.organized':"Organized & Co-organized by Świdziński",
-    'f.participated':"International Festivals & Conferences",
-    'f.posthumous':"Late Recognition & Legacy",
-    'q.num':"Question {n} of {m}",
-    'q.next':"Next Question →",
-
-    'hub.timeline.l':"Timeline",
-    'hub.timeline.t':"Life & Events",
-    'hub.timeline.d':"28 key moments from 1923 to 2014 — painting, theory, performance, and legacy.",
-    'hub.graph.l':"Network",
-    'hub.graph.t':"People & Connections",
-    'hub.graph.d':"Interactive graph of artists, philosophers, scholars, and movements connected to Świdziński.",
-    'hub.texts.l':"Texts",
-    'hub.texts.t':"Writings & Manifestos",
-    'hub.texts.d':"Primary sources — the 12 Points, theoretical essays, critical reflections in Świdziński’s own words.",
-    'hub.concepts.l':"Encyclopedia",
-    'hub.concepts.t':"Key Concepts",
-    'hub.concepts.d':"Empty Sign, Three Models, Context Formula, Deontic Logic — the building blocks of contextual art.",
-    'hub.biblio.l':"Bibliography",
-    'hub.biblio.t':"Publications & Research",
-    'hub.biblio.d':"Books, essays, scholarly analysis, interviews — essential references for researchers and art students.",
-    'hub.fest.l':"Festivals",
-    'hub.fest.t':"Festivals & Performances",
-    'hub.fest.d':"International festivals, conferences, performances — and the late tributes that secure his legacy.",
-    'hub.study.l':"Study",
-    'hub.study.t':"Comprehensive Study",
-    'hub.study.d':"From Semantic Signs to the Neo-Pragmatic Tourist — a full academic study based on primary sources. 5 parts, 36 chapters.",
-    'f.all':"All",
-    'f.life':"Life",
-    'f.art':"Art",
-    'f.theory':"Theory",
-    'f.event':"Event",
-
-    'view.archive.h':"Archive",
-    'view.timeline.h':"Timeline",
-    'view.timeline.d':"From painting through conceptualism to contextual art — the path of a radical thinker.",
-    'view.texts.h':"Texts &amp; Writings",
-    'view.concepts.h':"Concept Encyclopedia",
-    'view.concepts.d':"Key ideas, theories, and terms from contextual art and its intellectual context.",
-    'view.biblio.h':"Bibliography &amp; Resources",
-    'view.fest.h':"Festivals &amp; Performances",
-    'view.game.h':"The Context Machine",
-    'view.game.d':"Learn contextual art through play. Four modes — from formula experiments to progressive challenges.",
-    'view.quiz.h':"Contextual Quiz",
-    'view.formula.h':"The Context Formula",
-    'view.compare.h':"Conceptual vs. Contextual",
-    'view.points.h':"12 Points Challenge",
-    'view.points.d':"Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.",
-    'hero.q1':"Freedom of Art?",
-    'hero.q2':"Art et Transformation Sociale",
-
-    'nav.archive':'アーカイブ','nav.timeline':'年表','nav.graph':'コンステレーション',
-    'nav.texts':'テキスト','nav.books':'書籍','nav.concepts':'概念','nav.biblio':'文献',
-    'view.books.h':"シフィジンスキの書籍",
-    'view.books.d':"ヤン・シフィジンスキが著した全ての書籍。最初のマニフェスト小冊子(ルンド1976)から、没後の三言語モノグラフィ(ケベック/ハリファックス2015)まで。4冊の表紙はまだ物理コピーからのスキャンが必要です — スキャンをお持ちの方はポータル管理者にお送りください。",
-    'nav.festivals':'出演','nav.game':'ゲーム','nav.study':'研究 ↗',
-    'ctx.label':'コンテクスト 001',
-    'ctx.note':'<b>このページはコンテクスチュアル・アート作品です。</b>読解は場所と時刻とともに変化します。',
-    'hero.eyebrow':'コンテクスチュアル・アート · 1923—2014',
-    'hero.h1':'アートとは<br>私がアートとして<br><em>示すもの。</em>',
-    'hero.h1_echo':'<em>Art is what I show as art.</em>',
-    'hero.lead':'意味は決して固定されず、コンテクストから立ち上がる——そう主張した、学際的な芸術家・理論家・哲学者。',
-    'hero.cta_primary':'アーカイブへ','hero.cta_secondary':'ゲームを開始',
-    'hero.byline_curator':'ポータル・キュレーター:','hero.byline_edition':'版',
-    'hero.cstrip_place':'ワルシャワ · 1978年頃','hero.cstrip_credit':'撮影 n.n.','hero.cstrip_source':'個人所蔵',
-    'latest.label':'<b>最新</b>コーパス<br>収録',
-    'latest.1.pl':'ワルシャワ · マニフェスト · pl','latest.2.pl':'S:t Petri Lund · 講演 · en',
-    'latest.3.pl':'Stara Galeria ルブリン · エッセイ · pl','latest.4.pl':'カルガリー · ポスター・マニフェスト · en · pl'
+    "gr.person":"周辺の人物",
+    "gr.note":"階層も分類箱もないリゾーム。線は共通の役割や国をたどり、ひとりの人物が同時に複数の線に属することもあります。ノードをドラッグすると配置を変えられます。",
+    "pt.0":"対象と意味",
+    "pt.1":"社会的な多義性",
+    "pt.2":"慣習的芸術とコンセプチュアル・アート",
+    "pt.3":"意味の失効",
+    "pt.4":"コンテクストの定式",
+    "pt.5":"規範の拒否",
+    "pt.6":"安定化への反対",
+    "pt.7":"両項の可動性",
+    "pt.8":"用意としての関係",
+    "pt.9":"芸術家と集団",
+    "pt.10":"形式論理の彼方",
+    "pt.11":"相対主義への反対",
+    "p.point":"ポイント{n}",
+    "p.unlockbtn":"問題に答えて解除",
+    "c.kosuth":"コンセプチュアル・アート（Kosuth）",
+    "c.swid":"コンテクスチュアル・アート（Świdziński）",
+    "c.check":"答え合わせ",
+    "c.reset":"リセット",
+    "fest.ongoing":"継続中",
+    "g.quiz.t":"コンテクスト・クイズ",
+    "g.quiz.d":"中核理論から哲学、出来事まで、9つのカテゴリーで知識を試します。",
+    "g.formula.t":"コンテクストの定式",
+    "g.formula.d":"時間・場所・状況・人物のパラメータを変えると、意味が目の前で変わっていきます。",
+    "g.compare.t":"コンセプチュアルとコンテクスチュアル",
+    "g.compare.d":"それぞれの考えを正しい列に振り分けてください。カードをドラッグするか、カードのボタンを使います。Kosuthのコンセプチュアリズムと Świdzińskiのコンテクスチュアリズムを見分けられますか？",
+    "g.points.t":"12のポイントに挑戦",
+    "g.points.d":"理解度を示して、コンテクスチュアル・アートの12のポイントをひとつずつ解除します。",
+    "fm.hint":"すべてのパラメータを選ぶと、このコンテクストにおける意味が現れます…",
+    "fm.select":"— 選択 —",
+    "fm.time":"時間",
+    "fm.place":"場所",
+    "fm.situation":"状況",
+    "fm.person":"人物",
+    "q.all":"すべて",
+    "p.unlocked":"{n}/12 ポイント解除 · ボーナス {b} 点獲得",
+    "p.alldone":"12のポイントをすべて解除しました。おめでとうございます！",
+    "tag.biography":"伝記",
+    "tag.chronology":"年表",
+    "tag.people":"人物",
+    "tag.influence":"影響",
+    "tag.manifesto":"マニフェスト",
+    "tag.theory":"理論",
+    "tag.essay":"エッセイ",
+    "tag.definitions":"定義",
+    "tag.publications":"出版物",
+    "tag.research":"研究",
+    "tag.scholarly":"学術",
+    "tag.festivals":"フェスティバル",
+    "tag.performance":"パフォーマンス",
+    "tag.events":"出来事",
+    "tag.academic":"アカデミック",
+    "tag.primary sources":"一次資料",
+    "view.archive.d":"Jan Świdzińskiのコンテクスチュアル・アートをめぐる著作、生涯の出来事、知的ネットワーク、主要概念をたどります。",
+    "view.formula.d":"パラメータを変えると、意味が変わっていきます。Świdzińskiの中核的な洞察を、手で触れて確かめられるかたちにしました。",
+    "view.compare.d":"それぞれの考えを正しい列に振り分けてください。カードをドラッグするか、カードのボタンを使います。Kosuthのコンセプチュアリズムか、Świdzińskiのコンテクスチュアリズムか？",
+    "view.texts.d":"一次資料——マニフェスト、理論的エッセイ、批評的考察。Świdziński自身の言葉。",
+    "view.biblio.d":"研究者、美術史家、コンテクスチュアル・アートを学ぶ学生のための出版物、研究文献、基本文献。",
+    "view.fest.d":"国際的なフェスティバル、パフォーマンス、展覧会——そして晩年と没後の展覧会、シンポジウム、Świdzińskiの遺産を守るアーカイヴ。",
+    "b.books":"Świdzińskiの著書",
+    "b.essays":"主要なエッセイとテクスト",
+    "b.scholarly":"研究文献と批評的分析",
+    "b.interviews":"インタビュー",
+    "b.cited":"引用された哲学文献",
+    "f.organized":"Świdzińskiによる企画・共同企画",
+    "f.participated":"国際フェスティバルと会議",
+    "f.posthumous":"晩年の評価と遺産",
+    "q.num":"問題 {n}／{m}",
+    "q.next":"次の問題 →",
+    "hub.timeline.l":"年表",
+    "hub.timeline.t":"生涯と出来事",
+    "hub.timeline.d":"1923年からの生涯と仕事——絵画、理論、パフォーマンス、そして遺産。",
+    "hub.graph.l":"ネットワーク",
+    "hub.graph.t":"人物とつながり",
+    "hub.graph.d":"Świdzińskiと結びつく芸術家、哲学者、研究者、運動をインタラクティブなグラフで示します。",
+    "hub.texts.l":"テキスト",
+    "hub.texts.t":"著作とマニフェスト",
+    "hub.texts.d":"一次資料——12のポイント、理論的エッセイ、批評的考察をŚwidziński自身の言葉で。",
+    "hub.concepts.l":"事典",
+    "hub.concepts.t":"主要概念",
+    "hub.concepts.d":"空虚な記号、三つのモデル、コンテクストの定式、義務論理——コンテクスチュアル・アートを構成する基本概念。",
+    "hub.biblio.l":"文献",
+    "hub.biblio.t":"出版物と研究",
+    "hub.biblio.d":"著書、エッセイ、研究文献、インタビュー——研究者と美術を学ぶ学生のための基本文献。",
+    "hub.fest.l":"フェスティバル",
+    "hub.fest.t":"フェスティバルとパフォーマンス",
+    "hub.fest.d":"国際的なフェスティバル、会議、パフォーマンス——そして彼の遺産を伝える晩年と没後の顕彰。",
+    "hub.study.l":"研究",
+    "hub.study.t":"総合研究",
+    "hub.study.d":"「意味論的記号」から「ネオ・プラグマティックな旅行者」まで——一次資料にもとづく本格的な学術研究。全5部36章。（現在は英語のみ）",
+    "f.all":"すべて",
+    "f.life":"生涯",
+    "f.art":"作品",
+    "f.theory":"理論",
+    "f.event":"出来事",
+    "view.archive.h":"アーカイヴ",
+    "view.timeline.h":"年表",
+    "view.timeline.d":"絵画からコンセプチュアリズムを経てコンテクスチュアル・アートへ——ラディカルな思想家の歩み。",
+    "view.texts.h":"テキストと著作",
+    "view.concepts.h":"概念事典",
+    "view.concepts.d":"コンテクスチュアル・アートとその知的背景をなす主要な考え、理論、用語。",
+    "view.biblio.h":"文献と資料",
+    "view.fest.h":"フェスティバルとパフォーマンス",
+    "view.game.h":"コンテクスト・マシン",
+    "view.game.d":"遊びながらコンテクスチュアル・アートを学ぶ。定式の実験から段階的なチャレンジまで、4つのモード。",
+    "view.quiz.h":"コンテクスト・クイズ",
+    "view.formula.h":"コンテクストの定式",
+    "view.compare.h":"コンセプチュアルとコンテクスチュアル",
+    "view.points.h":"12のポイントに挑戦",
+    "view.points.d":"理解度を示して、コンテクスチュアル・アートの12のポイントをひとつずつ解除します。",
+    "hero.q1":"芸術の自由？",
+    "hero.q2":"Art et Transformation Sociale",
+    "nav.archive":"アーカイヴ",
+    "nav.timeline":"年表",
+    "nav.graph":"コンステレーション",
+    "nav.texts":"テキスト",
+    "nav.books":"著書",
+    "nav.concepts":"概念",
+    "nav.biblio":"文献",
+    "nav.menu":"メニュー",
+    "nav.close":"閉じる",
+    "c.search":"概念を検索…",
+    "qr.score":"{t}問中{n}問正解",
+    "qr.hi":"コンテクストへの理解は申し分ありません！",
+    "qr.mid":"基礎は十分です。アーカイヴをさらに探索してみてください。",
+    "qr.lo":"「テキスト」と「概念」のセクションで理解を深められます。",
+    "qr.again":"もう一度挑戦",
+    "fm.next":"次のシナリオ →",
+    "fm.scenario":"シナリオ",
+    "b.pdf":"PDFをダウンロード ↗",
+    "b.allbooks":"全著書を表紙とともに見る →",
+    "hub.books.l":"著書",
+    "hub.books.t":"Świdzińskiの著書",
+    "hub.books.d":"作家による10冊の著書——ルンドのマニフェスト（1976）から没後のモノグラフ（2015）まで。",
+    "cmp.toK":"← Kosuth",
+    "cmp.toS":"Świdziński →",
+    "cmp.back":"元に戻す",
+    "doc.title":"Jan Świdziński — コンテクスチュアル・アート：アーカイヴとゲーム",
+    "view.books.h":"Świdzińskiの著書",
+    "view.books.d":"Jan Świdzińskiの全著作。マニフェストの小冊子（ルンド、1976年）から、没後に刊行された三言語のモノグラフ（ケベック／ハリファックス、2015年）まで。",
+    "nav.festivals":"出演",
+    "nav.game":"ゲーム",
+    "nav.study":"研究（英語）↗",
+    "ctx.label":"コンテクスト 001",
+    "ctx.note":"<b>このサイトはコンテクスチュアルな作品です。</b>その読まれ方は、場所と時刻によって変わります。",
+    "hero.eyebrow":"コンテクスチュアル・アート · 1923–2014",
+    "hero.h1":"芸術とは<br>私が芸術として<br><em>示すものである。</em>",
+    "hero.h1_echo":"<em>Sztuka jest tym, co pokazuję jako sztukę.</em>",
+    "hero.lead":"学際的な芸術家、理論家、哲学者。意味はけっして固定されず、<em>コンテクスト</em>から立ち上がると論じた。",
+    "hero.cta_primary":"アーカイヴを見る",
+    "hero.cta_secondary":"ゲームで遊ぶ",
+    "hero.byline_curator":"ポータル・キュレーター：",
+    "hero.byline_edition":"版",
+    "hero.cstrip_place":"ワルシャワ · 1978年頃",
+    "hero.cstrip_credit":"撮影者不詳",
+    "hero.cstrip_source":"個人所蔵",
+    "latest.label":"<b>最新の</b>コーパス<br>収録&nbsp;資料",
+    "latest.1.pl":"ワルシャワ · マニフェスト · pl",
+    "latest.2.pl":"S:t Petri ルンド · 講演 · en",
+    "latest.3.pl":"Stara Galeria ルブリン · エッセイ · pl",
+    "latest.4.pl":"カルガリー · ポスター・マニフェスト · en · pl"
   },
   zh: {
-    'gr.person':"People around",
-    'gr.note':"A rhizome with no hierarchy and no pigeonholes. Strands follow a shared role or a shared country, and one person may sit in several at once. Drag any node to change the layout.",
-
-    'pt.0':"Objects & Meanings",
-    'pt.1':"Social Ambiguity",
-    'pt.2':"Conventional vs. Conceptual",
-    'pt.3':"Devaluation of Meanings",
-    'pt.4':"The Context Formula",
-    'pt.5':"Rejecting Canons",
-    'pt.6':"Against Stabilization",
-    'pt.7':"Both Terms Mobile",
-    'pt.8':"Relation as Readiness",
-    'pt.9':"Artist vs. Group",
-    'pt.10':"Beyond Formal Logic",
-    'pt.11':"Against Relativism",
-    'p.point':"Point {n}",
-    'p.unlockbtn':"Answer a Question to Unlock",
-    'c.kosuth':"Conceptual Art (Kosuth)",
-    'c.swid':"Contextual Art (Świdziński)",
-    'c.check':"Check Answers",
-    'c.reset':"Reset",
-    'fest.ongoing':"ongoing",
-
-    'g.quiz.t':"Contextual Quiz",
-    'g.quiz.d':"Test your knowledge across 9 categories — from core theory to philosophy and events.",
-    'g.formula.t':"The Context Formula",
-    'g.formula.d':"Change the parameters of time, place, situation, and person — watch meaning transform before your eyes.",
-    'g.compare.t':"Conceptual vs. Contextual",
-    'g.compare.d':"Drag each idea to the correct column. Can you tell Kosuth's conceptualism from Świdziński's contextualism?",
-    'g.points.t':"12 Points Challenge",
-    'g.points.d':"Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.",
-    'fm.hint':"Select all parameters to discover the meaning in this context...",
-    'fm.select':"— select —",
-    'fm.time':"TIME",
-    'fm.place':"PLACE",
-    'fm.situation':"SITUATION",
-    'fm.person':"PERSON",
-    'q.all':"All",
-    'p.unlocked':"{n}/12 points unlocked · {b} bonus points earned",
-    'p.alldone':"All 12 points unlocked! Congratulations!",
-
-    'tag.biography':"biography",
-    'tag.chronology':"chronology",
-    'tag.people':"people",
-    'tag.influence':"influence",
-    'tag.manifesto':"manifesto",
-    'tag.theory':"theory",
-    'tag.essay':"essay",
-    'tag.definitions':"definitions",
-    'tag.publications':"publications",
-    'tag.research':"research",
-    'tag.scholarly':"scholarly",
-    'tag.festivals':"festivals",
-    'tag.performance':"performance",
-    'tag.events':"events",
-    'tag.academic':"academic",
-    'tag.primary sources':"primary sources",
-
-    'view.archive.d':"Navigate the collected works, life events, intellectual network, and key ideas of Jan Świdziński's contextual art.",
-    'view.formula.d':"Change the parameters — watch the meaning transform. Świdziński's core insight, made interactive.",
-    'view.compare.d':"Drag each idea to the correct column. Kosuth's conceptualism or Świdziński's contextualism?",
-
-    'view.texts.d':"Primary sources — manifestos, theoretical essays, critical reflections. Świdziński’s own words.",
-    'view.biblio.d':"Publications, scholarly works, and essential references for researchers, art historians, and students of contextual art.",
-    'view.fest.d':"International festivals, performances, and exhibitions — and the late exhibitions, symposia, and archives that secure Świdziński’s legacy.",
-    'b.books':"Books by Świdziński",
-    'b.essays':"Key Essays & Texts",
-    'b.scholarly':"Scholarly Works & Critical Analysis",
-    'b.interviews':"Interviews",
-    'b.cited':"Cited Philosophical Works",
-    'f.organized':"Organized & Co-organized by Świdziński",
-    'f.participated':"International Festivals & Conferences",
-    'f.posthumous':"Late Recognition & Legacy",
-    'q.num':"Question {n} of {m}",
-    'q.next':"Next Question →",
-
-    'hub.timeline.l':"Timeline",
-    'hub.timeline.t':"Life & Events",
-    'hub.timeline.d':"28 key moments from 1923 to 2014 — painting, theory, performance, and legacy.",
-    'hub.graph.l':"Network",
-    'hub.graph.t':"People & Connections",
-    'hub.graph.d':"Interactive graph of artists, philosophers, scholars, and movements connected to Świdziński.",
-    'hub.texts.l':"Texts",
-    'hub.texts.t':"Writings & Manifestos",
-    'hub.texts.d':"Primary sources — the 12 Points, theoretical essays, critical reflections in Świdziński’s own words.",
-    'hub.concepts.l':"Encyclopedia",
-    'hub.concepts.t':"Key Concepts",
-    'hub.concepts.d':"Empty Sign, Three Models, Context Formula, Deontic Logic — the building blocks of contextual art.",
-    'hub.biblio.l':"Bibliography",
-    'hub.biblio.t':"Publications & Research",
-    'hub.biblio.d':"Books, essays, scholarly analysis, interviews — essential references for researchers and art students.",
-    'hub.fest.l':"Festivals",
-    'hub.fest.t':"Festivals & Performances",
-    'hub.fest.d':"International festivals, conferences, performances — and the late tributes that secure his legacy.",
-    'hub.study.l':"Study",
-    'hub.study.t':"Comprehensive Study",
-    'hub.study.d':"From Semantic Signs to the Neo-Pragmatic Tourist — a full academic study based on primary sources. 5 parts, 36 chapters.",
-    'f.all':"All",
-    'f.life':"Life",
-    'f.art':"Art",
-    'f.theory':"Theory",
-    'f.event':"Event",
-
-    'view.archive.h':"Archive",
-    'view.timeline.h':"Timeline",
-    'view.timeline.d':"From painting through conceptualism to contextual art — the path of a radical thinker.",
-    'view.texts.h':"Texts &amp; Writings",
-    'view.concepts.h':"Concept Encyclopedia",
-    'view.concepts.d':"Key ideas, theories, and terms from contextual art and its intellectual context.",
-    'view.biblio.h':"Bibliography &amp; Resources",
-    'view.fest.h':"Festivals &amp; Performances",
-    'view.game.h':"The Context Machine",
-    'view.game.d':"Learn contextual art through play. Four modes — from formula experiments to progressive challenges.",
-    'view.quiz.h':"Contextual Quiz",
-    'view.formula.h':"The Context Formula",
-    'view.compare.h':"Conceptual vs. Contextual",
-    'view.points.h':"12 Points Challenge",
-    'view.points.d':"Unlock each of the 12 Points of Contextual Art by demonstrating your understanding.",
-    'hero.q1':"Freedom of Art?",
-    'hero.q2':"Art et Transformation Sociale",
-
-    'nav.archive':'档案','nav.timeline':'年表','nav.graph':'星座',
-    'nav.texts':'文本','nav.books':'书籍','nav.concepts':'概念','nav.biblio':'参考文献',
-    'view.books.h':"希维津斯基的著作",
-    'view.books.d':"扬·希维津斯基所著全部书籍,从最初的宣言小册(隆德1976)到身后出版的三语专著(魁北克/哈利法克斯2015)。四本封面仍需从实体本扫描 — 如您有扫描件,请发送给门户策展人。",
-    'nav.festivals':'活动','nav.game':'游戏','nav.study':'研究 ↗',
-    'ctx.label':'语境 001',
-    'ctx.note':'<b>本页面是一件情境作品。</b>阅读随地点与时间而变化。',
-    'hero.eyebrow':'情境艺术 · 1923—2014',
-    'hero.h1':'艺术,<br>就是我<br><em>作为艺术展示的东西。</em>',
-    'hero.h1_echo':'<em>Art is what I show as art.</em>',
-    'hero.lead':'一位跨学科艺术家、理论家和哲学家,主张意义从不固定——它从<em>情境</em>中涌现。',
-    'hero.cta_primary':'进入档案','hero.cta_secondary':'开始游戏',
-    'hero.byline_curator':'门户策展人:','hero.byline_edition':'版本',
-    'hero.cstrip_place':'华沙 · 约1978','hero.cstrip_credit':'摄影 n.n.','hero.cstrip_source':'私人收藏',
-    'latest.label':'<b>最新</b>收录<br>条目',
-    'latest.1.pl':'华沙 · 宣言 · pl','latest.2.pl':'S:t Petri Lund · 讲座 · en',
-    'latest.3.pl':'Stara Galeria 卢布林 · 随笔 · pl','latest.4.pl':'卡尔加里 · 海报宣言 · en · pl'
+    "gr.person":"相关人物",
+    "gr.note":"一个没有等级、也没有分类格子的块茎。连线依据共同的角色或共同的国家，一个人可以同时处于多条线索之中。拖动任一节点即可改变布局。",
+    "pt.0":"物与意义",
+    "pt.1":"社会的歧义",
+    "pt.2":"传统艺术与观念艺术",
+    "pt.3":"意义的失效",
+    "pt.4":"语境公式",
+    "pt.5":"拒绝规范",
+    "pt.6":"反对固化",
+    "pt.7":"两项皆可移动",
+    "pt.8":"作为准备状态的关系",
+    "pt.9":"艺术家与群体",
+    "pt.10":"超越形式逻辑",
+    "pt.11":"反对相对主义",
+    "p.point":"第{n}条",
+    "p.unlockbtn":"答题解锁",
+    "c.kosuth":"观念艺术（Kosuth）",
+    "c.swid":"语境艺术（Świdziński）",
+    "c.check":"核对答案",
+    "c.reset":"重置",
+    "fest.ongoing":"持续举办",
+    "g.quiz.t":"语境测验",
+    "g.quiz.d":"涵盖9个类别的知识测验——从核心理论到哲学与事件。",
+    "g.formula.t":"语境公式",
+    "g.formula.d":"改变时间、地点、情境与人物等参数，亲眼看到意义随之转变。",
+    "g.compare.t":"观念与语境",
+    "g.compare.d":"把每个观点归入正确的一栏——拖动卡片或使用卡片上的按钮。你能分清 Kosuth 的观念主义与 Świdziński 的语境主义吗？",
+    "g.points.t":"12条挑战",
+    "g.points.d":"展示你的理解，逐条解锁《语境艺术12条》。",
+    "fm.hint":"选定全部参数，发现此语境中的意义……",
+    "fm.select":"— 请选择 —",
+    "fm.time":"时间",
+    "fm.place":"地点",
+    "fm.situation":"情境",
+    "fm.person":"人物",
+    "q.all":"全部",
+    "p.unlocked":"已解锁 {n}/12 条 · 获得奖励分 {b}",
+    "p.alldone":"12条全部解锁！恭喜！",
+    "tag.biography":"生平",
+    "tag.chronology":"年表",
+    "tag.people":"人物",
+    "tag.influence":"影响",
+    "tag.manifesto":"宣言",
+    "tag.theory":"理论",
+    "tag.essay":"随笔",
+    "tag.definitions":"定义",
+    "tag.publications":"出版物",
+    "tag.research":"研究",
+    "tag.scholarly":"学术",
+    "tag.festivals":"艺术节",
+    "tag.performance":"行为艺术",
+    "tag.events":"事件",
+    "tag.academic":"学术活动",
+    "tag.primary sources":"原始文献",
+    "view.archive.d":"浏览Jan Świdziński语境艺术的著作汇编、生平事件、思想网络与核心观念。",
+    "view.formula.d":"改变参数，看意义如何转变。Świdziński的核心洞见，以互动方式呈现。",
+    "view.compare.d":"把每个观点归入正确的一栏——拖动卡片或使用卡片上的按钮。Kosuth 的观念主义，还是 Świdziński 的语境主义？",
+    "view.texts.d":"原始文献——宣言、理论文章与批评性思考。Świdziński本人的文字。",
+    "view.biblio.d":"出版物、学术研究与基本参考文献，供研究者、艺术史学者及语境艺术的学习者使用。",
+    "view.fest.d":"国际艺术节、行为艺术演出与展览——以及确立Świdziński遗产的晚期展览、研讨会与档案。",
+    "b.books":"Świdziński的著作",
+    "b.essays":"重要文章与文本",
+    "b.scholarly":"学术研究与批评分析",
+    "b.interviews":"访谈",
+    "b.cited":"引用的哲学著作",
+    "f.organized":"Świdziński主办及合办的活动",
+    "f.participated":"国际艺术节与会议",
+    "f.posthumous":"迟来的认可与遗产",
+    "q.num":"第{n}题，共{m}题",
+    "q.next":"下一题 →",
+    "hub.timeline.l":"年表",
+    "hub.timeline.t":"生平与事件",
+    "hub.timeline.d":"1923年以来的生平与创作——绘画、理论、行为艺术与遗产。",
+    "hub.graph.l":"网络",
+    "hub.graph.t":"人物与关联",
+    "hub.graph.d":"与Świdziński相关的艺术家、哲学家、学者及艺术运动的互动关系图。",
+    "hub.texts.l":"文本",
+    "hub.texts.t":"著述与宣言",
+    "hub.texts.d":"原始文献——《12条》、理论文章与批评性思考，均出自Świdziński本人之手。",
+    "hub.concepts.l":"百科",
+    "hub.concepts.t":"核心概念",
+    "hub.concepts.d":"空符号、三种模式、语境公式、道义逻辑——语境艺术的基本构件。",
+    "hub.biblio.l":"参考文献",
+    "hub.biblio.t":"出版物与研究",
+    "hub.biblio.d":"著作、文章、学术分析与访谈——研究者与艺术学子的基本参考资料。",
+    "hub.fest.l":"艺术节",
+    "hub.fest.t":"艺术节与演出",
+    "hub.fest.d":"国际艺术节、会议与行为艺术演出——以及确立其遗产的身后致敬。",
+    "hub.study.l":"专题研究",
+    "hub.study.t":"综合研究",
+    "hub.study.d":"从“语义符号”到“新实用主义游客”——基于原始文献的完整学术研究。共5部分，36章。（目前仅有英文版）",
+    "f.all":"全部",
+    "f.life":"生平",
+    "f.art":"艺术",
+    "f.theory":"理论",
+    "f.event":"事件",
+    "view.archive.h":"档案",
+    "view.timeline.h":"年表",
+    "view.timeline.d":"从绘画经由观念主义走向语境艺术——一位激进思想者的道路。",
+    "view.texts.h":"文本与著述",
+    "view.concepts.h":"概念百科",
+    "view.concepts.d":"语境艺术及其思想背景中的核心观念、理论与术语。",
+    "view.biblio.h":"参考文献与资源",
+    "view.fest.h":"艺术节与演出",
+    "view.game.h":"语境机器",
+    "view.game.d":"在游戏中认识语境艺术。四种模式——从公式实验到逐级挑战。",
+    "view.quiz.h":"语境测验",
+    "view.formula.h":"语境公式",
+    "view.compare.h":"观念与语境",
+    "view.points.h":"12条挑战",
+    "view.points.d":"展示你的理解，逐条解锁《语境艺术12条》。",
+    "hero.q1":"艺术的自由？",
+    "hero.q2":"Art et Transformation Sociale",
+    "nav.archive":"档案",
+    "nav.timeline":"年表",
+    "nav.graph":"星座",
+    "nav.texts":"文本",
+    "nav.books":"书籍",
+    "nav.concepts":"概念",
+    "nav.biblio":"参考文献",
+    "nav.menu":"菜单",
+    "nav.close":"关闭",
+    "c.search":"搜索概念……",
+    "qr.score":"答对 {n}/{t} 题",
+    "qr.hi":"对语境的理解非常出色！",
+    "qr.mid":"基础不错——继续探索档案吧。",
+    "qr.lo":"“文本”与“概念”栏目将帮助你加深理解。",
+    "qr.again":"再玩一次",
+    "fm.next":"下一个情景 →",
+    "fm.scenario":"情景",
+    "b.pdf":"下载PDF ↗",
+    "b.allbooks":"全部书籍及封面 →",
+    "hub.books.l":"书籍",
+    "hub.books.t":"Świdziński的著作",
+    "hub.books.d":"艺术家的十本著作——从隆德宣言（1976）到身后出版的专著（2015）。",
+    "cmp.toK":"← Kosuth",
+    "cmp.toS":"Świdziński →",
+    "cmp.back":"撤销",
+    "doc.title":"Jan Świdziński——语境艺术：档案与游戏",
+    "view.books.h":"Świdziński的著作",
+    "view.books.d":"Jan Świdziński 的全部著作——从宣言小册子（隆德，1976）到身后出版的三语专著（魁北克／哈利法克斯，2015）。",
+    "nav.festivals":"活动",
+    "nav.game":"游戏",
+    "nav.study":"研究（英文）↗",
+    "ctx.label":"语境 001",
+    "ctx.note":"<b>本网站是一件语境作品。</b>其解读随地点与时刻而变化。",
+    "hero.eyebrow":"语境艺术 · 1923–2014",
+    "hero.h1":"艺术，<br>就是我<br><em>作为艺术来展示的东西。</em>",
+    "hero.h1_echo":"<em>Sztuka jest tym, co pokazuję jako sztukę.</em>",
+    "hero.lead":"一位跨学科的艺术家、理论家与哲学家。他主张意义从不固定——它从<em>语境</em>中生成。",
+    "hero.cta_primary":"进入档案",
+    "hero.cta_secondary":"开始游戏",
+    "hero.byline_curator":"门户策展人：",
+    "hero.byline_edition":"版本",
+    "hero.cstrip_place":"华沙 · 约1978年",
+    "hero.cstrip_credit":"摄影者不详",
+    "hero.cstrip_source":"私人档案",
+    "latest.label":"<b>最新</b>收录<br>文献",
+    "latest.1.pl":"华沙 · 宣言 · pl",
+    "latest.2.pl":"S:t Petri 隆德 · 讲座 · en",
+    "latest.3.pl":"Stara Galeria 卢布林 · 随笔 · pl",
+    "latest.4.pl":"卡尔加里 · 海报宣言 · en · pl"
   }
 };
 var LANG_CODE_MAP = {pl:'pl', en:'en', fr:'fr', jp:'ja', cn:'zh'};
@@ -2820,6 +2874,11 @@ function applyI18nDom(lang){
     var key = el.getAttribute('data-i18n');
     if (dict[key] !== undefined) el.innerHTML = dict[key];
   });
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+    var key = el.getAttribute('data-i18n-ph');
+    if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+  });
+  var tt = dict['doc.title']; if (tt) document.title = tt;
 }
 function applyLang(lang) {
   LANG_NOW = lang;
@@ -2847,7 +2906,7 @@ document.querySelectorAll('.lang a').forEach(function(a){
     if (saved && I18N[saved]) { applyLang(saved); return; }
   } catch(e) {}
   var nav = (navigator.language || 'pl').split('-')[0];
-  if (I18N[nav]) applyLang(nav);
+  applyLang(I18N[nav] ? nav : 'pl');
 })();
 
 // context bar — miejsce, godzina, język przeglądarki
@@ -2868,6 +2927,6 @@ document.querySelectorAll('.lang a').forEach(function(a){
 })();
 </script>
 <script data-goatcounter="https://futureshow.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script src="https://futureshow.pl/assets/fs-home.js" data-bottom="52" defer></script>
+<script src="https://futureshow.pl/assets/fs-home.js" data-bottom="16" defer></script>
 </body>
 </html>

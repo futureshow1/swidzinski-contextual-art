@@ -1,7 +1,7 @@
 {
 "quizData": [
 {
-"i": 0,
+"id": "q01",
 "cat": "Teoria podstawowa",
 "q": "Zdaniem Świdzińskiego znak we współczesnej cywilizacji najlepiej opisać jako:",
 "opts": [
@@ -13,7 +13,7 @@
 "exp": "Świdziński opisuje znak ani jako przezroczysty (model pierwszy), ani jako samozwrotny (model drugi), lecz jako „znak pusty, miejsce do wypełnienia przez rzeczywistość”. To fundament sztuki kontekstualnej."
 },
 {
-"i": 1,
+"id": "q02",
 "cat": "Teoria podstawowa",
 "q": "Co Świdziński ma na myśli, gdy mówi, że sztuka kontekstualna „przeciwstawia się relatywizmowi”?",
 "opts": [
@@ -25,7 +25,7 @@
 "exp": "Punkt 12 manifestu głosi: „Tylko jedno wyrażenie jest prawdziwe w określonym kontekście pragmatycznym”. To właśnie odróżnia kontekstualizm od czystego relatywizmu — znaczenie jest kontekstowe, ale nie dowolne."
 },
 {
-"i": 2,
+"id": "q03",
 "cat": "Manifest",
 "q": "„12 punktów sztuki kontekstualnej” ogłoszono po raz pierwszy:",
 "opts": [
@@ -37,7 +37,7 @@
 "exp": "Manifest ukazał się w 1976 roku przy okazji wystawy w Lund — w tym samym roku, w którym doszło do debaty z Kosuthem w Toronto. Było to założycielskie, publiczne wystąpienie teorii sztuki kontekstualnej."
 },
 {
-"i": 3,
+"id": "q04",
 "cat": "Trzy modele",
 "q": "W „Modelach sztuki” Świdzińskiego model relatywistyczny (modernistyczny) charakteryzuje się tym, że:",
 "opts": [
@@ -49,7 +49,7 @@
 "exp": "Model drugi pojawia się wtedy, gdy znaki tracą przezroczystość (model pierwszy) i stają się samozwrotną barierą. Od romantyzmu artyści zajmowali się samymi znakami — formą, a nie treścią."
 },
 {
-"i": 4,
+"id": "q05",
 "cat": "Krytyka",
 "q": "Główny zarzut Świdzińskiego wobec konceptualizmu Kosutha brzmiał:",
 "opts": [
@@ -61,7 +61,7 @@
 "exp": "Świdziński dowodził, że „sztuka jako idea jako idea” zamyka się w kole samoodniesienia. Koncepcja pustego znaku proponuje sztukę wypełnianą przez zewnętrzną rzeczywistość, a nie wracającą do siebie samej."
 },
 {
-"i": 5,
+"id": "q06",
 "cat": "Biografia",
 "q": "Jakie wydarzenie z 1965 roku zmieniło kierunek twórczości Świdzińskiego?",
 "opts": [
@@ -73,7 +73,7 @@
 "exp": "Indywidualna wystawa malarstwa w 1965 roku była punktem zwrotnym — Świdziński przekonał się, że malarstwo i inne formy tradycyjne nie potrafią zmierzyć się z podstawowymi dylematami egzystencjalnymi. Zwrócił się wtedy ku nauce, semiotyce i logice formalnej."
 },
 {
-"i": 6,
+"id": "q07",
 "cat": "Filozofia",
 "q": "Pojęcie „wyrażeń intensjonalnych” w teorii sztuki kontekstualnej oznacza:",
 "opts": [
@@ -85,7 +85,7 @@
 "exp": "W odróżnieniu od wyrażeń ekstensjonalnych, którymi posługują się nauka i konceptualizm, wyrażenia intensjonalne wymagają zewnętrznego kontekstu, by ustalić swoje znaczenie. Dlatego sztuka kontekstualna odrzuca warunek ekstensjonalności."
 },
 {
-"i": 7,
+"id": "q08",
 "cat": "Wydarzenia",
 "q": "Podczas warszawskiej konferencji w Galerii Remont w 1977 roku:",
 "opts": [
@@ -97,7 +97,7 @@
 "exp": "Konferencja „Sztuka jako działanie w kontekście rzeczywistości” (1977) zgromadziła uczestników z 35 krajów. Władze zareagowały ostro — tak szerokie kontakty zagraniczne uznano za zagrożenie."
 },
 {
-"i": 8,
+"id": "q09",
 "cat": "Teoria podstawowa",
 "q": "Współczesną cywilizację Świdziński opisuje za pomocą modelu:",
 "opts": [
@@ -109,7 +109,7 @@
 "exp": "Świdziński wyróżnia trzy modele cywilizacji: zegar (przedprzemysłowy, cykliczny), przemiany skokowe (przemysłowy) oraz proces stochastyczny (współczesny) — w którym zmiana jest zbyt szybka, by wyodrębnić poszczególne stany."
 },
 {
-"i": 9,
+"id": "q10",
 "cat": "Teoria",
 "q": "Kiedy Świdziński pisze, że sztuka działa w „logice deontycznej”, ma na myśli:",
 "opts": [
@@ -121,7 +121,7 @@
 "exp": "Logika deontyczna rządzi stanami takimi jak wiara, przypuszczenie czy uznanie. Sztuka nie „mówi prawdy” — ona „przekonuje o prawdzie”, działając w rejestrze ideologicznym i egzystencjalnym, a nie formalnym."
 },
 {
-"i": 10,
+"id": "q11",
 "cat": "Praktyka",
 "q": "Świdziński mówi, że w jego działaniach fotografia jest:",
 "opts": [
@@ -133,7 +133,7 @@
 "exp": "Fotografia jest dla Świdzińskiego „symptomem rzeczywistości” — nie autonomicznym dziełem i nie zwykłą dokumentacją, lecz znakiem kontekstualnym, który nabiera znaczenia dzięki zbudowanemu wokół niego działaniu."
 },
 {
-"i": 11,
+"id": "q12",
 "cat": "Manifest",
 "q": "Punkt 8 manifestu odróżnia sztukę kontekstualną od sztuki po Duchampie, twierdząc, że:",
 "opts": [
@@ -145,7 +145,7 @@
 "exp": "Od Duchampa jeden człon relacji stał się ruchomy (każdy przedmiot może znaczyć sztukę), a znaczenie pozostało nieruchome. W sztuce kontekstualnej ruchome są oba: każdy przedmiot może znaczyć sztukę i nie-sztukę zarazem."
 },
 {
-"i": 12,
+"id": "q13",
 "cat": "Trzy modele",
 "q": "Pierwszy model sztuki (uniwersalny, renesansowy) zakłada, że znaki są:",
 "opts": [
@@ -157,7 +157,7 @@
 "exp": "Model uniwersalny zakłada przezroczystość znaku, dającą bezpośredni dostęp do rzeczywistości. Leonardo da Vinci: „Naprzód poznaj teorię, potem stosuj praktykę z teorii zrodzoną”. Język artysty nie jest tu samozwrotny."
 },
 {
-"i": 13,
+"id": "q14",
 "cat": "Wydarzenia",
 "q": "Centre for Experimental Art and Communication (CEAC) w Toronto był miejscem:",
 "opts": [
@@ -169,7 +169,7 @@
 "exp": "CEAC zorganizował w 1976 roku debatę „In the Context of the Art World” z udziałem Art Sociologique, Art & Language, Artists Meeting for Cultural Change oraz kręgu pisma „The Fox”."
 },
 {
-"i": 14,
+"id": "q15",
 "cat": "Teoria podstawowa",
 "q": "Teza Świdzińskiego, że „sztuka jest częścią życia”, znaczy dokładnie tyle, że:",
 "opts": [
@@ -181,7 +181,7 @@
 "exp": "Z tekstu „Sztuka jest faktem” (1997): sztuka nie jest podobna do życia — jest jego częścią; nie jest ani naturalna, ani sztuczna; jest tym, czym akurat się staje. Sztuka jako działalność wytwórcza, a nie autonomiczna dziedzina."
 },
 {
-"i": 15,
+"id": "q16",
 "cat": "Filozofia",
 "q": "Świdziński przywołuje twierdzenie Gödla o niezupełności, by dowieść, że:",
 "opts": [
@@ -193,7 +193,7 @@
 "exp": "Gödel wykazał, że dostatecznie bogaty system formalny nie może być zarazem zupełny i niesprzeczny. Świdziński wnioskuje przez analogię, że nie da się zbudować autonomicznego, samowyjaśniającego się systemu sztuki — sztuka musi uznać swoją zależność od rzeczywistości zewnętrznej."
 },
 {
-"i": 16,
+"id": "q17",
 "cat": "Praktyka",
 "q": "Pojęcie „anomii” w pracy Świdzińskiego z 1998 roku odnosi się do:",
 "opts": [
@@ -205,7 +205,7 @@
 "exp": "Nawiązując do socjologicznego pojęcia Durkheima, anomia opisuje stan społecznego rozprzężenia. Świdziński zarejestrował rozmowy, w których ludzie mówią, nie rozumiejąc się naprawdę — to rozpad wspólnego znaczenia."
 },
 {
-"i": 17,
+"id": "q18",
 "cat": "Biografia",
 "q": "W latach 1965–1970, po porzuceniu malarstwa, Świdziński zajął się:",
 "opts": [
@@ -219,56 +219,56 @@
 ],
 "biblioData.books": [
 {
-"i": 0,
+"id": "bb1",
 "title": "Art as Contextual Art (Sztuka jako sztuka kontekstualna)",
 "place": "Lund, Szwecja",
 "type": "Manifest / książka",
 "note": "Pierwsza publikacja „12 punktów”. Redakcja: Jean Sellem; wydana w Galerie S:t Petri przy okazji wystawy polskich artystów."
 },
 {
-"i": 1,
+"id": "bb2",
 "title": "Sztuka jako sztuka kontekstualna",
 "place": "Warszawa",
 "type": "Książka (wydanie polskie)",
 "note": "Zbiór tekstów o teorii sztuki kontekstualnej, wydany przez Galerię Remont w Warszawie."
 },
 {
-"i": 2,
+"id": "bb3",
 "title": "Art, Society and Self-consciousness",
 "place": "Calgary, Kanada",
 "type": "Książka",
 "note": "Wydana przez Alberta College of Art Gallery. Całościowy wykład teorii; polskie wydanie ukazało się w 2009 roku jako „Sztuka, społeczeństwo, samoświadomość”."
 },
 {
-"i": 3,
+"id": "bb4",
 "title": "Freedom and Limitation — The Anatomy of Post-modernism (Wolność i ograniczenie. Anatomia postmodernizmu)",
 "place": "Calgary, Kanada",
 "type": "Książka",
 "note": "Redakcja: Brian Dyson; wydawnictwo Syntax, Calgary. Teoretyczna anatomia postmodernizmu; tytuł dzieli z cyklem fotograficznym „Wolność i ograniczenie” z 1984 roku."
 },
 {
-"i": 4,
+"id": "bb5",
 "title": "Quotations on Contextual Art",
 "place": "Eindhoven, Holandia",
 "type": "Książka",
 "note": "Redakcja: Michael Gibbs; wydawnictwo Het Apollohuis. Książkowy zapis debaty w Toronto."
 },
 {
-"i": 5,
+"id": "bb6",
 "title": "L’Art et son Contexte",
 "place": "Québec, Kanada",
 "type": "Książka",
 "note": "Francuskojęzyczne wydanie teorii sztuki kontekstualnej (Le Lieu). Polska wersja ukazała się w 2009 roku jako „Sztuka i jej kontekst”."
 },
 {
-"i": 6,
+"id": "bb7",
 "title": "Sztuka i jej kontekst",
 "place": "Polska",
 "type": "Książka (wydanie polskie)",
 "note": "Polskie wydanie pism teoretycznych, w opracowaniu Bartosza Łukasiewicza i Łukasza Guzka (ODA Piotrków Trybunalski i MCSW Elektrownia w Radomiu). Prezentowana na sympozjum w CSW Zamek Ujazdowski."
 },
 {
-"i": 7,
+"id": "bb8",
 "title": "Sztuka, społeczeństwo, samoświadomość",
 "place": "Polska",
 "type": "Książka (wydanie polskie)",
@@ -277,49 +277,49 @@
 ],
 "biblioData.essays": [
 {
-"i": 0,
+"id": "be1",
 "title": "Spór o istnienie sztuki",
 "publication": "Życie i Myśl, nr 5/1970",
 "note": "Pierwszy duży tekst teoretyczny. Uważany za pierwszą próbę uporządkowania rodzącej się w Polsce estetyki postkonceptualnej."
 },
 {
-"i": 1,
+"id": "be2",
 "title": "A propos N.S. galerii „Permafo”",
 "publication": "Fotografia, nr 5/1972",
 "note": "Tekst o nowej sytuacji w sztuce, związany z wrocławską awangardą."
 },
 {
-"i": 2,
+"id": "be3",
 "title": "12 punktów sztuki kontekstualnej",
 "publication": "Galerie S:t Petri, Lund",
 "note": "Manifest założycielski teorii sztuki kontekstualnej."
 },
 {
-"i": 3,
+"id": "be4",
 "title": "Modele sztuki",
 "publication": "tekst teoretyczny",
 "note": "Analiza trzech współistniejących modeli sztuki: uniwersalnego, relatywistycznego i kontekstualnego."
 },
 {
-"i": 4,
+"id": "be5",
 "title": "Sztuka kontekstualna (1–3)",
 "publication": "teksty teoretyczne",
 "note": "Trzyczęściowy, całościowy wykład teorii sztuki kontekstualnej. Zawiera formułę kontekstu i analizę logiki deontycznej."
 },
 {
-"i": 5,
+"id": "be6",
 "title": "Sztuka jest faktem",
 "publication": "plakat, Syntax Arts Society, Calgary",
 "note": "Na 20-lecie sztuki kontekstualnej. Przekład: B. Łukasiewicz."
 },
 {
-"i": 6,
+"id": "be7",
 "title": "O latach 70-tych",
 "publication": "katalog, Stara Galeria, Lublin",
 "note": "Spojrzenie wstecz na polską scenę artystyczną lat 70. i na „dadaistyczną pułapkę” Duchampa."
 },
 {
-"i": 7,
+"id": "be8",
 "title": "Poglądy — konsekwencje",
 "publication": "katalog BWA w Łomży",
 "note": "Osobiste poglądy na funkcję sztuki i na nierozdzielność tożsamości artystycznej i osobistej."
@@ -327,70 +327,74 @@
 ],
 "biblioData.scholarly": [
 {
-"i": 0,
+"id": "bs01",
 "author": "Kazimierz Piotrowski",
 "title": "Hommage à Jan Świdziński",
 "note": "Monumentalny esej (datowany 21 stycznia 2005). Całościowa obrona sztuki kontekstualnej jako doktryny postkonceptualnej. Analizuje zwrot lingwistyczny, intensjonalność oraz krytykę tautologicznego modelu Kosutha. Lektura podstawowa dla zrozumienia filozoficznych fundamentów sztuki kontekstualnej."
 },
 {
-"i": 1,
+"id": "bs02",
 "author": "Łukasz Ronduda",
 "title": "Flexibility Makes Our Existence Possible: The Contextual Art of Jan Świdziński",
 "note": "Opublikowany w „ArtMargins” (10 września 2008). Całościowa analiza ujmująca sztukę kontekstualną jako odpowiedź na globalizację i jako praktykę postmodernistyczną wobec przyspieszonej zmiany cywilizacyjnej."
 },
 {
-"i": 2,
+"id": "bs03",
 "author": "Łukasz Guzek",
 "title": "Co stanowi kontekst sztuki?",
 "note": "Opublikowany w Obiegu. Porównuje sztukę kontekstualną z estetyką relacyjną Nicolasa Bourriauda. Analizuje dokumentację jako problem komunikacji."
 },
 {
-"i": 3,
+"id": "bs04",
 "author": "Bartosz Łukasiewicz",
 "title": "Kilka dogmatów kontekstualizmu",
 "note": "Opublikowany w Obiegu. Krytyczny rozbiór kwestionujący uniwersalną stosowalność formuły sztuki kontekstualnej."
 },
 {
-"i": 4,
+"id": "bs05",
 "author": "Kazimierz Piotrowski",
 "title": "Debata „In the Context of the Art World”. Jan Świdziński w Toronto 1976",
 "note": "Opublikowany w Obiegu. Analiza debaty w Toronto, myślenia monotonicznego i niemonotonicznego oraz nieistotności jako kategorii epistemologicznej."
 },
 {
-"i": 5,
+"id": "bs06",
 "author": "Grzegorz Borkowski",
 "title": "Jana Świdzińskiego działania z fotografią",
 "note": "Opublikowany w „Fototapecie” (1/2003). Analiza roli fotografii w sztuce kontekstualnej i w performansie."
 },
 {
-"i": 6,
+"id": "bs07",
 "author": "Eulalia Domanowska",
 "title": "Sztuka kontekstualna — rozmowa z Janem Świdzińskim",
 "note": "Opublikowana w „art newsletter” (PGS w Sopocie). O logice dwuwartościowej, trójwartościowej i logice gry w teorii sztuki kontekstualnej."
 },
 {
-"i": 7,
-"author": "Jan Lubicz Przyłuski",
+"id": "bs08",
+"author": "Jan Przyłuski",
 "title": "Jesteśmy zaplątani",
 "note": "Filmowana rozmowa z Janem Świdzińskim. Zrealizowana na wieczór „Imieniny Jana” w ramach projektu The Knot w Galerii Nizio w Warszawie (24 czerwca 2010). Zapis oddziaływania teorii Świdzińskiego i jego osobistej filozofii sztuki."
 },
 {
-"i": 8,
-"author": "Jan Lubicz Przyłuski",
+"id": "bs09",
+"author": "Jan Przyłuski",
 "title": "Sztuka akcji: dziesięć zdarzeń w Polsce",
 "note": "Wydana przez Bałtycką Galerię Sztuki Współczesnej w Słupsku. ISBN 978-83-922414-9-2. Dziesięć przełomowych wydarzeń w historii polskiej sztuki akcji."
+},
+{
+"id": "bs10",
+"note": "Zeszyty Artystyczne UAP Poznań, nr 1(32)/2018, s. 68–87. Monograficzny numer poświęcony kontekstualizmowi (red. Izabela Kowalczyk); PDF całego tomu publicznie dostępny na za.uap.edu.pl. Kluczowa autorska interpretacja spuścizny Świdzińskiego z perspektywy współpracownika i filmowca."
 }
 ],
 "biblioData.interviews": [
 {
-"i": 0,
+"id": "bi1",
 "interviewer": "Adam Mazur",
 "title": "Miało być pięknie i optymistycznie",
 "publication": "Fototapeta",
 "note": "Obszerna rozmowa autobiograficzna (30 marca 2001) o warszawskim środowisku artystycznym, Galerii Remont, założeniu Małej Galerii, konferencjach międzynarodowych, skutkach stanu wojennego i pobytach w Stanach Zjednoczonych."
 },
 {
-"i": 1,
+"id": "bi2",
 "interviewer": "Bartosz Łukasiewicz",
 "title": "Kilka uwag o sztuce jako sztuce kontekstualnej",
 "publication": "Sztuka i Filozofia",
@@ -449,135 +453,135 @@
 ],
 "festivalsData.organized": [
 {
-"i": 0,
+"id": "fo1",
 "name": "Sztuka jako działanie w kontekście rzeczywistości",
 "place": "Galeria Remont, Warszawa",
 "desc": "Międzynarodowa konferencja artystów i teoretyków z 35 krajów. Podpisano porozumienia między polską sztuką kontekstualną, francuskim Art Sociologique, Art & Language i artystami z Ameryki Łacińskiej."
 },
 {
-"i": 1,
+"id": "fo2",
 "name": "Międzynarodowy Festiwal Interscop",
 "place": "Łucznica",
 "desc": "Międzynarodowy festiwal performansu zorganizowany przez Świdzińskiego."
 },
 {
-"i": 2,
+"id": "fo3",
 "name": "Real Time — Story Telling. Międzynarodowy Festiwal Sztuki Performance",
 "place": "Sopot",
 "desc": "Międzynarodowy festiwal sztuki performance; edycję z 1993 roku pokazano w Galerii Grodzkiej w Lublinie."
 },
 {
-"i": 3,
+"id": "fo4",
 "name": "Międzynarodowy Festiwal Sztuki Interakcje",
 "place": "Piotrków Trybunalski",
 "desc": "Powstał w 1999 roku z inicjatywy Ryszarda Piegzy, wspólnie ze Stanisławem Piotrem Gajdą i Gordianem Piecem. Świdziński od 1999 roku był kuratorem i prezydentem festiwalu, a w latach 1999–2004 wystąpił na każdej edycji. Festiwal trwa nadal: 25. edycja, „Poza grawitacją”, odbyła się 24–27 września 2026 roku."
 },
 {
-"i": 4,
+"id": "fo5",
 "name": "W kontekście sztuki / Różnice",
 "place": "Warszawa",
-"desc": "Pierwszy festiwal poświęcony wprost sztuce kontekstualnej, zorganizowany w październiku 2006 roku i powtórzony w 2007. Współtworzony z Janem Lubiczem Przyłuskim. Związany z filmem dokumentalnym „Różnice”."
+"desc": "Pierwszy festiwal poświęcony wprost sztuce kontekstualnej, zorganizowany w październiku 2006 roku i powtórzony w 2007. Współtworzony z Janem Przyłuskim. Związany z filmem dokumentalnym „Różnice”."
 }
 ],
 "festivalsData.participated": [
 {
-"i": 0,
+"id": "fp01",
 "name": "F-Art. Festiwal kontrkultury",
 "place": "Gdańsk",
 "desc": "Pierwsza prezentacja tez sztuki kontekstualnej. Był na niej obecny Jean Sellem, który później zorganizował wystawę w Lund."
 },
 {
-"i": 1,
+"id": "fp02",
 "name": "Konferencja CEAC „In the Context of the Art World”",
 "place": "Toronto, Kanada",
 "desc": "Publiczna debata z Josephem Kosuthem, Sarah Charlesworth, Carole Condé, Anthonym McCallem i Hervé Fischerem, zorganizowana przez Ameriga Marrasa z CEAC."
 },
 {
-"i": 2,
+"id": "fp03",
 "name": "Konferencja „Art et Transformation Sociale” — Trzeci Front",
 "place": "Paryż, Francja",
 "desc": "Konferencja Collectif Art Sociologique (10–13 maja 1977); wspólna deklaracja „trzeciego frontu w sztuce przeciw Nowemu Jorkowi”."
 },
 {
-"i": 3,
+"id": "fp04",
 "name": "Festiwal Espaces Affranchis",
 "place": "Fondation Danaé, Paryż",
 "desc": "Międzynarodowy festiwal performansu."
 },
 {
-"i": 4,
+"id": "fp05",
 "name": "Międzynarodowy Festiwal Performansu Interaction",
 "place": "Francja",
 "desc": "Międzynarodowy festiwal performansu."
 },
 {
-"i": 5,
+"id": "fp06",
 "name": "Première Biennale d’Art Actuel",
 "place": "Québec, Kanada",
 "desc": "Pierwsze biennale sztuki aktualnej w Quebecu."
 },
 {
-"i": 6,
+"id": "fp07",
 "name": "Festival Internacional de Performance",
 "place": "Walencja, Hiszpania",
 "desc": "Międzynarodowy festiwal performansu w Hiszpanii."
 },
 {
-"i": 7,
+"id": "fp08",
 "name": "Rencontres Internationales de Poésie Contemporaine",
 "place": "Tarascon, Francja",
 "desc": "Międzynarodowe spotkania poezji współczesnej."
 },
 {
-"i": 8,
+"id": "fp09",
 "name": "Nihon International Performance Art Festival",
 "place": "Nagano, Japonia",
 "desc": "Japoński międzynarodowy festiwal sztuki performance."
 },
 {
-"i": 9,
+"id": "fp10",
 "name": "Festiwal 9 Dragons’ Heads",
 "place": "Cheongwon-gun, Korea Południowa",
 "desc": "Międzynarodowy festiwal sztuki w Korei Południowej."
 },
 {
-"i": 10,
+"id": "fp11",
 "name": "Międzynarodowy Festiwal Dimension 0",
 "place": "Wilno, Litwa",
 "desc": "Międzynarodowy festiwal sztuki performance na Litwie."
 },
 {
-"i": 11,
+"id": "fp12",
 "name": "Ex Teresa. Międzynarodowy Festiwal Performance",
 "place": "Meksyk (Ciudad de México)",
 "desc": "Najważniejszy meksykański festiwal sztuki performance."
 },
 {
-"i": 12,
+"id": "fp13",
 "name": "Asiatopia. Międzynarodowy Festiwal Sztuki Performance",
 "place": "Bangkok, Tajlandia",
 "desc": "Międzynarodowy azjatycki festiwal sztuki performance."
 },
 {
-"i": 13,
+"id": "fp14",
 "name": "Festiwal Lange Atem",
 "place": "Essen i Münster, Niemcy",
 "desc": "Niemiecki festiwal sztuki performance."
 },
 {
-"i": 14,
+"id": "fp15",
 "name": "Navinki. Międzynarodowy Festiwal Sztuki Performance",
 "place": "Mińsk, Białoruś",
 "desc": "Cyklicznie organizowany białoruski festiwal sztuki performance. Świdziński wystąpił na kilku edycjach."
 },
 {
-"i": 15,
+"id": "fp16",
 "name": "Tupada International Action Art Event",
 "place": "Manila, Filipiny",
 "desc": "Międzynarodowy przegląd sztuki akcji na Filipinach."
 },
 {
-"i": 16,
+"id": "fp17",
 "name": "European Performance Art Festival",
 "place": "CSW Zamek Ujazdowski, Warszawa",
 "desc": "Duży festiwal europejski w Centrum Sztuki Współczesnej."
@@ -585,25 +589,25 @@
 ],
 "festivalsData.posthumous": [
 {
-"i": 0,
+"id": "fh1",
 "name": "Sympozjum „W kontekście teraz”",
 "place": "Radom",
 "desc": "Konferencja o aktualności sztuki kontekstualnej, towarzysząca polskim wydaniom książek Świdzińskiego; referaty ogłoszono w katalogu festiwalu „Global Communication” (MCSW Elektrownia w Radomiu)."
 },
 {
-"i": 1,
+"id": "fh2",
 "name": "Dyskusja wokół książek Świdzińskiego w CSW",
 "place": "CSW Zamek Ujazdowski, Warszawa",
 "desc": "16 grudnia 2009. Uczestnicy: Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz i Małgorzata Butterwick; prowadzenie Grzegorz Borkowski. Rozmowa wokół książek „Sztuka, społeczeństwo, samoświadomość” i „Sztuka i jej kontekst”."
 },
 {
-"i": 2,
+"id": "fh3",
 "name": "„W moim kontekście” — wystawa w CSW",
 "place": "CSW Zamek Ujazdowski, Warszawa",
 "desc": "„W moim kontekście. Wybrane działania z fotografią i tekstem”, czynna do 28 lutego 2010; poszerzoną wersję wraz z sympozjum teoretycznym pokazano następnie w Galerii Labirynt w Lublinie."
 },
 {
-"i": 3,
+"id": "fh4",
 "name": "Filmoteka i archiwum polskiego performansu",
 "place": "Muzeum Sztuki Nowoczesnej w Warszawie",
 "desc": "Dokumentacja filmowa i performanse Świdzińskiego są przechowywane w muzealnej Filmotece oraz w archiwum polskiego performansu, dzięki czemu pozostają dostępne badaczom i publiczności."
@@ -611,7 +615,7 @@
 ],
 "textsData": [
 {
-"i": 0,
+"id": "12points",
 "title": "12 punktów sztuki kontekstualnej",
 "type": "Manifest",
 "sections": [
@@ -666,7 +670,7 @@
 ]
 },
 {
-"i": 1,
+"id": "dispute",
 "title": "Spór o istnienie sztuki",
 "type": "Esej",
 "sections": [
@@ -693,7 +697,7 @@
 ]
 },
 {
-"i": 2,
+"id": "artisfact",
 "title": "Sztuka jest faktem",
 "type": "Manifest",
 "sections": [
@@ -716,7 +720,7 @@
 ]
 },
 {
-"i": 3,
+"id": "models",
 "title": "Modele sztuki",
 "type": "Teoria",
 "sections": [
@@ -739,7 +743,7 @@
 ]
 },
 {
-"i": 4,
+"id": "kontekst3",
 "title": "Sztuka kontekstualna (3) — teoria całościowa",
 "type": "Teoria",
 "sections": [
@@ -774,7 +778,7 @@
 ]
 },
 {
-"i": 5,
+"id": "o70",
 "title": "O latach 70-tych",
 "type": "Esej",
 "sections": [
@@ -797,7 +801,7 @@
 ]
 },
 {
-"i": 6,
+"id": "permafo",
 "title": "A propos N.S. galerii „Permafo”",
 "type": "Esej",
 "sections": [
@@ -816,7 +820,7 @@
 ]
 },
 {
-"i": 7,
+"id": "piotrowski",
 "title": "Hommage à Jan Świdziński — Kazimierz Piotrowski",
 "type": "Esej krytyczny",
 "sections": [
@@ -847,8 +851,8 @@
 ]
 },
 {
-"i": 8,
-"title": "Jesteśmy zaplątani — Jan Lubicz Przyłuski",
+"id": "entangled",
+"title": "Jesteśmy zaplątani — Jan Przyłuski",
 "type": "Rozmowa / esej",
 "sections": [
 {
@@ -868,7 +872,7 @@
 ],
 "formulaScenarios": [
 {
-"i": 0,
+"id": "fs1",
 "object": "Puste białe płótno wiszące na ścianie",
 "params": {
 "time": [
@@ -904,7 +908,7 @@
 }
 },
 {
-"i": 1,
+"id": "fs2",
 "object": "Fotografia starszego mężczyzny siedzącego samotnie",
 "params": {
 "time": [
@@ -940,7 +944,7 @@
 }
 },
 {
-"i": 2,
+"id": "fs3",
 "object": "Ktoś stoi w milczeniu na środku sali przez dziesięć minut",
 "params": {
 "time": [
@@ -978,181 +982,181 @@
 ],
 "timeline": [
 {
-"i": 0,
+"id": "tl01",
 "title": "Narodziny w Bydgoszczy",
 "text": "Jan Świdziński urodził się 25 maja 1923 roku w Bydgoszczy.",
 "exp": "Jego ojciec, również Jan, był oficerem Wojska Polskiego i byłym żołnierzem Legionów Piłsudskiego; Świdzińscy wywodzili się ze starego rodu szlacheckiego herbu Półkozic. Wśród przodków był Konstanty Świdziński, wybitny kolekcjoner i mecenas kultury polskiej, którego księgozbiór uległ zniszczeniu w 1944 roku, po upadku powstania warszawskiego."
 },
 {
-"i": 1,
+"id": "tl02",
 "title": "Akademia Sztuk Pięknych w Warszawie",
 "text": "Rozpoczyna studia: malarstwo u Jana Cybisa, grafikę u Tadeusza Kulisiewicza.",
 "exp": "Dyplom z malarstwa uzyskał w 1952 roku. W latach 1952–1962 tworzył cykl obrazów „Znaki semantyczne”."
 },
 {
-"i": 2,
+"id": "tl03",
 "title": "Dyplom Akademii Sztuk Pięknych",
 "text": "Otrzymuje dyplom z malarstwa. Rozpoczyna cykl obrazów „Znaki semantyczne” (1952–1962).",
 "exp": "Studiował malarstwo u Jana Cybisa i grafikę u Tadeusza Kulisiewicza w warszawskiej Państwowej Wyższej Szkole Sztuk Plastycznych (dziś Akademia Sztuk Pięknych). W latach pracy nad „Znakami semantycznymi” studiował także sztukę islamu w Hiszpanii i Maroku oraz kaligrafię chińską."
 },
 {
-"i": 3,
+"id": "tl04",
 "title": "Koniec drogi malarskiej",
 "text": "Indywidualna wystawa malarstwa zamyka tradycyjną praktykę artystyczną.",
 "exp": "Doszedł do przekonania, że malarstwo i inne tradycyjne dziedziny sztuki nie są w stanie zmierzyć się z podstawowymi, egzystencjalnymi dylematami współczesnego człowieka. Kryzys ten skierował go ku nauce: semiotyce, lingwistyce, neopozytywizmowi i logice formalnej."
 },
 {
-"i": 4,
+"id": "tl05",
 "title": "Studia nad semiotyką i cybernetyką",
 "text": "Wraz z Markiem Koniecznym zakłada Sekcję Plastyki przy Towarzystwie Cybernetycznym.",
 "exp": "Lata głębokiego zanurzenia w semiotyce, lingwistyce, neopozytywizmie i logice formalnej. Studia te pozwoliły mu spojrzeć krytycznie na konceptualizm angloamerykański, który wyłaniał się pod koniec lat sześćdziesiątych. Na początku lat siedemdziesiątych zaowocowały cyklem prac i działań „Z logiki niekompletnych rzeczywistości”."
 },
 {
-"i": 5,
+"id": "tl06",
 "title": "„Spór o istnienie sztuki”",
 "text": "Pierwszy ważny tekst teoretyczny, ogłoszony w „Życiu i Myśli” nr 5/1970.",
 "exp": "Uznaje się go za pierwszą próbę teoretycznego uporządkowania rodzących się wówczas koncepcji estetycznych; zdaniem Kazimierza Piotrowskiego to on zapoczątkował zwrot konceptualny w sztuce polskiej. Napisany w czasie młodzieżowej rewolty artykuł dowodził, że sztuka i rzeczywistość zmieniły się tak dalece, iż praca artysty nie polega już na tworzeniu obiektów sztuki, lecz na rozważaniu jej istoty."
 },
 {
-"i": 6,
+"id": "tl07",
 "title": "„A propos N.S. galerii «Permafo»”",
 "text": "Krytyczny esej o nowej sytuacji w sztuce, ogłoszony w „Fotografii” nr 5/1972, wiążący autora z awangardą wrocławską.",
 "exp": "Świdziński dowodzi, że nowa sztuka przestaje być obserwacją i badaniem z zewnątrz sytuacji wcześniej istniejących, a staje się produkowaniem kolejnych ogniw rzeczywistości. Sztuka jest aktem działania społecznego, a nie lustrzanym odbiciem."
 },
 {
-"i": 7,
+"id": "tl08",
 "title": "Pierwsze performance",
 "text": "Początek działalności performerskiej podczas Spotkań Performance przy Teatrze Dnia i Nocy w Poznaniu.",
 "exp": "„Moje zainteresowanie sztuką performance wyrosło z jednej strony z teorii kontekstualnej, z drugiej — z doświadczeń tańca, ruchu ciała i gestu, którymi posługiwałem się w działaniach”. Dla Świdzińskiego performance jest formą sztuki najbardziej dostępną — bezpośrednim kontaktem z widzem we wspólnym kontekście czasu, miejsca i sytuacji."
 },
 {
-"i": 8,
+"id": "tl09",
 "title": "Festiwal kontrkultury „F-Art” w Gdańsku",
 "text": "Pierwsza publiczna prezentacja tez sztuki kontekstualnej. Obecny na festiwalu Jean Sellem zorganizował później wystawę w Lund.",
 "exp": "Tezy przedstawił także na sympozjum „Sytuacja w sztuce współczesnej”, zorganizowanym przez Galerię Remont w Warszawie. Oba wydarzenia przygotowały grunt pod ogłoszenie manifestu w 1976 roku."
 },
 {
-"i": 9,
+"id": "tl10",
 "title": "„Sztuka jako sztuka kontekstualna” — manifest",
 "text": "Ogłasza 12 punktów sztuki kontekstualnej w Lund w Szwecji. Wystawa polskich artystów w Galerii St. Petri.",
 "exp": "Dokument założycielski sztuki kontekstualnej. Podstawowa formuła: przedmiot „O” przyjmuje znaczenie „m” w czasie „t”, w miejscu „p”, w sytuacji „s”, w odniesieniu do osoby/osób „o” — wtedy i tylko wtedy. Na towarzyszącej wystawie pokazano prace artystów Galerii Sztuki Najnowszej z Wrocławia (Anna Kutera, Romuald Kutera, Lech Mrożek), kręgu Seminarium Warszawskiego (ze Zbigniewem Dłubakiem), Warsztatu Formy Filmowej z Łodzi (Józef Robakowski, Wojciech Bruszewski, Ryszard Waśko) oraz Henryka Gajewskiego z Galerii Remont. Sam termin „sztuka kontekstualna” podsunął Świdzińskiemu Jean Sellem, kierownik Galerii St. Petri."
 },
 {
-"i": 10,
+"id": "tl11",
 "title": "Debata z Kosuthem w Toronto",
 "text": "Podczas konferencji CEAC „In the Context of the Art World” Świdziński publicznie krytykuje tautologiczny model Kosutha.",
 "exp": "Spotkanie zorganizował Amerigo Marras z Centre for Experimental Art and Communication; wzięli w nim udział m.in. Joseph Kosuth, Sarah Charlesworth, Carole Condé, Anthony McCall, Hervé Fischer oraz artyści i teoretycy kanadyjscy. Świdziński wystąpił z „12 punktami sztuki kontekstualnej”, dowodząc, że sztuka jest „pustym znakiem”, który nabiera znaczenia wyłącznie w kontekście społecznym, a nie przez odniesienie do samej siebie."
 },
 {
-"i": 11,
+"id": "tl12",
 "title": "Międzynarodowa konferencja w Warszawie",
 "text": "Organizuje w Galerii Remont konferencję „Sztuka w kontekście rzeczywistości” — z udziałem przedstawicieli 35 krajów.",
 "exp": "Podpisano wówczas porozumienia między polską sztuką kontekstualną, francuskim Art Sociologique, amerykańskim Art and Language i artystami z Ameryki Łacińskiej. Władze zareagowały ostro, uznając tak rozległe kontakty zagraniczne za zagrożenie."
 },
 {
-"i": 12,
+"id": "tl13",
 "title": "„Trzeci front przeciw Nowemu Jorkowi” — Paryż",
 "text": "Konferencja „Art et Transformation Sociale” w Paryżu (10–13 maja). Wspólna deklaracja przeciw hegemonii nowojorskiego świata sztuki.",
 "exp": "Organizatorem był Collectif d’Art Sociologique. Wzięli w niej udział m.in. Świdziński i Emil Cieślar z Polski, Brian Dyson i Paul Woodrow z Kanady oraz brytyjscy artyści Loraine Leeson i Peter Dunn. Wspólna deklaracja zapowiadała „trzeci front w sztuce przeciw Nowemu Jorkowi”."
 },
 {
-"i": 13,
+"id": "tl14",
 "title": "„Stale mówimy o człowieku”",
 "text": "Wystawa „Stale mówimy o człowieku” otwarta w Małej Galerii w Warszawie (26 czerwca) — fotografia tłumu połączona z tekstem filozoficznym.",
 "exp": "Jej przesłanie streszcza zdanie samego artysty: „Nie mówcie o człowieku, mówcie do człowieka!”. W tym samym roku Alberta College of Art Gallery w Calgary wydała jego książkę „Art, Society and Self-consciousness” (po polsku: „Sztuka, społeczeństwo, samoświadomość”). Praca pokazuje, jak minimalny materiał zyskuje złożone znaczenie dzięki kontekstowej ramie."
 },
 {
-"i": 14,
+"id": "tl15",
 "title": "„Wolność i ograniczenie”",
 "text": "Publikuje w Calgary „Freedom and Limitation — The Anatomy of Post-modernism” (wydawnictwo Syntax, redakcja Brian Dyson).",
 "exp": "Trzy lata wcześniej pokrewny cykl fotograficzny „Wolność i ograniczenie” (Mała Galeria, 1984) dokumentował polską wieś przy granicy ze Związkiem Radzieckim. Fotografie jako „symptomy rzeczywistości” — artysta przedstawia nie opis, lecz kontekstowy dowód kondycji człowieka poddanego politycznemu ograniczeniu."
 },
 {
-"i": 15,
+"id": "tl16",
 "title": "Prezes Stowarzyszenia Artystów Innych Sztuk",
 "text": "Zostaje prezesem Stowarzyszenia Artystów Innych Sztuk.",
 "exp": "W kwietniu tego roku wystawa „Jestem z powrotem” w Małej Galerii oznaczyła jego powrót ze Stanów Zjednoczonych. Upadek komunizmu całkowicie zmienia kontekst sztuki polskiej."
 },
 {
-"i": 16,
+"id": "tl17",
 "title": "Międzynarodowy festiwal Interscop",
 "text": "Duży międzynarodowy festiwal performance w Łucznicy, zorganizowany przez Świdzińskiego.",
 "exp": "W tym samym roku wziął udział w Première Biennale d’Art Actuel w Québecu oraz w międzynarodowym festiwalu performance Interaction we Francji."
 },
 {
-"i": 17,
+"id": "tl18",
 "title": "„W porządku” — fotografia z wojny w Zatoce",
 "text": "Wystawa „W porządku” w Małej Galerii w Warszawie i w BWA w Lublinie — prasowe zdjęcie z wojny w Zatoce Perskiej poddane artystycznym interwencjom.",
 "exp": "Słynna wojenna fotografia z „Newsweeka” została przetworzona tak, że — jak pisał Grzegorz Borkowski — dokumentacja nieszczęścia stopniowo przemienia się w coraz bardziej abstrakcyjny znak. Te same obrazy niosą radykalnie różne znaczenia w zależności od kontekstu — zasada „pustego znaku” w działaniu."
 },
 {
-"i": 18,
+"id": "tl19",
 "title": "Performance w Korei i Rumunii",
 "text": "Występuje na festiwalu 9 Dragons’ Heads w Korei Południowej i na festiwalu AnnART w Rumunii.",
 "exp": "W tym samym roku „Second Hand” w Galerii Dziekanka w Warszawie. Dekada przyniosła kolejne występy festiwalowe — od Wilna („Dimension 0”, 1997) po miasto Meksyk (Ex Teresa, 1998)."
 },
 {
-"i": 19,
+"id": "tl20",
 "title": "„Sztuka jest faktem”",
 "text": "Manifest w formie plakatu na dwudziestolecie sztuki kontekstualnej. Syntax Arts Society, Calgary.",
 "exp": "„Pojęcia takie jak sztuka, artysta, świat sztuki funkcjonują wyłącznie jako wygodne identyfikatory, przydatne tak długo, jak długo dają się użyć w danej sytuacji”. Sztuka niczego nie buduje ani nie burzy — obcujący z nią przypominają turystów, którzy zatrzymują się na chwilę, spotykają podróżnych z innych kultur, wymieniają uwagi i jadą dalej. Przekład polski: B. Łukasiewicz."
 },
 {
-"i": 20,
+"id": "tl21",
 "title": "„Anomia”",
 "text": "Wystawa „Anomia” w Starej Galerii w Lublinie (maj) — wokół Durkheimowskiego pojęcia anomii: rozpadu powszechnie przyjętych norm.",
 "exp": "Sam artysta pisał: „Wprowadził je do socjologii Durkheim na oznaczenie stanu społeczeństwa, gdy ogólnie przyjęte normy, wartości, pojęcia — cały przez wszystkich zrozumiały obraz rzeczywistości przestaje funkcjonować”. Powiększone amatorskie zdjęcia ludzi pochylających się ku sobie w rozmowie przywołują dawny gest Santa Conversatione, dziś już tylko pozór: „Santa Conversatione była kiedyś — a teraz? Teraz jest jak jest. W porządku”."
 },
 {
-"i": 21,
+"id": "tl22",
 "title": "Festiwal Interakcje w Piotrkowie Trybunalskim",
 "text": "Powstaje Międzynarodowy Festiwal Sztuki Interakcje — od 1999 roku Świdziński jest jego kuratorem i prezesem.",
 "exp": "Festiwal zainicjowali Ryszard Piegza wraz ze Stanisławem Piotrem Gajdą i Gordianem Piecem; od 1999 roku odbywa się w Piotrkowie Trybunalskim (25. edycja we wrześniu 2026) i pozostaje najdłużej działającym polskim festiwalem sztuki performance. Świdziński wystąpił na każdej edycji w latach 1999–2004."
 },
 {
-"i": 22,
+"id": "tl23",
 "title": "Międzynarodowe performance w Azji",
 "text": "Występuje na festiwalu Asiatopia w Bangkoku oraz na festiwalu Lange Atem w Essen i Münster.",
 "exp": "Jedno z ostatnich wielkich międzynarodowych tournée performerskich. Nadal występował także na Interakcjach i na festiwalu Navinki w Mińsku."
 },
 {
-"i": 23,
+"id": "tl24",
 "title": "Order Odrodzenia Polski",
 "text": "Otrzymuje Krzyż Oficerski Orderu Odrodzenia Polski (maj 2005) za zasługi dla rozwoju i promocji kultury polskiej.",
 "exp": "Wyróżnienie przyszło po dziesięcioleciach pracy dydaktycznej za granicą (Paryż, Montreal, Nowy Jork, Calgary, Vancouver) oraz organizowania konferencji i festiwali performance. W tym samym roku w Québecu ukazała się książka „L’Art et son Contexte”."
 },
 {
-"i": 24,
+"id": "tl25",
 "title": "Festiwal „W kontekście sztuki / Różnice”",
-"text": "Pierwszy festiwal wprost poświęcony sztuce kontekstualnej, zorganizowany w Warszawie w październiku 2006 roku (i powtórzony w 2007). Współtwórcą był Jan Lubicz Przyłuski.",
+"text": "Pierwszy festiwal wprost poświęcony sztuce kontekstualnej, zorganizowany w Warszawie w październiku 2006 roku (i powtórzony w 2007). Współtwórcą był Jan Przyłuski.",
 "exp": "Wystąpili m.in. Zbigniew Warpechowski, Ewa Zarzycka, Janusz Bałdyga i Przemysław Kwiek, a także goście z Izraela, Włoch, Francji i Kanady. Z festiwalem wiążą się „Różnice” — pierwszy film dokumentalny Przyłuskiego, poświęcony Świdzińskiemu. Mniej więcej wtedy Przyłuski zapoczątkował też Archiwum Sztuki Akcji (ASA)."
 },
 {
-"i": 25,
+"id": "tl26",
 "title": "Polskie wydania książek i sympozjum w CSW",
 "text": "Po polsku ukazują się dwie książki: „Sztuka i jej kontekst” oraz „Sztuka, społeczeństwo, samoświadomość”. Sympozjum w CSW Zamek Ujazdowski.",
 "exp": "W dyskusji 16 grudnia 2009 roku wzięli udział Grzegorz Dziamski, Kazimierz Piotrowski, Łukasz Guzek, Bartosz Łukasiewicz i Małgorzata Butterwick; moderował Grzegorz Borkowski. Sympozjum „In Context Now” odbyło się w Radomiu, a jego materiały ogłoszono w tomie „Festiwal Globalnej Komunikacji”."
 },
 {
-"i": 26,
+"id": "tl27",
 "title": "„W moim kontekście” w CSW Zamek Ujazdowski",
 "text": "Wystawa „W moim kontekście. Wybrane działania z fotografią i tekstem” w Centrum Sztuki Współczesnej Zamek Ujazdowski w Warszawie.",
-"exp": "Czynna do 28 lutego 2010 roku; poszerzoną wersję, z towarzyszącym sympozjum teoretycznym, pokazano następnie w Galerii Labirynt w Lublinie. 24 czerwca 2010 roku — w dniu jego imienin — w Galerii Nizio odbył się w ramach projektu The Knot „Wieczór w kontekście”, podczas którego pokazano filmową rozmowę Jana Lubicza Przyłuskiego z artystą „Jesteśmy zaplątani”."
+"exp": "Czynna do 28 lutego 2010 roku; poszerzoną wersję, z towarzyszącym sympozjum teoretycznym, pokazano następnie w Galerii Labirynt w Lublinie. 24 czerwca 2010 roku — w dniu jego imienin — w Galerii Nizio odbył się w ramach projektu The Knot „Wieczór w kontekście”, podczas którego pokazano filmową rozmowę Jana Przyłuskiego z artystą „Jesteśmy zaplątani”."
 },
 {
-"i": 27,
+"id": "tl28",
 "title": "Film: \"Kosuth — Świdziński. Spotkanie w Rzymie\" (reż. Piotr Weychert)",
 "text": "Film dokumentalny Piotra Weycherta (38 min 59 s, Polska, polski z konsekutywnym tłumaczeniem na angielski), realizacja przypisana Janowi Świdzińskiemu i Piotrowi Weychertowi. Wyemitowany w 2010 roku w TVP Kultura; w kolekcji Filmoteki MSN Warszawa.",
 "exp": "Film dokumentuje podróż Świdzińskiego do Rzymu i spotkanie z Josephem Kosuthem w jego rzymskiej pracowni (lipiec 2008). Była to kontynuacja polemik, które obaj artyści toczyli korespondencyjnie od lat 70. — rzeczywiście spotkali się na żywo tylko raz, w czasie debaty \"In the Context of the Art World\" w Toronto (XI 1976). Rzym 2008 to drugie spotkanie dwóch głównych teoretyków tego pola na przestrzeni ponad trzech dekad; obaj wracają w rozmowie do dawnych idei, które w międzyczasie zostały wchłonięte przez świat sztuki, reklamę i kreatywne branże."
 },
 {
-"i": 28,
+"id": "tl29",
 "title": "Śmierć w Warszawie",
 "text": "Jan Świdziński zmarł 9 lutego 2014 roku w Warszawie.",
 "exp": "Został pochowany na Cmentarzu Wojskowym na Powązkach w Warszawie. Pozostawił po sobie teorię i praktykę dowodzącą, że sztuka nabiera znaczenia wyłącznie w kontekście pragmatycznym — czasu, miejsca, sytuacji i uczestniczących osób. Zapoczątkowany przez niego ruch sztuki kontekstualnej wciąż oddziałuje na dyskurs sztuki współczesnej."
 },
 {
-"i": 29,
+"id": "tl30",
 "title": "Film: \"Jan Świdziński. Poza dostarczony kontekst\" (reż. Piotr Weychert)",
 "text": "Portret dokumentalny (37 min, barwny, rok produkcji 2015). Produkcja: Media Kontakt; producenci: Mirosław Chojecki i Piotr Weychert; współfinansowanie: Fundacja Arton i MKiDN.",
 "exp": "Reżyseria i scenariusz: Piotr Weychert; współpraca reżyserska: Elwira Kozłowska i Janusz Weychert. Zdjęcia: Sławomir Orman, Ryszard Piegza, Grzegorz Siwicki, Marko Stojanović, Piotr Weychert. Muzyka: Jarosław Lublin, Henry Purcell, Erik Satie. Montaż: Rafał Borowy, Monika Sirojc. Lektor: Władysław Kowalski. Film łączy materiał archiwalny performansów, wypowiedzi, teksty i fotografie Świdzińskiego z krótkimi filmami wg jego niezrealizowanych scenariuszy; włączono też komentarze Richarda Martela i fragmenty rozmowy z Josephem Kosuthem z Rzymu 2008. Film pokazano 22 XI 2013 podczas prezentacji archiwum artysty w Fundacji Arton."
@@ -1160,74 +1164,74 @@
 ],
 "concepts": [
 {
-"i": 0,
+"id": "empty-sign",
 "name": "Pusty znak",
 "cat": "Teoria podstawowa",
 "desc": "Znak, który nie jest ani przezroczystym oknem na rzeczywistość (model pierwszy), ani znakiem samego siebie (model drugi), lecz pustym miejscem do wypełnienia przez bieżącą rzeczywistość. Pusty znak nabiera znaczenia dopiero w kontekście pragmatycznym."
 },
 {
-"i": 1,
+"id": "context-formula",
 "name": "Formuła kontekstu",
 "cat": "Teoria podstawowa",
 "desc": "Przedmiot „O” przyjmuje znaczenie „m” w czasie „t”, w miejscu „p”, w sytuacji „s”, w odniesieniu do osoby/osób „o” — wtedy i tylko wtedy. Zmiana któregokolwiek parametru unieważnia dotychczasowe znaczenia.",
 "formula": "O(m) w t, w p, w s, wobec o ⟺ prawda"
 },
 {
-"i": 2,
+"id": "three-models",
 "name": "Trzy modele sztuki",
 "cat": "Teoria podstawowa",
 "desc": "Uniwersalny (renesansowy): reguły wieczne, znaki przezroczyste. Relatywistyczny (modernistyczny): znaki jako bariery, odniesienie do samych siebie. Kontekstualny (współczesny): puste znaki wypełniane przez rzeczywistość, wyłącznie systemy otwarte."
 },
 {
-"i": 3,
+"id": "pragmatic-context",
 "name": "Kontekst pragmatyczny",
 "cat": "Teoria podstawowa",
 "desc": "Konkretny układ czasu, miejsca, sytuacji i osób, który rozstrzyga o znaczeniu. Inaczej niż w logice formalnej, prawda w sztuce kontekstualnej jest zawsze względna wobec okoliczności pragmatycznych — a mimo to nie jest relatywistyczna, bo w danym kontekście prawdziwe jest tylko jedno wyrażenie."
 },
 {
-"i": 4,
+"id": "12-points",
 "name": "12 punktów sztuki kontekstualnej",
 "cat": "Manifest",
 "desc": "Dokument założycielski ogłoszony w 1976 roku, który uczynił ze sztuki kontekstualnej spójną propozycję teoretyczną: znaczenie płynące z kontekstu, odrzucenie kanonów, sprzeciw wobec stabilizacji zarówno przedmiotu, jak i znaczenia, sztuka jako relacja, a nie zbiór stałych składników."
 },
 {
-"i": 5,
+"id": "stochastic-process",
 "name": "Model procesu stochastycznego",
 "cat": "Teoria",
 "desc": "Cywilizację współczesną opisuje proces stochastyczny nieustannych, szybkich zmian. W odróżnieniu od modelu cyklicznego (przedprzemysłowego) i skokowego (przemysłowego) dzisiejszej rzeczywistości nie da się rozdzielić na osobne stany czy fazy."
 },
 {
-"i": 6,
+"id": "intensional",
 "name": "Intensjonalne a ekstensjonalne",
 "cat": "Teoria",
 "desc": "Wyrażenia ekstensjonalne: znaczenie wynika ze składników samego wyrażenia (posługują się nimi nauka i konceptualizm). Wyrażenia intensjonalne: znaczenie zależy od faktów zewnętrznych wobec treści nazwy. Sztuka kontekstualna operuje wyrażeniami intensjonalnymi."
 },
 {
-"i": 7,
+"id": "deontic-logic",
 "name": "Logika deontyczna w sztuce",
 "cat": "Teoria",
 "desc": "Sztuka nie mówi prawdy — sztuka o prawdzie przekonuje. Działa przez logikę deontyczną, rządzącą stanami wiedzy, uznawania, odrzucania, wierzenia i przypuszczania, a nie przez formalną logikę prawdy i fałszu."
 },
 {
-"i": 8,
+"id": "anomia",
 "name": "Anomia",
 "cat": "Praktyka",
 "desc": "Socjologiczne pojęcie Durkheima: stan, w którym powszechnie przyjęte normy przestają funkcjonować. Praca Świdzińskiego z 1998 roku dokumentuje „stan społecznego niezrozumienia” — ludzi, którzy rozmawiają, nie porozumiewając się naprawdę."
 },
 {
-"i": 9,
+"id": "art-as-social-practice",
 "name": "Sztuka jako praktyka społeczna",
 "cat": "Teoria podstawowa",
 "desc": "Sztuka nie jest ani opisem, ani sprawozdaniem z rzeczywistości. Jest działaniem wywołanym przez inne działania i wywołującym kolejne. Jest praktyką społeczną — jednocześnie poddaniem się jej i jej kształtowaniem."
 },
 {
-"i": 10,
+"id": "critique-kosuth",
 "name": "Krytyka tautologii Kosutha",
 "cat": "Krytyka",
 "desc": "Kosuthowska „sztuka jako idea jako idea” zamyka się w tautologii — sztuka definiuje sztukę przez odniesienie do samej siebie. Pusty znak proponuje w zamian sztukę wypełnianą przez zewnętrzną rzeczywistość, a nie zawracającą do siebie. Obaj artyści starli się publicznie w Toronto w 1976 roku."
 },
 {
-"i": 11,
+"id": "art-performance",
 "name": "Performance sztuki",
 "cat": "Praktyka",
 "desc": "Nie „sztuka performance”, lecz „performance sztuki” — sztuka działająca jako jedna z wielu sił w przyspieszającej zmianie kulturowej. Sztuka nie składa już deklaracji; działa jako składnik szerszych procesów, niczym turysta, który wymienia uwagi, nie próbując nikogo przekonać."
@@ -1235,60 +1239,139 @@
 ],
 "compareItems": [
 {
-"i": 0,
+"id": "cmp01",
 "text": "Sztuka jako zdanie analityczne — znaczenie zawarte w samej wypowiedzi"
 },
 {
-"i": 1,
+"id": "cmp02",
 "text": "Znaczenie wyznaczone przez pragmatyczny kontekst czasu, miejsca, sytuacji i osób"
 },
 {
-"i": 2,
+"id": "cmp03",
 "text": "Tautologiczna samozwrotność: sztuka definiuje sztukę własną definicją"
 },
 {
-"i": 3,
+"id": "cmp04",
 "text": "Pusty znak wypełniany przez rzeczywistość — sztuka nabiera znaczenia dopiero w kontekście społecznym"
 },
 {
-"i": 4,
+"id": "cmp05",
 "text": "Znaki jako samozwrotne bariery, wymagające logicznej analizy języka"
 },
 {
-"i": 5,
+"id": "cmp06",
 "text": "Znaki jako puste miejsca, wciąż na nowo budowane i przebudowywane przez praktykę"
 },
 {
-"i": 6,
+"id": "cmp07",
 "text": "Sztuka jako dziedzina autonomiczna, niezależna od rzeczywistości społecznej i politycznej"
 },
 {
-"i": 7,
+"id": "cmp08",
 "text": "Sztuka jako praktyka społeczna — działanie wywołane przez inne działania i wywołujące kolejne"
 },
 {
-"i": 8,
+"id": "cmp09",
 "text": "Wyrażenia ekstensjonalne: znaczenie wynika ze składników wypowiedzi"
 },
 {
-"i": 9,
+"id": "cmp10",
 "text": "Wyrażenia intensjonalne: znaczenie zależy od faktów spoza treści nazwy"
 },
 {
-"i": 10,
+"id": "cmp11",
 "text": "Prawda ustalana przez konwencję terminologiczną i analizę logiczną"
 },
 {
-"i": 11,
+"id": "cmp12",
 "text": "Prawda ustalana przez praktykę — znak potwierdza dopiero kontekst empiryczny"
 },
 {
-"i": 12,
+"id": "cmp13",
 "text": "Sztuka jako idea jako idea: pojęcie jest dziełem niezależnie od kontekstu"
 },
 {
-"i": 13,
+"id": "cmp14",
 "text": "Logika deontyczna: sztuka przekonuje o prawdzie przez wiarę, uznanie i odrzucenie"
+}
+],
+"booksData": [
+{
+"id": "1976-lund-artascontextual",
+"title": "Art as Contextual Art",
+"place": "Lund",
+"publisher": "Galerie S:t Petri / Archive of Experimental Art",
+"editor": "red. Jean Sellem",
+"note": "Manifest wygłoszony w lutym 1976; publikacja towarzysząca wystawie „Contextual Art\" w Galerie S:t Petri, Lund. Wprowadzenie do idei kontekstualizmu — pierwsza książka Świdzińskiego jako teoretyka."
+},
+{
+"id": "1977-warsaw-remont",
+"title": "Sztuka jako sztuka kontekstualna / Art as Contextual Art",
+"place": "Warszawa",
+"publisher": "Galeria Remont (SZSP), seria „Art Text\"",
+"editor": "red. Henryk Gajewski",
+"note": "Wydanie dwujęzyczne, 92 s., 19,5 × 14 cm, druk na brązowym papierze. Rozdawane bezpłatnie. Egzemplarz w archiwum Druków Artystycznych Galerii Wymiany (MSN Warszawa)."
+},
+{
+"id": "1979-calgary-artsociety",
+"title": "Art, Society and Self-consciousness",
+"place": "Calgary",
+"publisher": "Alberta College of Art Gallery",
+"note": "Napisana po angielsku podczas pobytu Świdzińskiego w Kanadzie; najważniejsza rozprawa filozoficzno-teoretyczna. Polskie wydanie: 2009, CSW Zamek Ujazdowski (tłum. Guzek)."
+},
+{
+"id": "1987-calgary-freedom",
+"title": "Freedom and Limitation. The Anatomy of Post-modernism",
+"place": "Calgary",
+"publisher": "Syntax",
+"editor": "red. Brian Dyson",
+"note": "Świdziński często datował ją jako 1985; faktyczne wydanie 1987 pod redakcją Briana Dysona w kalgaryjskim Syntax. Anatomia postmodernizmu z pozycji sztuki kontekstualnej."
+},
+{
+"id": "1988-eindhoven-quotations",
+"title": "Quotations on Contextual Art",
+"place": "Eindhoven",
+"publisher": "Het Apollohuis",
+"editor": "red. Michael Gibbs",
+"note": "Zawiera zapis dyskusji „In the Context of the Art World\" z konferencji w CEAC Toronto (XI 1976), opublikowany 12 lat po debacie."
+},
+{
+"id": "1997-quebec-artcontextuel",
+"title": "Art contextuel",
+"place": "Québec",
+"publisher": "Éditions Intervention / Les presses du réel",
+"note": "Broszura 16 s., 23 × 34 cm; dwa teksty napisane w odstępie dwudziestu lat plus manifest z 1976 i fotografie. Wynik rezydencji w Le Lieu (Québec)."
+},
+{
+"id": "2005-quebec-lartetson",
+"title": "L'art et son contexte. Au fait, qu'est-ce que l'art ?",
+"place": "Québec",
+"publisher": "Éditions Intervention / Le Lieu, Centre en art actuel",
+"editor": "red. Richard Martel",
+"note": "156 s., 12,5 × 20,2 cm. Reissue / dystrybucja przez Les presses du réel."
+},
+{
+"id": "2009-radom-sztukaijej",
+"title": "Sztuka i jej kontekst. Właściwie, co to jest sztuka?",
+"place": "Piotrków Trybunalski / Radom",
+"publisher": "ODA Piotrków Trybunalski + MCSW „Elektrownia\" Radom",
+"note": "94–96 s., ilustracje. Polska wersja L'art et son contexte (2005). Druk AMAT Piotrków."
+},
+{
+"id": "2009-warsaw-samoswiadomosc",
+"title": "Sztuka, społeczeństwo i samoświadomość",
+"place": "Warszawa",
+"publisher": "Centrum Sztuki Współczesnej Zamek Ujazdowski",
+"editor": "tłum. Łukasz Guzek",
+"note": "Polskie tłumaczenie Art, Society and Self-consciousness (Calgary 1979). 144 s., 21,5 × 15,4 cm."
+},
+{
+"id": "2015-halifax-incontext",
+"title": "Jan Świdziński en contexte / W Kontekście / In Context (+ DVD)",
+"place": "Québec / Halifax",
+"publisher": "Éditions Intervention (dystrybucja Les presses du réel)",
+"editor": "red. Richard Martel; teksty: Paul Ardenne, Bruce Barber, Brian Dyson, Richard Martel, Artur Tajber",
+"note": "Trójjęzyczna monografia pośmiertna 160 s., 19,5 × 22 cm, z DVD. Zawiera reedycję manifestu z 1976 (po raz pierwszy po francusku) + eseje."
 }
 ]
 }
