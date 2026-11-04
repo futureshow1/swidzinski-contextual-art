@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Jan Świdziński i teoria sztuki kontekstualnej. Studium całościowe</title>
+<style>
+  @page { size: A4; margin: 2.5cm; }
+  @media print { body { font-size: 11pt; } .no-print { display: none; } h2 { page-break-before: always; } .title-page { page-break-after: always; } blockquote { page-break-inside: avoid; } }
+  :root { --accent: #8b0000; --accent2: #2c3e50; --border: #c9b99a; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', 'Times New Roman', serif; background: #fff; color: #1a1a1a; line-height: 1.8; max-width: 800px; margin: 0 auto; padding: 2rem; font-size: 12pt; }
+  a { color: var(--accent); }
+  .title-page { text-align: center; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 3rem 2rem 5rem; background: #f5f2ed; color: #1a1a1a; position: relative; overflow: hidden; margin: -2rem -2rem 2rem; width: calc(100% + 4rem); max-width: none; gap: 0; }
+  .title-page::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 40%, rgba(139,0,0,0.04) 0%, transparent 60%), radial-gradient(ellipse at 70% 60%, rgba(44,62,80,0.04) 0%, transparent 55%); }
+  .title-page * { position: relative; z-index: 1; }
+  .title-page .cover-line { width: 60px; height: 2px; background: var(--accent); margin: 0 auto 1.5rem; opacity: 0.5; }
+  .title-page h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 400; line-height: 1.25; margin-bottom: .6rem; letter-spacing: .5px; color: #1a1a1a; }
+  .title-page .sub { font-size: clamp(.95rem, 1.8vw, 1.15rem); color: #6b6878; margin: .4rem 0; font-style: italic; }
+  .title-page .sub-type { font-size: .8rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-top: 1.2rem; font-style: normal; font-family: sans-serif; opacity: 0.7; }
+  .title-page .cover-divider { width: 200px; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 1.8rem auto; }
+  .title-page .cover-epigraph { max-width: 500px; font-size: .85rem; line-height: 1.7; color: #6b6878; font-style: italic; margin: 0 auto; }
+  .title-page .cover-epigraph cite { display: block; font-style: normal; color: #9994a5; font-size: .75rem; margin-top: .6rem; letter-spacing: 1px; }
+  .title-page .cover-epigraph cite::before { content: '— '; }
+  .title-page .cover-bottom { position: absolute; bottom: 2.5rem; left: 0; right: 0; text-align: center; }
+  .title-page .cover-bottom .year { font-family: sans-serif; font-size: .7rem; letter-spacing: 3px; color: #9994a5; text-transform: uppercase; }
+  .title-page .meta { font-size: .9rem; color: #888; margin-top: 2rem; }
+  nav.no-print { position: fixed; top: 0; left: 0; right: 0; background: #222; padding: .4rem; text-align: center; z-index: 100; overflow-x: auto; white-space: nowrap; }
+  nav a { color: #aaa; font-size: .7rem; margin: 0 .2rem; font-family: sans-serif; text-decoration: none; }
+  nav a:hover { color: #fff; }
+  .spacer { height: 2rem; }
+  h2 { font-size: 1.5rem; color: var(--accent); border-bottom: 2px solid var(--border); padding-bottom: .4rem; margin: 3rem 0 1.5rem; font-weight: 400; }
+  h3 { font-size: 1.15rem; color: var(--accent2); margin: 2rem 0 .8rem; font-weight: 600; }
+  h4 { font-size: 1.05rem; color: #444; margin: 1.5rem 0 .6rem; font-weight: 600; }
+  p { margin-bottom: 1rem; text-align: justify; }
+  ul, ol { margin: .5rem 0 1rem 2rem; }
+  li { margin-bottom: .4rem; }
+  blockquote { background: #f8f5ee; border-left: 4px solid var(--accent); padding: 1rem 1.2rem; margin: 1.2rem 0; font-style: italic; }
+  blockquote cite { display: block; font-style: normal; font-size: .85rem; color: #666; margin-top: .5rem; }
+  blockquote cite::before { content: '— '; }
+  .thesis { background: #f8f5ee; border: 1px solid var(--border); padding: 1rem; margin: .8rem 0; border-radius: 3px; }
+  .thesis .num { font-weight: bold; color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .9rem; }
+  th, td { text-align: left; padding: .5rem .7rem; border-bottom: 1px solid #ddd; }
+  th { background: var(--accent2); color: #fff; font-size: .8rem; text-transform: uppercase; }
+  .fn { font-size: .8rem; color: #666; }
+  .phase { background: #f0ebe0; border-left: 5px solid var(--accent); padding: 1rem 1.2rem; margin: 1.5rem 0; }
+  .phase h4 { margin-top: 0; color: var(--accent); }
+  sup { font-size: .7em; }
+  .epigraph { text-align: center; font-style: italic; padding: 2rem 3rem; color: #555; margin: 2rem 0; }
+  .epigraph cite { display: block; margin-top: .5rem; font-size: .85rem; }
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"></head>
+<body>
+
+<nav class="no-print">
+<a href="./" style="font-style:italic;font-weight:700;margin-right:10px">← Świdziński</a>
+<a href="study.html" lang="en" style="margin-right:10px">EN</a>
+<a href="#toc">Spis treści</a>
+<a href="#part1">Część I: Życie</a>
+<a href="#part2">Część II: Teoria</a>
+<a href="#part3">Część III: Praktyka</a>
+<a href="#part4">Część IV: Recepcja</a>
+<a href="#part5">Część V: Dziedzictwo</a>
+<a href="#bib">Bibliografia</a>
+</nav>
+<div class="spacer no-print"></div>
+
+<!-- TITLE PAGE -->
+<div class="title-page">
+<div class="cover-line"></div>
+<h1>Jan Świdziński<br>i teoria<br>sztuki kontekstualnej</h1>
+<p class="sub">Od „Znaków semantycznych” po neopragmatycznego turystę</p>
+<p class="sub-type">Pełne opracowanie naukowe na podstawie źródeł pierwotnych</p>
+<div class="cover-divider"></div>
+<div class="cover-epigraph">
+„Po to by wypicie szklanki wody stało się sztuką należy ją pić w odpowiednim miejscu, w odpowiednim czasie i w odpowiednim towarzystwie.”
+<cite>Jan Świdziński, O latach 70-tych, 1996</cite>
+</div>
+<div class="cover-divider" style="margin-top:1.5rem;margin-bottom:1.5rem;width:120px;"></div>
+<div class="cover-epigraph" style="font-size:.8rem;">
+„Teraz jest jak jest. W porządku.”
+<cite>Jan Świdziński, Anomia, 1998</cite>
+</div>
+<div class="cover-bottom">
+<div class="year">Pięć części · Trzydzieści sześć rozdziałów · Źródła pierwotne</div>
+</div>
+</div>
+
+<!-- INTRODUCTION -->
+<h2>Wprowadzenie</h2>
+
+<p>W lutym 1976 roku w eksperymentalnej galerii w szwedzkim mieście uniwersyteckim Lund ukazała się skromna broszura. Jej autorem był pięćdziesięciodwuletni polski artysta Jan Świdziński, a tytuł brzmiał rozbrajająco wprost: <em>Art as Contextual Art</em>. W środku dwanaście ponumerowanych tez wykładało systematyczną krytykę konceptualizmu i proponowało radykalną alternatywę – sztukę, która porzuca poszukiwanie uniwersaliów i w całości osadza się w konkretnych współrzędnych czasu, miejsca, sytuacji i osób.</p>
+
+<p>Broszura nie pojawiła się w próżni. W połowie lat siedemdziesiątych sztuka konceptualna zdradzała objawy wewnętrznego wyczerpania. Joseph Kosuth, jej najbardziej widoczny teoretyk, sam zaczął odchodzić od tautologicznego modelu z „Art After Philosophy” (1969) w stronę ujęcia „zantropologizowanego”. Jego rewizja pozostawała jednak zakotwiczona w ramach intelektualnych zachodniego świata sztuki. Świdziński proponował coś innego: teorię zrodzoną ze swoistego doświadczenia artysty działającego w systemie socjalistycznym Polskiej Rzeczypospolitej Ludowej, czerpiącą z polskiej szkoły logiki formalnej, ze strukturalizmu słowiańskiego i z marksowskiej świadomości społecznej – tradycji intelektualnych mało obecnych w angloamerykańskim dyskursie konceptualnym.</p>
+
+<p>Znaczenie sztuki kontekstualnej polega nie tylko na jej tezach teoretycznych, lecz także na okolicznościach jej powstania i na sieci relacji, którą wytworzyła. Manifest Świdzińskiego był zarazem tekstem filozoficznym, bronią taktyczną i deklaracją geopolityczną. Występował przeciwko temu, co autor rok później w Paryżu nazwał „hegemonią w sztuce” – narzuceniu innym „własnych pojęć, wartości i reguł interpretacji kulturowej”. Przemawiał z peryferii przeciw centrum, ze Wschodu przeciw Zachodowi, z doświadczenia życia w systemie autorytarnym przeciw założeniom ideologii kapitalistycznego świata sztuki. Czynił to zaś nie przez wycofanie się w nacjonalizm kulturowy, lecz przez zaproponowanie uniwersalnego mechanizmu – kontekstu pragmatycznego – dzięki któremu każdy poszczególny język artystyczny może dochodzić swojej prawomocności.</p>
+
+<p>Niniejsze opracowanie jest próbą całościowej rekonstrukcji projektu sztuki kontekstualnej: jego źródeł intelektualnych, architektury teoretycznej, praktycznych przejawów w performansie i tekście, recepcji międzynarodowej oraz dzisiejszej aktualności. Składa się z pięciu części. <strong>Część I</strong> rekonstruuje biografię na podstawie uznanych źródeł, a także nowszych (i dotąd niezweryfikowanych niezależnie) badań archiwalnych. <strong>Część II</strong> śledzi ewolucję myśli Świdzińskiego w siedmiu fazach – od diagnostycznego „Sporu o istnienie sztuki” (1970) przez manifest (1976) po akceptację wyrażoną w „Jest jak jest” (1998) – konsekwentnie stawiając w centrum głos samego artysty. <strong>Część III</strong> omawia performans jako uprzywilejowane medium praktyki kontekstualnej. <strong>Część IV</strong> kreśli mapę trzech odrębnych szkół interpretacji naukowej: estetyki niemonotonicznej Kazimierza Piotrowskiego, rewizji historiograficznej Łukasza Rondudy i teorii dokumentacji Łukasza Guzka. <strong>Część V</strong> ocenia, jak sztuka kontekstualna rezonuje ze współczesnymi problemami – estetyką relacyjną, epistemologią postprawdy i kontekstem cyfrowym.</p>
+
+<p>Podstawę opracowania stanowią teksty samego Świdzińskiego z lat 1970–1998, trzy obszerne wywiady, świadectwa współpracowników oraz literatura krytyczna stworzona przez dwa pokolenia badaczy. Jedno z kluczowych ustaleń dotyczy genezy samego pojęcia: słowo „kontekstualny” (<em>kontekstualny</em>) pojawia się po raz pierwszy nie w manifeście z Lund z 1976 roku, lecz w tekście „Model kina” z 1975 roku, napisanym dla Warsztatu Formy Filmowej – co dowodzi, że teoria sztuki kontekstualnej wyłoniła się organicznie z analizy praktyki filmu eksperymentalnego, a nie z czystej spekulacji filozoficznej.</p>
+
+<p>Opracowanie stara się przez cały czas oddawać głos samemu Świdzińskiemu. Jego pisma teoretyczne, wywiady i wypowiedzi publiczne – w większości polskie i przytaczane tu w oryginalnym brzmieniu – stanowią główny materiał dowodowy. Literatura przedmiotu służy objaśnieniu tego, co ujawniają źródła pierwotne, umieszczeniu tego w kontekście, a niekiedy także podaniu tego w wątpliwość. Rezultatem nie jest, mamy nadzieję, kolejny „zbiór prawd i norm”, który miałby być „traktowany jako prawda” – ostrzeżenie Bartosza Łukasiewicza odnosi się do tego opracowania w tej samej mierze co do badanej w nim teorii – lecz narzędzie pozwalające czytelniczkom i czytelnikom zmierzyć się ze sztuką kontekstualną na własnych warunkach, we własnych kontekstach pragmatycznych.</p>
+
+<!-- TABLE OF CONTENTS -->
+<div id="toc">
+<h2>Spis treści</h2>
+
+<p><strong>CZĘŚĆ I: ŻYCIE – Życie w kontekście (1923–2014)</strong></p>
+<ul style="list-style:none;">
+<li>1. Syn oficera (1923–1939)</li>
+<li>2. Lata wojny: balet, Armia Krajowa i kwestia Kripo (1939–1945)</li>
+<li>3. Kompania karna i teatr wojny (1945)</li>
+<li>4. Akademia, socrealizm i „Czwartek” (1945–1959)</li>
+<li>5. Kryzys malarstwa (1959–1969)</li>
+<li>6. Logika, semiotyka i Instytut Francuski (1960–1970)</li>
+<li>7. Zwrot konceptualny: galerie, sieci, performans (1970–1974)</li>
+<li>8. Kanada, Ameryka i powrót (1980–1999)</li>
+<li>9. INTERAKCJE, uznanie i śmierć (1998–2014)</li>
+</ul>
+
+<p><strong>CZĘŚĆ II: TEORIA – Siedem faz myśli</strong></p>
+<ul style="list-style:none;">
+<li>10. Faza 1: Diagnoza – „Spór o istnienie sztuki” (1970)</li>
+<li>11. Faza 2: Semiotyczny warsztat – „O znaku” i „Permafo” (1972)</li>
+<li>12. Faza 3: Odkrycie – „Model kina” i trzy modele (1975)</li>
+<li>13. Faza 4: Manifest – dwanaście tez i znak pusty (1976)</li>
+<li>14. Faza 5: Ekspansja – Toronto, Paryż, Warszawa (1976–1979)</li>
+<li>15. Faza 6: Kryzys – Mielnik, stan wojenny, anomia (1981–1988)</li>
+<li>16. Faza 7: Akceptacja – „Jest jak jest” (1995–2014)</li>
+<li>17. Wielki łuk: od „Czym jest sztuka?” do „Jest jak jest”</li>
+</ul>
+
+<p><strong>CZĘŚĆ III: PRAKTYKA – Performans jako medium kontekstualne</strong></p>
+<ul style="list-style:none;">
+<li>18. Dlaczego performans? Znak pusty i ciało</li>
+<li>19. Wczesne akcje: Van Gogh, krzesła i etnografia Kurpiów (1974–1978)</li>
+<li>20. „Wolność i ograniczenie”: hasła, cenzorzy i kontekst „Solidarności” (1981)</li>
+<li>21. „Zamazywanie”, „Dwa monitory” i prace anomiczne (1983–1990)</li>
+<li>22. „Jan in Wonderland” i cytat performatywny (1991–2010)</li>
+<li>23. Fotografia i tekst jako media kontekstualne</li>
+</ul>
+
+<p><strong>CZĘŚĆ IV: RECEPCJA – Trzy szkoły interpretacji</strong></p>
+<ul style="list-style:none;">
+<li>24. Kazimierz Piotrowski: estetyka niemonotoniczna i etnolog-terapeuta</li>
+<li>25. Łukasz Ronduda: odwrócone pionierstwo i zwrot pragmatyczny</li>
+<li>26. Łukasz Guzek: horyzontalna historia sztuki i paradoks dokumentacji</li>
+<li>27. Bartosz Łukasiewicz: „Kilka dogmatów kontekstualizmu”</li>
+<li>28. Zbigniew Libera: „Kontekstualna ewangelia według Jana”</li>
+<li>29. Jan Przyłuski: filmowiec i dziedzictwo kontekstualne</li>
+<li>30. Sieć międzynarodowa: od CEAC po Le Lieu</li>
+<li>31. Debata wokół Foksal i atak „Pseudoawangardy”</li>
+</ul>
+
+<p><strong>CZĘŚĆ V: DZIEDZICTWO I WSPÓŁCZESNE REZONANSE</strong></p>
+<ul style="list-style:none;">
+<li>32. Sztuka kontekstualna a estetyka relacyjna: Bourriaud, Hansen, Ardenne</li>
+<li>33. Kondycja postprawdy i deaktualizacja znaczeń</li>
+<li>34. Kontekst cyfrowy: AI, algorytmy i znak pusty</li>
+<li>35. Osiem napięć napędzających teorię</li>
+<li>36. Otwarte pytania dla przyszłych badań</li>
+</ul>
+
+<p><strong>ANEKSY</strong></p>
+<ul style="list-style:none;">
+<li>A. 12 tez sztuki kontekstualnej (1976) – pełny tekst</li>
+<li>B. Wystąpienie konferencyjne, Paryż 1977 – najważniejsze fragmenty</li>
+<li>C. „Anomia” (1998) – pełny tekst</li>
+<li>D. Chronologia ewolucji pojęć</li>
+<li>E. Historia wystaw</li>
+</ul>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PART I: THE LIFE -->
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="part1">CZĘŚĆ I: ŻYCIE<br><span style="font-size:.85rem; color:#666;">Życie w kontekście (1923–2014)</span></h2>
+
+<h3 id="ch1">1. Syn oficera (1923–1939)</h3>
+
+<p>Jan Świdziński urodził się 25 maja 1923 roku w Bydgoszczy, w Polsce, która jako niepodległe państwo istniała dopiero od pięciu lat. Jego ojciec, również Jan, był oficerem Wojska Polskiego w stopniu kapitana – byłym żołnierzem Legionów Józefa Piłsudskiego, który walczył o niepodległość kraju. Rodzina wywodziła się z rycerskiego rodu Ligęzów herbu Półkozic, który w XIV wieku przybył z Lubelszczyzny na tereny południowego krańca Księstwa Mazowieckiego. To arystokratyczne pochodzenie – sam Świdziński rzadko o nim wspominał – sytuowało go w środowisku, w którym honor, służba wojskowa i tożsamość narodowa były wartościami określającymi.</p>
+
+<p>W jednej z wojennych bitew starszy Świdziński odniósł ranę głowy, która okazała się śmiertelna: w 1938 roku, gdy przyszły artysta miał piętnaście lat, ojciec zmarł wskutek tego dawnego urazu. Wcześniej major (awans otrzymał przy przejściu w stan spoczynku) ukończył studia ekonomiczne i pracował w Radzie Nadzorczej Polskiego Radia. Matka, Stanisława z domu Tkaczyk, urodzona w 1898 roku w Radomiu, pracowała w bydgoskim Biurze Kontroli Dochodów PKP, zanim poświęciła się prowadzeniu domu – pensje oficerskie byłych legionistów były wystarczająco wysokie.</p>
+
+<p>W 1932 roku rodzina przeniosła się do Krakowa i zamieszkała przy ulicy Wielickiej, w pobliżu koszar wojskowych – przeprowadzka wiązała się zapewne ze zmianą miejsca służby ojca. W Krakowie przyszły artysta uczęszczał do szkoły powszechnej aż do 1935 roku, kiedy rodzina przeniosła się do Warszawy. Stanisława z synem zamieszkali na Pradze-Północ przy ulicy Markowskiej 14, kapitan Świdziński zaś osobno, przy ulicy Adama Pługa na Starej Ochocie. W Warszawie Jan kontynuował naukę – jak sam później obliczał, do ukończenia trzech klas gimnazjum zaliczył około piętnastu szkół.</p>
+
+<p>Po śmierci ojca w 1938 roku Jan z matką przenieśli się do jej starszej siostry, Justyny Kolasińskiej, do Nowego Rembertowa, przy ulicy Budkiewicza 17. Tam we wrześniu 1939 roku zastał ich wybuch wojny.</p>
+
+<h3 id="ch2">2. Lata wojny: balet, Armia Krajowa i kwestia Kripo (1939–1945)</h3>
+
+<p>Wojenna biografia Jana Świdzińskiego jest przedmiotem dyskusji od czasu artykułu Zbigniewa Libery, który ukazał się w 2020 roku na łamach <em>Przekroju</em> pod tytułem „Jan Świdziński i spór o istnienie sztuki. Kontekstualna ewangelia według Jana”, w cyklu subiektywnych portretów polskich artystów. Libera, jeden z najważniejszych współczesnych artystów polskich – w 2004 roku włączył Świdzińskiego do serii „Mistrzowie” – przedstawił opowieść o latach wojny opartą na materiałach archiwalnych, które jego zdaniem ukazują biografię bardziej złożoną niż w standardowych ujęciach. <strong>Należy jednak zaznaczyć, że Libera jest artystą, a nie wykształconym historykiem, a jego twierdzenia nie zostały niezależnie zweryfikowane przez żadnego neutralnego eksperta z Instytutu Pamięci Narodowej (IPN). Akta IPN z okresu stalinowskiego i powojennego to dokumenty niezwykle złożone, wymagające specjalistycznej interpretacji; często je fabrykowano, wyolbrzymiano ich treść lub prowadzono je bez rzeczywistej współpracy osób, które w nich figurują.</strong> W dalszej części twierdzenia Libery zostają przedstawione obok ustalonych danych biograficznych, z należytą ostrożnością badawczą.</p>
+
+<p>Po roku bezczynności, który nastąpił po wybuchu wojny, Świdziński zaczął uczęszczać na kursy przygotowawcze w warszawskim gimnazjum „Oświata” i zapisał się do szkoły baletowej – prywatnej pracowni przy ulicy Mokotowskiej 63, gdzie ćwiczył pod kierunkiem <strong>Leona Wójcikowskiego</strong>, nazywanego w kręgach baletowych następcą Wacława Niżyńskiego. W czerwcu 1941 roku zdał egzamin wstępny na Wydział Architektury Wnętrz Liceum Budowlanego, mieszczącego się na terenie przedwojennej Politechniki. Po roku choroba zmusiła go do przerwania nauki.</p>
+
+<p>Mniej więcej w tym czasie opowieść przybiera najmroczniejszy obrót. Dawny przyjaciel ojca, kapitan Ejzert, wciągnął go we współpracę z wywiadem AK (Armii Krajowej). Według niepotwierdzonych informacji przytaczanych przez Liberę Świdziński przewoził korespondencję na trasie Warszawa–Kraków. Jednocześnie podczas wizyty u ciotki w Chełmie otrzymał od tłumacza niemieckiej policji kryminalnej propozycję wstąpienia do <strong>Kripo</strong> (Kriminalpolizei). „Propozycja ta podobno spotkała się z zadowoleniem w kręgach kapitana Ejzerta” – wywiad AK zamierzał wykorzystać młodego Świdzińskiego jako <strong>swoją wtyczkę w niemieckiej policji</strong>.</p>
+
+<p>Według relacji Libery (opartej na materiałach archiwalnych, których autentyczności i interpretacji nie zweryfikowano niezależnie) w lutym 1944 roku Świdziński został przyjęty do służby w niemieckiej Policji Bezpieczeństwa w Warszawie i skierowany na szkolenie do komisariatu Kripo w Radzyminie. Libera twierdzi, że otrzymał stopień kaprala policji kryminalnej. <strong>Sam Libera zaznacza – pisząc o rzekomym związku z wywiadem Armii Krajowej – że „[i]nformacje te pozostają jednak tylko w sferze przypuszczeń, nie ma już bowiem nikogo, kto mógłby je potwierdzić. Nie istnieją też żadne stosowne dokumenty”.</strong> Brak niezależnego potwierdzenia ma tu zasadnicze znaczenie: mamy do czynienia z interpretacją fragmentarycznych śladów archiwalnych dokonaną przez jednego autora i opublikowaną sześć lat po śmierci bohatera, gdy ten nie mógł już odpowiedzieć.</p>
+
+<p>Jeśli wątek wywiadu AK w tej relacji jest prawdziwy – jeśli ruch oporu rzeczywiście wykorzystał młodego Świdzińskiego jako wtyczkę w niemieckiej policji – doświadczenie to głęboko współbrzmiałoby strukturalnie z późniejszą teorią. Twórca sztuki kontekstualnej spędziłby swoje formacyjne lata w sytuacji, w której znaczenie jego działań zależało wyłącznie od tego, który kontekst – niemiecka policja czy polski ruch oporu – stanowił obowiązujący układ odniesienia. Musimy jednak zachować ostrożność i nie nadinterpretować niezweryfikowanych twierdzeń biograficznych jako wyjaśnień stanowisk teoretycznych, które mają własną genealogię intelektualną.</p>
+
+<p>W rozmowie przeprowadzonej przez Bartosza Łukasiewicza w czerwcu 2005 roku i opublikowanej w <em>Sztuce i Filozofii</em> w 2006 roku (dalej: wywiad z 2006 roku) Świdziński przedstawił starannie zredagowaną wersję tych wydarzeń: przyznał się do przynależności do AK, pomijając wątek Kripo:</p>
+
+<blockquote>„[…] ja byłem w AK nie dlatego, że byłem taki dzielny, tylko wtedy wszyscy należeli do AK, wszyscy moi znajomi i większość środowiska… Mogłem dostać albo karę śmierci, albo Sybir, albo pięć lat i zrządzeniem losu dostałem to ostatnie. I te pięć lat można było zamienić na miesiąc karnej kompanii, której się z reguły też nie przeżywało. Wybrałem tą ostatnią możliwość i wie Pan jakiś absurd – okazało się, że tam jest tylko trzech żołnierzy. No i co, we trzech będziemy wojnę robić? Nie da rady. Miesiąc się skończył i przyszło uzupełnienie – no cud po prostu, bo jak to inaczej nazwać?”<cite>Jan Świdziński, <em>Sztuka i Filozofia</em>, nr 28, 2006 (wywiad przeprowadzony w czerwcu 2005 roku)</cite></blockquote>
+
+<h3 id="ch3">3. Kompania karna i teatr wojny (1945)</h3>
+
+<p>Po powstaniu warszawskim i wkroczeniu Armii Czerwonej do Rembertowa we wrześniu 1944 roku Świdziński – jak wielu innych młodych ludzi z AK – wstąpił ochotniczo do 2. Dywizji Piechoty Wojska Polskiego (Dywizji im. Dąbrowskiego). Przydzielono go do Teatru Żołnierza na stanowisko artysty szeregowca. Występowali z nim Tadeusz Janczar (noszący wówczas jeszcze nazwisko Musiał, później słynny aktor filmowy) i Józef Nalberczak.</p>
+
+<p>Wywiad sowiecki wkrótce jednak zdemaskował go jako byłego kaprala Kripo. Dostał do wyboru: „albo 5 lat więzienia, albo miesiąc kompanii karnej”. O tym, czym była <em>kompania karna</em>, Świdziński mówił tak:</p>
+
+<blockquote>„[…] taką kompanię wysyłano w najgorszy ogień, na pewną śmierć. Z wcześniejszego składu mojej kompanii tylko dwóch żołnierzy zostało. Gdy ja dołączyłem, było nas trzech. Ponieważ nie było uzupełnienia, musieliśmy czekać na innych skazańców. Tak minął na szczęście ten miesiąc”.<cite>Jan Świdziński, cyt. za: Libera, <em>Przekrój</em>, 2020</cite></blockquote>
+
+<p>W międzyczasie skończyła się wojna. W październiku 1945 roku Świdziński został zdemobilizowany.</p>
+
+<p>Sam Świdziński w wywiadzie z 2006 roku opisał swoją wojenną służbę słowami, które – niezależnie od tego, czy odnoszą się do konkretnych okoliczności podnoszonych przez Liberę – oddają absurd i przypadkowość wojennego losu: „Mogłem dostać albo karę śmierci, albo Sybir, albo pięć lat i zrządzeniem losu dostałem to ostatnie. I te pięć lat można było zamienić na miesiąc karnej kompanii, której się z reguły też nie przeżywało. Wybrałem tą ostatnią możliwość i wie Pan jakiś absurd – okazało się, że tam jest tylko trzech żołnierzy. No i co, we trzech będziemy wojnę robić?”. Pewne jest natomiast, że pokolenie wojenne doświadczyło świata, w którym znaczenie każdego czynu zależało wyłącznie od zmiennych kontekstów – w którym „kontekst pragmatyczny” nie był pojęciem intelektualnym, lecz warunkiem przetrwania.</p>
+
+<h3 id="ch4">4. Akademia, socrealizm i „Czwartek” (1945–1959)</h3>
+
+<p>W 1945 roku Świdziński zapisał się do Państwowej Wyższej Szkoły Sztuk Plastycznych w Warszawie (Myśliwiecka 8), gdzie uczył się na Wydziale Wnętrz i w Zakładzie Malarstwa. Od lutego 1948 roku studiował dodatkowo jako wolny słuchacz na Akademii Sztuk Pięknych u <strong>Jana Cybisa</strong> (malarstwo), <strong>Tadeusza Kulisiewicza</strong> (grafika) i <strong>Ksawerego Piwockiego</strong> (historia sztuki). Rozpoczął też pracę jako redaktor działu reportażu w tygodniku <em>Razem</em>, publikując pod pseudonimem. Później pisał do <em>Przeglądu Artystycznego</em>, gdzie – szczegół komplikujący standardową opowieść o jego antyestablishmentowej postawie – propagował sztukę socrealistyczną.</p>
+
+<p>W 1948 roku ożenił się z Magdaleną Spasowicz, koleżanką z akademii. Zamieszkali z jego matką w dawnym mieszkaniu w Rembertowie. Małżeństwo przetrwało do 1955 roku; po rozstaniu Magdalena związała się z malarzem Aleksandrem Winnickim, byłym członkiem Grupy Krakowskiej. Świdziński ożenił się z Ireną Psarską, absolwentką PWSP w Poznaniu i członkinią grupy malarzy realistów „R-55”. Jak odnotowuje Libera, co samo w sobie niezwykłe: „Świdziński i Psarska zostali świadkami na ślubie byłej żony Jana z Aleksandrem Winnickim”.</p>
+
+<p>W 1952 roku Świdziński ukończył warszawską ASP. Potem zaś nastąpiło wydarzenie, które dopiero artykuł Libery wydobył na światło dzienne.</p>
+
+<p>Libera twierdzi dalej, że <strong>7 maja 1953 roku</strong>, po zatrzymaniu pod zarzutem zatajenia wojennych związków z Kripo i ponad dwunastogodzinnym przesłuchaniu przez funkcjonariuszy Ministerstwa Bezpieczeństwa Publicznego, Świdziński podpisał zobowiązanie do współpracy z UB (Urzędem Bezpieczeństwa) pod pseudonimem „Czwartek”. Według Libery współpraca ta trwała do 1959 roku.</p>
+
+<p><strong>Twierdzenia te wymagają istotnych zastrzeżeń.</strong> Po pierwsze, nie zostały niezależnie zweryfikowane przez archiwistów IPN. Po drugie, w kontekście stalinowskiej Polski 1953 roku – wciąż w czasach stalinowskiego terroru, kilka miesięcy po śmierci Stalina – każde „zobowiązanie” podpisane po dwunastu godzinach przesłuchania jest aktem wymuszonym, a nie dobrowolną współpracą. Podobnej presji poddawano tysiące obywateli Polski; powstałe w ten sposób dokumenty odzwierciedlają metody aparatu bezpieczeństwa, a nie autentyczne fakty biograficzne dotyczące osób, które w nich figurują. Po trzecie, akta bezpieki są zapisami instytucjonalnymi, służącymi interesom instytucji, która je prowadziła; to źródła pierwotne do dziejów aparatu bezpieczeństwa, a nie przejrzyste okna na życie osób inwigilowanych. Po czwarte, sam Libera przyznaje spekulatywny charakter części twierdzeń: relacje o związkach z Armią Krajową, jak pisze, „pozostają jednak tylko w sferze przypuszczeń”.</p>
+
+<p>Bezsporne jest natomiast, że dekady powojenne były okresem niezwykłej presji wywieranej na polskich intelektualistów i artystów i że wielu z nich – także postaci dziś czczone jako dysydenci – radziło sobie z nią przez rozmaite formy dostosowania, które nie poddają się prostej ocenie moralnej. Świdziński nigdy nie mówił o tych sprawach publicznie.</p>
+
+<p>Pytanie badawcze brzmi, czy i w jaki sposób te okoliczności biograficzne wiążą się z teoretyczną ramą sztuki kontekstualnej. Teoria głosząca, że znaczenie określa kontekst pragmatyczny i pytająca o to, kto dysponuje „dostatecznym autorytetem”, by narzucić innym swój punkt widzenia (teza 2), współbrzmi z doświadczeniem życia w systemie, który rościł sobie prawo do ustalania na podstawie akt instytucjonalnych, kim ludzie „naprawdę są”. Wyprowadzanie jednak bezpośrednich związków przyczynowych między niezweryfikowanymi twierdzeniami biograficznymi a stanowiskami teoretycznymi, które mają własną bogatą genealogię intelektualną – w polskiej logice, semiotyce, u Wittgensteina i w krytyce marksowskiej – grozi zarówno nadmiernym uproszczeniem, jak i niesprawiedliwością wobec człowieka, który nie może już odpowiedzieć.</p>
+
+<h3 id="ch5">5. Kryzys malarstwa (1959–1969)</h3>
+
+<p>W 1959 roku sytuacja Świdzińskiego wreszcie się poprawiła. Służby bezpieczeństwa dały mu spokój. Otrzymał przydział na pracownię-mieszkanie na ostatnim piętrze nowego budynku przy ulicy Waryńskiego 14a, w centrum Warszawy – pod adresem, który stał się miejscem spotkań kolejnych pokoleń polskich artystów i intelektualistów. Urodziła mu się córka.</p>
+
+<p>Problem stanowiła jego sztuka. Po upadku socrealizmu Świdziński zwrócił się najpierw ku tradycji koloryzmu, a następnie ku formalistycznym abstrakcjom monochromatycznym. Ani jedno, ani drugie nie przekonywało. W 1965 roku krytyk Ignacy Witz ogłosił w <em>Życiu Warszawy</em> miażdżącą ocenę:</p>
+
+<blockquote>„Malarstwo jego wydaje mi się tak mało wyraziste, tak mało osobiste, tak technicznie wątłe, że doszukiwanie się tu na siłę pozytywów nie świadczyłoby o mojej szczerości ani też prawdomówności, co do których jestem zobowiązany wobec czytelników”.<cite>Ignacy Witz, <em>Życie Warszawy</em>, 1965</cite></blockquote>
+
+<p>Jak zauważa Libera: „Odrzucony przez krytykę, a zapewne też świadomy własnej słabości na polu malarstwa Świdziński zaczął szukać mocy w nauce”. W latach 1960–1965 podjął <strong>samodzielne systematyczne studia</strong> z logiki formalnej, semiotyki, lingwistyki i strukturalizmu, koncentrując się na problematyce komunikacji i informacji. Dzięki znajomości francuskiego, którego uczył się od wczesnej młodości, mógł korzystać z bogato zaopatrzonej biblioteki <strong>Instytutu Francuskiego</strong> w Warszawie, gdzie zapoznał się z French Theory i z najnowszymi osiągnięciami sztuki światowej.</p>
+
+<p>To przełomowy moment biografii. Przejście od nieudanego malarza do cieszącego się powodzeniem teoretyka nie było naturalną ewolucją, lecz <strong>strategią kompensacyjną</strong> – świadomym przekierowaniem energii intelektualnej z dziedziny, w której był słaby (tworzenie sztuki wizualnej), do tej, w której był mocny (analiza logiczna i pisarstwo teoretyczne). „Znak pusty” – dzieło sztuki, które nie niesie żadnego właściwego sobie znaczenia, lecz musi zostać „wypełnione” przez kontekst – można odczytywać na poziomie biograficznym jako teoretyczną sublimację doświadczenia artystycznej pustki: malarz, którego prace były „mało wyraziste” i „mało osobiste”, przekształcił tę właśnie pustkę w teoretyczną zaletę.</p>
+
+<h3 id="ch6">6. Logika, semiotyka i Instytut Francuski (1960–1970)</h3>
+
+<p>W latach 1965–1970 Świdziński zwrócił się zdecydowanie ku nauce. Wraz z artystą <strong>Markiem Koniecznym</strong> założył i prowadził sekcję badań nad sztuką – <strong>Sekcję Sztuki i Wzornictwa Polskiego Towarzystwa Cybernetycznego</strong>. Funkcja ta sytuowała go na styku sztuki i myślenia systemowego – estetyki i logiki formalnej, teorii znaku i mechanizmów sprzężenia zwrotnego.</p>
+
+<p>Związek z cybernetyką miał większe znaczenie, niż mogłoby się wydawać. Cybernetyka – nauka o komunikacji i sterowaniu w systemach – dostarczyła Świdzińskiemu słownika pozwalającego myśleć o sztuce jako o <em>systemie</em> wytwarzania znaczeń, a nie jako o zbiorze pojedynczych przedmiotów. Pojęcie <strong>sprzężenia zwrotnego</strong>, centralne dla teorii cybernetycznej, pojawi się wprost w tezie 3 manifestu z 1976 roku: „rzeczywistość, którą produkujemy zależy od naszej koncepcji rzeczywistości – nasza koncepcja rzeczywistości zależy od produkowanej przez nas rzeczywistości”.</p>
+
+<p>Jego najważniejszy <strong>cykl obrazów</strong> (<em>Znaki semantyczne</em>, 1952–1962) traktował powierzchnię malarską jako pole znaków, których znaczenia nie są im właściwe, lecz zależą od relacji strukturalnych. Prace te, rozpoczęte na długo przed latami cybernetycznymi, stanowiły pomost między formalnym wykształceniem artystycznym a rodzącymi się zainteresowaniami semiotycznymi.</p>
+
+<p>W wywiadzie z 2006 roku Świdziński wspominał intelektualną atmosferę tego okresu:</p>
+
+<blockquote>„Ja byłem kiedyś bardzo przejęty strukturalizmem, no ale to zrozumiałe, bo lata 60 stały pod znakiem tego nurtu. Jednak już sam Habermas, który jest młodszy ode mnie wcale nie jest strukturalistą – chociaż zgodziłbym się z panem, że i on ten raster nakłada”.<cite>Świdziński, <em>Sztuka i Filozofia</em>, 2006</cite></blockquote>
+
+<p>A o swoim stosunku do filozofii analitycznej:</p>
+
+<blockquote>„Sam Kossuth opierał się na konkretnych książkach Ayera przepisując z nich dosłownie całe stronnice. Chodzi jednak nie o to pobieranie czyichś rozumowań, ponieważ artysta ma do tego prawo, ale o fakt powstawania paralogizmów i paradoksów z tym związanych. Bo powiedzenie, że sztuka jest definicją sztuki jest takim paralogizmem – ponieważ skoro definicja jest jakąś próbą opisu, nie można opisywać tego, czego nie ma”.<cite>Świdziński, <em>Sztuka i Filozofia</em>, 2006</cite></blockquote>
+
+<h3 id="ch7">7. Zwrot konceptualny: galerie, sieci, performans (1970–1974)</h3>
+
+<p>W 1970 roku ukazał się artykuł <strong>„Spór o istnienie sztuki”</strong>, ogłoszony w piśmie <em>Życie i Myśl</em> – tekst, który według Kazimierza Piotrowskiego zapoczątkował zwrot konceptualny w polskiej sztuce. W 1971 roku Świdziński wygłosił odczyt o konceptualizmie w prowadzonej przez Janusza Boguckiego <strong>Galerii Współczesnej</strong> w Warszawie. W tym samym roku wziął udział w Festiwalu Szkół Artystycznych w <strong>Nowej Rudzie</strong>, gdzie poznał przyszłych współpracowników: Annę i Romualda Kuterów, Przemysława Kwieka i Zofię Kulik, Jana Stanisława Wojciechowskiego oraz artystów <strong>Warsztatu Formy Filmowej</strong>.</p>
+
+<h4>Wątek cybernetyczny</h4>
+
+<p>Jak wspomniano w poprzednim rozdziale, cybernetyka dała Świdzińskiemu pojęcie <strong>sprzężenia zwrotnego</strong>, które dochodzi do głosu w tezie 3 manifestu z 1976 roku: „rzeczywistość, którą produkujemy zależy od naszej koncepcji rzeczywistości – nasza koncepcja rzeczywistości zależy od produkowanej przez nas rzeczywistości”. To pętla cybernetyczna – wyjście systemu wraca na jego wejście, tworząc dynamiczny, samomodyfikujący się proces.</p>
+
+<p>Perspektywa cybernetyczna ukształtowała też rozumienie „deaktualizacji znaczeń” jako właściwości złożonych systemów adaptacyjnych. System znaków, który nie potrafi aktualizować swoich reprezentacji w odpowiedzi na zmiany otoczenia, traci spójność – to proces opisany w tezie 4. Sztuka kontekstualna jest mechanizmem utrzymującym zdolność systemu sztuki do reagowania na zmianę – semiotyczną homeostazą.</p>
+
+<h4>Źródła intelektualne: Tarski, Wittgenstein, Bridgman, Rorty</h4>
+
+<p>Teorię zasiliły trzy tradycje intelektualne (jak ustalił Ronduda): <strong>świadomość marksowska</strong>, <strong>polska szkoła logiki</strong> (szkoła lwowsko-warszawska – Twardowski, Łukasiewicz, Tarski) i <strong>strukturalizm słowiański</strong> (Jakobson, Praskie Koło Lingwistyczne, szkoła moskiewsko-tartuska). Semantyczna koncepcja prawdy Tarskiego dostarczyła ramy; teza 5 Świdzińskiego korzysta z niej, lecz dochodzi do przeciwnego wniosku: tam, gdzie Tarski ustalał warunki prawdy, Świdziński ustalał warunki jej nietrwałości.</p>
+
+<p>Późny Wittgenstein („znaczenie jest użyciem”) dostarczył uzasadnienia pragmatycznego. Świdziński sięgał także do <strong>operacyjnej teorii znaczenia Bridgmana</strong> (1927) – prawdziwość sztuki jest w tym ujęciu względna wobec konkretnych operacji społecznych. Jego późna teoria zbiega się z <strong>neopragmatyzmem Rorty’ego</strong>: obaj odrzucali roszczenie filozofii do bycia „zwierciadłem” rzeczywistości, ujmując wiedzę jako społeczną praktykę rozmowy. Jak stwierdził Świdziński: „Mój pragmatyzm to w pewnym sensie common sense”.</p>
+
+<p>W latach 1972–1973 był doradcą <strong>Galerii Zero</strong> przy Krakowskim Przedmieściu (działającej od marca 1972 do stycznia 1973 roku); w 1975 roku wraz ze <strong>Zbigniewem Dłubakiem</strong> współzałożył <strong>Małą Galerię</strong>, fotograficzną galerię ZPAF, której pierwszym dyrektorem był Andrzej Jórczak. To zaangażowanie instytucjonalne nie było działalnością poboczną, lecz integralną częścią powstającej teorii. Świdziński rozumiał, że znaczenie sztuki powstaje nie tylko w pracowni, lecz w sieci relacji między artystami, instytucjami, publicznością i dyskursami krytycznymi – w sieci, którą miał ująć teoretycznie jako „kontekst pragmatyczny”.</p>
+
+<p>Szczególnie ważna była jego relacja z Dłubakiem. Świdziński uważał go za jednego z artystów najistotniejszych dla swojej teorii. Za zgodą Dłubaka <strong>przejął cykl „Gestykulacje”</strong>, reinterpretując te prace jako wzorcowe przykłady kontekstualnych „znaków pustych”. W 1975 roku Dłubak sfotografował Świdzińskiego w jego pracowni, co świadczy o ich bliskim partnerstwie intelektualnym.</p>
+
+<p>W 1974 roku Świdziński zaczął uprawiać sztukę performance i sformułował wstępne tezy o sztuce kontekstualnej. Rozpoczął też pracę nad projektem <em>O logice niekompletnych rzeczywistości</em>, który – jak podaje Zbigniew Libera – według jego własnych słów doprowadził go do powołania programu „sztuki jako sztuki kontekstualnej”. (Culture.pl podaje tytuł cyklu: <em>Z logiki niekompletnych rzeczywistości</em>).</p>
+
+<h4>Sztuka pod obserwacją</h4>
+
+<p>Badania Rondudy w archiwach IPN wykazały, że tajna policja uznawała sztukę konceptualną za prozachodnią i potencjalnie groźną. Inwigilacja wytworzyła osobliwą pułapkę: prace zbyt hermetyczne dla masowej publiczności, a zarazem zbyt wyrafinowane, by można je było zlekceważyć. Uwaga władz potwierdzała, paradoksalnie, polityczną doniosłość, jakiej Świdziński upatrywał w swojej praktyce – pokazując, że podważenie sposobu wytwarzania znaczeń było pośrednio wyzwaniem rzuconym władzy.</p>
+
+<p>Relacja między galeriami alternatywnymi a państwem nie była ani czysto opozycyjna, ani kolaboracyjna. Była <em>kontekstualna</em>: wystawa dopuszczalna w jednych warunkach mogła w innych stać się prowokacją. Ta wrodzona kontekstualność praktyki artystycznej w socjalizmie była dla Świdzińskiego nie tylko ograniczeniem, lecz także laboratorium – codziennym dowodem na to, że znaczenie nigdy nie jest wolne od kontekstu.</p>
+
+<p>Tymczasem w 1973 roku, na charakterystycznym dla siebie eklektycznym marginesie, Świdziński nadzorował – wraz z Koniecznym i żoną Ireną Psarską – projekt rozmieszczenia informacji w warszawskim metrze planowanym przez ekipę Edwarda Gierka. Metra, jak wiadomo, nie zbudowano przez następne dwie dekady.</p>
+
+<h3 id="ch8">8. Kanada, Ameryka i powrót (1980–1999)</h3>
+
+<p>Lata osiemdziesiąte przyniosły wstrząs: stan wojenny w grudniu 1981 roku, stłumienie „Solidarności”, powolny rozpad systemu komunistycznego. Świdziński nigdy nie wyemigrował – mówił później, że zbyt przywiązał się do Polski, by ją opuścić – ale miał otwartą wizę kanadyjską i spędzał długie okresy w Kanadzie i Stanach Zjednoczonych. Wykładał w <strong>École Nationale Supérieure des Beaux Arts</strong> w Paryżu, na <strong>Université du Québec à Montréal</strong>, na <strong>New York University</strong> oraz na uniwersytetach w Calgary i Vancouver.</p>
+
+<p>W Kanadzie nawiązał trwałą współpracę z <strong>Richardem Martelem</strong> i <strong>Le Lieu, Centre en art actuel</strong> w Quebecu – ośrodkiem, który, jak podaje wiele źródeł, zaczął działać zgodnie z jego postulatami sztuki kontekstualnej. Nakładem Éditions Intervention Martela ukazały się trzy z jego najważniejszych książek: <em>Art contextuel</em> (1997), <em>L'Art et son Contexte</em> (2005) i pośmiertna <em>In Context</em> (2015).</p>
+
+<p>Dwanaście razy przekraczał Atlantyk, za każdym razem zostając na kilka miesięcy. W Nowym Jorku zaprzyjaźnił się z Josephem Kosuthem, kontynuując dialog rozpoczęty w 1976 roku w Toronto. Anna Kutera tak wspominała to, co nastąpiło po konferencji w Toronto: „Joseph Kosuth zaprosił nas oboje do siebie do Nowego Jorku i powiedział: proszę, bierzcie, macie, otwieram wam furtkę na Nowy Jork”.</p>
+
+<p>W 1989 roku wrócił z ostatniego dłuższego pobytu w Ameryce – wydarzenie to upamiętnił wystawą-performansem <strong>„Jestem z powrotem”</strong> w Małej Galerii 4 kwietnia 1989 roku, w przeddzień podpisania porozumień Okrągłego Stołu, które otworzyły drogę wyjścia z komunizmu. Tytuł był biograficzny, ale znaczenie kontekstualne: ta sama osoba powracała do radykalnie innego kraju.</p>
+
+<h3 id="ch9">9. INTERAKCJE, uznanie i śmierć (1998–2014)</h3>
+
+<p>Od 1998 roku Świdziński był prezesem i kuratorem <strong>Międzynarodowego Festiwalu Sztuki Akcji INTERAKCJE</strong> w Piotrkowie Trybunalskim – festiwalu pomyślanego w tym samym roku z inicjatywy mieszkającego w Paryżu performera <strong>Ryszarda Piegzy</strong> wspólnie ze Stanisławem Piotrem Gajdą i Gordianem Piecem; pierwsza edycja odbyła się w 1999 roku. W latach 2006–2007 wymyślił i prowadził też własny festiwal, <strong>„W kontekście sztuki / Różnice”</strong>, w Warszawie i na Mazowszu (zob. rozdział 30). Sam wybór prowincjonalnego miasta był deklaracją kontekstualną – dowodem, że znacząca wymiana artystyczna może się odbywać poza uznanymi ośrodkami kulturalnymi.</p>
+
+<p>3 maja 2005 roku otrzymał <strong>Krzyż Oficerski Orderu Odrodzenia Polski</strong>. W wywiadzie dla <em>Sztuki i Filozofii</em> zaznaczył z wyraźną satysfakcją, że był „niezmiernie zadowolony, że zostało to po latach dostrzeżone i [na] tak oficjalnym szczeblu – nagrodzone”.</p>
+
+<p>2 lipca 2008 roku raz jeszcze spotkał się z Kosuthem, w rzymskiej pracowni amerykańskiego artysty – mniej więcej półtoragodzinną rozmowę nagrał <strong>Piotr Weychert</strong> i wydał ją w 39-minutowym montażu jako film <em>Kosuth – Świdziński. Spotkanie w Rzymie</em> (2010). W 2009 roku dwie jego książki ukazały się wreszcie w polskim przekładzie: <em>Sztuka i jej kontekst</em> oraz <em>Sztuka, społeczeństwo, samoświadomość</em> (tę drugą przełożył Łukasz Guzek). W tym samym roku retrospektywa <strong>„Jest jak jest”</strong> – pokazana najpierw w Galerii Sztuki Najnowszej w Gorzowie Wielkopolskim, a następnie w galerii ODA w Piotrkowie Trybunalskim, pod kuratelą Guzka – objęła trzydzieści trzy lata praktyki sztuki kontekstualnej.</p>
+
+<p>Jan Świdziński zmarł <strong>9 lutego 2014 roku</strong> w Warszawie, w wieku dziewięćdziesięciu lat. Został pochowany 20 lutego 2014 roku na Cmentarzu Wojskowym na Powązkach (kwatera D, rząd 1, grób 29).</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PART II: THE THEORY -->
+<!-- ═══════════════════════════════════════════ -->
+
+<h2 id="part2">CZĘŚĆ II: TEORIA<br><span style="font-size:.85rem; color:#666;">Siedem faz myślenia</span></h2>
+
+<p>Ewolucję myśli Świdzińskiego można prześledzić na podstawie jego oryginalnych tekstów powstałych na przestrzeni dwudziestu ośmiu lat (1970–1998), trzech obszernych wywiadów i sześciu książek. Poniżej przedstawiono jej rekonstrukcję, opartą na uważnej lekturze źródeł pierwotnych – samych tekstów, własnych słów Świdzińskiego.</p>
+
+<div class="phase">
+<h4>Wielki łuk</h4>
+<p><strong>1970</strong>: DIAGNOZA – sztuka się przeobraża, a nie umiera<br>
+<strong>1972</strong>: BUDOWANIE NARZĘDZI – semiotyka znaku<br>
+<strong>1975</strong>: ODKRYCIE – z analizy filmu wyłania się „istnienie kontekstualne”<br>
+<strong>1976</strong>: MANIFEST – 12 tez; znak pusty; formuła O-m-t-p-s-o<br>
+<strong>1977–79</strong>: EKSPANSJA – konferencje międzynarodowe; funktory intensjonalne<br>
+<strong>1981–88</strong>: KRYZYS – Mielnik; stan wojenny; anomia; cztery logiki<br>
+<strong>1995–2014</strong>: AKCEPTACJA – „Jest jak jest” / neopragmatyczny turysta</p>
+</div>
+
+<h3 id="ch10">10. Faza 1: Diagnoza – „Spór o istnienie sztuki” (1970)</h3>
+
+<p>Pierwsza faza ma charakter czysto diagnostyczny. W „Sporze o istnienie sztuki”, opublikowanym w piśmie <em>Życie i Myśl</em> (nr 5, 1970, s. 98–105), Świdziński dokonuje przeglądu ówczesnej sztuki i rozpoznaje w niej zasadnicze przeobrażenie – nie kryzys, jak upierają się krytycy zachodni, lecz strukturalne przesunięcie w relacji między sztuką, językiem i rzeczywistością.</p>
+
+<p>Tekst otwiera motto zaczerpnięte z recenzji wystawy sztuki konceptualnej: <em>„Po tym nie będą możliwe ani muzea, ani galerie, a jednak pozostaną dzieła”</em> (Jose Pierre, <em>L'Oeil</em>, maj 1969). Motto to wyznacza centralny paradoks: instytucje sztuki ogłasza się przeżytkiem, a sztuka nadal powstaje. Zmieniło się nie samo istnienie sztuki, lecz ramy, w których się ją rozpoznaje.</p>
+
+<p>Świdziński wskazuje źródło tego stanu rzeczy: Paryż utracił pozycję centrum świata sztuki. Powojenne osłabienie Francji, rosnące znaczenie Ameryki i pojawienie się szkół lokalnych zapowiadają przesunięcie o skali tektonicznej. Ta geopolityczna analiza – centrum traci kontrolę, peryferie upominają się o autonomię – jest jednak czymś więcej niż krytyką artystyczną. Zapowiada całą strategię „Trzeciego Frontu” z 1977 roku i wyrasta wprost z doświadczenia polskiego artysty, który zawsze działał na peryferiach.</p>
+
+<p>Kluczowe spostrzeżenie tekstu brzmi: to, co wygląda na upadek, jest w istocie przeobrażeniem. Sztuka nie umiera, lecz nieustannie się zmienia wraz z samą cywilizacją. Dokumentacja, konceptualizacja i zajmowanie określonej postawy wypierają tradycyjne skupienie na przedmiocie materialnym – są to autentyczne odpowiedzi na warunki współczesności, a nie objawy degradacji estetycznej.</p>
+
+<p>W wywiadzie z 2006 roku Świdziński tak wspominał oddźwięk tego tekstu:</p>
+
+<blockquote>„[…] ja w latach 70 napisałem taki krótki artykuł i wywołał on, jak się okazało, bardzo duże wrażenie. Nazywał się «Spór o istnienie sztuki». Oddziałał żywo, szczególnie na młodych, z którymi się szybko związałem”.<cite>Świdziński, <em>Sztuka i Filozofia</em>, 2006</cite></blockquote>
+
+<p>Tekst pozostaje jednak diagnozą, nie receptą. Rozpoznaje problem – zerwanie związków między słowami a przedmiotami, między znakami a ich desygnatami – ale nie proponuje rozwiązania. To miało wymagać jeszcze dwóch lat budowania narzędzi semiotycznych i rozstrzygającego spotkania z filmem eksperymentalnym.</p>
+
+<h3 id="ch11">11. Faza 2: Semiotyczny warsztat – „O znaku” i „Permafo” (1972)</h3>
+
+<p>W 1972 roku Świdziński opublikował dwa teksty, w których skompletował aparat pojęciowy wykorzystany później w manifeście. <strong>„O znaku”</strong>, ogłoszony w <em>Fotografii</em> (czerwiec 1972), to systematyczna analiza teorii znaku, sięgająca do Saussure'a (signifiant/signifié), Husserla (znaki w ujęciu fenomenologicznym), Foucaulta (formacje dyskursywne) i Praskiego Koła Lingwistycznego.</p>
+
+<p>Najważniejsze zdanie tego tekstu zapowiada cały projekt kontekstualny: <strong>„Dzieło sztuki jest możliwością, daną odbiorcy, a nie jednoznacznym stanem”</strong>. To jedno zdanie, ukryte w technicznej analizie semiotycznej, zawiera zalążek pojęcia „znaku pustego”, które cztery lata później stanie się głównym nowatorskim osiągnięciem sztuki kontekstualnej.</p>
+
+<p>Tekst towarzyszący, <strong>„A propos N.S. galerii «Permafo»”</strong> (również w <em>Fotografii</em>, maj 1972), przynosi sformułowanie bardziej polemiczne: „jedynie nowe sytuacje są sytuacjami sztuki. Pozostałe należą do historii lub archeologii”. Diagnostyczny ton „Sporu” stwardniał tu w stanowisko programowe: sztuka nie tylko się przeobraża; ona <em>musi</em> się przeobrażać, bo jedynie przeobrażenie wytwarza autentyczne sytuacje sztuki.</p>
+
+<h3 id="ch12">12. Faza 3: Odkrycie – „Model kina” i trzy modele (1975)</h3>
+
+<p>Przełom nie przyszedł ze strony filozofii, lecz filmu. W 1975 roku, na prośbę członków <strong>Warsztatu Formy Filmowej</strong> – łódzkiego kolektywu filmowców eksperymentalnych, do którego należeli między innymi Józef Robakowski, Wojciech Bruszewski, Ryszard Waśko i Paweł Kwiek – Świdziński napisał <strong>„Model kina”</strong>, opublikowany w <em>Zeszycie WFF</em> nr 7.</p>
+
+<p>Tekst ten, nazwany w projekcie wystawy przygotowanym przez poznański UAP „chyba jednym z najważniejszych w Polsce artykułów o filmie eksperymentalnym”, stanowi <strong>pierwsze udokumentowane wystąpienie słowa „kontekstualny”</strong> w pismach Świdzińskiego – na cały rok przed manifestem z Lund.</p>
+
+<p>Tekst opisuje <strong>trzy modele sztuki</strong>, odniesione do trzech modeli cywilizacji:</p>
+
+<ol>
+<li><strong>Model uniwersalny</strong> – określa go ustalona morfologia i czas absolutny. Sztuka działa w obrębie ustalonych gatunków i reguł semantycznych. To „«wielkie kino» Rosselliniego, Antonioniego”. Czas jest skalarem porządkującym fakty w kolejności.</li>
+<li><strong>Model relatywistyczny</strong> – „Nie ma praw absolutnych. Prawdziwość zostaje zrelatywizowana do układu odniesienia, jak w fizyce einsteinowskiej”. Każdy układ odniesienia ma własną przestrzeń i własny czas. Sztuka może stać się „modelem samego siebie”. To domena filmu strukturalnego – „meaningless syntax” Sharitsa.</li>
+<li><strong>Model kontekstualny</strong> – i oto zdanie, które zmienia wszystko:</li>
+</ol>
+
+<blockquote>„Jedne i drugie istnieją kontekstualnie. Istnienie kontekstualne jest wyznacznikiem trzeciego modelu sztuki; przeciwstawia się modelowi relatywistycznemu, który jest skonstruowany jako coś niezależnego wobec obiektywnego modelu sztuki modernizmu lat 50. i 60. Jest to obecne stanowisko sztuki”.<cite>Jan Świdziński, „Model kina”, <em>Zeszyt WFF</em> 7, Łódź, 1975</cite></blockquote>
+
+<p>Tekst wprowadza też dwa sformułowania, które miały stać się centralne dla manifestu:</p>
+
+<blockquote>„Staliśmy się artystami bez specjalności”.<cite>Świdziński, „Model kina”, 1975</cite></blockquote>
+
+<blockquote>„Sztuka współczesna, określając w trakcie działania własną morfologię i rozpatrywane struktury, nie ma a priori sformułowanego przepisu posługiwania się nią – jest sztuko-teorią konstruującą się poprzez praktykę artystyczną”.<cite>Świdziński, „Model kina”, 1975</cite></blockquote>
+
+<p>Łukasz Guzek, zabierając głos na spotkaniu w TR Warszawa w 2014 roku, potwierdził tę genealogię: „właśnie od strony tej nowej sztuki medialnej, którą robił Warsztat Filmowy z Łodzi ta teoria kontekstualna właśnie się wywodzi. I to Warsztat Formy Filmowej właśnie wziął sobie Janka, on dla nich pisze taki ważny tekst, który nazywa się «Model kina», to jest 75 rok. […] I tak po raz pierwszy zostaje sformułowana ta właśnie teoria kontekstualna”.</p>
+
+<p>Odkrycie to ma znaczenie nie tylko chronologiczne, lecz także pojęciowe. Pokazuje, że sztuka kontekstualna nie wyłoniła się z czystej spekulacji filozoficznej, lecz z analizy tego, <em>jak filmowcy eksperymentalni już pracowali</em>. „Model kina” omawia konkretne prace WFF ze zdumiewającą precyzją:</p>
+
+<p><strong>„Rejestracja” Waśki (1972)</strong>: ulica zostaje podzielona na 29 części. W każdym punkcie wyznacza się pozycję kamery. Rejestracja odbywa się w dwóch kierunkach. Montaż zestawia odpowiadające sobie segmenty. „W ten sposób zostaje utworzony obiektywny (matematyczny) system, przez który zostaje odwrócona relacja między obrazem a odpowiadającą mu rzeczywistością”. Świdziński odczytuje to jako dowód, że obraz rzeczywistości „w każdym wypadku jest wynikiem przyjętej konwencji strukturalizowania rzeczywistości”.</p>
+
+<p><strong>„Idę…” Robakowskiego (1973)</strong>: kamera wznosi się po schodach wieży, a wchodzący głośno liczy stopnie. Rejestracja wizualna jest „zimna” (obiektywna), dźwiękowa – „gorąca” (emocjonalna). Relacja między podmiotem a przedmiotem odwraca się między tymi dwoma kanałami, co burzy kartezjański podział na obiektywne i subiektywne.</p>
+
+<p><strong>„Drzwi” Bruszewskiego (1974)</strong>: drzwi otwierają się i zamykają bez widocznej interwencji, przy zsynchronizowanym dźwięku. „Zostaje naruszona pewna struktura logiczna naszych percepcji świata empirycznego. Jeżeli coś się dzieje, istnieje przyczyna. […] Tu drzwi zamykają się i otwierają bez żadnego powodu”. Praca ujawnia, że codzienna percepcja nie jest neutralną obserwacją, lecz procesem obciążonym semantycznie i rządzonym przez przyjęte reguły.</p>
+
+<p>Z tych analiz Świdziński wyprowadza formułę, która wiąże film z jego szerszą teorią:</p>
+
+<blockquote>„Nie daje się zobiektywizować reguł, wyrzucając je poza siebie. Nie potrafimy bowiem wyabstrahować reguł, którym ulegamy i tych, które sami wytwarzamy. Jedne i drugie istnieją kontekstualnie”.<cite>Świdziński, „Model kina”, 1975</cite></blockquote>
+
+<p>Tekst zamyka ustęp, który można czytać zarówno jako podsumowanie dokonań WFF, jak i manifest tego, co miało stać się sztuką kontekstualną:</p>
+
+<blockquote>„Sztuka współczesna, określając w trakcie działania własną morfologię i rozpatrywane struktury, nie ma a priori sformułowanego przepisu posługiwania się nią – jest sztuko-teorią konstruującą się poprzez praktykę artystyczną”.<cite>Świdziński, „Model kina”, 1975</cite></blockquote>
+
+<p>Wkład Świdzińskiego polegał na rozpoznaniu, że to, co filmowcy WFF robili w praktyce – tworzenie prac, których znaczenie zależało od konkretnych strukturalnych warunków powstawania i oglądania – stanowi przypadek ogólnej zasady. „Trzeci model” sztuki nie był jego wynalazkiem, lecz <em>rozpoznaniem</em>: rozpoznaniem, że istnienie kontekstualne stanowi już „obecne stanowisko sztuki”.</p>
+
+<h3 id="ch13">13. Faza 4: Manifest – dwanaście tez i znak pusty (1976)</h3>
+
+<p>We wrześniu 1975 roku, na <strong>festiwalu F-Art</strong> w Gdańsku, Świdziński poznał <strong>Jeana Sellema</strong>, francuskiego artystę prowadzącego eksperymentalną Galerie S:t Petri w szwedzkim Lund. Sellem – który, jak pisze Libera, <strong>„związany był z międzynarodówką sytuacjonistyczną pod patronatem Guya Deborda”</strong> – entuzjastycznie przyjął młodą polską scenę i tezy Świdzińskiego: zaprosił Annę Kuterę na wystawę w swojej galerii, a w listopadzie 1975 roku Świdziński pojechał z nią do Lund, mając już gotową teorię. Z tej wizyty zrodził się plan dużej wystawy sztuki polskiej.</p>
+
+<p>Obecna przy tym Anna Kutera wspominała na spotkaniu w TR Warszawa nadanie ruchowi nazwy: „Jean Sellem mówi: «Ale to trzeba nazwać». Ponieważ w założeniach tych było mnóstwo na temat kontekstu, tak więc Jean Sellem sformułował nazwę tego ruchu i nazwał ją «sztuką kontekstualną»”. Związek z sytuacjonizmem – z teorią <em>spektaklu</em> i <em>sytuacji</em> Deborda – sugeruje genealogię intelektualną, którą dotąd zbadano niedostatecznie: być może Sellem rozpoznał w kontekstualnej teorii Świdzińskiego filozoficzną krewną projektu sytuacjonistów.</p>
+
+<p>Wystawę <strong>„Contextual Art”</strong> otwarto w Galerie S:t Petri w <strong>lutym 1976 roku</strong>, a przy tej okazji ukazała się po angielsku broszura Świdzińskiego <em>Art as Contextual Art</em>. Wzięło w niej udział dziesięcioro polskich artystów: Wojciech Bruszewski, Zbigniew Dłubak, Henryk Gajewski, Andrzej Jórczak, Anna Kutera, Romuald Kutera, Lech Mrożek, Józef Robakowski, Jan Świdziński i Ryszard Waśko. W Konsthall w Malmö odbyło się towarzyszące międzynarodowe sympozjum, na którym Świdziński wygłosił wykład „Art as Contextual Art”.</p>
+
+<p>Manifest istnieje w kilku wersjach. Najczęściej cytowana jest wersja dwunastopunktowa; tekst główny – <strong>„Sztuka kontekstualna (3)”</strong> – liczy jednak około 2600 słów i wprowadza do gry pełny aparat filozoficzny, z formalną bibliografią przywołującą Churcha, Hintikkę, Quine'a, Hegla, Kosutha, Åqvista, Chomsky'ego, Kristevę i Malraux. To nie jest praca dyletanta, lecz owoc piętnastu lat systematycznego samokształcenia w logice, semiotyce i filozofii języka. System określają trzy pojęcia:</p>
+
+<h4>Znak pusty</h4>
+
+<p>W „Sztuce kontekstualnej (3)” Świdziński definiuje znak pusty z precyzją, do której wersja dwunastopunktowa jedynie się zbliża:</p>
+
+<blockquote>„W sytuacji współczesnej znak nie jest ani szybą, przez którą oglądamy świat (nie opisuje rzeczywistości), nie jest również znakiem samego siebie zawierającym własną ideę; jest to znak pusty, miejsce do wypełnienia przez rzeczywistość”.<cite>Świdziński, „Sztuka kontekstualna (3)”, 1976</cite></blockquote>
+
+<p>Definicja działa przez potrójną negację. Znak <em>nie</em> jest szybą (przedstawieniowy model sztuki przednowoczesnej – <em>Musée Imaginaire</em> Malraux). <em>Nie</em> jest znakiem samego siebie (autoreferencyjny model modernizmu i konceptualizmu – tautologiczna sztuka Kosutha, „meaningless syntax” Sharitsa). I <em>nie</em> jest bezsensowny (zostanie wypełniony: przez rzeczywistość, przez kontekst, przez osoby, które się z nim zetkną). Znak pusty to byt paradoksalny: dzieło, które nie niesie znaczenia, a jednak nie jest bezsensowne, które odmawia treści, a zarazem domaga się zaangażowania.</p>
+
+<p>Ronduda opisuje pracę kontekstualną jako „nie więcej niż impuls, który nie skupia na sobie żadnej uwagi, lecz odgrywa rolę bodźca, inicjującego proces sygnifikacji, którego punktem wyjścia jest widz”. Artysta stwarza warunki znaczenia, ale samego znaczenia nie określa. Nie jest to równoznaczne z twierdzeniem, że „anything goes”. Świdziński podkreślał stanowczo, że sztuka kontekstualna „przeciwstawia się wieloznaczności i przeciwstawia się relatywizmowi” (teza 12). Znak pusty jest pusty nie dlatego, że nie ma sensu, lecz dlatego, że jego znaczenie nie jest <em>z góry przesądzone</em> – trzeba je określać na nowo w każdym kontekście odbioru.</p>
+
+<p>Ideę tę skupia w sobie słynne zdanie Świdzińskiego: „Po to by wypicie szklanki wody stało się sztuką należy ją pić w odpowiednim miejscu, w odpowiednim czasie i w odpowiednim towarzystwie”.</p>
+
+<h4>Rozróżnienie ekstensjonalne/intensjonalne</h4>
+
+<p>„Sztuka kontekstualna (3)” odsłania dokładny mechanizm logiczny, na którym opiera się teza 5. Świdziński wskazuje na zasadnicze rozróżnienie między dwoma typami wyrażeń:</p>
+
+<p><strong>Wyrażenia ekstensjonalne</strong> – używane przez naukę, logikę formalną i konceptualizm Kosutha. Ich znaczenie zależy wyłącznie od denotacji terminów składowych. „Joseph” znaczy to samo bez względu na to, kto, gdzie i kiedy to wypowiada. Zdania analityczne działają ekstensjonalnie: ich prawdziwość zależy od wewnętrznej struktury logicznej, a nie od okoliczności zewnętrznych.</p>
+
+<p><strong>Wyrażenia intensjonalne</strong> – używane przez sztukę kontekstualną. Ich znaczenie zależy od czynników wykraczających poza samo zdanie. Aby określić, co znaczą, „trzeba było się odwołać do innych faktów, niż tylko tych, które można wyłuskać z idei zawartej w nazwie”. Wyrażenia intensjonalne działają w rejestrze, który Świdziński zaczerpnął z <strong>logiki epistemicznej i logiki deontycznej</strong> Hintikki – logiki rządzącej takimi stanami, jak: „poznawać, uznawać, odrzucać, wierzyć, przypuszczać”.</p>
+
+<p>W tekście głównym Świdziński pisze:</p>
+
+<blockquote>„Sztuka kontekstualna odrzuca warunek ekstensjonalności wyrażeń co stawia ją w opozycji wobec współczesnych sformalizowanych języków nauki, wobec sformalizowanych systemów znaczeniowych jakimi operowała sztuka tradycyjna, również wobec konceptualizmu operującego zdaniami analitycznymi”.<cite>Świdziński, „Sztuka kontekstualna (3)”, 1976</cite></blockquote>
+
+<p>To technicznie najprecyzyjniejsze sformułowanie tego, co oddziela sztukę kontekstualną od sztuki konceptualnej. Zdanie Kosutha „sztuka jest definicją sztuki” jest ekstensjonalne – jego prawdziwość zależy od wewnętrznego stosunku między „sztuką” a „definicją”. Zdanie Świdzińskiego „Przedmiot «O» przyjmuje znaczenie «m» w czasie «t», w miejscu «p», w sytuacji «s», w stosunku do osoby/osób «o»” jest intensjonalne – jego prawdziwość zależy od czynników zewnętrznych wobec samego zdania: od faktycznego czasu, miejsca, sytuacji i uczestniczących osób.</p>
+
+<h4>Formuła kontekstu pragmatycznego (O-m-t-p-s-o)</h4>
+
+<p>Teza 5 podaje zapis formalny: Przedmiot „O” przyjmuje znaczenie „m” w czasie „t”, w miejscu „p”, w sytuacji „s”, w stosunku do osoby/osób „o” – <em>wtedy i tylko wtedy</em>. Zwrot <em>wtedy i tylko wtedy</em> należy do języka logicznej równoważności: znaczenie zachodzi <em>wtedy i tylko wtedy</em>, gdy spełnione są wszystkie wymienione warunki kontekstowe. Wystarczy zmienić którąkolwiek współrzędną, a zmienia się znaczenie.</p>
+
+<p>Formuła czerpie z polskiej tradycji logicznej (semantyczna definicja prawdy Tarskiego) i łączy się z tym, co współcześni epistemolodzy nazywają <strong>kontekstualizmem</strong> – poglądem, że warunki prawdziwości przypisań wiedzy zmieniają się wraz z kontekstem osoby, która je przypisuje. Świdziński wyprzedził ten kierunek filozoficzny o dwie dekady.</p>
+
+<p>W tekście głównym określa formułę dokładniej niż w tezie 5:</p>
+
+<blockquote>„«X» ma własność bycia sztuką w czasie «t», w miejscu «m», w sytuacji «z», w stosunku do osoby osób «o» wtedy i tylko wtedy. Zmiana któregokolwiek z tych elementów oznacza automatycznie zmianę rozpatrywanych wartości. Spór o złą i dobrą sztukę bez podania kontekstu pragmatycznego jest pozbawiony przedmiotu”.<cite>Świdziński, „Sztuka kontekstualna (3)”, 1976</cite></blockquote>
+
+<h4>Logiczny porządek: tezy 1–4 i 6–11</h4>
+
+<p>Dwanaście tez układa się w starannie skonstruowany ciąg, który zasługuje na osobne omówienie.</p>
+
+<p><strong>Teza 1</strong> ustanawia nierozdzielność przedmiotów i znaczeń: „Nie istnieją przedmioty pozbawione znaczeń i nie istnieją znaczenia pozbawione przedmiotów”. Tym samym uznaje kantowską rzecz samą w sobie za nieistotną dla teorii estetycznej. Każdy postrzegany przedmiot jest już znakiem. Znaki są jednak systematycznie wieloznaczne: jeden przedmiot niesie różne znaczenia w różnych kodach, a jedno znaczenie można przypisać różnym przedmiotom. Ta systematyczna wieloznaczność jest warunkiem wyjściowym sztuki – i jej podstawowym problemem.</p>
+
+<p><strong>Teza 2</strong> wprowadza wymiar polityczny. Gdy różne grupy społeczne przypisują temu samemu przedmiotowi różne znaczenia, a żadna nie ma „dostatecznego autorytetu”, by narzucić swój punkt widzenia, powstaje problem kryterium wyboru. Prowadzi to do mnożenia się definicji sztuki („wszystko może oznaczać sztukę”). Teza czerpie z marksowskiej analizy ideologii i zapowiada Bourdieu'owskie pojęcie kapitału kulturowego. Inne jego pisma, przede wszystkim paryskie wystąpienie z 1977 roku o hegemonii w sztuce, opisują przypadek odwrotny: centrum, które taki autorytet sobie przypisuje i narzuca innym swoje pojęcia.</p>
+
+<p><strong>Teza 3</strong> rozróżnia dwa tryby działania artystycznego: praktyczny (tworzenie przedmiotów przy danych znaczeniach – sztuka konwencjonalna) i poznawczy (tworzenie znaczeń przy danych przedmiotach – sztuka konceptualna). Pozostają one w <strong>sprzężeniu zwrotnym</strong> – to pętla cybernetyczna z lat działalności Świdzińskiego w Towarzystwie Cybernetycznym. „[…] rzeczywistość, którą produkujemy zależy od naszej koncepcji rzeczywistości – nasza koncepcja rzeczywistości zależy od produkowanej przez nas rzeczywistości”. Sztuka konceptualna, mimo deklarowanego krytycznego dystansu, sama jest formą wytwarzania rzeczywistości.</p>
+
+<p><strong>Teza 4</strong> wprowadza „deaktualizację znaczeń” i produkowanie „pozornej rzeczywistości”. Grupy, które dzięki ustalonym znaczeniom zdobyły przywileje, nie chcą uznać, że znaczenia te straciły ważność. Skutkiem jest ideologia: „pozorne znaczenia” podtrzymujące struktury władzy, które rzeczywistość już podważyła. To mechanizm ideologicznej mistyfikacji wyprowadzony z analizy semiotycznej, a nie wprost z Marksa, co nadaje mu formalną ścisłość niedostępną ujęciom czysto socjologicznym.</p>
+
+<p><strong>Tezy 6–8</strong> wyciągają konsekwencje. Teza 6: sztuka kontekstualna jako „stałe odrzucanie kanonów usiłujących zatrzymać nieustannie deaktualizujące się znaczenia”. Teza 7: sprzeciw wobec stabilizacji zarówno przedmiotów, <em>jak i</em> znaczeń – prowadzący do odrzucenia wszelkich definicji sztuki. Teza 8 dopełnia projekt Duchampa: Duchamp uruchomił stronę przedmiotu (każdy przedmiot może oznaczać „sztukę”); sztuka kontekstualna uruchamia obie strony jednocześnie („każdy przedmiot może oznaczać sztukę jak i nie sztukę”). „Celem działania sztuki staje się zrelatywizowanie całego obszaru znaczeń i całego obszaru przedmiotów”.</p>
+
+<p><strong>Teza 9</strong> – sformułowanie najzwięźlejsze: „Sztuka jako sztuka kontekstualna zainteresowana jest tylko relacją (jako gotowością połączenia znaczenia z przedmiotem w określonym kontekście pragmatycznym)”. Wyprzedza ona estetykę relacyjną o dwie dekady.</p>
+
+<p><strong>Teza 10</strong> przyznaje istnienie luki komunikacyjnej: „rzeczywistość konstruowana przez artystę jest czymś innym niż rzeczywistość odbierana”. Nie jest to porażka, lecz cecha strukturalna – artysta i publiczność zajmują w kontekście pragmatycznym różne pozycje.</p>
+
+<p><strong>Teza 11</strong> odcina sztukę kontekstualną od nauki (która musi „ustalać (unieruchamiać)” przedmiot, nadając mu znaczenie) i od logiki formalnej, umieszczając ją w obszarze „stale deaktualizujących się reguł”. W tym właśnie obszarze Piotrowski rozpozna później rozumowanie niemonotoniczne.</p>
+
+<h4>Antyrelatywistyczny paradoks (teza 12)</h4>
+
+<p>Teza 12: „Sztuka jako sztuka kontekstualna przeciwstawia się wieloznaczności i przeciwstawia się relatywizmowi. Jedno i tylko jedno wyrażenie jest prawdziwym w określonym kontekście pragmatycznym. Takie wyrażenie jest wyrażeniem z asercją”.</p>
+
+<p>Ta teza wywołała najwięcej dyskusji w literaturze przedmiotu, wydaje się bowiem przeczyć relatywistycznym implikacjom tez poprzednich. Jak teoria, która kładzie nacisk na ciągłą „deaktualizację znaczeń”, może zarazem sprzeciwiać się relatywizmowi?</p>
+
+<p>Odpowiedź tkwi w rozróżnieniu między relatywizmem <em>pomiędzy</em> kontekstami a determinizmem <em>wewnątrz</em> kontekstów. Między kontekstami znaczenie się zmienia – na tym polega rozpoznanie kontekstualne. W obrębie danego kontekstu znaczenie jest jedno i określone – na tym polega zobowiązanie antyrelatywistyczne. Sztuka kontekstualna nie głosi, że „anything goes”; głosi, że „obowiązuje dokładnie jedno, ale które – to zależy od tego, gdzie stoisz”.</p>
+
+<p>Piotrowski ujmie to później formalnie jako logiczną strukturę <strong>rozumowania niemonotonicznego</strong>: wnioski są ważne przy określonym zbiorze przesłanek, lecz po dodaniu nowych przesłanek można je obalić. Paradoks tezy 12 znika, gdy rozpoznamy, że sztuka kontekstualna działa nie w jednej ramie logicznej, lecz w rodzinie ram, z których każda jest wewnętrznie spójna, ale wszystkie mogą się wzajemnie korygować – lokalnie określone, globalnie rewidowalne.</p>
+
+<p>Najostrzejszą lekturę krytyczną zaproponował Bartosz Łukasiewicz: „Teoria «sztuki jako sztuki kontekstualnej» okazuje się kolejnym archiwum, kolejnym zbiorem prawd i norm. Najgorsze jednak, co moglibyśmy zrobić, to traktować ją jako prawdziwą”. Jest to, jak można sądzić, najbardziej kontekstualne odczytanie sztuki kontekstualnej: traktuje samą teorię jako podległą jej własnej zasadzie „deaktualizacji znaczeń”.</p>
+
+<p>W wywiadzie dla <em>Atlasu Sztuki</em> z 2004 roku Świdziński zastanawiał się nad tym, co chciał osiągnąć. Przeczytał wszystko, co napisała grupa Art and Language – i uznał, że napisano to bardzo chaotycznie. Doszedł do wniosku, że nadszedł czas, by zrobić pół kroku dalej: ich sztuka zamknęła się w sytuacji, w której jeśli ktoś mówi, że coś jest sztuką, to jest to sztuka – a to tautologia.</p>
+
+<h3 id="ch14">14. Faza 5: Ekspansja – Toronto, Paryż, Warszawa (1976–1979)</h3>
+
+<p>Czas od listopada 1976 do końca 1977 roku to okres najintensywniejszej międzynarodowej działalności sztuki kontekstualnej: trzy duże konferencje na dwóch kontynentach.</p>
+
+<h4>Toronto, 10–12 listopada 1976</h4>
+<p>Debata CEAC „In the Context of the Art World”, zorganizowana przez Ameriga Marrasa, postawiła Świdzińskiego twarzą w twarz z Josephem Kosuthem. Anna Kutera wspominała: „pierwsze słowa Kosutha były jednoznaczne: <em>nie damy sobie wydrzeć prymatu w świecie postmodernistycznym</em>”.</p>
+
+<p>Najgłębszą analizę przedstawił na spotkaniu w TR Warszawa Guzek: obaj opublikowali manifesty w odstępie roku – Kosuth „Artist as Anthropologist” (<em>The Fox</em>, 1975), Świdziński „Art as Contextual Art” (Lund, 1976). „Bo Świdziński nie wpadł na tą antropologizację. […] Ale Kosuth też nie wpadł na to, żeby uczynić z tej teorii, z kontekstu (którym się posługuje przecież) taką główną kategorię swojej sztuki. On sięga po tą antropologizację. Oni się spotykają w tym momencie i rzeczywiście widzą tutaj absolutne pokrewieństwo, prawda? Pokrewieństwo myślenia”, zauważył Guzek.</p>
+
+<p>Sam Świdziński z charakterystyczną bezpośredniością tak wspominał tę wymianę zdań:</p>
+
+<blockquote>„Pamiętam jak pewnego razu Kossuth mówi do mnie: «Słuchaj Jan, ja podobne miałem potem idee jak ty» (ogłosił je w artykule «Artysta jako antropolog») – na co ja mogłem odpowiedzieć mu tylko: «Szkoda żeś ich wcześniej nie ogłosił»”.<cite>Świdziński, <em>Sztuka i Filozofia</em>, 2006</cite></blockquote>
+
+<h4>Paryż, 10–13 maja 1977</h4>
+<p>Na konferencji „Art et Transformation Sociale”, zorganizowanej przez Collectif Art Sociologique, Świdziński wypowiedział zdanie, które może być najzwięźlejszym sformułowaniem jego projektu:</p>
+
+<blockquote>„Sensem mojego działania jako artysty, nie jest włączenie rzeczywistości w sztukę – jak to wynikało z propozycji sztuki XX w. od Duchampa, poprzez Happening, Land Art, Body-Art […] – lecz włączenie sztuki w rzeczywistość”.<cite>Świdziński, Paryż, maj 1977</cite></blockquote>
+
+<h4>Warszawa, 1977</h4>
+<p>W Galerii Remont międzynarodowa konferencja artystów i teoretyków „Sztuka jako działanie w kontekście rzeczywistości” zgromadziła uczestników z <strong>trzydziestu pięciu krajów</strong>. Henryk Gajewski zredagował dwujęzyczną publikację <em>Sztuka jako sztuka kontekstualna</em> – 92 strony, dziś przechowywane w archiwum Druków Artystycznych Galerii Wymiany w Muzeum Sztuki Nowoczesnej w Warszawie.</p>
+
+<h4>Art, Society and Self-consciousness (Calgary, 1979)</h4>
+<p>Książka, którą Centrum Sztuki Współczesnej Zamek Ujazdowski określa jako najważniejszą prezentację koncepcji sztuki jako sztuki kontekstualnej, wprowadziła <strong>funktory intensjonalne</strong> – zastępujące „to JEST sztuka” przez „WIEM/WIERZĘ/PRZYPUSZCZAM, że to jest sztuka” – oraz pojęcie <strong>restrykcji pragmatycznej</strong>. Polski przekład (2009, Łukasz Guzek) udostępnił ten tekst nowemu pokoleniu polskich czytelników.</p>
+
+<h3 id="ch15">15. Faza 6: Kryzys – Mielnik, stan wojenny, anomia (1981–1988)</h3>
+
+<p>Rok 1981 wyznacza najgłębszy punkt zwrotny w ewolucji sztuki kontekstualnej. <strong>Projekt w Mielniku</strong> – hasła malowane na wiejskich ulicach w pobliżu granicy ze Związkiem Radzieckim w okresie Solidarności – był najbardziej bezpośrednio polityczną interwencją sztuki kontekstualnej:</p>
+
+<blockquote>„NIE PRZYPUSZCZAJ, ŻE SZTUKA MOŻE ZMIENIĆ TWOJE ŻYCIE CHOĆBY NA CHWILĘ. SZTUKA JEST ILUZJĄ. UNIKAJ WSZELKICH ILUZJI. MUSISZ ZROZUMIEĆ SWOJĄ WŁASNĄ SYTUACJĘ. MUSISZ SAM ROZWIĄZYWAĆ SWOJE PROBLEMY”.</blockquote>
+
+<p>Potem nastał stan wojenny. Relacja Świdzińskiego z wywiadu z 2006 roku zasługuje na obszerny cytat:</p>
+
+<blockquote>„[…] pierwszego dnia miałem zaplanowaną wystawę w Krakowie pod tytułem «Wolność i ograniczenie». Dzwoniłem przez telefon, ale był nieczynny, więc wsiadłem do pociągu a tam mówią, że stan wojenny. Zacząłem się śmiać. Przyjechałem do Krakowa. Wystawy nie było. Ale ciekawa rzecz, że ze ścian pozrywali plakaty solidarnościowców. Wszystko pozrywane i jedyny plakat jaki wisiał to był mój plakat, ogłoszenie o mojej wystawie; Jan Świdziński «Wolność i ograniczenie»… w końcu znajomy mówi do mnie: «Tutaj cenzor chce z Panem porozmawiać». Dał mi telefon do niego, ja wykręciłem i mówię; Proszę Pana, zgoda, ja chciałem poprawić tylko nie wiem, z czym się Pan nie zgadza: z wolność, czy z ograniczenie? Cenzor zaniemówił”.<cite>Świdziński, <em>Sztuka i Filozofia</em>, 2006</cite></blockquote>
+
+<p>Ten epizod – w którym znaczenie tytułu w całości określił kontekst polityczny, a cenzor nie umiał rozstrzygnąć, które słowo ma zniknąć – to teza 5 odegrana jako teatr polityczny.</p>
+
+<h4>Cztery modele logiki</h4>
+
+<p>Odpowiedź teoretyczna przyszła w książce <em>Freedom and Limitation – The Anatomy of Post-modernism</em> (Calgary, 1987), która wprowadziła pojęcie <strong>anomii</strong> (za Durkheimem) oraz <strong>cztery modele logiki</strong>. Zakres rozważań poszerzył się z teorii sztuki do diagnozy cywilizacyjnej.</p>
+
+<p>Jak wyjaśniają własne prezentacje tego systemu autorstwa Świdzińskiego, cztery modele regulują różne tryby istnienia społecznego:</p>
+
+<ol>
+<li><strong>Logika norm</strong> – pełna synchronizacja; esencja poprzedza egzystencję; bezwzględne zakazy i obowiązki. Przednowoczesny świat zegara. W sztuce: ustalone gatunki, wieczne kanony, <em>Musée Imaginaire</em> Malraux.</li>
+<li><strong>Logika wolności</strong> – pluralizm; „pozwolenie” i wybór; rozdział moralności (sumienie jednostki) i prawa (konsensus społeczny). Liberalna nowoczesność. W sztuce: autonomia dzieła, „sztuka dla sztuki”, model relatywistyczny z „Modelu kina”.</li>
+<li><strong>Logika epistemiczna</strong> – dystans wobec kategorii moralnych; medycyna i psychologia zastępują etykę jako ramy odniesienia. Społeczeństwo terapeutyczne. W sztuce: refleksyjne, analizujące samo siebie dzieło, które bada własne warunki możliwości.</li>
+<li><strong>Logika gry</strong> – prawda traci użyteczność, zastępują ją zysk i sukces. Sytuacje zmieniają się z minuty na minutę. Nie ma czasu na uczenie się reguł. Agresja zostaje usprawiedliwiona. Późny kapitalizm. W sztuce: o wartości decyduje rynek; dzieło jako towar.</li>
+</ol>
+
+<p>Nie przedstawiano ich jako następstwa historycznego, lecz jako współistniejące warstwy. Anomia – desynchronizacja struktur znaczeniowych – powstaje wtedy, gdy przejścia między logikami stają się zbyt szybkie, by normy społeczne mogły je wchłonąć. Wyrażenia tracą stałe desygnaty i stają się „liczmanami […]: nie można ustalić konotacji wyrażeń występujących w niezliczonych, zmieniających się heterogenicznych kontekstach”.</p>
+
+<p>Cztery logiki czerpały z różnorodnych źródeł: Davida Hilberta (systemy formalne), Leona Festingera (dysonans poznawczy), Anatola Rapoporta (teoria gier) i Johana Huizingi (<em>Homo Ludens</em>). Ambicja była encyklopedyczna: nie tylko opisać sytuację sztuki, lecz dać całościowy model tego, jak zmiana cywilizacyjna wytwarza warunki, w których sztuka musi działać.</p>
+
+<p>Wywiad z 2006 roku potwierdza związek anomii z wcześniejszą teorią:</p>
+
+<blockquote>„Dzisiaj ta aktualność pojawia się w zagadnieniu procesu. I ja pisałem kilkadziesiąt lat temu, że żyjemy w epoce coraz szybszych zmian które prowadzą do entropii (anomii). […] No bo co to jest chaos? – jest to jakiś stan naszego umysłu wobec rzeczy które wokół nas zachodzą. I teraz – ponieważ się one nieustannie wymieniają, to ja nie mogę mieć stałego punktu zaczepienia w stosunku do zmieniającej się sytuacji”.<cite>Świdziński, <em>Sztuka i Filozofia</em>, 2006</cite></blockquote>
+
+<h3 id="ch16">16. Faza 7: Akceptacja – „Jest jak jest” (1995–2014)</h3>
+
+<p>Późne teksty – zwłaszcza <strong>„Anomia”</strong> (Stara Galeria, Lublin, maj 1998) – wyrażają ostateczne stanowisko teoretyczne Świdzińskiego: akceptację.</p>
+
+<blockquote>„Skąd wziął mi się ten tytuł: anomia? Nie jest to zbyt popularne słowo. Wprowadził je do socjologii Durkheim na oznaczenie stanu społeczeństwa, gdy ogólnie przyjęte normy, wartości, pojęcia – cały przez wszystkich zrozumiały obraz rzeczywistości przestaje funkcjonować. Przed ponad dwudziestu laty proponując kontekstualne tezy dla współczesnej sztuki, zauważyłem – bo rzucało się to w oczy – że zaczyna brakować nam wspólnych norm, które pozwalałyby na obiektywną ocenę sztuki”.<cite>Świdziński, „Anomia”, 1998</cite></blockquote>
+
+<p>A potem metafora turysty:</p>
+
+<blockquote>„Jesteśmy po trosze jak turyści, którzy zatrzymują samochód przed pubem przy drodze by chwilę odpocząć, zjeść hamburgera, wypić piwo i pogadać z takimi samymi odpoczywającymi przez chwilę turystami jak oni. Pół godziny odpoczynku i jedzie się dalej”.<cite>Świdziński, „Anomia”, 1998</cite></blockquote>
+
+<p>Tekst „Anomii” zwraca uwagę tonem – odchodzi od bojowej precyzji manifestu z 1976 roku ku czemuś bardziej medytacyjnemu, niemal elegijnemu. Świdziński śledzi związek między swoją wczesną teorią a teraźniejszością:</p>
+
+<blockquote>„Przed ponad dwudziestu laty proponując kontekstualne tezy dla współczesnej sztuki, zauważyłem – bo rzucało się to w oczy – że zaczyna brakować nam wspólnych norm, które pozwalałyby na obiektywną ocenę sztuki. A co więcej zaczyna nam brakować kryteriów umożliwiających wyraźne odróżnienie tego co należy do sztuki, od tego co należy do innego; pozaartystycznego obszaru. Jest to wynik zmian wywołanych zachodzącymi procesami społecznymi; tej ujawniającej się anomii”.<cite>Świdziński, „Anomia”, 1998</cite></blockquote>
+
+<p>Następnie metafora turysty – która rozwinie się później w „neopragmatycznego turystę” z <em>L'Art et son Contexte</em> (2005):</p>
+
+<blockquote>„Nie chodzi tu o «upadek moralności», nad którym załamują ręce tradycyjni moraliści, w nim dopatrując się przyczyn obecnej anomii. Po prostu przestaliśmy żyć w separacji, oglądamy kilkadziesiąt kanałów telewizji, podróżujemy, spotykamy ludzi innych kultur”.<cite>Świdziński, „Anomia”, 1998</cite></blockquote>
+
+<p>Tekst kończy się medytacją nad utratą <em>Santa Conversatione</em> – motywu ze starego malarstwa, w którym postacie pochylają się ku sobie we wzajemnym porozumieniu:</p>
+
+<blockquote>„W starym malarstwie napotykamy sceny, które przedstawiają nachylające się ku sobie osoby. W tym symbolicznym geście pochylania się ku sobie zostaje wyrażone wzajemne porozumienie: Santa Conversatione. Na zdjęciach, które tu pokazuję, ludzie nachylają się ku sobie: nie jest to jednak Santa Conversatione, jest to simulacrum, pozór, ta anomia o której mówię. Santa Conversatione była kiedyś – a teraz? Teraz jest jak jest. W porządku”.<cite>Świdziński, „Anomia”, 1998</cite></blockquote>
+
+<p><strong>„Teraz jest jak jest. W porządku”.</strong> Jego rdzeń, „Jest jak jest”, posłuży za tytuł retrospektywy z 2009 roku. Zdanie to jest ostatnim słowem sztuki kontekstualnej: nie teorią, nie manifestem, nie programem, lecz akceptacją – pragmatyczną, pozbawioną sentymentów, precyzyjną – kondycji, której opisowi teoria poświęciła trzydzieści lat.</p>
+
+<p>W wywiadzie dla <em>Sztuki i Filozofii</em> Świdziński dał być może najbardziej odsłaniającą charakterystykę samego siebie:</p>
+
+<blockquote>„Jedyne co mogę powiedzieć o sztuce to, że nie jest to taka sztuka jaka była kiedyś. Są to działania kulturowe takie, jakie są. To jest pragmatyzm. Spojrzenie z góry bez założeń pozwala dostrzec, że zmienność jest ciekawa”.<cite>Świdziński, <em>Sztuka i Filozofia</em>, 2006</cite></blockquote>
+
+<h3 id="ch17">17. Wielki łuk: od „Czym jest sztuka?” do „Jest jak jest”</h3>
+
+<p>Ewolucja myśli Świdzińskiego zatacza pełny łuk:</p>
+
+<table>
+<tr><th>Rok</th><th>Faza</th><th>Tekst kluczowy</th><th>Stanowisko zasadnicze</th></tr>
+<tr><td>1970</td><td>Diagnoza</td><td>„Spór o istnienie sztuki”</td><td>Sztuka się przeobraża, a nie umiera</td></tr>
+<tr><td>1972</td><td>Budowanie narzędzi</td><td>„O znaku”</td><td>Sztuka = możliwość, a nie jednoznaczny stan</td></tr>
+<tr><td>1975</td><td>Odkrycie</td><td>„Model kina”</td><td>„Istnienie kontekstualne jest wyznacznikiem”</td></tr>
+<tr><td>1976</td><td>Manifest</td><td>12 punktów</td><td>Znak pusty; formuła O-m-t-p-s-o</td></tr>
+<tr><td>1977</td><td>Ekspansja</td><td>Wystąpienie paryskie</td><td>„Włączenie sztuki w rzeczywistość”</td></tr>
+<tr><td>1979</td><td>Pogłębienie</td><td><em>Art, Society…</em></td><td>Funktory intensjonalne; logika epistemiczna</td></tr>
+<tr><td>1981</td><td>Kryzys</td><td>Mielnik / „Wolność”</td><td>„Sztuka jest iluzją”</td></tr>
+<tr><td>1987</td><td>Systematyzacja</td><td><em>Freedom and Limitation</em></td><td>Anomia; cztery logiki</td></tr>
+<tr><td>1998</td><td>Akceptacja</td><td>„Anomia”</td><td>„Jest jak jest”</td></tr>
+<tr><td>2005</td><td>Mądrość</td><td><em>L'Art et son Contexte</em></td><td>Neopragmatyczny turysta</td></tr>
+</table>
+
+<p>Zasadniczy ruch prowadzi od pytania ontologicznego („Czym jest sztuka?”) przez analizę semiotyczną („Jak kontekst określa znaczenie?”) do egzystencjalnej akceptacji („Jest jak jest”). Jeśli spór o lata wojenne i powojenne zostanie rozstrzygnięty na korzyść stawianych zarzutów, równolegle biegnie tu ukryta autobiografia: od młodego człowieka rozdartego między przeciwstawnymi układami odniesienia (wewnątrz/na zewnątrz), przez przymuszonego współpracownika (znaczenie narzucone przez władzę), odrzuconego malarza (artystyczna pustka) i wojującego teoretyka (budowanie koalicji), po filozoficznego turystę (lekko przemieszczającego się między kontekstami, bez panowania nad nimi).</p>
+
+<p>Bezsporny pozostaje wymiar egzystencjalny. Teoria i życie dotyczą tego samego problemu: jak zachować spójność – intelektualną, moralną, egzystencjalną – w świecie, w którym znaczenie jest radykalnie niestabilne. Pokolenie wojenne w Polsce, bez względu na indywidualne losy, przeżyło warunki, w których plakat zatytułowany „Wolność i ograniczenie” mógł stać się wypowiedzią polityczną przez to samo, że ocalał, gdy zrywano plakaty Solidarności, a to samo słowo – „wolność” – znaczyło co innego dla podziemia, okupanta i powojennego państwa. „Jest jak jest” Świdzińskiego to nie rezygnacja, lecz najgłębsza postać uwagi wobec rzeczywistych warunków istnienia – warunków, które znał nie z teorii, lecz z dziesięcioleci życia w systemach rywalizujących o narzucenie rzeczywistości znaczenia.</p>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PART III: THE PRACTICE -->
+<!-- ═══════════════════════════════════════════ -->
+
+<h2 id="part3">CZĘŚĆ III: PRAKTYKA<br><span style="font-size:.85rem; color:#666;">Performans jako medium kontekstualne</span></h2>
+
+<h3 id="ch18">18. Dlaczego performans? Znak pusty a ciało</h3>
+
+<p>Sztuka performance nie była dla Świdzińskiego po prostu jednym z wielu mediów – była medium uprzywilejowanym sztuki kontekstualnej, praktyką, w której teoretyczne założenia manifestu urzeczywistniały się najpełniej. W rozmowie z Łukaszem Guzkiem z 2009 roku („Jest jak jest”, opublikowanej w folderze wystawy w ODA) wyłożył tę logikę bez ogródek: performans to „najważniejsza praktyka”, ponieważ przywołuje początki sztuki – czas, zanim zaistniało cokolwiek z tego, co dziś sztuką nazywamy.</p>
+
+<p>Rozumowanie było ścisłe. Jeśli znaczenie określa kontekst pragmatyczny – konkretny układ czasu, miejsca, sytuacji i osób – to najpełniej zasadę kontekstualną urzeczywistni ta forma sztuki, która jest w te współrzędne najgłębiej wrośnięta. Performans z natury jest niepowtarzalny: każdy odbywa się w jedynym w swoim rodzaju czasie, miejscu i wobec jedynej w swoim rodzaju publiczności. Nie można go przechować, przewieźć ani odtworzyć bez zasadniczego przeobrażenia. Jest w najpełniejszym sensie „znakiem pustym”.</p>
+
+<p>Świdziński przeprowadzał zasadnicze rozróżnienie między dwoma typami ludzkiej aktywności: <strong>wytwarzaniem czegoś</strong> a <strong>wyrażaniem i komunikowaniem za pomocą gestu, słów i języka</strong>. Performans ucieleśnia ten drugi typ. Jak mówił Guzkowi, rola widza polegała niegdyś na rozpoznaniu tego, co artysta chciał powiedzieć; dziś jest to rola czynna. Obecność widza, jego uwaga i interpretacyjna aktywność stają się elementami konstytuującymi samo dzieło.</p>
+
+<p>Był w tym jednak także wymiar biograficzny. Dawny uczeń szkoły baletowej, ćwiczący pod kierunkiem Leona Wójcikowskiego, „nazywanego w kręgach baletowych następcą Wacława Niżyńskiego”, od młodości pojmował ciało jako medium ekspresji. Wojenny tancerz stał się powojennym malarzem, a ten – performerem późnego okresu twórczości: droga ta wiodła od wyszkolonej ekspresji fizycznej, przez przedstawienie wizualne, do bezpośredniego wykorzystania obecności cielesnej w konkretnych sytuacjach.</p>
+
+<p>Filozofię stojącą za praktyką performatywną najprościej wykłada plakat-tekst samego Świdzińskiego „Sztuka jest faktem”, przygotowany z Syntax Arts Society w Calgary na dwudziestolecie sztuki kontekstualnej, a później przełożony przez Bartosza Łukasiewicza:</p>
+
+<blockquote>„Sztuka nie jest podobna życiu – jest jego częścią. Nie jest ona ani naturalna ani sztuczna. Jest taka, jaka jest. Jaką zdarza się jej być”.<cite>Jan Świdziński, „Sztuka jest faktem” / „Art Is a Fact”, Syntax Arts Society, Calgary, 1997</cite></blockquote>
+
+<h3 id="ch19">19. Wczesne akcje: Van Gogh, krzesła i etnografia Kurpiów (1974–1978)</h3>
+
+<p>Świdziński zaczął występować w 1974 roku, tym samym, w którym sformułował pierwsze tezy sztuki kontekstualnej. Jak sam relacjonował, jego pierwszy performans we właściwym sensie (Kraków, 1976) polegał na ustawieniu krzeseł wokół siebie, a następnie ich rozrzuceniu – była to prosta akcja o politycznym wydźwięku: krzesła jako ograniczenia, ich rozproszenie jako wyzwolenie.</p>
+
+<p>Kluczową wczesną pracą był <strong>performans z fotografią Van Gogha</strong>, pokazany na wystawie w Lund w lutym 1976 roku. Włączając reprodukcję kanonicznego dzieła do działania na żywo, Świdziński zainscenizował zderzenie dwóch trybów znaczenia: znaczenia historycznoartystycznego, narastającego przez stulecie, i bezpośredniego, sytuacyjnego znaczenia rodzącego się w spotkaniu na żywo – rozjazd między historią sztuki a obecną rzeczywistością działania artysty.</p>
+
+<p>Anna Kutera podczas spotkania w TR Warszawa przypomniała, jak skromny był wkład artystyczny Świdzińskiego w wystawę w Lund: „Praktycznie Świdziński na tej dużej wystawie w Lund pokazał tylko jedną swoją pracę z obrotem zdjęcia przedstawiającego plecy Van Gogha i «12 punktów». Każdy z nas pozostałych próbował tę praktykę jak najbardziej pokazać”. Spostrzeżenie to – że twórca sztuki kontekstualnej wniósł przede wszystkim teorię, a nie przedmioty – miało stać się powracającym motywem recepcji krytycznej.</p>
+
+<p>W latach 1977–1978 Świdziński podjął <strong>działania lokalne na Kurpiach</strong> i w <strong>Mielniku</strong> (te ostatnie w pełni zrealizowane w 1981 roku). Były to interwencje etnograficzne – projekty sztuki kontekstualnej inspirowane etnografią kultur lokalnych, znane w tym kręgu jako „Działania Lokalne”. Stanowiły one praktyczną konsekwencję teoretycznego opowiedzenia się po stronie lokalności: artysta jako „etnolog-terapeuta” (późniejsze określenie Piotrowskiego) wchodzi w konkretną społeczność i za pomocą sztuki uświadamia jej własny kontekst.</p>
+
+<p><strong>„Stale mówimy o człowieku”</strong> (1978) składało się z jednej „znalezionej” fotografii połączonej ze zdaniem. Minimalizm środków kładł maksymalny nacisk na kontekstualne współrzędne odbioru. Pracę pokazano w Małej Galerii 26 czerwca 1979 roku.</p>
+
+<h3 id="ch20">20. „Wolność i ograniczenie”: hasła, cenzorzy i kontekst Solidarności (1981)</h3>
+
+<p>Mielnicki projekt z 1981 roku omówiliśmy już od strony teoretycznej (rozdział 15). Tu zajmiemy się jego wymiarem praktycznym.</p>
+
+<p>Wieś Mielnik, położoną przy granicy radzieckiej, wybrano celowo. Świdziński wyprowadził artystów z galerii na ulice, gdzie malowali hasła – demitologizujące stwierdzenia, które odmawiały sztuce mocy przeobrażania. Decydujący był moment: „karnawał Solidarności”, okres niezwykłej politycznej otwartości między porozumieniami sierpniowymi z 1980 roku a stanem wojennym z grudnia 1981 roku.</p>
+
+<p>Hasła działały jak „znaki puste” – ich znaczenia nie dawało się oddzielić od sytuacji politycznej, w której je napotykano. „Nie sądź, że sztuka może zmienić twoje życie choćby na chwilę” było w społeczeństwie zaangażowanym w zbiorowe samowyzwolenie zarazem stanowiskiem filozoficznym i prowokacją. Odmawiało instrumentalizacji sztuki do celów politycznych – czy to przez państwo komunistyczne, czy przez opozycję.</p>
+
+<p>Projekt udokumentowano w publikacji <em>Wolność i ograniczenie. Mielnik 1981</em>, wydanej przy okazji wystawy w Małej Galerii w 1984 roku. Epizod z cenzorem w czasie stanu wojennego – cenzor nie potrafił rozstrzygnąć, które słowo w tytule „Wolność i ograniczenie” należałoby usunąć – pozostaje najbardziej wyrazistym pokazem działania tezy kontekstualnej.</p>
+
+<h3 id="ch21">21. Zamazywanie, dwa monitory i prace anomiczne (1983–1990)</h3>
+
+<p>W latach osiemdziesiątych Świdziński wypracował odrębny język performatywny, znamienny oszczędnością gestów, ograniczonością środków i coraz ciemniejszym horyzontem teoretycznym.</p>
+
+<p><strong>„Zamazywanie (myśląc o Heideggerze)”</strong> (1985) badało zanikanie wyraźnych granic – między sztuką a nie-sztuką, znaczeniem a brakiem znaczenia, obecnością a nieobecnością. Dokumentacja wideo znajduje się w Filmotece Muzeum Sztuki Nowoczesnej w Warszawie. <strong>„Dwa monitory”</strong> (1985) to instalacja wideo badająca „morfologię mediów” przez zestawienie dwóch ekranów – ta sama informacja podana różnymi kanałami wytwarzała różne znaczenia.</p>
+
+<p><strong>„Jestem z powrotem”</strong> (Mała Galeria, 4 kwietnia 1989) – performans powrotu z ostatniego dłuższego pobytu w Ameryce, w przeddzień podpisania porozumień Okrągłego Stołu. <strong>„Ça marche, ça marche pas”</strong> (1990) – pierwsza praca postkomunistyczna, krytykująca „podporządkowanie sztuki dyktatowi rynku” w nowej rzeczywistości kapitalistycznej. <strong>„Where We Are Going Baby?”</strong> (Nagano, Japonia, 1993) – analiza lokalności w warunkach globalizacji.</p>
+
+<p>Każda z tych prac wprowadzała w czyn inny aspekt teoretycznych ram: „Zamazywanie” sprawdzało rozpad kategorii (teza 7); „Dwa monitory” – kontekstualne określanie znaczenia przez media; „Jestem z powrotem” – funkcję tożsamości w warunkach zmiany kontekstu; „Ça marche” – przejście od ideologicznego do rynkowego wytwarzania znaczeń.</p>
+
+<h3 id="ch22">22. „Jan in Wonderland” i cytat performatywny (1991–2010)</h3>
+
+<p>Długotrwały cykl <strong>„Jan in Wonderland”</strong> (1991–2009) należał do najbardziej konsekwentnie prowadzonych projektów performatywnych Świdzińskiego. Aluzja do Lewisa Carrolla zawarta w tytule sugeruje świat, w którym zawieszona zostaje zwykła logika, a znaczenie powstaje za sprawą arbitralnych, zależnych od kontekstu reguł.</p>
+
+<p>Szczególnie znacząca była odsłona z 2010 roku: „cytat performatywny”, w którym Świdziński siedział, czytając z laptopa <em>Alicję w Krainie Czarów</em> Carrolla, a wszystko jednocześnie transmitowano w internecie. Publiczność na miejscu widziała artystę w całej jego fizycznej obecności; publiczność cyfrowa – jedynie zbliżenie twarzy. To podwójne podanie sprawdzało teorię, wedle której kontekst nigdy nie jest ostateczny: ten sam „przedmiot” (czytanie) nabierał radykalnie odmiennych znaczeń zależnie od medium odbioru.</p>
+
+<p>Katarzyna Podpora szczegółowo przeanalizowała ten ostatni wielki projekt, pokazując, jak „cytat performatywny” traktował fragmenty tekstu niczym „przedmioty gotowe”, których znaczenie zmieniało się przy każdym kontekstualnym ucieleśnieniu.</p>
+
+<h3 id="ch23">23. Fotografia i tekst jako media kontekstualne</h3>
+
+<p>Obok performansu Świdziński szeroko posługiwał się fotografią i tekstem. Jego „działania z fotografią i tekstem” – to fraza z podtytułu retrospektywy w CSW Zamek Ujazdowski z 2010 roku – traktowały zdjęcia i zdania nie jako autonomiczne przedmioty, lecz jako elementy układów kontekstualnych.</p>
+
+<p>Znaleziona fotografia, odręcznie napisane zdanie, reprodukcja Van Gogha – oto surowiec. Prace były pod względem materialnym celowo proste, ponieważ złożoność materiału odwracałaby uwagę od złożoności znaczeń kontekstualnych. Jak zauważał w swoich analizach krytycznych Grzegorz Borkowski, Świdziński traktował fotografie jako rekwizyty performansu – konkretne przedmioty wyjęte z otaczającej rzeczywistości – a nie jako kompozycje estetyczne: ich wartość tkwiła nie w walorach formalnych, lecz w ucieleśnianych przez nie relacjach kontekstualnych.</p>
+
+<p>Na retrospektywie „Jest jak jest” z 2009 roku w Galerii ODA, której kuratorem był Guzek, formuła sztuki kontekstualnej zawisła nad wejściem do galerii – gest ten czynił samą przestrzeń galerii znakiem kontekstualnym: zwiedzający wchodzili nie do neutralnej przestrzeni wystawienniczej, lecz w kontekst określony teoretycznie.</p>
+
+<p>Istotę tego podejścia nazwał sam Świdziński w rozmowie ze Zbigniewem Warpechowskim:</p>
+
+<blockquote>Świdziński: „No i to jest chyba istota performansu, że przy Tobie nigdy nie wiadomo, co się będzie dziać”.
+Warpechowski (śmieje się): „Tak!”
+Świdziński: „To jest najciekawsze w tym”.<cite>TVP Kultura, <em>Alfabet Polskiego Performance</em>; cyt. za Janem Przyłuskim</cite></blockquote>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PART IV: THE RECEPTION -->
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="part4">CZĘŚĆ IV: RECEPCJA<br><span style="font-size:.85rem; color:#666;">Trzy szkoły interpretacji</span></h2>
+
+<h3 id="ch24">24. Kazimierz Piotrowski: estetyka niemonotoniczna i etnolog-terapeuta</h3>
+
+<p>Kazimierz Piotrowski jest najobszerniej piszącym naukowym interpretatorem dzieła Świdzińskiego. Jego zaangażowanie obejmuje niemal dwie dekady – od artykułu w <em>EXIT</em> z 1996 roku po liczącą 840 stron monografię <em>Świdziński i współcześni</em> (2015) – i stanowi samodzielny wkład w teorię estetyki, wykraczający poza samą interpretację.</p>
+
+<h4>Podstawa logiczna</h4>
+
+<p>Główną innowacją Piotrowskiego jest zastosowanie <strong>logiki niemonotonicznej</strong> do estetyki. W logice klasycznej (monotonicznej) dodanie nowych przesłanek nigdy nie unieważnia dotychczasowych wniosków. W logice niemonotonicznej (rozwijanej od końca lat siedemdziesiątych przez Reitera, McDermotta i McCarthy’ego) wnioski są <em>obalalne</em> – podlegają rewizji, gdy pojawi się nowa informacja.</p>
+
+<p>Piotrowski dowodzi, że „deaktualizacja znaczeń” z tezy 5 ma dokładnie taką strukturę: znaczenie obowiązujące w jednym kontekście traci ważność, gdy zmieniają się współrzędne kontekstualne. Kontekstualna funkcja prawdziwościowa jest <em>regułą domyślną</em>: obowiązuje, dopóki brak informacji przeciwnych, i może zostać uchylona, gdy sytuacja ulega zmianie.</p>
+
+<p>Ilustruje to przykładem zaczerpniętym ze środkowoazjatyckich ekspedycji Aleksandra Łurii: kazachski chłop, postawiony wobec formalnego sylogizmu o wielbłądach w niemieckich miastach, odmawia wyciągnięcia „logicznego” wniosku, ponieważ przeczy on jego wiedzy z doświadczenia. Rozumowanie chłopa jest niemonotoniczne: przedkłada on wiedzę związaną z konkretnym kontekstem nad abstrakcyjną dedukcję. Piotrowski dowodzi, że właśnie takiego rozumowania wymaga sztuka kontekstualna – i właśnie dla niego nie ma miejsca w estetyce monotonicznej (klasycznej).</p>
+
+<h4>Logika niemonotoniczna: dygresja techniczna</h4>
+
+<p>Dla czytelników nieobeznanych z tłem logicznym: w klasycznej (monotonicznej) logice zdań zasada monotoniczności gwarantuje, że jeśli wniosek C wynika ze zbioru przesłanek P, to C wynika także z dowolnego nadzbioru P. Nowa informacja nigdy nie unieważnia wniosków dotąd poprawnych. Dzięki tej własności logika klasyczna dobrze służy matematyce, lecz słabo nadaje się do codziennego rozumowania, w którym nowe informacje raz po raz obalają przyjęte wnioski. (Sądzisz, że ptak potrafi latać, ponieważ wiesz, że to ptak; rewidujesz to przekonanie, gdy się dowiadujesz, że to pingwin).</p>
+
+<p>Logiki niemonotoniczne – rozwijane od końca lat siedemdziesiątych przez Raymonda Reitera, Drew McDermotta i Johna McCarthy’ego – formalizują właśnie takie <em>obalalne</em> rozumowanie. Wnioski można wyprowadzać prowizorycznie z dostępnych przesłanek, ale wolno je wycofać po wprowadzeniu nowych. Wniosek nie jest <em>błędny</em> – był poprawny przy dostępnej informacji – lecz <em>obalalny</em>: podlega rewizji w świetle nowych danych.</p>
+
+<p>Decydujące spostrzeżenie Piotrowskiego głosi, że „deaktualizacja znaczeń” z tezy 5 ma właśnie taką strukturę logiczną. Znaczenie ustalone w jednym kontekście obowiązuje w tym kontekście, lecz traci ważność – „deaktualizuje się” – gdy kontekst ulega zmianie. Kontekstualna funkcja prawdziwościowa jest w kategoriach formalnych <em>regułą domyślną</em>: regułą, która obowiązuje, dopóki brak informacji przeciwnych, lecz może zostać uchylona, gdy zmieniają się współrzędne kontekstualne.</p>
+
+<p>Ta formalna analiza niesie kilka ważnych konsekwencji. Po pierwsze, wyjaśnia, jak sztuka kontekstualna może być jednocześnie antyrelatywistyczna i radykalnie zależna od kontekstu: prawdziwość sądu estetycznego jest określona <em>lokalnie</em>, lecz rewidowalna <em>globalnie</em>. Po drugie, pozwala ściśle powiedzieć, co znaczy, że znaczenie „się deaktualizuje”: nie to, że było ono błędne, lecz to, że przesłanki, na których się opierało, przestały obowiązywać. Po trzecie, łączy sztukę kontekstualną ze współczesnymi osiągnięciami sztucznej inteligencji (gdzie rozumowanie niemonotoniczne modeluje rewizję przekonań) i epistemologii (gdzie kontekstualizm stał się jednym z głównych stanowisk w teorii wiedzy).</p>
+
+<p>Myślenie estetyczne – twierdzi Piotrowski – rozwija się i dziś podąża za najnowszymi logikami, co także estetykowi daje prawo do rozumowania obalalnego, do wyliczania przesłanek, które późniejsze przesłanki mogą podważyć.</p>
+
+<h4>Acutum ingenium i asteiologia</h4>
+
+<p>Sięgając do estetyki Baumgartena i barokowej tradycji Baltasara Graciána, Piotrowski rehabilituje <strong>dowcip</strong> (<em>ingenium</em>) jako poważne narzędzie poznawcze. <strong>Acutum ingenium</strong> (bystry dowcip) łączy <em>ingenium</em> (dostrzeganie podobieństw między rzeczami różnorodnymi) z <em>acumen</em> (wykrywaniem różnic). Razem tworzą one <em>perspicacia</em> – przenikliwość zarazem zmysłową i intelektualną.</p>
+
+<p><strong>Asteiologia</strong> – „sztuka, nauka i paideia dowcipu” – to proponowana przez Piotrowskiego dyscyplina estetyczna: sposób myślenia, który za pomocą „niezgodnej zgody” (<em>agudeza</em> Graciána) odsłania to, co myślenie monologiczne ukrywa. <strong>Asteizm</strong> – dowcip pozbawiony grubiaństwa – proponuje jako <em>pharmakon</em> (lekarstwo i truciznę zarazem) przeciw „anestezji współczesnej post-sztuki”.</p>
+
+<p>W tych ramach sama sztuka kontekstualna Świdzińskiego jest ćwiczeniem w <em>acutum ingenium</em>: bystrym spostrzeżeniem, które przemodelowuje dzieło sztuki z tautologii Kosutha w zdanie zawierające funktor intensjonalny.</p>
+
+<h4>Defoksalizacja</h4>
+
+<p>Politycznie najbardziej nacechowanym zastosowaniem estetyki niemonotonicznej jest u Piotrowskiego <strong>defoksalizacja</strong> (od <em>Foksal</em>) – rozmontowanie monopolu Galerii Foksal na opowieść o polskiej sztuce współczesnej. Termin odnosi się do strategicznego wykorzystania rozumowania obalalnego: do wprowadzenia nowych przesłanek (Świdziński, Partum, Kulik jako „mistrzowie”), które obalają ustalony kanon Foksal.</p>
+
+<p>Spór o Foksal ma głębokie korzenie. W 1975 roku kierownik Foksal Wiesław Borowski opublikował w tygodniku <em>Kultura</em> tekst „Pseudoawangarda”, potępiając praktyki spoza kręgu Foksal jako „pretensjonalne” i „ukryte w pseudonaukowym żargonie”. Piotrowski interpretuje to nie jako krytykę artystyczną, lecz jako retoryczne posunięcie w grze o władzę – publiczne napiętnowanie konkurencyjnych praktyk, ogłoszone na łamach socjalistycznego tygodnika <em>Kultura</em>.</p>
+
+<p>Wspólnie ze Zbigniewem Liberą Piotrowski dokonał aktu „oficjalnej defoksalizacji” za pośrednictwem projektu Libery „Mistrzowie” – wprowadzając do obiegu artystów marginalizowanych przez Foksal. Piotrowski wspomina rozmowę w restauracji, podczas której kierownik Galerii Foksal wyśmiewał projekt Świdzińskiego jako <strong>„prowincjonalny”</strong> – a była to właśnie ta cecha, którą teoria kontekstualna dowartościowywała.</p>
+
+<h4>Etnolog-terapeuta i nieistotność</h4>
+
+<p>Piotrowski proponuje <strong>etnologa-terapeutę</strong> jako model artysty kontekstualnego: kogoś, kto bada konteksty kulturowe (jak etnolog), a zarazem interweniuje terapeutycznie, odsłaniając zdeaktualizowane znaczenia. Artysta odwiedza konteksty lokalne, pomaga „tubylcom” rozpoznać ich własną odrębność i rusza dalej – charakterystyka ta pokrywa się z „neopragmatycznym turystą” samego Świdzińskiego.</p>
+
+<p>Najbardziej prowokacyjnie Piotrowski dowartościowuje <strong>nieistotność</strong> jako kategorię estetyczną. Postać „Hadassy” – odbiorczyni całkowicie obojętnej wobec kanonicznych dzieł sztuki – oznacza nie porażkę, lecz uprawnioną odpowiedź kontekstualną. Estetyka monotoniczna traktuje obojętność Hadassy jako błąd; estetyka niemonotoniczna – jako świadectwo, że znaczenie nie przenosi się między kontekstami. Chodzi Piotrowskiemu o to, by poszerzyć pojęcie normalności także w myśleniu o sztuce.</p>
+
+<h3 id="ch25">25. Łukasz Ronduda: odwrócone pionierstwo i zwrot pragmatyczny</h3>
+
+<p>Wkład Łukasza Rondudy mieści się raczej na poziomie historiografii sztuki niż logiki formalnej. Jego przełomowy esej „Flexibility Makes Our Existence Possible” (ARTMargins, 2008) i książka <em>Polish Art of the 70s</em> (2009, z Piotrem Uklańskim) nadały sztuce kontekstualnej nowe miejsce w ramach całościowej rewizji polskiej neoawangardy.</p>
+
+<h4>Od postesencjalizmu do pragmatyzmu</h4>
+
+<p>Ronduda porządkuje lata siedemdziesiąte wzdłuż osi prowadzącej od <strong>postesencjalizmu</strong> (wyodrębniania pojęciowej istoty sztuki spod wpływów społecznych) do <strong>pragmatyzmu</strong> (aktywistycznego zaangażowania w rzeczywistość). Świdziński zajmuje na niej pozycję kluczową: jego teoria wyznacza decydujący zwrot od analizy struktury sztuki ku zanurzeniu sztuki w praktyce społecznej.</p>
+
+<h4>Odwrócone pionierstwo</h4>
+
+<p>To najbardziej oryginalne pojęcie Rondudy: „mistrzowie” lat siedemdziesiątych są <strong>twórczo „tworzeni” przez artystów współczesnych</strong>, by wypełnić luki w kanonicznej historii sztuki. Sukces współczesny rodzi popyt na historyczne precedensy – wcześniejszych artystów retrospektywnie się „odkrywa” i kanonizuje. Kierunek wpływu w czasie ulega odwróceniu: współcześni artyści tworzą swoich poprzedników.</p>
+
+<p>Pojęcie to podważa linearną historię sztuki – i pokazuje na poziomie historiograficznym tę samą zasadę kontekstualną, którą Świdziński wyłożył na poziomie estetycznym: znaczenie określają konteksty odbioru, a nie początki.</p>
+
+<h4>Świdziński jako „postkonceptualny, postmodernistyczny Oskar Hansen”</h4>
+
+<p>Porównanie Rondudy wiąże sztukę kontekstualną z „Formą Otwartą” Hansena – teorią architektoniczną, która odrzuciła modernistyczną czystość przestrzenną na rzecz elastyczności, uczestnictwa i otwarcia na reakcję użytkownika. Obie teorie łączy antyautorytarny rdzeń: Hansen odrzucał kontrolę architekta nad użytkowaniem przestrzeni, Świdziński – kontrolę artysty nad znaczeniem.</p>
+
+<h4>Obsada artystyczna</h4>
+
+<p>Ronduda stawia Świdzińskiego obok: <strong>KwieKulik</strong> (soc-art, „performans dla kamery”), <strong>Akademii Ruchu</strong> (akcje miejskie, „gesty pospolite”), <strong>Warsztatu Formy Filmowej</strong> (film strukturalny, „morfologia mediów”), <strong>Ewy Partum</strong> (konceptualizm feministyczny) i <strong>Anastazego Wiśniewskiego</strong> (parodia instytucjonalna). Każde z tych zjawisk reprezentuje inne oblicze zwrotu pragmatycznego.</p>
+
+<h4>Napięcie między Piotrowskim a Rondudą</h4>
+
+<p>Piotrowski krytykuje metodologię Rondudy, dowodząc, że przez mieszanie różnych porządków narracji jego ujęcie zaciemniło obraz polskiej sztuki lat siedemdziesiątych. Napięcie jest rzeczywiste: Ronduda szuka przystępnej narracji (w czym pomaga uderzająca oprawa wizualna Uklańskiego), Piotrowski domaga się filozoficznego rygoru. Sam ten spór potwierdza tezę kontekstualną: dwóch interpretatorów, różne konteksty instytucjonalne, różne znaczenia wydobyte z tego samego materiału.</p>
+
+<h3 id="ch26">26. Łukasz Guzek: horyzontalna historia sztuki i paradoks dokumentacji</h3>
+
+<p>Guzek reprezentuje podejście trzecie – osadzone w teorii dokumentacji i w tym, co nazywa <strong>„horyzontalną historią sztuki”</strong> (pod wpływem metodologii Piotra Piotrowskiego): w spojrzeniu na sztukę „peryferii” jako równorzędną sztuce wielkich ośrodków.</p>
+
+<h4>Paradoks dokumentacji</h4>
+
+<p>Sztuka kontekstualna stawia zasadnicze pytanie: jak dokumentować formę sztuki, której podstawowe twierdzenie głosi, że znaczenia nie da się oddzielić od konkretnego kontekstu realizacji? Każda dokumentacja – fotografia, wideo, opis – chwyta coś innego niż dzieło. Dokument jest nowym znakiem w nowym kontekście.</p>
+
+<p>Guzek radzi sobie z tym dzięki temu, co nazywa <strong>„rekonstrukcją”</strong> – traktując badanie performansu jako performatywną pracę z materiałem historycznym. Jego książka <em>Rekonstrukcja sztuki akcji w Polsce</em> nie tylko opisuje performanse, lecz rekonstruuje je jako przedmioty współczesnej uwagi badawczej.</p>
+
+<h4>Konferencje jako dzieła sztuki</h4>
+
+<p>Najbardziej prowokacyjna teza Guzka głosi, że sympozja, konferencje i zakładanie galerii należy badać jako <strong>dzieła sztuki same w sobie</strong>. Warszawska konferencja z 1977 roku z udziałem 35 krajów nie była jedynie miejscem uprawiania teorii – była kontekstualnym dziełem sztuki. Festiwal INTERAKCJE był najdłużej trwającym performansem Świdzińskiego.</p>
+
+<p>Kluczowym wkładem Guzka w spotkanie w TR Warszawa była analiza zbieżności Kosutha i Świdzińskiego – uznanie, że obaj dotarli do tego samego punktu przejścia od modernizmu do postmodernizmu („Absolutnie przełomowy moment”), lecz różnymi drogami: Kosuth przez „antropologizację”, Świdziński przez „kontekstualizację”.</p>
+
+<p>Potwierdził też rolę Świdzińskiego jako „pióra” polskiej neoawangardy: „I to Warsztat Formy Filmowej właśnie wziął sobie Janka, on dla nich pisze taki ważny tekst, który nazywa się «Model kina»”.</p>
+
+<h3 id="ch27">27. Bartosz Łukasiewicz: „Kilka dogmatów kontekstualizmu”</h3>
+
+<p>Łukasiewicz, najmłodszy z głównych interpretatorów, wniósł krytyczny rygor tam, gdzie dotąd bywało bezkrytyczne uznanie. Jego praca magisterska <em>Kontekst i znak w teorii sztuki Jana Świdzińskiego</em> (Uniwersytet Warszawski, 2006) oraz późniejsze artykuły – „Model logiki a logika modelu” (<em>SiD</em>, 2010) i „Kilka dogmatów kontekstualizmu” (Obieg, 2010) – poddały teorię sztuki kontekstualnej próbie jej własnych standardów.</p>
+
+<p>Odwołując się do teorii modeli Eco i operacjonizmu Bridgmana, Łukasiewicz dowodził, że logiczne modele Świdzińskiego mają charakter <strong>operacyjny</strong>, a nie przedstawieniowy: „nie są wzorem lub kopią rzeczywistości. Są za to jednym ze sposobów, w jaki tę rzeczywistość można ujmować”. Jest to twierdzenie skromniejsze niż to, które zdawał się czasem wysuwać sam Świdziński.</p>
+
+<p>Jego krytyczne wyzwanie było ostre: „co jeśli nie istnieją zmienne, dzięki którym budowanie takiego układu odniesienia ma jakikolwiek sens? Co, jeśli czas i miejsce przestały mieć jakiekolwiek materialne odniesienie, jeśli stały się wirtualne […]?”. A wniosek celowo niepokoił:</p>
+
+<blockquote>„Teoria «sztuki jako sztuki kontekstualnej» okazuje się kolejnym archiwum, kolejnym zbiorem prawd i norm. Najgorsze jednak, co moglibyśmy zrobić, to traktować ją jako prawdziwą. Ona nigdy nie będzie przecież prawdziwa, nigdy też nie zostanie w pełni odrzucona, tak jak prawdy, pretendujące do słuszności nigdy nie zostaną w pełni zweryfikowane. Może chodzi po prostu o to, żeby niczego nie przyjmować na wiarę albo z przyzwyczajenia, tylko nieustannie odrzucać, weryfikować i redefiniować?”<cite>Bartosz Łukasiewicz, <em>SiD</em>, 2010</cite></blockquote>
+
+<p>To, jak można twierdzić, najbardziej kontekstualna lektura sztuki kontekstualnej: traktuje samą teorię jako podległą jej własnej zasadzie „deaktualizacji znaczeń”.</p>
+
+<h3 id="ch28">28. Zbigniew Libera: „Kontekstualna ewangelia według Jana”</h3>
+
+<p>Artykuł Zbigniewa Libery w <em>Przekroju</em> z 2020 roku, szeroko omówiony w części I, reprezentuje zasadniczo odmienny rodzaj recepcji: nie interpretację naukową, lecz <strong>dochodzenie biograficzne</strong> prowadzone przez praktykującego artystę. Libera – jeden z najważniejszych współczesnych artystów polskich, twórca „Lego. Obóz koncentracyjny” i innych ikonicznych prac krytycznych – włączył Świdzińskiego do swojego cyklu „Mistrzowie” w 2004 roku: „Przyznać jednak muszę, że wówczas, czyli jeszcze za życia sędziwego już wtedy Świdzińskiego, nie wiedziałem jeszcze tego wszystkiego, co dzisiaj tak bardzo domaga się wyświetlenia”.</p>
+
+<p>Artykuł Libery jest ważny jako pierwsza próba zbadania biografii Świdzińskiego na podstawie kwerendy archiwalnej, lecz jego twierdzenia – zwłaszcza dotyczące Kripo i UB – <strong>nie zostały niezależnie zweryfikowane przez historyków IPN ani przez żadnego innego neutralnego eksperta</strong>. Tekst ukazał się sześć lat po śmierci Świdzińskiego, gdy ten nie mógł już odpowiedzieć ani przedstawić kontekstu. Materiały archiwalne bezpieki wymagają specjalistycznej interpretacji; ich surowa treść może wprowadzać w błąd czytelników niebędących ekspertami. Dopóki nie zostanie przeprowadzona niezależna weryfikacja, twierdzenia te należy traktować jako interpretację fragmentarycznego materiału dokonaną przez jednego artystę, a nie jako ustalone fakty.</p>
+
+<p>Tym, co w artykule Libery cenne – poza niezweryfikowanymi zarzutami – jest bogato udokumentowana historia rodziny (służba ojca w Legionach, szlacheckie pochodzenie, wojenna nauka baletu), relacja o nieudanej karierze malarskiej i samokształceniu w Instytucie Francuskim oraz związek Sellema z Międzynarodówką Sytuacjonistyczną. Te elementy, niezależne od materiałów IPN, wzbogacają nasze rozumienie drogi Świdzińskiego.</p>
+
+<p>Libera łączy teorię z życiem za pomocą sformułowania Piotrowskiego: „Być może, jak chce dr Kazimierz Piotrowski, bez egzystencjalnego uwikłania Świdzińskiego nie bylibyśmy świadkami «Janowej kontekstualnej ewangelii» wynikającej z «żarliwego uwolnienia siebie od presji kontekstu w cywilizacji szybkich zmian za pomocą niemonotonicznej logiki i estetyki – wbrew ograniczeniu kontekstem»”. Odczytanie to – traktujące teorię jako wyrastającą z przeżytego doświadczenia niestabilności kontekstu – przekonuje niezależnie od tego, które konkretne szczegóły biograficzne ostatecznie się potwierdzą.</p>
+
+<h3 id="ch29">29. Jan Przyłuski: filmowiec i kontekstualne dziedzictwo</h3>
+
+<p>Jan Przyłuski – artysta wizualny, antropolog, filmowiec – zajmuje miejsce wyjątkowe: jest zarazem badaczem, współpracownikiem twórczym i osobistym przyjacielem Świdzińskiego. Jego pierwszy film dokumentalny, <em>Różnice</em> (2006, 50 minut), poświęcony jest Świdzińskiemu i otwierają go wypowiedzi artysty, po czym przechodzi w serię „czystych akcji performance”. Przeprowadził też ze Świdzińskim dwunastogodzinny „wywiad-rzekę” – źródło pierwotne wykorzystane dotąd tylko częściowo.</p>
+
+<p>Przyłuski współtworzył festiwal Świdzińskiego „W kontekście sztuki / Różnice” (2006–2007), był jego rzecznikiem prasowym. W styczniu 2010 roku wygłosił wykład o sztuce kontekstualnej i filmie w Akademii Sztuk Pięknych Bezalel w Jerozolimie – przenosząc teorię kontekstualną w nowe konteksty geograficzne i instytucjonalne.</p>
+
+<p>Jego tekst o sztuce kontekstualnej stanowi jedno z najcelniej napisanych popularnych wprowadzeń:</p>
+
+<blockquote>„Język sztuki i język logiki nie mogły iść ze sobą w parze aż do czasu teorii wielości, do momentu ogłoszenia logiki pluralistycznej i wielowartościowej. Z tego Świdziński wyciągnął konsekwencje, których bali się inni”.<cite>Jan Przyłuski, tekst napisany dla projektu The Knot, Warszawa, 2010</cite></blockquote>
+
+<p>Jego książka <em>Sztuka akcji: dziesięć zdarzeń w Polsce</em> (2007) sytuuje Świdzińskiego w szerszej narracji o polskiej sztuce performance.</p>
+
+<h3 id="ch30">30. Sieć międzynarodowa: od CEAC do Le Lieu</h3>
+
+<p>Międzynarodowa sieć sztuki kontekstualnej nie była jedynie systemem dystrybucji; była wypowiedzią geopolityczną. Jej kluczowe węzły:</p>
+
+<h4>CEAC, Toronto (1976)</h4>
+<p>Centre for Experimental Art and Communication, współzałożone przez <strong>Ameriga Marrasa</strong> i Subera Donalda Corleya przy 15 Duncan Street. CEAC wydawał pismo <em>STRIKE</em> i gościł decydującą debatę z 1976 roku. Choć istniał krótko – jego finansowanie publiczne załamało się w 1978 roku wśród kontrowersji wokół <em>STRIKE</em> i wkrótce potem został zamknięty – jego rola katalizatora międzynarodowego przełomu Świdzińskiego okazała się rozstrzygająca.</p>
+
+<h4>Le Lieu, Québec (od 1982)</h4>
+<p>Centre en art actuel <strong>Richarda Martela</strong> i Éditions Intervention stały się najtrwalszym instytucjonalnym partnerem sztuki kontekstualnej. Wydano tam trzy książki. Martel uczestniczył w tomie <em>In Context</em> z 2015 roku. Le Lieu działało zgodnie z postulatami sztuki kontekstualnej – to rzadki przypadek instytucji świadomie wzorującej się na teorii artysty.</p>
+
+<h4>Galerie S:t Petri, Lund</h4>
+<p><strong>Jean Sellem</strong> – związany, jak ujawnił Libera, z Międzynarodówką Sytuacjonistyczną – nadał ruchowi nazwę i opublikował manifest. Pierwsza recenzja prasowa sztuki kontekstualnej, autorstwa Torstena Weimarcka, ukazała się w <em>Skånska Dagbladet</em> (29 lutego 1976).</p>
+
+<h4>Art Sociologique, Paryż</h4>
+<p><strong>Hervé Fischer</strong>, Fred Forest, Jean-Paul Thénot – sprzymierzeni ze Świdzińskim w „Trzecim Froncie”, lecz krytykowani przez niego za „brak wykształcenia”. Sojusz sformalizowano na paryskiej konferencji w maju 1977 roku, ostatecznie jednak „padł ofiarą własnych założeń relatywizmu”.</p>
+
+<h4>Het Apollohuis, Eindhoven</h4>
+<p><strong>Paul Panhuysen</strong> wydał <em>Quotations on Contextual Art</em> (1988) – polifoniczny tekst gromadzący głosy z debaty w Toronto.</p>
+
+<h4>Związki kanadyjskie: Calgary, Vancouver, NSCAD</h4>
+
+<p>Kanadyjskie związki Świdzińskiego wykraczały daleko poza CEAC. W latach osiemdziesiątych przez długie okresy mieszkał w Kanadzie, mając otwartą wizę kanadyjską i wykładając na University of Calgary oraz University of British Columbia w Vancouver. Calgary miało szczególne znaczenie jako baza wydawnicza: ukazały się tam zarówno <em>Art, Society and Self-consciousness</em> (1979), jak i <em>Freedom and Limitation</em> (1987, nakładem Syntax Publishing Briana Dysona). Własna „peryferyjna” pozycja Calgary w sztuce północnoamerykańskiej współgrała z teoretycznym opowiedzeniem się Świdzińskiego po stronie produkcji pozametropolitalnej.</p>
+
+<p>W tym okresie dwanaście razy odwiedził Stany Zjednoczone, za każdym razem na kilka miesięcy. W Nowym Jorku zaprzyjaźnił się z Josephem Kosuthem, kontynuując dialog rozpoczęty w Toronto. Ta przyjaźń uosabiała dialog centrum z peryferiami: polski kontekstualista i amerykański konceptualista prowadzili wymianę ponad zimnowojennymi podziałami.</p>
+
+<p>Przejście od CEAC (anglojęzyczne Toronto) do Le Lieu (francuskojęzyczny Québec) jako głównego kanadyjskiego partnera Świdzińskiego otworzyło nowe możliwości wydawnicze i połączyło sztukę kontekstualną z odrębną polityką kulturalną Québecu – z jego własnym doświadczeniem językowej marginalizacji w Kanadzie.</p>
+
+<p><strong>Bruce Barber</strong> (NSCAD, Halifax) – artysta interdyscyplinarny, historyk kultury i profesor – napisał do tomu <em>In Context</em> z 2015 roku esej o polsko-kanadyjskich relacjach artystycznych, dokumentując wzorzec wymiany będący odbiciem podobieństw strukturalnych: zarówno kanadyjscy, jak i polscy artyści doświadczali swoich światów sztuki jako peryferyjnych i zmagali się z tworzeniem znaczących dzieł z pozycji względnej marginalności.</p>
+
+<h4>INTERAKCJE: festiwal jako sztuka kontekstualna</h4>
+
+<p><strong>Międzynarodowy Festiwal Sztuki Akcji INTERAKCJE</strong>, organizowany w Piotrkowie Trybunalskim od 1998 roku, był najtrwalszym instytucjonalnym ucieleśnieniem zasad sztuki kontekstualnej – a także, jak dowodził Jan Przyłuski na spotkaniu w TR Warszawa, odparciem zarzutu, jakoby sztuka kontekstualna nigdy nie stała się „ruchem”:</p>
+
+<blockquote>„Czy to nie jest sprzeczność? Czy to nie byłoby takie działanie centralne, jakby sprzeczne wobec tej idei działania lokalnego, którą Świdziński promował i zrobił jedyny na świecie istniejący przez 15 lat festiwal sztuki performance. Na światowym poziomie, w Piotrkowie Trybunalskim”.<cite>Jan Przyłuski, TR Warszawa, 2014</cite></blockquote>
+
+<p>Wybór Piotrkowa Trybunalskiego – średniej wielkości miasta przemysłowego, odległego od Warszawy, Krakowa i Wrocławia – był sam w sobie wypowiedzią kontekstualną: znacząca wymiana artystyczna może się odbywać poza ustaloną infrastrukturą. Szczególna historia miasta – średniowiecznego grodu królewskiego, ośrodka przemysłowego, miejsca wojennych deportacji – dostarczała warstw znaczenia kontekstualnego, które zabarwiały każdy performans w jego granicach.</p>
+
+<p>Świdziński był prezesem i kuratorem festiwalu, zainicjowanego przez <strong>Ryszarda Piegzę</strong> wraz ze Stanisławem Piotrem Gajdą i Gordianem Piecem; już samo jego powstanie było gestem kontekstualnym: w 1998 roku do piotrkowskiej restauracji „Europa” „przetłumaczono” „Centrum Świata”, które Salvador Dalí ustanowił niegdyś na dworcu w Perpignan – „Dlaczego nie tu?!”, jak to ujął Piegza – a pierwsza edycja odbyła się w 1999 roku. Odtąd artyści spotykali się w mieście co roku, zwykle w maju, by pokazywać performance, wideo, sound art i instalacje; organizatorem było Stowarzyszenie Działań Artystycznych Galeria OFF. Festiwal gościł artystów z kilkudziesięciu krajów, tworząc jedną z najważniejszych międzynarodowych platform sztuki performance w Europie Środkowo-Wschodniej. Z czasem kierownictwo artystyczne przejmowali kuratorzy gościnni – XV edycję w 2013 roku prowadził Artur Tajber; festiwal przedstawiał wtedy Świdzińskiego jako „patrona Interakcji”, a program objął polsko-kanadyjski projekt „Kontekstualizm Jana Świdzińskiego”, poświęcony recepcji jego idei po publikacjach jego tekstów w Polsce i Kanadzie. Miasto Piotrków Trybunalski uhonorowało później zarówno Świdzińskiego, jak i Piegzę za zasługi dla festiwalu.</p>
+
+<p>Guzek dowodził, że festiwal należy badać jako <strong>dzieło sztuki samo w sobie</strong>. Pod kuratorską opieką Świdzińskiego działał nie tylko jako miejsce prezentacji performansu, lecz jako kontekstualne dzieło sztuki na wielką skalę – tymczasowa wspólnota zajęta zbiorowym wytwarzaniem znaczeń w konkretnych współrzędnych. Zagraniczni artyści występujący na INTERAKCJACH byli kontekstualnymi turystami: odwiedzali określone miejsce na ograniczony czas, nawiązywali intensywne, lecz tymczasowe kontakty, wytwarzali znaczenia nieoddzielne od warunków swojego powstania.</p>
+
+<p>Śmierć Świdzińskiego w lutym 2014 roku postawiła pytanie, czy festiwal tak ściśle utożsamiany z jedną postacią przetrwa swojego założyciela. Przetrwał: INTERAKCJE trwają w Piotrkowie Trybunalskim, a ich 25. edycja, „Beyond Gravity”, odbyła się 24–27 września 2026 roku – ze słowami Świdzińskiego wciąż cytowanymi na stronie głównej festiwalu. Jego ciągłość wystawia na próbę centralną tezę sztuki kontekstualnej: znaczenia nie niosą jednostki, lecz wytwarza je kontekst pragmatyczny. Festiwal bez Świdzińskiego nie jest tym samym festiwalem – współrzędne pragmatyczne uległy zmianie – ale nadal urzeczywistnia zasadę, że teoria przeżywa teoretyka.</p>
+
+<h4>„W kontekście sztuki / Różnice”: teoria jako festiwal</h4>
+
+<p>Jeśli INTERAKCJE były festiwalem, któremu Świdziński przewodniczył, to Międzynarodowy Festiwal <strong>„W kontekście sztuki / Różnice”</strong> był festiwalem, który sam wymyślił. Bartosz Łukasiewicz, współtwórca obu edycji, pisze wprost, że Świdziński „był autorem koncepcji tego przedsięwzięcia a także jego głównym kuratorem”. Listy zapraszające, podpisane przez Świdzińskiego i Łukasiewicza, zapowiadały cykliczne biennale, które miało „przeciwstawić się dominacji międzynarodowych standardów, mających obowiązywać wszystkich i wszędzie”; program festiwalu nazywał uniwersalne wartości „symbolem opresyjnej hegemonii centrum wobec peryferii” – argument paryskiego wystąpienia z 1977 roku stał się metodą kuratorską. Mottem festiwalu był fragment manifestu sztuki kontekstualnej Świdzińskiego.</p>
+
+<p>Kontekstualna była już sama struktura. Świdziński zaprosił grupę artystów, którzy byli zarazem współkuratorami – każdy miał zaprosić twórców ze swojego kraju, tak by każdy lokalny kontekst przedstawiali jego własni uczestnicy. Festiwal pomyślano jako wędrowny i otwarty: ciąg etapów, nieprzypisany do jednego miejsca, który tam, gdzie się zatrzyma, przyjmie lokalnych artystów i rozwinie się „niczym kłącze”.</p>
+
+<p><strong>Pierwsza edycja</strong> (28 września – 2 października 2006), której głównym organizatorem było Mazowieckie Centrum Kultury i Sztuki, przyniosła 64 artystów z 13 państw i ponad 80 pokazów w Warszawie (MCKiS i Galeria XX1), Płocku (Muzeum Mazowieckie), Szydłowcu, Orońsku (Centrum Rzeźby Polskiej) i Sokołowie Podlaskim. Wystąpili m.in. Marilyn Arsem, Adina Bar-On, Bruce Barber, Jerzy Bereś, Nicola Frangione, Zbigniew Libera, Paul Panhuysen, Wiktor Petrow, Zbigniew Warpechowski, Ewa Zarzycka, Artur Tajber, Janusz Bałdyga i Przemysław Kwiek; sam Świdziński wystąpił ostatniego dnia. Festiwal otworzyła publiczna debata „W kontekście sztuki / Różnice” z udziałem m.in. Łukasza Guzka, Grzegorza Borkowskiego, Grzegorza Dziamskiego, Kazimierza Piotrowskiego, Kitty Zijlmans, Bruce’a Barbera i Świdzińskiego. Sekretarzem festiwalu był Łukasiewicz, rzecznikiem prasowym Jan Przyłuski; jego film <em>Różnice</em> ukazał się na płycie DVD dołączonej do katalogu festiwalu w styczniu 2007 roku.</p>
+
+<p><strong>Druga edycja</strong> (4–9 października 2007) odbyła się w Państwowym Muzeum Etnograficznym w Warszawie, w Centrum Rzeźby Polskiej w Orońsku i w Galerii Ostrołęka. Kuratorami obok Świdzińskiego byli Nigel Rolfe, David Cross, Alastair MacLennan, Jiří Surůvka i Bálint Szombathy; wystąpili m.in. Julien Blaine, Ryszard Piegza, Brian Patterson, Áine Phillips, Jürgen Fritz, Gordian Piec i Piotr Gajda – widomy most do INTERAKCJI.</p>
+
+<p>Łukasiewicz ocenił później rezultat z charakterystyczną szczerością: dla widza obie edycje „były po prostu prezentacją artystów i ich sztuki”, a kontekst pochodzenia twórców zepchnął na dalszy plan kontekst prezentacji. Pozostawił otwartym pytanie, czy idea poniosła porażkę, czy też festiwal ją „doskonale zobrazował, niemal obnażył”. Zgodnie z logiką samej teorii druga odpowiedź ma swoją wagę: działanie znaczy to, co znaczy w kontekście, w którym zostaje pokazane.</p>
+
+<h4>Sieć galerii w Polsce</h4>
+<p>Rozpowszechnianie tekstów sztuki kontekstualnej opierało się na niezwykłej sieci galerii prowadzonych przez artystów – każda była autonomicznym węzłem zdecentralizowanego systemu, zapowiadającego sieciowe logiki epoki cyfrowej:</p>
+<ul>
+<li><strong>Galeria Remont</strong> (Warszawa) – kierowana przez Henryka Gajewskiego; wydała 92-stronicowy dwujęzyczny manifest (marzec 1977, imprint Art Text, 19,5 × 14 cm); zorganizowała międzynarodową konferencję w 1977 roku i wydarzenie Gajewskiego „I AM” (1978)</li>
+<li><strong>Mała Galeria</strong> (Warszawa) – współzałożona przez Świdzińskiego i Dłubaka; jedna z pierwszych polskich galerii pokazujących fotografię jako sztukę autonomiczną; część ruchu Artist Run Initiatives (ARI); gościła pięć wystaw indywidualnych Świdzińskiego (1979–1994) i radykalną „Samoidentyfikację” Ewy Partum (1980)</li>
+<li><strong>Akumulatory 2</strong> (Poznań) – kierowana przez Jarosława Kozłowskiego; założona w następstwie manifestu NET (Kozłowski i Andrzej Kostołowski, 1971); ośrodek wymiany z Fluxusem</li>
+<li><strong>Galeria Sztuki Najnowszej</strong> (Wrocław) – kierowana przez Romualda Kuterę; ściśle współpracowała ze Świdzińskim nad teorią „tu i teraz”</li>
+<li><strong>Galeria EL</strong> (Elbląg) – elbląski ośrodek sztuki poczty związany z Pawłem Petaszem, inicjatorem asemblingowego pisma <em>Commonpress</em> (1977)</li>
+<li><strong>Galeria Adres</strong> (Łódź) – prowadzona przez Ewę Partum; skupiona na wymianie w ramach sztuki poczty</li>
+<li><strong>Biuro Poezji</strong> (Warszawa) – jednoosobowy ośrodek form poetyckich i sztuki poczty Andrzeja Partuma</li>
+<li><strong>Galeria Autorska</strong> (Bydgoszcz) – Jacek Soliński i Jan Kaja; wydawała broszury i teksty</li>
+</ul>
+<p>Świdziński zasiadał w radach programowych lub doradczych kilku innych instytucji: Galerii Współczesnej, Galerii Zero, Galerii Sztuki Współczesnej we Wrocławiu i galerii w Bolesławcu. Publikacja manifestu w serii <strong>Galerii Wymiany</strong> (<em>Druki artystyczne Galerii Wymiany</em>), znajdującej się dziś w archiwum Muzeum Sztuki Nowoczesnej w Warszawie, potwierdza, że sieć Galerii Wymiany Józefa Robakowskiego była kluczowym kanałem dystrybucji.</p>
+
+<h4>Sztuka kontekstualna a inne ruchy antyinstytucjonalne</h4>
+<p><strong>Sytuacjonizm</strong> podzielał dążenie sztuki kontekstualnej do zniesienia granicy między sztuką a życiem. Debordowskie pojęcie <em>spektaklu</em> współbrzmi z „pozorną rzeczywistością” Świdzińskiego (teza 4). Sytuacjonizm zalecał jednak celowe konstruowanie „sytuacji”, sztuka kontekstualna zaś obstawała przy tym, że nawet interwencje samego artysty podlegają określeniu przez kontekst. Związek Sellema z Debordem (odnotowany przez Liberę) sugeruje bliższą genealogię, która pozostaje niezbadana.</p>
+<p><strong>Fluxus</strong> antycypował właściwe sztuce kontekstualnej stopienie sztuki i życia, zwłaszcza za sprawą „partytury zdarzenia”. Pozostał jednak przywiązany do antysztuki definiującej się w opozycji do instytucji, podczas gdy sztuka kontekstualna teoretyzowała mechanizm, za pomocą którego definicje powstają i się „deaktualizują”.</p>
+<p><strong>Krytyka instytucjonalna</strong> (Broodthaers, Haacke, Buren, Fraser) dzieli ze sztuką kontekstualną uwagę poświęcaną ramom instytucjonalnym. Krytyka instytucjonalna działa jednak zazwyczaj <em>wewnątrz</em> instytucji, sztuka kontekstualna zaś <em>w poprzek</em> wszystkich kontekstów społecznych – muzeum jest jednym z wielu kontekstów pragmatycznych.</p>
+<p><strong>Sztuka praktyk społecznych</strong> (Hirschhorn, Bruguera, Lowe) stanowi najbliższy współczesny odpowiednik. Podobnie jak Świdziński, artyści ci osadzają swoją praktykę w konkretnych społecznościach. Podczas gdy jednak sztuka praktyk społecznych akcentuje wymiar <em>etyczny</em>, sztuka kontekstualna akcentuje <em>epistemologiczny</em> – oba podejścia się dopełniają.</p>
+
+<h3 id="ch31">31. Spór z Foksal i atak „Pseudoawangardy”</h3>
+
+<p>Galeria Foksal, kierowana przez Wiesława Borowskiego, reprezentowała establishment, wobec którego sztuka kontekstualna się sytuowała. Artykuł Borowskiego „Pseudoawangarda” z 1975 roku, ogłoszony w <em>Kulturze</em>, potępiał praktyki spoza kręgu Foksal; Piotrowski wspomina też, że kierownik galerii wyśmiewał w prywatnej rozmowie projekt Świdzińskiego jako „prowincjonalny”.</p>
+
+<p>Piotrowski dzieli tę scenę na „bezsilną awangardę” przystosowaną do reguł biurokratycznych (Foksal) i „przewartościowaną pseudoawangardę” (kontekstualiści) działającą poza jej murami. Napięcie to odpowiada szerszej dynamice centrum i peryferii: warszawski establishment naśladujący mody nowojorskie kontra obrona peryferii przez Świdzińskiego.</p>
+
+<p>Anna Kutera na spotkaniu w TR wyraziła rozczarowanie tych, którzy oczekiwali ruchu: „młodzież, która szła za Świdzińskim spodziewała się, że powstanie ruch. Że powstanie coś na dużą skalę, którą będziemy mogli wejść po prostu w dyskusje z takimi wielkimi ruchami jakim był konceptualizm czy ruch Fluxus”. Przyłuski odpowiedział jednak: „Czy to nie byłoby takie działanie centralne, jakby sprzeczne wobec tej idei działania lokalnego, którą Świdziński promował i zrobił jedyny na świecie istniejący przez 15 lat festiwal sztuki performance. Na światowym poziomie, w Piotrkowie Trybunalskim”.</p>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PART V: LEGACY -->
+<!-- ═══════════════════════════════════════════ -->
+
+<h2 id="part5">CZĘŚĆ V: DZIEDZICTWO I WSPÓŁCZESNE REZONANSE</h2>
+
+<h3 id="ch32">32. Sztuka kontekstualna a estetyka relacyjna: Bourriaud, Hansen, Ardenne</h3>
+
+<p>Nicolas Bourriaud w <em>Esthétique relationnelle</em> (1998) uznał, że zadaniem sztuki współczesnej jest wytwarzanie relacji społecznych, a nie autonomicznych przedmiotów – co brzmi jak echo tezy 9 Świdzińskiego z 1976 roku, według której sztuka jako sztuka kontekstualna „zainteresowana jest tylko relacją”. Obaj czerpali z lewicowej teorii estetycznej, z poststrukturalistycznej semiotyki i z filozofii pragmatyzmu. Świdziński doszedł jednak do stanowiska relacyjnego dwie dekady wcześniej i sformułował je z większym filozoficznym rygorem – co dobitnie pokazuje, jak późno międzynarodowy obieg zainteresował się dorobkiem artystycznym Europy Wschodniej.</p>
+
+<p>Estetyce relacyjnej Bourriauda zarzuca się polityczną mglistość: celebruje wspólnotowość, nie analizując struktur władzy. Sztuka kontekstualna Świdzińskiego oferuje tymczasem ostrzejsze narzędzia analityczne: pragmatyczną funkcję prawdziwościową, która precyzuje, <em>które</em> współrzędne kontekstu wyznaczają znaczenie, oraz antyhegemoniczne zobowiązanie, wprost podejmujące kwestię polityki kulturowej legitymizacji. Sztuka kontekstualna to estetyka relacyjna <em>z pazurem</em>.</p>
+
+<p>Książka Paula Ardenne’a <em>Un art contextuel</em> (2002) – która, jak potwierdził Guzek na spotkaniu w TR, <strong>„zaczyna się od cytatu ze Świdzińskiego”</strong> – dostarczyła francuskiej ramy teoretycznej, dzięki której pojęcie to upowszechniło się na świecie. Jak jednak zauważył na tym samym spotkaniu Przyłuski: „Ardenne na zaproszenie Świdzińskiego nie odpowiada, nie przyjeżdża do Polski” – to miniatura zależności między centrum a peryferiami, którą krytykuje teoria kontekstualna. Guzek zakwestionował na spotkaniu w TR tę charakterystykę: „Nie nie nie. Ardenne doskonale wie… […] on pisząc tą książkę doskonale się orientuje w tym co Świdziński napisał i on go cytuje”. Wymiana ta odsłania wciąż żywe napięcie wokół uznania i autorstwa.</p>
+
+<h4>Związek z Hansenem</h4>
+
+<p>Zaproponowane przez Rondudę porównanie z <strong>Formą Otwartą Oskara Hansena</strong> jest precyzyjne także w sensie architektonicznym. Hansen (1922–2005), wizjonerski architekt i pedagog, stworzył teorię odrzucającą modernistyczną czystość przestrzeni jako niemożliwą do pogodzenia z realnymi sprzecznościami życia społecznego. Forma Otwarta stawiała na pierwszym miejscu elastyczność, udział użytkowników i wrażliwość na zmieniające się warunki – jest to architektoniczny odpowiednik właściwego sztuce kontekstualnej przekonania o prymacie odbioru nad intencją.</p>
+
+<p>Obie teorie łączył antyautorytarny rdzeń: Hansen odrzucał roszczenie architekta do decydowania o tym, jak przestrzeń będzie użytkowana, tak jak Świdziński odrzucał roszczenie artysty do decydowania o tym, jak będą odczytywane znaki. Obie proponowały otwarte, partycypacyjne ramy, w których znaczenie (przestrzenne lub estetyczne) wytwarzają użytkownicy i widzowie w konkretnych kontekstach. I obie wyrosły ze szczególnych warunków polskiego życia intelektualnego w socjalizmie, gdzie pytanie o to, kto sprawuje kontrolę nad znaczeniem, nie było abstrakcyjne, lecz politycznie palące.</p>
+
+<p>Artyści tacy jak KwieKulik przekształcali idee Hansena w performatywne rozszerzenia i kolaże sytuacyjne, łącząc architektoniczne zagadnienia Formy Otwartej z semiotycznymi zainteresowaniami sztuki kontekstualnej. Linia prowadząca od Hansena przez Świdzińskiego do współczesnej praktyki partycypacyjnej stanowi wyraźnie polski wkład w międzynarodowy dyskurs o sztuce relacyjnej, społecznej i reagującej na kontekst.</p>
+
+<h4>Site-specificity i krytyka instytucjonalna</h4>
+
+<p>Sztuka kontekstualna jest z gruntu związana z tendencjami site-specific: zakłada, że przedmiot artystyczny nabiera znaczenia wyłącznie w określonych współrzędnych. O ile jednak sztuka site-specific (Smithson, Serra, Buren) skupiała się na fizycznych i instytucjonalnych cechach miejsca, o tyle sztuka kontekstualna rozszerzyła pojęcie „miejsca” na pełny kontekst pragmatyczny: społeczny, ekonomiczny, kulturowy, polityczny, międzyludzki. Miejsce nie jest lokalizacją, lecz <em>sytuacją</em>.</p>
+
+<p>Krytyka instytucjonalna (Broodthaers, Haacke, Fraser) działa zaś <em>wewnątrz</em> instytucji, by obnażać ukryte struktury władzy, podczas gdy sztuka kontekstualna działa <em>w poprzek</em> instytucji i tego, co poza nimi. Muzeum jest jednym z wielu kontekstów pragmatycznych; ulica, wieś, sieć mail artu i prywatne mieszkanie są równie uprawnione.</p>
+
+<h3 id="ch33">33. Kondycja postprawdy i deaktualizacja znaczeń</h3>
+
+<p>Teza 4 z niezwykłą precyzją zapowiedziała kryzys epistemologiczny nazywany dziś „postprawdą”: „Dzięki wieloznaczności tkwiącej w systemach znakowania, istnieje możność konstruowania pozornych znaczeń rzeczywistości, a w konsekwencji produkowania pozornej rzeczywistości”.</p>
+
+<p>Wytwarzanie „pozornej rzeczywistości” przez manipulowanie systemami znaków – dezinformacja, fake newsy, polityka postprawdy – to właśnie patologia zdiagnozowana przez sztukę kontekstualną. Działanie artysty kontekstualnego, będące „stałym odrzucaniem kanonów” (teza 6), jest profilaktyką przeciw kostnieniu znaczeń, które umożliwia ideologiczną manipulację.</p>
+
+<p>Sztuka kontekstualna wyjaśnia jednak także, <em>dlaczego</em> postprawda się pojawia: przyspieszające zmiany cywilizacyjne wywołują „deaktualizację znaczeń”, przez co systemy znaków nie są już w stanie przedstawiać rzeczywistości. W tę lukę wdzierają się „pozorne znaczenia”, ideologiczne konstrukcje symulujące spójność. Właściwą odpowiedzią nie jest powrót do stałego, uniwersalnego znaczenia (niemożliwy i niepożądany), lecz pogłębianie świadomości kontekstu – umiejętności, której rozwijaniu miała służyć sztuka kontekstualna.</p>
+
+<h3 id="ch34">34. Kontekst cyfrowy: sztuczna inteligencja, algorytmy i znak pusty</h3>
+
+<p>Duże modele językowe generują tekst, przewidując kontekstowo właściwe ciągi dalsze – jest to obliczeniowa realizacja kontekstualnej funkcji prawdziwościowej. „Kontekst” sztucznej inteligencji ma jednak charakter statystyczny (wzorce współwystępowania), a nie pragmatyczny (czas, miejsce, sytuacja, osoby). Brakuje mu ucieleśnionego, usytuowanego, międzyludzkiego wymiaru, który sprawia, że ludzkiego wytwarzania znaczeń nie da się sprowadzić do algorytmicznej predykcji.</p>
+
+<p>Napięcie między kontekstem obliczeniowym a pragmatycznym – między predykcją statystyczną a przeżywanym znaczeniem – stanie się zapewne jednym z głównych pytań estetyki. Teoria Świdzińskiego daje filozoficzne narzędzia, by sobie z nim radzić.</p>
+
+<p>Media cyfrowe podważają również uprzywilejowaną pozycję sztuki performance w teorii kontekstualnej. Niepowtarzalność performansu – jego nierozerwalny związek z określonymi współrzędnymi – osłabiają cyfrowa dokumentacja i dystrybucja. Co dzieje się ze „znakiem pustym”, gdy wypełnia go kontekst filmu na YouTubie, a nie spotkanie na żywo? Teoria nie podjęła tego pytania, ale daje narzędzia, by je zbadać.</p>
+
+<h3 id="ch35">35. Osiem napięć napędzających teorię</h3>
+
+<table>
+<tr><th>Napięcie</th><th>Rozwiązanie</th></tr>
+<tr><td>Uniwersalizm a lokalność</td><td>„Istnienie kontekstualne” – lokalne jest uniwersalne</td></tr>
+<tr><td>Teoria a praktyka</td><td>„sztuko-teorią konstruującą się poprzez praktykę artystyczną” (Model kina)</td></tr>
+<tr><td>Relatywizm a prawda</td><td>Teza 12: lokalny determinizm + globalna rewidowalność</td></tr>
+<tr><td>Centrum a peryferie</td><td>„Erupcja tysiąca języków”</td></tr>
+<tr><td>Podmiot a przedmiot</td><td>„Jedne i drugie istnieją kontekstualnie” (Model kina)</td></tr>
+<tr><td>Sztuka a życie</td><td>„włączenie sztuki w rzeczywistość” (Paryż 1977)</td></tr>
+<tr><td>Artysta a publiczność</td><td>„Znak pusty” – znaczenie wypełnia publiczność</td></tr>
+<tr><td>Przeszłość a teraźniejszość</td><td>„Deaktualizacja znaczeń” – teraźniejszość wypiera przeszłość</td></tr>
+</table>
+
+<p>Każde z tych napięć zostaje najpierw rozpoznane (1970), następnie poddane teorii (1976), potem ucieleśnione w performansie (od 1978), a w końcu przyjęte jako nierozwiązywalne (1998). Łuk prowadzący od kryzysu przez teorię i praktykę do akceptacji tworzy głęboką strukturę intelektualnego życia Świdzińskiego.</p>
+
+<h3 id="ch36">36. Otwarte pytania dla przyszłych badań</h3>
+
+<ul>
+<li><strong>Płeć a sztuka kontekstualna.</strong> Ewa Partum, Anna Kutera i Zofia Kulik odegrały kluczowe role. Jak płeć funkcjonuje jako współrzędna kontekstu we wzorze z tezy 5?</li>
+<li><strong>Kontekst cyfrowy.</strong> Jak działa dwanaście tez, gdy „kontekst pragmatyczny” jest częściowo tworzony przez systemy zautomatyzowane?</li>
+<li><strong>Kontekstualizm porównawczy.</strong> Indyjska teoria rasy, japońskie <em>ma</em>, relacyjne ontologie ludów rdzennych – co ujawniłyby badania porównawcze?</li>
+<li><strong>Odzyskiwanie archiwów.</strong> Archiwum Świdzińskiego znajduje się w Fundacji Arton. Dwunastogodzinny wywiad-rzeka Przyłuskiego został wykorzystany tylko częściowo.</li>
+<li><strong>Recepcja pozaeuropejska.</strong> Nagano 1993, kontakty z argentyńskim mail artem, jerozolimski wykład Przyłuskiego – to wątki niezbadane.</li>
+<li><strong>Twierdzenia Libery.</strong> Zarzuty dotyczące Kripo i UB, opublikowane w <em>Przekroju</em> (2020), nie zostały niezależnie zweryfikowane przez ekspertów IPN. Zanim będzie można je przyjąć jako fakty biograficzne, konieczne są niezależne badania archiwalne prowadzone przez wykwalifikowanych historyków. Do tego czasu należy traktować je z naukową ostrożnością – zwłaszcza że pojawiły się po śmierci Świdzińskiego, gdy nie mógł już na nie odpowiedzieć.</li>
+<li><strong>Związek z sytuacjonizmem.</strong> Libera odnotowuje związek Sellema z Międzynarodówką Sytuacjonistyczną Deborda, nikt jednak tego wątku nie zbadał. Jakie ma on konsekwencje teoretyczne?</li>
+<li><strong>Pedagogika kontekstualna.</strong> Świdziński wykładał na uniwersytetach na czterech kontynentach. Jakie metody dydaktyczne wypracował, by przekazywać teorię, która upiera się przy nieprzekazywalności znaczenia?</li>
+<li><strong>Festiwal Interakcje.</strong> Międzynarodowy festiwal sztuki performance w polskim mieście prowincjonalnym, trwający po śmierci swojego założyciela i mający już za sobą 25. edycję (2026), to wyjątkowy eksperyment instytucjonalny. Jak zmienił się od 2014 roku i ile sztuki kontekstualnej przetrwało w jego programie?</li>
+</ul>
+
+<h4>Ku teorii krytyki kontekstualnej</h4>
+
+<p>Jeśli znaczenie zawsze zależy od kontekstu, jakie są warunki możliwości krytyki artystycznej? Jeśli żaden sąd estetyczny nie wykracza poza swój kontekst, to twierdzenia krytyka same są usytuowane kontekstualnie i podlegają „deaktualizacji”. Dowodzą tego dzieje krytyki sztuki kontekstualnej: niemonotoniczna estetyka Piotrowskiego, odwrócone pionierstwo Rondudy, horyzontalna historia sztuki Guzka – każde pokolenie wytwarza z tego samego materiału nowe znaczenia, a te nie sumują się, lecz podlegają rewizji.</p>
+
+<p>Nie czyni to krytyki niemożliwą; czyni ją <em>kontekstualną</em>. Krytyk wyraża znaczenie, które dany zespół prac przyjmuje w określonym kontekście pragmatycznym aktu krytycznego. Monografia Piotrowskiego nie „odsłania” wiecznego sensu sztuki kontekstualnej; wytwarza konkretną, historycznie usytuowaną lekturę, ważną w kontekście Polski roku 2015, ale narażoną na „deaktualizację” przez przyszłe konteksty.</p>
+
+<p>Świadomość, że własna praktyka krytyczna podlega tej samej kontekstualnej determinacji co sztuka, której dotyczy – że krytyk, nie mniej niż artysta, jest „neopragmatycznym turystą” – może być najgłębszą lekcją, jaką sztuka kontekstualna daje humanistyce. Prowadzi ona nie do relatywizmu (pamiętajmy o tezie 12), lecz do odpowiedzialności: odpowiedzialności za określenie kontekstu, z którego się mówi, za przyznanie, że własne twierdzenia są usytuowane, i za gotowość do ich rewizji.</p>
+
+<p>Niniejsze opracowanie nie jest wyjątkiem. Powstało w określonym kontekście: w 2026 roku, za sprawą badacza korzystającego z określonych narzędzi (archiwa cyfrowe, dokumenty źródłowe), czerpiącego z określonych tradycji naukowych i kształtowanego przez konkretne rozmowy z osobami, które znały artystę. Inny badacz, pracujący na innych archiwach, w innym kontekście instytucjonalnym i osobistym, stworzyłby inną – równie uprawnioną – lekturę. „Jedno i tylko jedno wyrażenie jest prawdziwym w określonym kontekście pragmatycznym”. To wyrażenie także jest prawdziwe tylko tu i teraz.</p>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- BIBLIOGRAPHY -->
+<!-- ═══════════════════════════════════════════ -->
+<h2 id="bib">BIBLIOGRAFIA</h2>
+
+<h3>Prace Jana Świdzińskiego (układ chronologiczny)</h3>
+<ol>
+<li>„Spór o istnienie sztuki”. <em>Życie i Myśl</em> 5 (1970): 98–105.</li>
+<li>„Konceptualizm”. Wykład, Galeria Współczesna, Warszawa, maj 1971. Druk: <em>Biuletyn ZPAP</em> 5 (97–98), 1971; przedruk: <em>Artluk</em> 4 (2009): 94–100.</li>
+<li>„A propos N.S. galerii «Permafo»”. <em>Fotografia</em>, maj 1972.</li>
+<li>„O znaku”. <em>Fotografia</em>, czerwiec 1972.</li>
+<li>„Model kina”. <em>Zeszyt WFF</em> 7 (1975). Przedruk w: R.W. Kluszczyński, <em>Film awangardowy w Polsce i na świecie</em> (1989) oraz J. Robakowski (red.), <em>Żywa galeria</em> (2000).</li>
+<li>„12 punktów sztuki kontekstualnej”. Sierpień 1976.</li>
+<li>„Sztuka kontekstualna (1), (2), (3)”. 1976.</li>
+<li>„Modele sztuki”. 1976.</li>
+<li><em>Art as Contextual Art</em>. Lund: Sellem / Galerie S:t Petri, 1976.</li>
+<li>„Kontekst drugi/trzeci/czwarty”. Lublin, Wrocław, Warszawa, luty–marzec 1977.</li>
+<li>„Konferencja Art et Transformation Sociale” (wypowiedź). Paryż, maj 1977.</li>
+<li><em>Sztuka jako sztuka kontekstualna</em>. Warszawa: Galeria Remont (Art Text), marzec 1977. Red. H. Gajewski. 92 s.</li>
+<li>„Stale mówimy o człowieku”. 1978.</li>
+<li><em>Art, Society and Self-consciousness</em>. Calgary, 1979. Tłum. pol. Ł. Guzek. Warszawa: CSW Zamek Ujazdowski, 2009.</li>
+<li>„Wszyscy mamy kłopoty”. 1981.</li>
+<li>„Galeria Znak” (tekst z katalogu). Białystok, październik 1981.</li>
+<li>„Poglądy – konsekwencje”. Katalog BWA Łomża, październik 1983.</li>
+<li><em>Freedom and Limitation – The Anatomy of Post-modernism</em>. Calgary: Syntax Publishing (B. Dyson), 1987.</li>
+<li><em>Quotations on Contextual Art</em>. Eindhoven: Het Apollohuis, 1988.</li>
+<li>„Katalog DAP”. Warszawa, grudzień 1995.</li>
+<li>„O latach 70-tych”. Stara Galeria, Lublin, kwiecień 1996.</li>
+<li><em>Art contextuel</em>. Quebec: Éditions Intervention, 1997. ISBN 978-2-920500-15-0.</li>
+<li>„Anomia”. Stara Galeria, Lublin, maj 1998.</li>
+<li><em>L'Art et son Contexte</em>. Quebec: Éditions Intervention / Les presses du réel, 2005.</li>
+<li><em>Sztuka i jej kontekst</em> [przekład polski]. Piotrków Trybunalski: ODA / Radom: MCSW Elektrownia, 2009.</li>
+</ol>
+
+<h3>Wywiady ze Świdzińskim</h3>
+<ol>
+<li>Mazur, Adam. „Miało być pięknie i optymistycznie”. <em>Fototapeta.art.pl</em>, 30 marca 2001.</li>
+<li>Michalik, Ewa. „Sztuka w kontekście Kurpi i Nowego Jorku”. <em>Atlas Sztuki</em> 3 (luty–kwiecień 2004).</li>
+<li>Domanowska, Eulalia. „Sztuka kontekstualna”. <em>art newsletter</em> (PGS Sopot) 7–8/1995, 1–4/1996.</li>
+<li>Łukasiewicz, Bartosz. „Kilka uwag o sztuce jako sztuce kontekstualnej”. Wywiad przeprowadzony 3–10 czerwca 2005. <em>Sztuka i Filozofia</em> 28 (2006); przedruk na swidzinski.art.pl.</li>
+<li>Guzek, Łukasz. „Jest jak jest”. Wywiad. Folder wystawy, ODA, Piotrków Trybunalski, czerwiec 2009. (Zob. też sprawozdanie Guzka z wystawy pod tym samym tytułem, <em>Sztuka i Dokumentacja</em> 2 (2010): 97 i n.)</li>
+<li>Guzek, Łukasz. „Dokumentacja to problem komunikacji”. <em>Fort Sztuki</em> 1 (2004); przedruk na swidzinski.art.pl.</li>
+</ol>
+
+<h3>Najważniejsze publikacje o Świdzińskim i sztuce kontekstualnej</h3>
+<ol>
+<li>Weimarck, Torsten. „Vad är kontextuell konst?”. <em>Skånska Dagbladet</em>, 29 lutego 1976.</li>
+<li>Woźnica, Mirosław. „Konceptualizm a kontekstualizm”. swidzinski.art.pl.</li>
+<li>Piotrowski, Kazimierz. „Sztuka jako sztuka kontekstualna”. <em>EXIT</em> 2(26) (1996): 1220–1231.</li>
+<li>Ronduda, Łukasz. „Soc-Art”. <em>Piktogram</em> 1 (2005).</li>
+<li>Ronduda, Łukasz. <em>Strategie subwersywne w sztukach medialnych</em>. Kraków: Rabid, 2006.</li>
+<li>Przyłuski, Jan. <em>Sztuka akcji. Dziesięć zdarzeń w Polsce</em>. Słupsk: BGSW, 2007.</li>
+<li>Ronduda, Łukasz. „Flexibility Makes Our Existence Possible”. <em>ARTMargins Online</em>, 10 września 2008.</li>
+<li>Piotrowski, Kazimierz. „Hommage à Jan Świdziński”. <em>Sztuka i Dokumentacja</em> 1 (2009): 5–20.</li>
+<li>Ronduda, Łukasz, i Piotr Uklański. <em>Polish Art of the 70s</em>. Warszawa: Ujazdowski Castle / Polski Western, 2009.</li>
+<li>Guzek, Łukasz. „Co stanowi kontekst sztuki?”. <em>Obieg.pl</em>, 12 czerwca 2010.</li>
+<li>Łukasiewicz, Bartosz. „Model logiki a logika modelu”. <em>Sztuka i Dokumentacja</em> 2 (2010): 5–23.</li>
+<li>Łukasiewicz, Bartosz. „Kilka dogmatów kontekstualizmu”. <em>Obieg.pl</em>, 13 października 2010.</li>
+<li>Piotrowski, Kazimierz. „Konceptualizm jako konceptyzm”. <em>Sztuka i Dokumentacja</em> 6 (2012): 109–117.</li>
+<li>Piotrowski, Kazimierz. „The promises of unism, zonism, contextualism”. <em>Art Inquiry</em> 14 (2012): 119–148.</li>
+<li>Piotrowski, Kazimierz. „The linguistic turn in Conceptualism and after”. <em>Art Inquiry</em> XVII (2015).</li>
+<li>Piotrowski, Kazimierz. <em>Świdziński i współcześni</em>. Radom: MCSW Elektrownia, 2015. 840 s.</li>
+<li>Praca zbiorowa. <em>Jan Świdziński en contexte / In Context</em> (+DVD). Quebec: Éditions Intervention, 2015. 160 s.</li>
+<li>„Context / Contextualism”. <em>Zeszyty Artystyczne</em> 1(32) (2018). UAP Poznań.</li>
+<li>Libera, Zbigniew. „Jan Świdziński i spór o istnienie sztuki”. W cyklu <em>Libera wybiera, czyli subiektywny poczet polskich artystów</em>. <em>Przekrój</em>, wiosna 2020. <a href="https://przekroj.org/sztuka-opowiesci/opowiesci/kontekstualna-ewangelia-wedlug-jana/">przekroj.org/sztuka-opowiesci/opowiesci/kontekstualna-ewangelia-wedlug-jana</a></li>
+<li>Miśniakiewicz, Małgorzata. „«Being Together»: F-Art Festival, Gdańsk, 1975”. <em>ARTMargins Online</em>, 18 czerwca 2024.</li>
+</ol>
+
+<h3>Zbiory archiwalne</h3>
+<ul>
+<li>Lomholt Mail Art Archive, Dania – 15 pozycji (1972–1976)</li>
+<li>Muzeum Sztuki Nowoczesnej w Warszawie – Filmoteka; druki artystyczne Galerii Wymiany</li>
+<li>Fundacja Arton – archiwum Świdzińskiego i dokumentacja filmowa</li>
+<li>Prywatne archiwum Świdzińskiego: teksty ze swidzinski.art.pl, wywiady, fotografie, dokumenty produkcyjne</li>
+</ul>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- APPENDIX A: 12 THESES -->
+<!-- ═══════════════════════════════════════════ -->
+<h2>Aneks A: 12 punktów sztuki kontekstualnej (1976) – pełny tekst</h2>
+<p><em>Tekst angielski opublikowano po raz pierwszy w:</em> Art as Contextual Art, <em>Galerie S:t Petri, Lund, Szwecja, luty 1976. Wersja polska, „12 punktów sztuki kontekstualnej”, przytaczana poniżej, nosi datę: sierpień 1976.</em></p>
+
+<div class="thesis"><p><span class="num">1.</span> Nie istnieją przedmioty pozbawione znaczeń i nie istnieją znaczenia pozbawione przedmiotów, jeden i ten sam przedmiot może mieć różne znaczenia w różnych kodach; jedno i to samo znaczenie można przypisać różnym przedmiotom. Prowadzi to do dwóch rodzajów wieloznaczności: I. wieloznaczności przedmiotów mających to samo znaczenie; II. wieloznaczności znaczeń mających ten sam przedmiot. W określonym kontekście tylko jedno ze znaczeń przyjmujemy za prawdziwe. Kryterium wyboru jest kryterium prawdy.</p></div>
+
+<div class="thesis"><p><span class="num">2.</span> Jeżeli różne grupy społeczne temu samemu przedmiotowi przypisują różne znaczenia, a żadna z tych grup nie dysponuje dostatecznym autorytetem by innym narzucić swój punkt widzenia, powstaje problem znalezienia odpowiedniego kryterium wyboru. Prowadzi to do wieloznaczności definicji sztuki (wszystko może oznaczać sztukę). Jeżeli cywilizacja zmienia się tak szybko jak obecnie, nie pozostawiając czasu na utrwalenie nowych znaczeń, dla nowych przedmiotów prowadzi to do wieloznaczności przedmiotów sztuki (wszystko może oznaczać sztukę).</p></div>
+
+<div class="thesis"><p><span class="num">3.</span> W naszym działaniu praktycznym tworzymy przedmioty mając dane znaczenia (koncepcje). Jest to sposób działania sztuki konwencjonalnej. W naszym działaniu poznawczym tworzymy znaczenia (koncepcje) mając dane przedmioty. Jest to sposób działania sztuki konceptualnej. Obydwie te operacje są zwrotne: rzeczywistość, którą produkujemy zależy od naszej koncepcji rzeczywistości – nasza koncepcja rzeczywistości zależy od produkowanej przez nas rzeczywistości. Wybór kryterium definiuje więc rzeczywistość którą tworzymy.</p></div>
+
+<div class="thesis"><p><span class="num">4.</span> Zmiany zachodzące w rzeczywistości deaktualizują istniejące znaczenia; ostatecznym kryterium staje się praktyka społeczna. Deaktualizacja znaczeń narusza ustalone przyzwyczajenia, powoduje utratę przywilejów zdobytych przez jedną grupę na korzyść innej. Istnieje więc stała tendencja do zatrzymywania zdeaktualizowanych znaczeń. Dzięki wieloznaczności tkwiącej w systemach znakowania, istnieje możność konstruowania pozornych znaczeń rzeczywistości, a w konsekwencji produkowania pozornej rzeczywistości.</p></div>
+
+<div class="thesis"><p><span class="num">5.</span> Deaktualizacja znaczeń jest ciągłym procesem, tym szybciej przebiegającym im szybciej zmienia się cywilizacja. Sztuka kontekstualna proponuje znak, którego kryterium prawdy ustalone przez kontekst pragmatyczny, zmienia się nieustannie (zaczyna być tak że „p” – zaczyna być tak że nie „p”). Przedmiot „O” przyjmuje znaczenie „m” w czasie „t”, w miejscu „p”, w sytuacji „s”, w stosunku do osoby/osób „o” wtedy i tylko wtedy. Zmiana któregokolwiek z tych parametrów deaktualizuje poprzednie znaczenia.</p></div>
+
+<div class="thesis"><p><span class="num">6.</span> Działanie sztuki kontekstualnej jest więc stałym odrzucaniem kanonów usiłujących zatrzymać nieustannie deaktualizujące się znaczenia.</p></div>
+
+<div class="thesis"><p><span class="num">7.</span> Sztuka kontekstualna przeciwstawia się stabilizacji przedmiotów sztuki, bo trwałość przedmiotu wywołuje trwałość jego znaczenia. Sztuka kontekstualna przeciwstawia się stabilizacji znaczeń, bo trwałość znaczeń powoduje produkcję zdeaktualizowanych przedmiotów. Odrzuca więc utrwalone definicje sztuki.</p></div>
+
+<div class="thesis"><p><span class="num">8.</span> W relacji łączącej znaczenie i odpowiadający mu przedmiot w sztuce konwencjonalnej nieruchomymi pozostają obydwa człony („sztuka” oznacza te, a nie inne przedmioty). Od czasów Duchampa uruchomionym zostaje drugi z tych członów (każdy przedmiot może oznaczać sztukę), pierwszy [w druku: drugi] z członów pozostaje jednak nieruchomy. W sztuce kontekstualnej ruchomymi są obydwa człony (każdy przedmiot może oznaczać sztukę jak i nie sztukę). Celem działania sztuki staje się zrelatywizowanie całego obszaru znaczeń i całego obszaru przedmiotów.</p></div>
+
+<div class="thesis"><p><span class="num">9.</span> Sztuka jako sztuka kontekstualna zainteresowana jest tylko relacją (jako gotowością połączenia znaczenia z przedmiotem w określonym kontekście pragmatycznym).</p></div>
+
+<div class="thesis"><p><span class="num">10.</span> Wyrażenia sztuki kontekstualnej nie są wyrażeniami akceptowalnymi przez grupę, gdyż rzeczywistość konstruowana przez artystę jest czymś innym niż rzeczywistość odbierana (zmienia się nieustannie).</p></div>
+
+<div class="thesis"><p><span class="num">11.</span> Sztuka jako sztuka kontekstualna nie ma związku z nauką. Nauka bowiem, musi ustalać (unieruchamiać) przedmiot nadając mu znaczenie. Sztuka kontekstualna jest więc poza obrębem logiki formalnej. Świat, w którym działa nie jest obszarem sformalizowanych aksjomatów, lecz stale deaktualizujących się reguł, które starają się zatrzymać zmieniającą się rzeczywistość.</p></div>
+
+<div class="thesis"><p><span class="num">12.</span> Sztuka jako sztuka kontekstualna przeciwstawia się wieloznaczności i przeciwstawia się relatywizmowi. Jedno i tylko jedno wyrażenie jest prawdziwym w określonym kontekście pragmatycznym. Takie wyrażenie jest wyrażeniem z asercją.</p></div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- APPENDIX B: PARIS 1977 -->
+<!-- ═══════════════════════════════════════════ -->
+<h2>Aneks B: Wypowiedź na konferencji, Paryż 1977 – najważniejsze fragmenty</h2>
+<p><em>Z wystąpienia Jana Świdzińskiego na konferencji „Art et Transformation Sociale”, Paryż, 10–13 maja 1977.</em></p>
+
+<blockquote>„Co jest aktualnie sztuką określa zespół pojęć, których reguły są znane i akceptowane przez grupę społeczną akceptującą dane zjawisko jako sztukę”.</blockquote>
+
+<blockquote>„Hegemonia w sztuce oznacza narzucenie innym własnych pojęć, wartości i reguł interpretacji kulturowej”.</blockquote>
+
+<blockquote>„Sensem mojego działania jako artysty, nie jest włączenie rzeczywistości w sztukę – jak to wynikało z propozycji sztuki XX w. od Duchampa, poprzez Happening, Land Art, Body-Art, politykę jako sztukę Beuysa – lecz włączenie sztuki w rzeczywistość”.</blockquote>
+
+<blockquote>„Moja sytuacja jako artysty zostaje określona przez aktualny zespół reguł i wartości obowiązujący w sztuce. Tak długo jestem artystą jak długo moją działalność można interpretować jako należącą do sztuki, a jednocześnie jestem artystą gdy zmieniam te reguły, gdyż zmiana reguł jest wartością obowiązującą w sztuce współczesnej”.</blockquote>
+
+<blockquote>„W momencie gdy zostaje ujawniony kontekstualny charakter sztuki (zespół pojęć, wartości i reguł wynikający z kontekstu praktyki społecznej) wówczas sztuka przestaje uzasadniać słuszność praktyki społecznej”.</blockquote>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- APPENDIX C: ANOMIA 1998 -->
+<!-- ═══════════════════════════════════════════ -->
+<h2>Aneks C: „Anomia” (1998) – pełny tekst</h2>
+<p><em>Katalog wystawy, Stara Galeria, Lublin, maj 1998. Oryginał polski.</em></p>
+
+<blockquote style="border-left-color: #555; font-style: normal;">
+<p>Pewne wyjaśnienie.</p>
+<p>Skąd wziął mi się ten tytuł: anomia? Nie jest to zbyt popularne słowo. Wprowadził je do socjologii Durkheim na oznaczenie stanu społeczeństwa, gdy ogólnie przyjęte normy, wartości, pojęcia – cały przez wszystkich zrozumiały obraz rzeczywistości przestaje funkcjonować.</p>
+<p>Przed ponad dwudziestu laty proponując kontekstualne tezy dla współczesnej sztuki, zauważyłem – bo rzucało się to w oczy – że zaczyna brakować nam wspólnych norm, które pozwalałyby na obiektywną ocenę sztuki. A co więcej zaczyna nam brakować kryteriów umożliwiających wyraźne odróżnienie tego co należy do sztuki, od tego co należy do innego; pozaartystycznego obszaru.</p>
+<p>Jest to wynik zmian wywołanych zachodzącymi procesami społecznymi; tej ujawniającej się anomii.</p>
+<p>Nie chodzi tu o „upadek moralności”, nad którym załamują ręce tradycyjni moraliści, w nim dopatrując się przyczyn obecnej anomii. Po prostu przestaliśmy żyć w separacji, oglądamy kilkadziesiąt kanałów telewizji, podróżujemy, spotykamy ludzi innych kultur. Jesteśmy po trosze jak turyści, którzy zatrzymują samochód przed pubem przy drodze by chwilę odpocząć, zjeść hamburgera, wypić piwo i pogadać z takimi samymi odpoczywającymi przez chwilę turystami jak oni. Pół godziny odpoczynku i jedzie się dalej.</p>
+<p>W starym malarstwie napotykamy sceny, które przedstawiają nachylające się ku sobie osoby. W tym symbolicznym geście pochylania się ku sobie zostaje wyrażone wzajemne porozumienie: Santa Conversatione. Na zdjęciach, które tu pokazuję, ludzie nachylają się ku sobie: nie jest to jednak Santa Conversatione, jest to simulacrum, pozór, ta anomia o której mówię.</p>
+<p>Santa Conversatione była kiedyś – a teraz? Teraz jest jak jest. W porządku.</p>
+</blockquote>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- APPENDIX D: CONCEPT EVOLUTION -->
+<!-- ═══════════════════════════════════════════ -->
+<h2>Aneks D: Chronologia ewolucji pojęć</h2>
+
+<table>
+<tr><th>Rok</th><th>Pojęcie</th><th>Źródło</th><th>Kluczowa innowacja</th></tr>
+<tr><td>1970</td><td>Sztuka jako refleksja nad istotą</td><td>„Spór o istnienie sztuki”</td><td>Diagnoza: sztuka się przeobraża, a nie umiera</td></tr>
+<tr><td>1972</td><td>Sztuka jako możliwość</td><td>„O znaku”</td><td>„Dzieło sztuki jest możliwością, daną odbiorcy, a nie jednoznacznym stanem”</td></tr>
+<tr><td>1975</td><td>Istnienie kontekstualne</td><td>„Model kina”</td><td>PIERWSZE UŻYCIE słowa „kontekstualny”; trzy modele</td></tr>
+<tr><td>1975</td><td>Sztuko-teoria</td><td>„Model kina”</td><td>„sztuko-teorią konstruującą się poprzez praktykę artystyczną”</td></tr>
+<tr><td>1976</td><td>Znak pusty</td><td>Manifest / „Szt. kont. (3)”</td><td>„miejsce do wypełnienia przez rzeczywistość”</td></tr>
+<tr><td>1976</td><td>Kontekst pragmatyczny</td><td>Teza 5</td><td>Wzór O-m-t-p-s-o</td></tr>
+<tr><td>1976</td><td>Ekstensjonalne / intensjonalne</td><td>„Szt. kont. (3)”</td><td>Logiczne zerwanie z Kosuthem</td></tr>
+<tr><td>1976</td><td>Paradoks antyrelatywistyczny</td><td>Teza 12</td><td>Lokalny determinizm + globalna rewidowalność</td></tr>
+<tr><td>1977</td><td>Sztuka jako część rzeczywistości</td><td>Wypowiedź paryska</td><td>Odwrócenie trajektorii Duchampa</td></tr>
+<tr><td>1977</td><td>Trzeci Front</td><td>Konferencja paryska</td><td>Koalicja antyhegemoniczna</td></tr>
+<tr><td>1979</td><td>Funktory intensjonalne</td><td><em>Art, Society…</em></td><td>„wiem”, „wierzę”, „przypuszczam” zastępują „jest”</td></tr>
+<tr><td>1987</td><td>Anomia</td><td><em>Freedom and Limitation</em></td><td>Desynchronizacja znaczeń</td></tr>
+<tr><td>1987</td><td>Cztery modele logiki</td><td><em>Freedom and Limitation</em></td><td>Norm / wolności / epistemiczna / gry</td></tr>
+<tr><td>1998</td><td>Metafora turysty</td><td>„Anomia”</td><td>„Jesteśmy po trosze jak turyści”</td></tr>
+<tr><td>2005</td><td>Neopragmatyczny turysta</td><td><em>L'Art et son Contexte</em></td><td>„Zatrzymuje się na piwo […] i jedzie dalej”</td></tr>
+<tr><td>2010</td><td>Cytat performatywny</td><td>„Jan in Wonderland”</td><td>Ten sam tekst, inne medium = inne znaczenie</td></tr>
+</table>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- APPENDIX E: EXHIBITION HISTORY -->
+<!-- ═══════════════════════════════════════════ -->
+<h2>Aneks E: Historia wystaw</h2>
+
+<table>
+<tr><th>Data</th><th>Tytuł</th><th>Miejsce</th></tr>
+<tr><td>luty–marzec 1976</td><td>Contextual Art (wystawa zbiorowa)</td><td>Galerie S:t Petri, Lund</td></tr>
+<tr><td>26 czerwca 1979</td><td>Stale mówimy o człowieku</td><td>Mała Galeria, Warszawa</td></tr>
+<tr><td>24 lutego 1981</td><td>Wszyscy mamy kłopoty</td><td>Mała Galeria, Warszawa</td></tr>
+<tr><td>15 maja 1984</td><td>Wolność i ograniczenie</td><td>Mała Galeria ZPAF, Warszawa</td></tr>
+<tr><td>4 kwietnia 1989</td><td>Jestem z powrotem</td><td>Mała Galeria, Warszawa</td></tr>
+<tr><td>26 kwietnia 1994</td><td>W porządku</td><td>Mała Galeria, Warszawa</td></tr>
+<tr><td>marzec 2009</td><td>Jest jak jest</td><td>Galeria Sztuki Najnowszej, Gorzów</td></tr>
+<tr><td>czerwiec–lipiec 2009</td><td>Jest jak jest</td><td>Galeria ODA, Piotrków Trybunalski</td></tr>
+<tr><td>styczeń–luty 2010</td><td>W moim kontekście. Wybrane działania z fotografią i tekstem</td><td>CSW Zamek Ujazdowski, Warszawa (wersja rozszerzona: Galeria Labirynt, Lublin, 2010)</td></tr>
+</table>
+
+<p style="font-size:.9rem; margin-top:1rem;"><strong>Miejsca międzynarodowe:</strong> De Appel Gallery (Amsterdam) · Malmö Konsthall · Centro Internazionale Multimedia (Salerno) · Galerie S:t Petri (Lund) · Le Lieu (Quebec) · CSW Zamek Ujazdowski (Warszawa) · Galeria Labirynt (Lublin) · MCSW Elektrownia (Radom) · Galeria ODA (Piotrków Trybunalski) · Mała Galeria (Warszawa) · BWA Bydgoszcz · Galeria XX1 (Warszawa) · Fondation Danaé (Paryż) · Het Apollohuis (Eindhoven) · Galeria Nizio (Warszawa) · Galeria Znak (Białystok) · Stara Galeria (Lublin)</p>
+
+
+<!-- COLOPHON -->
+<div style="margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--border); font-size: .85rem; color: #666;">
+<h3>O tym opracowaniu</h3>
+<p>Opracowanie powstało w 2026 roku na podstawie źródeł pierwotnych z archiwum Świdzińskiego, jego oryginalnych tekstów (ogłoszonych na swidzinski.art.pl), wywiadów (m.in. <em>Sztuka i Filozofia</em> 2006, <em>Atlas Sztuki</em> 2004, <em>Fototapeta</em> 2001), relacji naocznych świadków (TR Warszawa 2014) oraz prac krytycznych (Piotrowski, Ronduda, Guzek, Łukasiewicz, Libera, Przyłuski).</p>
+<p><strong>Uwaga o biograficznych twierdzeniach Libery:</strong> Zarzuty dotyczące służby w czasie wojny i powojennej współpracy ze służbami bezpieczeństwa, opublikowane w <em>Przekroju</em> (2020), nie zostały niezależnie zweryfikowane przez historyków IPN ani innych neutralnych ekspertów. W niniejszym opracowaniu przedstawiono je z należytymi naukowymi zastrzeżeniami. Materiały archiwalne bezpieki wymagają specjalistycznej interpretacji i nie należy przyjmować ich bezkrytycznie.</p>
+</div>
+
+<script data-goatcounter="https://futureshow.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="https://futureshow.pl/assets/fs-home.js" defer></script>
+</body>
+</html>

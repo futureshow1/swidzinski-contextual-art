@@ -495,7 +495,7 @@ main { padding-bottom:88px; }
   <button onclick="showView('festivals')" data-view="festivals" data-i18n="nav.festivals">Wystąpienia</button>
   <button onclick="showView('films')" data-view="films" data-i18n="nav.films">Filmy</button>
   <button onclick="showView('game')" data-view="game" data-i18n="nav.game">Gra</button>
-  <button onclick="window.open('study.html','_blank')" style="color:var(--gold) !important" data-i18n="nav.study">Studium (EN) ↗</button>
+  <button onclick="window.open(studyUrl(),'_blank')" style="color:var(--gold) !important" data-i18n="nav.study">Studium ↗</button>
   <div class="nav-right">
     <div class="lang" aria-label="Język">
       <a class="active" href="#">PL</a>
@@ -768,7 +768,7 @@ function showView(id) {
 // DATA: TIMELINE
 // ═══════════════════════════════════════════
 const timeline = [
-  {id:'tl01',year:1923,cat:'life',title:'Born in Bydgoszcz',text:'Jan Świdziński born on May 23 in Bydgoszcz, Poland.',exp:'His father, also named Jan, was a Polish Army officer and former soldier of Piłsudski\'s Legions; the Świdzińskis descended from old szlachta bearing the Półkozic coat of arms. A notable ancestor, Konstanty Świdziński, was a major collector and patron of Polish culture whose library was destroyed in 1944, in the wake of the Warsaw Uprising.'},
+  {id:'tl01',year:1923,cat:'life',title:'Born in Bydgoszcz',text:'Jan Świdziński born on May 25 in Bydgoszcz, Poland.',exp:'His father, also named Jan, was a Polish Army officer and former soldier of Piłsudski\'s Legions; the Świdzińskis descended from old szlachta bearing the Półkozic coat of arms. A notable ancestor, Konstanty Świdziński, was a major collector and patron of Polish culture whose library was destroyed in 1944, in the wake of the Warsaw Uprising.'},
   {id:'tl02',year:1947,cat:'life',title:'Academy of Fine Arts, Warsaw',text:'Begins studying painting under Jan Cybis, graphics under Tadeusz Kulisiewicz.',exp:'He graduated with a degree in painting in 1952. Between 1952 and 1962 he created a series of paintings called "Semantic Signs" (Znaki semantyczne).'},
   {id:'tl03',year:1952,cat:'life',title:'Graduates from Academy of Fine Arts',text:'Receives painting degree. Begins "Semantic Signs" (Znaki semantyczne) painting series (1952-1962).',exp:'Studies under Jan Cybis (painting) and Tadeusz Kulisiewicz (graphics) at the Higher School of Arts and Design (today Academy of Fine Arts) in Warsaw. During the Semantic Signs years he also studied Islamic art in Spain and Morocco, as well as Chinese calligraphy.'},
   {id:'tl04',year:1965,cat:'art',title:'Ends Painting Career',text:'Solo painting exhibition marks the end of traditional art practice.',exp:'He discovered that painting and other traditional art forms were unable to confront the fundamental and existential dilemmas faced by contemporary humanity. This crisis redirected him toward science, semiotics, linguistics, neopositivism and formal logic.'},
@@ -1031,8 +1031,8 @@ const festivalsData = {
     {id:'fo1',name:'Art Activity in the Context of Reality',year:1977,place:'Remont Gallery, Warsaw',desc:'International conference of artists and theorists from 35 countries. Signed agreements between Polish contextual art, French Art Sociologique, Art and Language, and Latin American artists.'},
     {id:'fo2',name:'Interscop International Festival',year:1990,place:'Łucznica, Poland',desc:'International performance festival organized by Świdziński.'},
     {id:'fo3',name:'Real Time — Story Telling International Performance Art Festival',year:1991,place:'Sopot, Poland',desc:'International performance art festival; the 1993 edition was held at Grodzka Gallery, Lublin.'},
-    {id:'fo4',name:'Interakcje International Art Festival',year:'1998 →',place:'Piotrków Trybunalski, Poland',desc:'Founded in 1998 on the initiative of Ryszard Piegza, with Stanisław Piotr Gajda and Gordian Piec. Świdziński served as the festival\'s curator and president from 1998 and performed at every edition from 1999 to 2004. The festival is still running: its 25th edition, “Beyond Gravity”, took place on 24–27 September 2026.'},
-    {id:'fo5',name:'In the Context of Art / Differences',year:'2006–2007',place:'Warsaw, Poland',desc:'First festival explicitly dedicated to contextual art, held in October 2006 and again in 2007. Co-created with Jan Przyłuski. Connected to "Różnice" (The Differences) documentary film. First edition: 28 September – 2 October 2006, with 64 artists from 13 countries and over 80 presentations in Warsaw, Płock, Szydłowiec, Orońsko and Sokołów Podlaski. Main organizer: Mazovian Centre of Culture and Art.'},
+    {id:'fo4',name:'Interakcje International Art Festival',year:'1998 →',place:'Piotrków Trybunalski, Poland',desc:'Conceived in 1998 on the initiative of Ryszard Piegza, with Stanisław Piotr Gajda and Gordian Piec — in Piotrków\'s Europa restaurant, to which the "Centre of the World" Dalí had placed at Perpignan station was "translated" — with the first edition in 1999. Świdziński served as the festival\'s curator and president from 1998, performed at every edition from 1999 to 2004 and was later named its patron. Since then the festival has been run by guest curators. It is still running: its 25th edition, “Beyond Gravity”, took place on 24–27 September 2026.'},
+    {id:'fo5',name:'In the Context of Art / Differences',year:'2006–2007',place:'Warsaw and Mazovia, Poland',desc:'A festival Świdziński conceived and led as chief curator, co-created with Bartosz Łukasiewicz (secretary) and Jan Przyłuski (press spokesman). Planned as a nomadic biennale against "the oppressive hegemony of the centre over the periphery": invited artists acted as co-curators, each bringing artists from their own country. First edition: 28 September – 2 October 2006, with 64 artists from 13 countries and over 80 presentations in Warsaw, Płock, Szydłowiec, Orońsko and Sokołów Podlaski; main organizer: Mazovian Centre of Culture and Art. Second edition: 4–9 October 2007 at the State Ethnographic Museum in Warsaw, Orońsko and Galeria Ostrołęka, co-curated by Nigel Rolfe, David Cross, Alastair MacLennan, Jiří Surůvka and Bálint Szombathy. Connected to the documentary film "Różnice" (Differences).'},
   ],
   participated: [
     {id:'fp01',name:'F-Art Counterculture Festival',year:1975,place:'Gdańsk',desc:'First presentation of contextual art theses. Jean Sellem attended and later organized the Lund exhibition.'},
@@ -1262,6 +1262,7 @@ function applyDataLang(lang){
   if (typeof conceptsBuilt !== 'undefined') conceptsBuilt = false;
   rebuildCurrentView();
 }
+function studyUrl(){ return LANG_NOW === 'pl' ? 'study-pl.html' : 'study.html'; }
 function rebuildCurrentView(){
   // zachowaj rozwinięte karty i przewinięcie przy przerysowaniu w innym języku
   var openIds = [].map.call(document.querySelectorAll('.text-card.open[id]'), function(e){ return e.id; });
@@ -1302,7 +1303,7 @@ function buildArchive() {
     {label:T('hub.study.l'),title:T('hub.study.t'),desc:T('hub.study.d'),view:'_study',tags:['academic','research','primary sources']}
   ];
   document.getElementById('archiveGrid').innerHTML = items.map(i=>`
-    <div class="card${i.view==='_study'?' card-wide':''}" onclick="${i.view==='_study'?'window.open(\'study.html\',\'_blank\')':`showView('${i.view}')`}">
+    <div class="card${i.view==='_study'?' card-wide':''}" onclick="${i.view==='_study'?'window.open(studyUrl(),\'_blank\')':`showView('${i.view}')`}">
       <div class="card-label">${i.label}</div>
       <h3>${i.title}</h3>
       <p>${i.desc}</p>
@@ -2472,7 +2473,7 @@ var I18N = {
     'hub.fest.d':"Międzynarodowe festiwale, konferencje, performanse — oraz późne hołdy, które utrwalają jego dziedzictwo.",
     'hub.study.l':"Studium",
     'hub.study.t':"Studium całościowe",
-    'hub.study.d':"Od „Znaków semantycznych\" po neopragmatycznego turystę — pełne opracowanie naukowe na podstawie źródeł pierwotnych. Pięć części, 36 rozdziałów – na razie w języku angielskim.",
+    'hub.study.d':"Od „Znaków semantycznych\" po neopragmatycznego turystę — pełne opracowanie naukowe na podstawie źródeł pierwotnych. Pięć części, 36 rozdziałów.",
     'f.all':"Wszystko",
     'f.life':"Życie",
     'f.art':"Sztuka",
@@ -2512,7 +2513,7 @@ var I18N = {
     'doc.title':'Jan Świdziński – sztuka kontekstualna. Archiwum i gra',
     'view.books.h':"Książki Świdzińskiego",
     'view.books.d':"Wszystkie książki autorskie Jana Świdzińskiego – od broszury z manifestem (Lund 1976) po pośmiertną monografię w trzech językach (Québec/Halifax 2015).",
-    'nav.festivals':'Wystąpienia','nav.game':'Gra','nav.study':'Studium (EN) ↗',
+    'nav.festivals':'Wystąpienia','nav.game':'Gra','nav.study':'Studium ↗',
     'ctx.label':'Kontekst 001',
     'ctx.note':'<b>Ta strona jest pracą kontekstualną.</b> Odczyt zmienia się z miejscem i porą.',
     'hero.eyebrow':'Sztuka kontekstualna · 1923–2014',

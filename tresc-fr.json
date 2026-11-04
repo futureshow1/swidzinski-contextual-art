@@ -3,7 +3,7 @@
 {
 "id": "tl01",
 "title": "Naissance à Bydgoszcz",
-"text": "Jan Świdziński naît le 23 mai à Bydgoszcz, en Pologne.",
+"text": "Jan Świdziński naît le 25 mai à Bydgoszcz, en Pologne.",
 "exp": "Son père, prénommé lui aussi Jan, était officier de l'armée polonaise et ancien soldat des Légions de Piłsudski ; les Świdziński descendaient d'une vieille famille de la szlachta, aux armes de Półkozic. Un ancêtre notable, Konstanty Świdziński, fut un grand collectionneur et mécène de la culture polonaise ; sa bibliothèque fut détruite en 1944, au lendemain de l'insurrection de Varsovie."
 },
 {
@@ -1144,13 +1144,13 @@
 "id": "fo4",
 "name": "Festival international d'art Interakcje",
 "place": "Piotrków Trybunalski, Pologne",
-"desc": "Fondé en 1998 à l'initiative de Ryszard Piegza, avec Stanisław Piotr Gajda et Gordian Piec. Świdziński en a été le commissaire et le président à partir de 1998, et s'y est produit à chaque édition de 1999 à 2004. Le festival se poursuit : sa 25e édition, « Beyond Gravity », a eu lieu du 24 au 27 septembre 2026."
+"desc": "L’idée est née en 1998 à l’initiative de Ryszard Piegza, avec Stanisław Piotr Gajda et Gordian Piec, au restaurant Europa de Piotrków, où fut « transféré » le « Centre du monde » que Dalí avait placé en gare de Perpignan ; la première édition a eu lieu en 1999. Świdziński en a été le commissaire et le président à partir de 1998, s’y est produit à chaque édition de 1999 à 2004 et en est ensuite devenu le parrain. Les éditions suivantes sont confiées à des commissaires invités. Le festival se poursuit : sa 25e édition, « Beyond Gravity », a eu lieu du 24 au 27 septembre 2026."
 },
 {
 "id": "fo5",
 "name": "W kontekście sztuki / Różnice (Dans le contexte de l'art / Différences)",
 "place": "Varsovie, Pologne",
-"desc": "Premier festival explicitement consacré à l'art contextuel, tenu en octobre 2006 puis de nouveau en 2007. Cocréé avec Jan Przyłuski. Lié au film documentaire « Różnice » (Les Différences). Première édition : 28 septembre – 2 octobre 2006, 64 artistes de 13 pays et plus de 80 présentations à Varsovie, Płock, Szydłowiec, Orońsko et Sokołów Podlaski. Organisateur principal : Centre mazovien de la culture et des arts."
+"desc": "Festival conçu par Świdziński, qui en fut le commissaire principal, cocréé avec Bartosz Łukasiewicz (secrétaire) et Jan Przyłuski (porte-parole). Pensé comme une biennale nomade contre « l’hégémonie oppressive du centre sur la périphérie » : les artistes invités étaient aussi cocommissaires et invitaient des artistes de leur pays. Première édition : 28 septembre – 2 octobre 2006, 64 artistes de 13 pays et plus de 80 présentations à Varsovie, Płock, Szydłowiec, Orońsko et Sokołów Podlaski ; organisateur principal : Centre mazovien de la culture et des arts. Deuxième édition : 4–9 octobre 2007 au Musée ethnographique national de Varsovie, à Orońsko et à la galerie Ostrołęka, avec pour cocommissaires Nigel Rolfe, David Cross, Alastair MacLennan, Jiří Surůvka et Bálint Szombathy. Lié au film documentaire « Różnice » (Les Différences)."
 }
 ],
 "festivalsData.participated": [
