@@ -252,6 +252,7 @@ h2 + .section-desc { color:var(--text-dim); font-size:14px; margin-bottom:28px; 
 .cz-wer button { font:inherit; font-size:12px; padding:3px 10px; color:var(--text-dim); background:none; border:1px solid var(--border); border-radius:6px; cursor:pointer; }
 .cz-wer button.on { color:var(--text); border-color:var(--accent); font-weight:600; }
 .cz-uw { margin:12px 0 0; padding:8px 12px; font-size:12px; color:var(--text-dim); background:var(--surface2); border-radius:6px; }
+.cz-auto { border-left:3px solid var(--accent); }
 .cz-tresc { margin-top:18px; font-size:16px; line-height:1.72; color:var(--text); }
 .cz-tresc p { margin:0 0 .95em; }
 .cz-tresc h4 { font-family:'Fraunces',serif; font-size:17px; margin:1.2em 0 .3em; }
@@ -814,18 +815,18 @@ const timeline = [
 const textsData = [
   {id:'12points',title:'12 Points of Contextual Art',year:1976,type:'Manifesto',
    sections:[
-    {h:'Point 1',t:'Objects without meanings do not exist, nor meanings without objects. One object may carry different meanings across various codes; one meaning may be assigned to different objects. This creates two types of ambiguity: ambiguity of objects sharing the same meaning, and ambiguity of meanings sharing the same object. In specific contexts, only one meaning is accepted as true. The criterion for selection is the truth criterion.'},
-    {h:'Point 2',t:'When different social groups assign different meanings to the same object, and no group possesses sufficient authority to impose its perspective on others, finding an appropriate selection criterion becomes problematic. This leads to ambiguity in defining art (everything can signify art). If civilization changes as rapidly as today, leaving no time to establish new meanings for new objects, this results in ambiguity of art objects (everything can signify art).'},
-    {h:'Point 3',t:'In practical action, we create objects with given meanings (concepts). This is the method of conventional art. In cognitive action, we create meanings (concepts) with given objects. This is the method of conceptual art. Both operations are reversible: the reality we produce depends on our conception of reality; our conception depends on the reality we produce. The choice of criterion thus defines the reality we create.'},
-    {h:'Point 4',t:'Changes in reality render existing meanings outdated; social practice becomes the ultimate criterion. Devaluation of meanings disrupts established habits and causes loss of privileges gained by one group in favor of another. A constant tendency exists to preserve outdated meanings. Through the ambiguity inherent in sign systems, it is possible to construct apparent meanings of reality and consequently produce apparent reality.'},
-    {h:'Point 5',t:'Devaluation of meanings is a continuous process, occurring faster as civilization changes more rapidly. Contextual art proposes a sign whose truth criterion, established by pragmatic context, continuously changes. Object "O" assumes meaning "m" at time "t," in place "p," in situation "s," in relation to person/persons "o" if and only then. Changing any parameter devalidates previous meanings.'},
-    {h:'Point 6',t:'Contextual art action consists of continuously rejecting canons attempting to preserve continually devalued meanings.'},
-    {h:'Point 7',t:'Contextual art opposes stabilization of art objects, because object permanence produces permanence of meaning. Contextual art opposes stabilization of meanings, because meaning permanence produces outdated objects. It thus rejects established definitions of art.'},
-    {h:'Point 8',t:'In conventional art, both terms remain fixed in the relationship connecting meaning and corresponding object. Since Duchamp, one term became mobile (any object can signify art), yet the other remained stationary. In contextual art, both terms are mobile (any object can signify art and not-art). Art action\'s goal becomes relativizing the entire sphere of meanings and objects.'},
-    {h:'Point 9',t:'Contextual art is interested only in relation (as readiness to connect meaning with object in specific pragmatic context).'},
-    {h:'Point 10',t:'Contextual art expressions are not acceptable to groups, because reality constructed by the artist differs from reality perceived (constantly changing).'},
-    {h:'Point 11',t:'Contextual art has no connection to science. Science must establish (immobilize) objects by assigning meaning. Contextual art operates outside formal logic. Its world is not one of formalized axioms, but constantly devaluing rules attempting to stabilize changing reality.'},
-    {h:'Point 12',t:'Contextual art opposes ambiguity and opposes relativism. Only one expression is true in specific pragmatic context. Such expression carries assertion.'},
+    {h:'Point 1',t:'There are no objects without a meaning as there are no meanings without objects.<br>One and the same object may have different meanings in different codes, one and the same meaning may be ascribed to different objects. All this leads to two types of multi-meaning:<br>I. The multi-meaning of objects which have the same meaning.<br>II. The multi-meaning of meanings which have the same object.<br>In a particular context only one meaning is accepted as the true one. The criterion of choice is the criterion of truth.'},
+    {h:'Point 2',t:'If different social groups ascribe different meanings to one and the same object and none of those groups commands sufficient authority to enforce its viewpoint on others, the problem arises of finding a suitable criterion of choice. This leads to the many definitions of art (everything may be art).<br>Since civilization is changing extremely fast today, there is little time for new meanings of objects to crystallize. In effect the objects of art assume different meanings (everything may be accepted as an art).'},
+    {h:'Point 3',t:'In our practical activities we create objects with a given meaning (concepts). This is how conventional art works.<br>In our cognitive activities we create meanings (concepts) possessing given objects. This is how conceptual art works.<br>Both of these operations have a feed-back relation. The reality which we shape depends on our concepts of reality, our concepts of reality depend on the reality which we create. Therefore the choice of criterion defines the reality which we shape.'},
+    {h:'Point 4',t:'The changes which occur in that reality make the existing meanings no longer valid; social practice becomes the ultimate criterion. The fact that certain meanings lose their validity affects our life-styles, results in a loss of privileges that have been gained by one group in favour of another. There is therefore a constant trend towards upholding meanings which have lost their validity. Because of the diversified range of meanings in the definition systems, there is the possibility of construction apparent meanings of reality, and in consequence, of producing an apparent reality.'},
+    {h:'Point 5',t:'The outdating of meanings is a constant process - proceeding all the faster the quicker civilization changes.<br>Contextual art proposes a sign, the criterion of truth of which, defined by the pragmatic context, changes incessantly (a situation develops in which "p" begins to be "p" - begins not to be "p"). Object "O" assumes the meaning "m" in time "t", place "p", situation "s", in relation to person/persons "x" then and only then. A change of any of those elements outdates the previous meaning.'},
+    {h:'Point 6',t:'The operation of contextual art is therefore a steady rejection of canons used to arrest the outdating of meanings.'},
+    {h:'Point 7',t:'Contextual art opposes the stabilization of the objects of art, since the lasting nature of an object extends into its meaning.<br>Contextual art opposes the stabilization of meanings, since the lasting nature of meanings leads to the production of outdated objects. It therefore rejects the definitions of art.'},
+    {h:'Point 8',t:'In the relation linking meaning and the object to which it is applied, in the case of conventional art both components remain stable ("art" implies these and not any other objects).<br>Since Duchamp\'s time, the second of these components has been set into motion (every object may mean an art).<br>In contextual art both components change (also each object may have the meaning of an "art" and not be an art). The aim of art is the relativization of the entire area of meanings and of objects.'},
+    {h:'Point 9',t:'Art as contextual art is concerned with the relation itself (the readiness to tie up the meaning with the object in a defined pragmatic context).'},
+    {h:'Point 10',t:'The expressions of contextual art are not expressions which would be acceptable to a group since the reality construed by the artist is something different than that which is received (it changes all the time).'},
+    {h:'Point 11',t:'Art as contextual art has no connection with science. Science has to define (immobilize) an object by giving its meaning. It is beyond the sphere of formal logic. The world in which it exists is not an area of formalized axioms, but rules which become constantly outdated and which attempts to preserve the changing reality.'},
+    {h:'Point 12',t:'Art as contextual art is opposed to multi-meaning and also to relativism. One and only one expression is true in the given pragmatic context. Such expression is expressed with assertion.'},
    ]},
   {id:'dispute',title:'Dispute over Art\'s Existence (Spór o istnienie sztuki)',year:1970,type:'Essay',
    sections:[
@@ -1795,16 +1796,15 @@ function czWybierz(id){
 }
 function czWersje(t){
   var v = [];
-  if(t.obcy) return [{k:'x', n:'', s:t.obcy.sections}];
+  if(t.obcy) return [{k:'x', n:'', s:t.obcy.sections, auto:!czPl()}];
   v.push({k:'pl', n:T('cz.pl'), p:t.src.pl});
   var en = EN_DATA.textsData.find(function(x){ return x.id===CZ_FRAG[t.id]; });
-  if(t.src.en) v.push({k:'en', n:'English', p:t.src.en});
-  else if(t.id==='12punktow' && en) v.push({k:'en', n:'English', s:en.sections});
+  if(t.src.en) v.push({k:'en', n:t.src.enAuto ? T('cz.enauto') : 'English', p:t.src.en, auto:!!t.src.enAuto});
   if(!czPl() && LANG_NOW!=='en'){
     var loc = textsData.find(function(x){ return x.id===CZ_FRAG[t.id]; });
-    if(loc) v.push({k:'x', n:T('cz.frag'), s:loc.sections});
+    if(loc) v.push({k:'x', n:T('cz.frag'), s:loc.sections, auto:true});
   } else if(LANG_NOW==='en' && !v.some(function(x){return x.k==='en'}) && en){
-    v.push({k:'x', n:T('cz.frag'), s:en.sections});
+    v.push({k:'x', n:T('cz.frag'), s:en.sections, auto:true});
   }
   return v;
 }
@@ -1829,6 +1829,7 @@ function czCzytaj(){
   if(t.src && t.src.zr) html += '<div class="cz-zr">'+t.src.zr+'</div>';
   if(v.length>1) html += '<div class="cz-wer">'+v.map(function(x){ return '<button class="'+(x.k===czWer?'on':'')+'" onclick="czWer=\''+x.k+'\';czCzytaj();document.getElementById(\'czRead\').scrollTop=0">'+x.n+'</button>'; }).join('')+'</div>';
   if(oryg) html += '<div class="cz-uw">'+T('cz.oryg')+'</div>';
+  if(cur.auto) html += '<div class="cz-uw cz-auto">'+T(cur.k==='x' ? 'cz.autofrag' : 'cz.auto')+'</div>';
   html += '<div class="cz-tresc" id="czTresc">';
   if(cur.p) html += cur.p.map(function(a){ return '<p>'+(czWer==='pl'?noOrphans(a):a)+'</p>'; }).join('');
   else html += cur.s.map(function(s){ return (s.h?'<h4>'+s.h+'</h4>':'')+'<p>'+s.t+'</p>'; }).join('');
@@ -2346,6 +2347,10 @@ addEventListener('hashchange', openFromHash);
 // ═══════════════════════════════════════════
 var I18N = {
   pl: {
+    "cz.enauto":"English · przekład automatyczny",
+    "cz.frag":"Fragment · przekład automatyczny",
+    "cz.auto":"Przekład automatyczny (model językowy), niesprawdzony przez tłumacza. Miarodajny jest polski oryginał.",
+    "cz.autofrag":"Skrócony fragment w przekładzie automatycznym (model językowy), niesprawdzony przez tłumacza. Miarodajny jest polski oryginał.",
     "cz.zrc":"Teksty za",
     "nav.films":"Filmy",
     "view.films.h":"Filmy i wideo",
@@ -2361,7 +2366,6 @@ var I18N = {
     "cz.prev":"Poprzedni",
     "cz.next":"Następny",
     "cz.pl":"Polski oryginał",
-    "cz.frag":"Fragment",
     "cz.oryg":"Oryginał polski.",
     "cz.err":"Nie udało się wczytać tekstów.",
     "fm.o":"Filmy o Świdzińskim",
@@ -2528,6 +2532,10 @@ var I18N = {
     'latest.3.pl':'Stara Galeria Lublin · esej · pl','latest.4.pl':'Calgary · plakat-manifest · en · pl'
   },
   en: {
+    "cz.enauto":"English · machine translation",
+    "cz.frag":"Excerpt · machine translation",
+    "cz.auto":"Machine translation (language model), not reviewed by a translator. The Polish original is authoritative.",
+    "cz.autofrag":"Abridged excerpt in machine translation (language model), not reviewed by a translator. The Polish original is authoritative.",
     "cz.zrc":"Texts from",
     "nav.films":"Films",
     "view.films.h":"Films & Video",
@@ -2543,7 +2551,6 @@ var I18N = {
     "cz.prev":"Previous",
     "cz.next":"Next",
     "cz.pl":"Polish original",
-    "cz.frag":"Excerpt",
     "cz.oryg":"Polish original; no full English translation is available.",
     "cz.err":"The texts could not be loaded.",
     "fm.o":"Films about Świdziński",
@@ -2710,6 +2717,10 @@ var I18N = {
     'latest.3.pl':'Stara Galeria Lublin · essay · pl','latest.4.pl':'Calgary · poster manifesto · en · pl'
   },
   fr: {
+    "cz.enauto":"English · traduction automatique",
+    "cz.frag":"Extrait · traduction automatique",
+    "cz.auto":"Traduction automatique (modèle de langue), non relue par un traducteur. L’original polonais fait foi.",
+    "cz.autofrag":"Extrait abrégé en traduction automatique (modèle de langue), non relu par un traducteur. L’original polonais fait foi.",
     "cz.zrc":"Textes d’après",
     "nav.films":"Films",
     "view.films.h":"Films et vidéo",
@@ -2725,7 +2736,6 @@ var I18N = {
     "cz.prev":"Précédent",
     "cz.next":"Suivant",
     "cz.pl":"Original polonais",
-    "cz.frag":"Extrait",
     "cz.oryg":"Original polonais ; pas de traduction complète disponible.",
     "cz.err":"Impossible de charger les textes.",
     "fm.o":"Films sur Świdziński",
@@ -2905,6 +2915,10 @@ var I18N = {
     "latest.4.pl":"Calgary · affiche-manifeste · en · pl"
   },
   ja: {
+    "cz.enauto":"English・機械翻訳",
+    "cz.frag":"抜粋・機械翻訳",
+    "cz.auto":"機械翻訳（言語モデル）で、翻訳者の校閲を受けていません。正文はポーランド語原文です。",
+    "cz.autofrag":"機械翻訳（言語モデル）による短縮抜粋で、翻訳者の校閲を受けていません。正文はポーランド語原文です。",
     "cz.zrc":"出典：",
     "nav.films":"映画",
     "view.films.h":"映画とビデオ",
@@ -2920,7 +2934,6 @@ var I18N = {
     "cz.prev":"前へ",
     "cz.next":"次へ",
     "cz.pl":"ポーランド語原文",
-    "cz.frag":"抜粋",
     "cz.oryg":"ポーランド語原文です。全文の翻訳はありません。",
     "cz.err":"テキストを読み込めませんでした。",
     "fm.o":"Świdzińskiについての映画",
@@ -3100,6 +3113,10 @@ var I18N = {
     "latest.4.pl":"カルガリー · ポスター・マニフェスト · en · pl"
   },
   zh: {
+    "cz.enauto":"English · 机器翻译",
+    "cz.frag":"节选 · 机器翻译",
+    "cz.auto":"机器翻译（语言模型），未经译者审校。以波兰语原文为准。",
+    "cz.autofrag":"机器翻译（语言模型）的节略文本，未经译者审校。以波兰语原文为准。",
     "cz.zrc":"文本来源：",
     "nav.films":"影片",
     "view.films.h":"影片与录像",
@@ -3115,7 +3132,6 @@ var I18N = {
     "cz.prev":"上一篇",
     "cz.next":"下一篇",
     "cz.pl":"波兰语原文",
-    "cz.frag":"节选",
     "cz.oryg":"波兰语原文；暂无完整译文。",
     "cz.err":"无法加载文本。",
     "fm.o":"关于Świdziński的影片",
